@@ -1,0 +1,62 @@
+#This simulation begins with the seeker in its assembled state, and shows the three revolute joints articulating
+
+{ Simulation 
+    # some info about this simulation
+    { Title "Missile Seeker articulation test" }
+    { Assembly
+      { URL
+      file://localhost/afs/cs/project/edrc-codes-17/demo/seeker/seeker.asm }
+      { Name seeker }
+      { AssemblyState
+	{ Assembled Yes }
+	{ JointState
+	  { Name pitch_motor_gimbal }
+	  { DOF Theta 0 }
+	}
+	{ JointState
+	  { Name yaw_motor_ys_motor }
+	  { DOF Theta 0 }
+	}
+	{ JointState
+	  { Name ss_motor_switch_motor }
+	  { DOF Theta 0 }
+	}
+      }
+    }
+
+    # the actual simulation steps
+    { SimulationStep ArticulateAssembly
+	{ AssemblyName seeker }
+	{ Duration 1.5 }
+	{ Joint
+	  { Name pitch_motor_gimbal }
+	  { DOF Theta -45 }
+	}
+    }
+    { SimulationStep ArticulateAssembly
+	{ AssemblyName seeker }
+	{ Duration 1.5 }
+	{ Joint
+	  { Name yaw_motor_ys_motor }
+	  { DOF Theta 30 }
+	}
+    }
+    { SimulationStep ArticulateAssembly
+	{ AssemblyName seeker }
+	{ Duration 1.5 }
+	{ Joint
+	  { Name ss_motor_switch_motor }
+	  { DOF Theta -90 }
+	}
+    }
+
+    { SimulationStep ArticulateAssembly
+	{ AssemblyName seeker }
+	{ Duration 1.5 }
+	{ Joint
+	  { Name ss_motor_switch_motor }
+	  { DOF Theta 0 }
+	}
+    }
+
+}

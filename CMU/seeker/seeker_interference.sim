@@ -1,0 +1,196 @@
+#This simulation contains only the assembly of two parts
+#It is based on seeker_interference.pln
+#The purpose is show interference between parts
+#version 1.0
+{ Simulation
+  { Assembly
+    { URL seeker.asm } 
+    { Name seeker}
+     { AssemblyState 
+       { Assembled No }
+       { PartState 
+        { Name gimbal } 
+        { Transform Homogeneous -258 432 80 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name housing } 
+        { Transform Homogeneous 16 432 0 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name pitch_motor } 
+        { Transform Homogeneous 224 432 0 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name pitch_potentiometer } 
+        { Transform Homogeneous 356 432 0 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name yaw_motor } 
+        { Transform Homogeneous 483 432 10 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name yaw_potentiometer } 
+        { Transform Homogeneous 615 432 10 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name yaw_shaft_motor } 
+        { Transform Homogeneous 757 432 4 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name yaw_shaft_pot } 
+        { Transform Homogeneous 889 432 4 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name optics_housing } 
+        { Transform Homogeneous -313 432 314 0 1 0 0 0 1}
+       }
+
+       { PartState 
+        { Name switch_shaft_motor } 
+        { Transform Homogeneous -58.5 432 278 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name switch_shaft_pot } 
+        { Transform Homogeneous 73.5 432 278 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name switch_motor } 
+        { Transform Homogeneous 224 432 274 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name switch_potentiometer } 
+        { Transform Homogeneous 356 432 274 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name switch_mechanism } 
+        { Transform Homogeneous 564 409 329 0 1 0 0 0 1}
+       }
+
+       { PartState 
+        { Name counter_weight_motor } 
+        { Transform Homogeneous 772 419.5 276.5 1 0 0 0 1 0}
+       }
+
+       { PartState 
+        { Name counter_weight_pot } 
+        { Transform Homogeneous 904 419.5 276.5 1 0 0 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot1 } 
+        { Transform Homogeneous -376.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot2 } 
+        { Transform Homogeneous -343.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot3 } 
+        { Transform Homogeneous -310.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot4 } 
+        { Transform Homogeneous -277.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor1 } 
+        { Transform Homogeneous -244.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor2 } 
+        { Transform Homogeneous -211.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor3 } 
+        { Transform Homogeneous -178.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor4 } 
+        { Transform Homogeneous -145.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_motor1 } 
+        { Transform Homogeneous -85.5 432 550 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_motor2 } 
+        { Transform Homogeneous -19.5 432 550 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_pot1 } 
+        { Transform Homogeneous 46.5 432 550 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_pot2 } 
+        { Transform Homogeneous 112.5 432 550 0 0 -1 0 1 0}
+       }
+
+     }
+
+  }
+  { Assembly
+    { URL seeker_env.asm}
+    { Name assembly_station}
+     { AssemblyState 
+       { Assembled Yes }
+
+
+     }
+
+  }
+  { Assembly
+    { URL  ../../Tools/5mm_allen_wrench.asm}
+    { Name 5mm_allen_wrench}
+     { AssemblyState 
+       { Assembled Yes }
+       { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+     }
+
+  }
+  { Assembly
+    { URL  ../../Tools/5mm_phillipshead_screwdriver.asm}
+    { Name 5mm_phillipshead_screwdriver}
+     { AssemblyState 
+       { Assembled Yes }
+       { Transform Homogeneous -902.5 423.001 270.571 0 1 0 -1 0 0}
+     }
+
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.housing" }
+    { Duration 4 }
+    { Transform Homogeneous 0 0 110 1 0 0 0 0 1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 4 }
+    { Transform Homogeneous 0 -30 15 1 0 0 0 1 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.pitch_motor" }
+    { ToObject "seeker.housing" }
+  }
+}

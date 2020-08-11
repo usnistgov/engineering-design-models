@@ -1,0 +1,5397 @@
+#This simulation shows the entire assembly of the seeker
+#version 1.0
+{ Simulation
+  { Assembly
+    { URL seeker.asm } 
+    { Name seeker}
+     { AssemblyState 
+       { Assembled No }
+       { PartState 
+        { Name gimbal } 
+        { Transform Homogeneous -258 432 80 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name housing } 
+        { Transform Homogeneous 16 432 0 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name pitch_motor } 
+        { Transform Homogeneous 224 432 0 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name pitch_potentiometer } 
+        { Transform Homogeneous 356 432 0 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name yaw_motor } 
+        { Transform Homogeneous 483 432 10 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name yaw_potentiometer } 
+        { Transform Homogeneous 615 432 10 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name yaw_shaft_motor } 
+        { Transform Homogeneous 757 432 4 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name yaw_shaft_pot } 
+        { Transform Homogeneous 889 432 4 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name optics_housing } 
+        { Transform Homogeneous -313 432 314 0 1 0 0 0 1}
+       }
+
+       { PartState 
+        { Name switch_shaft_motor } 
+        { Transform Homogeneous -58.5 432 278 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name switch_shaft_pot } 
+        { Transform Homogeneous 73.5 432 278 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name switch_motor } 
+        { Transform Homogeneous 224 432 274 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name switch_potentiometer } 
+        { Transform Homogeneous 356 432 274 0 1 0 -1 0 0}
+       }
+
+       { PartState 
+        { Name switch_mechanism } 
+        { Transform Homogeneous 564 409 329 0 1 0 0 0 1}
+       }
+
+       { PartState 
+        { Name counter_weight_motor } 
+        { Transform Homogeneous 772 419.5 276.5 1 0 0 0 1 0}
+       }
+
+       { PartState 
+        { Name counter_weight_pot } 
+        { Transform Homogeneous 904 419.5 276.5 1 0 0 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot1 } 
+        { Transform Homogeneous -376.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot2 } 
+        { Transform Homogeneous -343.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot3 } 
+        { Transform Homogeneous -310.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_pot4 } 
+        { Transform Homogeneous -277.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor1 } 
+        { Transform Homogeneous -244.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor2 } 
+        { Transform Homogeneous -211.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor3 } 
+        { Transform Homogeneous -178.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_pitch_motor4 } 
+        { Transform Homogeneous -145.5 432 552 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_motor1 } 
+        { Transform Homogeneous -85.5 432 550 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_motor2 } 
+        { Transform Homogeneous -19.5 432 550 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_pot1 } 
+        { Transform Homogeneous 46.5 432 550 0 0 -1 0 1 0}
+       }
+
+       { PartState 
+        { Name screw_cw_pot2 } 
+        { Transform Homogeneous 112.5 432 550 0 0 -1 0 1 0}
+       }
+
+     }
+
+  }
+  { Assembly
+    { URL seeker_env.asm}
+    { Name assembly_station}
+     { AssemblyState 
+       { Assembled Yes }
+
+
+     }
+
+  }
+  { Assembly
+    { URL  ../../Tools/5mm_allen_wrench.asm}
+    { Name 5mm_allen_wrench}
+     { AssemblyState 
+       { Assembled Yes }
+       { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+     }
+
+  }
+  { Assembly
+    { URL  ../../Tools/5mm_phillipshead_screwdriver.asm}
+    { Name 5mm_phillipshead_screwdriver}
+     { AssemblyState 
+       { Assembled Yes }
+       { Transform Homogeneous -902.5 423.001 270.571 0 1 0 -1 0 0}
+     }
+
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Identity }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_shaft_motor" }
+    { Duration 2 }
+    { Transform Homogeneous -56.5685 -56.5685 70 0 0 1 -0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_shaft_motor" }
+    { Duration 1 }
+    { Transform Homogeneous -21.2132 -21.2132 70 0 0 1 -0.707107 0.707107 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.switch_shaft_motor" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 0 0 -1 0 1 0 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_shaft_pot" }
+    { Duration 2 }
+    { Transform Homogeneous 56.5685 -56.5685 70 0 0 -1 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_shaft_pot" }
+    { Duration 1 }
+    { Transform Homogeneous 21.2132 -21.2132 70 0 0 -1 0.707107 0.707107 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.switch_shaft_pot" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_potentiometer" }
+    { Duration 2 }
+    { Transform Homogeneous 74.2462 -74.2462 70 0 0 1 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_potentiometer" }
+    { Duration 1 }
+    { Transform Homogeneous 38.8909 -38.8909 70 0 0 1 0.707107 0.707107 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.switch_potentiometer" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Identity }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous -74.2462 -74.2462 70 0 0 1 0.707107 -0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_motor" }
+    { Duration 1 }
+    { Transform Homogeneous -38.8909 -38.8909 70 0 0 1 0.707107 -0.707107 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.switch_motor" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.switch_mechanism" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 70 -0.707107 0.707107 0 0 0 -1}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.switch_mechanism" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 45 0 0.707107 -0.707107 0 0.707107 0.707107}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.counter_weight_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 70 -52.5 45 0 0 1 -1 0 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.counter_weight_motor" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_cw_motor1" }
+    { Duration 2 }
+    { Transform Homogeneous 81 -52.5 65.9999 0 0.707107 -0.707107 0 -0.707107 -0.707107}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous 289 -52.5 65.9999 0 1 0 1 0 0}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 -1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { ToObject "seeker.screw_cw_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 -1440 -8 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { FromObject "seeker.screw_cw_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_cw_motor1" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous -902.5 423.001 270.571 0 1 0 -1 0 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_cw_motor2" }
+    { Duration 2 }
+    { Transform Homogeneous 81 -52.5 24.0001 0 0.707107 -0.707107 0 -0.707107 -0.707107}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous 289 -52.5 24.0001 0 1 0 1 0 0}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 -1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { ToObject "seeker.screw_cw_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 -1440 -8 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { FromObject "seeker.screw_cw_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_cw_motor2" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous -902.5 423.001 270.571 0 1 0 -1 0 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 45 0 0.707107 0.707107 0 0.707107 -0.707107}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 45 0 -0.707107 -0.707107 0 -0.707107 0.707107}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.counter_weight_pot" }
+    { Duration 2 }
+    { Transform Homogeneous -70 -52.5 45 0 0 1 1 0 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.counter_weight_pot" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_cw_pot1" }
+    { Duration 2 }
+    { Transform Homogeneous -81 -52.5 24.0001 0 -0.707107 -0.707107 0 0.707107 -0.707107}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous -289 -52.5 24.0001 0 -1 0 -1 0 0}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 -1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { ToObject "seeker.screw_cw_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 -1440 -8 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { FromObject "seeker.screw_cw_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_cw_pot1" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous -902.5 423.001 270.571 0 1 0 -1 0 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_cw_pot2" }
+    { Duration 2 }
+    { Transform Homogeneous -81 -52.5 65.9999 0 -0.707107 -0.707107 0 0.707107 -0.707107}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous -289 -52.5 65.9999 0 -1 0 -1 0 0}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 -1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { ToObject "seeker.screw_cw_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 -1440 -8 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_phillipshead_screwdriver.5mm_phillipshead_screwdriver" }
+    { FromObject "seeker.screw_cw_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Screw 0 -205 0 0 1 0 0 1.2 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_cw_pot2" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_phillipshead_screwdriver" }
+    { Duration 3 }
+    { Transform Homogeneous -902.5 423.001 270.571 0 1 0 -1 0 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 0 0.707107 0.707107 0 -0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_shaft_pot" }
+    { Duration 2 }
+    { Transform Homogeneous -81.3172 -81.3172 70 0 0 -1 -0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_shaft_pot" }
+    { Duration 1 }
+    { Transform Homogeneous -45.9619 -45.9619 70 0 0 -1 -0.707107 0.707107 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.yaw_shaft_pot" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 0 0.707107 -0.707107 0 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_shaft_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 81.3172 -81.3172 70 0 0 1 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_shaft_motor" }
+    { Duration 1 }
+    { Transform Homogeneous 45.9619 -45.9619 70 0 0 1 0.707107 0.707107 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.yaw_shaft_motor" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Identity }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 -1 0 5.72958 0 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.481095 -0.835123 0.266678 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.540575 -0.786123 0.299649 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.54525 -0.781891 0.30224 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.550006 -0.777524 0.304876 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.550006 -0.777524 0.304876 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.552432 -0.775273 0.306221 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.554886 -0.772978 0.307582 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.554886 -0.772978 0.307582 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.557384 -0.770625 0.308966 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.557384 -0.770625 0.308966 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0 1 0 0 -2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.00710744 }
+    { Transform Screw 0 0 0 0.559927 -0.768212 0.310375 0 2 }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0170288 }
+    { Transform Homogeneous 0 0 200 1 0 0 0 1 0}
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep RelativeMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0153846 }
+    { Transform Screw 0 0 0 0 0 -1 0 2 }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.gimbal" }
+    { Duration 0.0307692 }
+    { Transform Homogeneous 0 0 70 1 0 0 0 1 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.gimbal" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 155 0 70 0 0 1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_motor" }
+    { Duration 1 }
+    { Transform Homogeneous 85 0 70 0 0 1 0 1 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.yaw_motor" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_potentiometer" }
+    { Duration 2 }
+    { Transform Homogeneous -155 0 70 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.yaw_potentiometer" }
+    { Duration 1 }
+    { Transform Homogeneous -85 0 70 0 0 -1 0 1 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.yaw_potentiometer" }
+    { ToObject "seeker.optics_housing" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 0 70 0 1 0 0 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 -95 70 1 0 0 0 0 -1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 1 }
+    { Transform Identity }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.optics_housing" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 -95 70 0 -1 0 0 0 -1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_potentiometer" }
+    { Duration 2 }
+    { Transform Homogeneous 260 -95 70 0 -1 0 0 0 1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_potentiometer" }
+    { Duration 1 }
+    { Transform Homogeneous 190 -95 70 0 -1 0 0 0 1}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.pitch_potentiometer" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.housing" }
+    { Duration 2 }
+    { Transform Homogeneous 95 -95 170 0 -1 0 1 0 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.housing" }
+    { Duration 1 }
+    { Transform Homogeneous 95 -95 40 0 -1 0 1 0 0}
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.housing" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 20 1 0 0 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous -49.4975 49.4975 115 0.707107 0.707107 0 0 0 1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_motor2" }
+    { Duration 2 }
+    { Transform Homogeneous 20 -20 33 -0.961262 0.275637 0 0.275637 0.961262 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous 17.2764 -20.4285 37 -0.275637 -0.961262 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_motor2" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 49.4975 49.4975 115 0.707107 -0.707107 0 0 0 1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_motor4" }
+    { Duration 2 }
+    { Transform Homogeneous -20 -20 33 -0.707107 0.707107 0 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -22.5898 -19.0543 37 -0.707107 -0.707107 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_motor4" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 20 -1 0 0 0 -1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 49.4975 49.497 115 0.707107 -0.707107 0 0 0 1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_motor1" }
+    { Duration 2 }
+    { Transform Homogeneous -20 -20 33 -0.707107 0.707107 0 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -22.5898 -19.0543 37 -0.707107 -0.707107 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_motor1" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous -49.4975 49.497 115 0.707107 0.707107 0 0 0 1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_motor3" }
+    { Duration 2 }
+    { Transform Homogeneous 20 -20 33 -0.961262 0.275637 0 0.275637 0.961262 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous 17.2764 -20.4285 37 -0.275637 -0.961262 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_motor3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_motor3" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 200 1 0 0 0 -1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_pot3" }
+    { Duration 2 }
+    { Transform Homogeneous -20 -20 23 -0.707107 0.707107 0 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -22.5898 -19.0543 27 -0.707107 -0.707107 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot3" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_pot3" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous -49.4975 49.497 105 -0.707107 -0.707107 0 0 0 -1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_pot1" }
+    { Duration 2 }
+    { Transform Homogeneous 20 -20 23 -0.961262 0.275637 0 0.275637 0.961262 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous 17.2764 -20.4285 27 -0.275637 -0.961262 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot1" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_pot1" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous -49.4975 -49.4975 105 0.707107 -0.707107 0 0 0 -1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 200 -1 0 0 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_pot2" }
+    { Duration 2 }
+    { Transform Homogeneous -20 -20 23 -0.707107 0.707107 0 0.707107 0.707107 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -22.5898 -19.0543 27 -0.707107 -0.707107 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot2" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_pot2" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 200 1 0 0 0 -1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.optics_housing" }
+    { Duration 2 }
+    { Transform Homogeneous 49.4975 -49.4975 105 0.707107 0.707107 0 0 0 -1}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.pitch_motor" }
+    { Duration 2 }
+    { Transform Homogeneous 0 0 200 -1 0 0 0 1 0}
+  }
+  { SimulationStep AbsoluteMoveObject
+    { ObjectName "seeker.screw_pitch_pot4" }
+    { Duration 2 }
+    { Transform Homogeneous 20 -20 23 -0.961262 0.275637 0 0.275637 0.961262 0}
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous 17.2764 -20.4285 27 -0.275637 -0.961262 0 0 0 1}
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 120 0.666667 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 -6 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 -120 0 }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.151515 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 0 6 }
+  }
+  { SimulationStep Attach
+    { AttachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { ToObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.606061 }
+    { Transform Screw -1.16258 0 -2.5 0 -1 0 4.0342e-05 2.24122e-07 }
+  }
+  { SimulationStep Detach
+    { DetachObject "5mm_allen_wrench.5mm_allen_wrench" }
+    { FromObject "seeker.screw_pitch_pot4" }
+  }
+  { SimulationStep RelativeMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Screw -1.16258 0 -2.5 0 1 0 0 3 }
+  }
+  { SimulationStep Attach
+    { AttachObject "seeker.screw_pitch_pot4" }
+    { ToObject "seeker.pitch_motor" }
+  }
+  { SimulationStep AbsoluteMoveAssembly
+    { AssemblyName "5mm_allen_wrench" }
+    { Duration 0.30303 }
+    { Transform Homogeneous -750 408.001 2.05258 0 0 -1 0 1 0}
+  }
+}

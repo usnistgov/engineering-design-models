@@ -1,0 +1,29 @@
+GENERIC DONG1(PART);
+{	A part similar to [DONG88] pp 59	}
+{	It demonstrates a compound pocket	}
+{	Author: Jan Vandenbrande	}
+{	January 10, 1989		}
+{					}
+{		Stock			}
+{					}
+l = 12; h = 4; w = 8;
+STOCK = BLO(X=l, Y=h, Z=w);
+{					}
+{		Pockets			}
+{					}
+Offs1 = 1;
+Pock1 = Blo(x=l-Offs1*2, y=1, z=w-Offs1*2) at movx=Offs1, movy=h-1, movz=offs1;
+
+Offs2 = 2;
+Pock2 = Blo(x=l-Offs2*2, y=1, z=w-Offs1*2) at movx=Offs2, movy=h-2, movz=offs1;
+
+Offs3 = 3;
+Pock3 = Blo(x=l-Offs2*2, y=1, z=w-Offs3*2) at movx=Offs2, movy=h-3, movz=offs3;
+
+Hole = cyl(r=0.4, h=h) at degx=90, movx=l/2, movy=h, movz=2;
+POCKET = pock1 un pock2 un pock3;
+PART = STOCK dif POCKET dif hole;
+;\ Part = stock dif slot3
+DELTA = STOCK dif part;
+
+

@@ -1,0 +1,725 @@
+#This plan contains the entire assembly of the seeker
+
+{ AssemblyPlan 
+ 
+	 { AssemblyURL file://localhost/afs/cs/project/edrc-codes-17/demo/Assemblies/seeker/seeker.asm } 
+	 { WorkspaceURL file://localhost/afs/cs/project/edrc-codes-17/demo/Assemblies/seeker/seeker.wsp } 
+
+	 { ToolURL file://localhost/afs/cs/user/tb35/Tools/tool.dtb } 
+	 { Macro "inner_subassembly" 
+	 	 { Operation AbsPositionPart 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Identity} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_shaft_motor"} 
+			 { Transform Translation 0 0 50} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_shaft_motor"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Rotation 0 -1 0 1 0 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "90 rotation about z-axis.  Note: the z-axis of optics_housing is in the opposite direction of the z-axis of the workspace.  The same is true of the y-axis.  The x-axis is in the same direction as that of the workspace."}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_shaft_pot"} 
+			 { Transform Translation 0 0 50} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_shaft_pot"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_potentiometer"} 
+			 { Transform Translation 0 0 -50} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_potentiometer"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Identity} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "back to original orientation"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_motor"} 
+			 { Transform Translation 0 0 -50} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_motor"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.switch_mechanism"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Homogeneous 0 0 45 0 .70711 -.70711 0 .70711 .70711} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "90 rotation about y-axis, -45 about z-axis, then translation along z-axis"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.counter_weight_motor"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_motor1"} 
+			 { Transform Translation 0 0 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_motor1"} 
+			 { Tool "5mm_phillips"} 
+			 { Duration "15"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_motor2"} 
+			 { Transform Translation 0 0 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_motor2"} 
+			 { Tool "5mm_phillips"} 
+			 { Duration "15"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Homogeneous 0 0 45 0 .70711 .70711 0 .70711 -.70711} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "-90 rotation about y-axis, -45"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Homogeneous 0 0 45 0 -.70711 -.70711 0 -.70711 .70711} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "-90 rotation about y-axis, 135 rotation about z-axis, translation along z-axis"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.counter_weight_pot"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_pot1"} 
+			 { Transform Translation 0 0 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_pot1"} 
+			 { Tool "5mm_phillips"} 
+			 { Duration "15"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_pot2"} 
+			 { Transform Translation 0 0 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.screw_cw_pot2"} 
+			 { Tool "5mm_phillips"} 
+			 { Duration "15"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Rotation .70711 .70711 0 -.70711 .70711 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "-45 rotation about z-axis"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_shaft_pot"} 
+			 { Transform Translation 0 0 -50} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_shaft_pot"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Rotation .70711 -.70711 0 .70711 .70711 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "-45 rotation about z-axis"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_shaft_motor"} 
+			 { Transform Translation 0 0 -50} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_shaft_motor"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Identity} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.gimbal"} 
+			 { Transform Translation 0 0 130} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.gimbal"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_motor"} 
+			 { Transform Translation 0 0 -70} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_motor"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_potentiometer"} 
+			 { Transform Translation 0 0 -70} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly inner_subassembly } 
+			 { Part "seeker.yaw_potentiometer"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly inner_subassembly } 
+			 { Transform Translation 0 70 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "The subassembly is moved here simply to get around the problem of parts disappearing when given a transformation for which their final position is the same as their initial position."}
+		 } 
+
+	}
+	 { Macro "final_assembly" 
+	 	 { Operation AbsPositionPart 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_motor"} 
+			 { Transform Homogeneous 0 -95 70 1 0 0 0 0 -1} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "I created a new subassembly so that I would be able to rotate the inner parts (contained in inner_subassembly) with respect to the outer parts (which will be added in final_assembly).  This transform will place the pitch_motor in the proper position with respect to the inner_subassembly, which is currently in its final position.  (The transform is the transform for pitch_motor given in seeker.asm, added to the translation given to optics_housing.)"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "This should effectively add the inner_subassembly so that any transforms applied to the base part of the final_assembly (pitch_motor) will be applied to all parts of both the final_assembly and the inner_assembly.  Nothing should appear to move during this step, because the inner_subassembly is already in its final position with respect to pitch_motor."}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_motor"} 
+			 { Transform Rotation 0 0 -1 0 1 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "90 rotation about y-axis of pitch_motor (z-axis of workspace)"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_potentiometer"} 
+			 { Transform Translation 0 0 -70} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_potentiometer"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.housing"} 
+			 { Transform Translation 0 0 130} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.housing"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "1"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly final_assembly } 
+			 { Transform Translation 0 0 20} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 45 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor2"} 
+			 { Transform Screw 0 0 0 0 0 1 196 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor2"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 -45 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor4"} 
+			 { Transform Screw 0 0 0 0 0 1 225 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor4"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly final_assembly } 
+			 { Transform Homogeneous 0 0 20 -1 0 0 0 -1 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "180 rotation about z-axis of pitch motor (same as workspace) and 20 translation along z-axis"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 135 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "135 rotation about pitch axis from the final orientation of the inner assembly"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor1"} 
+			 { Transform Screw 0 0 0 0 0 1 45 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor1"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 225 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor3"} 
+			 { Transform Screw 0 0 0 0 0 1 16 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_motor3"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation AbsPositionAssembly 
+			 { SubAssembly final_assembly } 
+			 { Transform Homogeneous 0 0 200 1 0 0 0 -1 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "180 rotation about z-axis of pitch motor,  then 180 rotation about its y-axis, and 200 translation along z-axis"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot3"} 
+			 { Transform Screw 0 0 0 0 0 1 225 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot3"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 135 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot1"} 
+			 { Transform Screw 0 0 0 0 0 1 196 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot1"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 45 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_motor"} 
+			 { Transform Homogeneous 0 0 0 -1 0 0 0 -1 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot2"} 
+			 { Transform Screw 0 0 0 0 0 1 45 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot2"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_motor"} 
+			 { Transform Homogeneous 0 0 0 -1 0 0 0 -1 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.optics_housing"} 
+			 { Transform Screw 0 0 70 0 1 0 -45 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.pitch_motor"} 
+			 { Transform Homogeneous 0 0 0 -1 0 0 0 -1 0} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot4"} 
+			 { Transform Screw 0 0 0 0 0 1 16 -8} 
+			 { Tool "no_tool"} 
+			 { Duration "2"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation Screw 
+			 { SubAssembly final_assembly } 
+			 { Part "seeker.screw_pitch_pot4"} 
+			 { Tool "5mm_allen_short"} 
+			 { Duration "20"} 
+			 { Comments "
+"}
+		 } 
+
+	}
+}

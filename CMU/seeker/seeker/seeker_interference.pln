@@ -1,0 +1,33 @@
+#This plan contains only the assembly of two parts
+#The purpose is to show interference, and also the effects of path planning
+#(see also seeker_interference.sim and seeker_no_interference.sim)
+
+{ AssemblyPlan 
+ 
+	 { AssemblyURL file://localhost/afs/cs/project/edrc-codes-17/demo/Assemblies/seeker/seeker.asm } 
+	 { WorkspaceURL file://localhost/afs/cs/project/edrc-codes-17/demo/Assemblies/seeker/seeker.wsp } 
+
+	 { ToolURL file://localhost/afs/cs/project/edrc-codes-17/demo/Tools/tool.dtb } 
+	 { Macro "simple_assembly" 
+	 	 { Operation AbsPositionPart 
+			 { SubAssembly simple_assembly } 
+			 { Part "seeker.housing"} 
+			 { Transform Homogeneous 0 0 110 1 0 0 0 0 1} 
+			 { Tool "no_tool"} 
+			 { Duration "4"} 
+			 { Comments "
+"}
+		 } 
+
+	 	 { Operation RelPosition 
+			 { SubAssembly simple_assembly } 
+			 { Part "seeker.pitch_motor"} 
+			 { Transform Final} 
+			 { Tool "no_tool"} 
+			 { Duration "4"} 
+			 { Comments "
+"}
+		 } 
+
+	}
+}

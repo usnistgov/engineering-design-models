@@ -1,0 +1,41 @@
+
+The tool volume for the needle-nose pliers was created as follows:
+(modeled in cm, but then scaled by .3937 to get inches)
+(done 10/20/95, ACIS 1.6, Randy Wilson)
+
+
+block jaw h .7 w 6.1 d .7
+move jaw -3.25 -.35 0
+frustum taper h 7 maj .6 min .9 top 0
+move taper 0 0 3.6
+rotate taper by -90 about y
+intersect taper with jaw  
+
+cyl center h .7 r .5
+unite center with jaw
+
+torus handle maj 8 min .45
+move handle 6.6 -6 0
+block b h 9 w 9 d 9
+move b 4.5 4.6 0
+intersect b with handle
+
+block b h .7 w 1.6 d .6
+move b 1 .4 0
+unite b with handle
+unite handle with jaw
+
+copy jaw as jaw2
+rotate jaw2 by 180 about x
+rotate jaw by 1 about z
+rotate jaw2 by -1 about z
+unite jaw2 with jaw as pliers
+
+move pliers 6.3 0 0
+rotate pliers by -90 about y
+rotate pliers by 90 about z
+save pliers to needle-nose.sat
+
+block b h 1 w 1 d 1
+subtract b from pliers
+save pliers to needle-nose-use.sat

@@ -1,0 +1,174 @@
+%!PS-Adobe-2.0
+%%Creator: LEDA GraphWin
+%%CreationDate: Tue Aug 14 14:42:21 2001
+%%Pages:  1
+%%BoundingBox:  63.349 77.524 532.001 551.846
+%%EndComments
+/LEDA_dict 100 dict def
+LEDA_dict begin
+%%
+%% COLORS
+/white { 1.000 1.000 1.000 } def
+/black { 0.000 0.000 0.000 } def
+/red { 0.980 0.075 0.251 } def
+/green { 0.000 0.933 0.000 } def
+/blue { 0.000 0.000 0.804 } def
+/yellow { 1.000 1.000 0.000 } def
+/violet { 0.627 0.125 0.941 } def
+/orange { 1.000 0.549 0.000 } def
+/cyan { 0.000 1.000 1.000 } def
+/brown { 0.627 0.322 0.176 } def
+/pink { 1.000 0.000 1.000 } def
+/green2 { 0.047 0.702 0.627 } def
+/blue2 { 0.263 0.259 0.435 } def
+/grey1 { 0.851 0.851 0.851 } def
+/grey2 { 0.702 0.702 0.702 } def
+/grey3 { 0.451 0.451 0.451 } def
+/ivory { 1.000 1.000 0.894 } def
+%%
+%% FONTS
+/font_dict 2 dict def
+/set_font {
+  font_dict
+  begin
+    /font_size exch def /font_name exch def
+    font_name cvn findfont font_size scalefont setfont
+  end
+} def
+%%
+%% POLYGONS
+/polygon_dict 1 dict def
+/poly_line {
+  polygon_dict
+  begin
+    /points exch def
+    points 2 mul dup 2 sub roll
+    moveto
+    points 1 sub
+    dup { dup 2 mul 1 add -2 roll lineto 1 sub} repeat
+    pop
+  end
+} def
+/polygon { newpath poly_line closepath } def
+%%
+%% Round Rectangles
+/rrect {
+  5 dict
+  begin
+   newpath
+   /r exch def /y1 exch def /x1 exch def /y0 exch def /x0 exch def
+   x0 r add y0 moveto
+   x1 y0 x1 y1 r arct
+   x1 y1 x0 y1 r arct
+   x0 y1 x0 y0 r arct
+   x0 y0 x1 y0 r arct
+   closepath
+  end
+} def
+%%
+%% ELLIPSES
+/ellipse_dict 4 dict def
+/ellipse {
+  ellipse_dict
+  begin
+    newpath
+    /yrad exch def /xrad exch def /ypos exch def /xpos exch def
+    matrix currentmatrix
+    xpos ypos translate
+    xrad yrad scale
+    0 0 1 0 360 arc
+    setmatrix
+    closepath
+  end
+} def
+%%
+%% hatching
+/hatch1_dict 4 dict def
+/hatch1_rect {
+ hatch1_dict
+ begin
+  0.25 units setlinewidth
+  /ymax exch def /xmax exch def /ymin exch def /xmin exch def
+  xmin ymax ymin sub sub 3 units xmax 
+  { ymin moveto ymax ymin sub dup rlineto stroke } for
+ end
+} def
+%
+/hatch2_dict 4 dict def
+/hatch2_rect {
+ hatch2_dict
+ begin
+  0.25 units setlinewidth
+  /ymax exch def /xmax exch def /ymin exch def /xmin exch def
+  xmax ymax ymin sub add -3 units xmin 
+  { ymin moveto ymin ymax sub ymax ymin sub rlineto stroke } for
+ end
+} def
+%%
+%% TEXT
+/draw_text {
+  3 dict begin
+    /label exch def /ypos exch def /xpos exch def
+    xpos ypos moveto
+    label show
+  end
+} def
+%%
+/draw_ctext {
+  8 dict begin
+   /sz exch def /label exch def /ypos exch def /xpos exch def
+   xpos ypos moveto
+   label stringwidth pop -2 div sz -0.32 mul rmoveto
+   label show
+  end
+} def
+%%
+%% PIXMAPS
+/draw_pixmap {
+ 10 dict begin
+   /ly exch def /lx exch def /h exch def /w exch def /y exch def /x exch def
+   /pix w 3 mul string def
+   x y translate
+   lx ly scale
+   w h 8 [w 0 0  0 h sub  0 h]
+   {currentfile pix readhexstring pop}
+   false 3 colorimage
+ end
+} def
+%%
+%% LINESTYLES
+/units  { f_scale div } def
+/solid  { [ ] } def
+/dashed { [ 3 units 2 units] } def
+/dotted { [ 0.5 units 2 units ] } def
+/dashed_dotted { [ 3 units 2 units 0.5 units 2 units ] } def
+/set_line_style { 0 setdash } def
+%%
+%% INIT
+1 1 scale
+1 setlinewidth
+(Helvetica) 12.0 set_font
+%%EndProlog
+%%
+%%BeginProgram
+297.675000 314.685000 translate
+/f_scale 1.000617  def
+1.000617 1.000617 scale
+(Times-Roman) 11.797153 set_font
+1.133301 setlinewidth
+185.861492 0.013114 9.437772 0.918813 2 poly_line stroke
+-7.041738 -188.697370 -3.292083 -11.480709 2 poly_line stroke
+-185.869046 -5.453787 -15.486963 0.544226 2 poly_line stroke
+-5.433822 188.695604 -3.188109 13.448095 2 poly_line stroke
+(Times-Roman) 13.612100 set_font
+198.327637 -0.050883 12.466309 12.466309 ellipse stroke
+-7.305448 -201.160889 12.466309 12.466309 ellipse stroke
+-198.327637 -5.892371 12.466309 12.466309 ellipse stroke
+-5.593559 201.160889 12.466309 12.466309 ellipse stroke
+-3.028372 0.982810 12.466309 12.466309 ellipse stroke
+
+%%EndProgram
+
+showpage
+end %% LEDA_dict
+%%EOF

@@ -1,0 +1,20 @@
+GENERIC X_SLOTS(PART);
+l = 6; h = 2; w = 6;
+Rough = 0
+BASE = BLO(X=l, Y=h, Z=w);
+STOCK = BLO(X=l+Rough, Y=h+Rough, Z=w+Rough) \
+        at movx=-Rough/2, movy=-Rough/2, movz=-Rough/2;
+D_SL = 1.0;
+W_SL1 = 0.7;
+SLOT = BLO(x=l+w, y=D_SL, z= W_SL1 ) at movx= -(L+W)/2.0, movz=-W_Sl1/2;
+SLOT3 = BLO(x=l+w, y=D_SL, z= W_SL1/3 ) at movx= -(L+W)/2.0, movz=-W_Sl1/6, \
+movy= -w_sl1/3, degy= -45;
+SLOT1 = Slot at degy=45;
+SLOT2 = Slot at degy=-45;
+HOL = CYL(r=W_Sl1, h=h) at  movz=h/4;
+HOL1 = HOL at degx=-90, movx=l/2, movz=w/2+0.1;
+PART = BASE DIF HOL1 \
+       DIF (SLOT1 UN SLOT2 UN SLOT3) At Movy=h-D_SL, movx=l/2, movz=w/2;
+DELTA = stock dif part;
+
+

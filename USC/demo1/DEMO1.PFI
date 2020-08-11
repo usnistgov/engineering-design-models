@@ -1,0 +1,105 @@
+GENERIC DEMO(PART);
+{					}
+{		Stock			}
+{					}
+l = 12; h = 4; w = 8;
+STOCK = BLO(X=l, Y=h, Z=w);
+{					}
+{		Pocket			}
+{					}
+PD = 0.75;
+{ P_len = 3.5;}
+P_len = 6.0
+P_wid = 2.5;
+P_Corn = 0.5;
+B = CYL(D=P_Corn, H=PD) MOVEDBY DEGX=-90, MOVY=h-pd+0.1;
+B1 = B at MOVX=1, MOVZ=P_wid+P_corn;
+B2 = B1 at MOVX=P_len-P_Corn;
+B3 = B2 at MOVZ=-(P_wid-P_corn);
+B4 = B3 at MOVX=-(P_len-P_Corn);
+CORNERS = B1 UN B2 UN B3 UN B4;
+POC1 = BLO(X=P_len, Y=pD, Z=P_wid-P_Corn)\
+       at MOVX=1.0-P_Corn/2, MOVY=h-pd+0.1, MOVZ=1;
+POC2 = BLO(X=P_len-P_Corn, Y=pD, Z=P_wid) \
+       at MOVX=1, MOVY=h-pd+0.1, MOVZ=1.0-P_Corn/2;
+POCKET = corners un poc1 un poc2;
+
+Island = BLO(X=1, Y=pD, Z=1.5)\
+       at degy=45, MOVX=4, MOVY=h-pd, MOVZ=1.8;
+{					}
+{		Slots			}
+{					}
+sl_dep = 0.7;
+SLOT1 = BLO(X=l+1, Y=0.5, Z=sl_dep) at MOVY=0.75, MOVZ=w-sl_dep+0.1;
+T_SLOT1 = (BLO(X=l+1.0, Y=0.5, Z=sl_dep) un \
+          (Blo(x=l+1.0, Y=1.0, Z=0.5) at movy=-0.25, movz=-0.5))\
+          at MOVY=0.75, MOVZ=w-sl_dep+0.1;
+SLOT2 = blo(x=1.0, y=h+0.5, z=sl_dep) at movx=l/4, movz=w-sl_dep+0.1;
+Slot_end1 = Cyl(d=1.0, h=sl_dep) at degx = -90;
+Slot_end2 = Cyl(d=1.0, h=sl_dep) at degx = -90;
+Deps = 0.00001;
+
+Meps = +0.00586;\ Experimental limit; -0.00586, +0.08
+Meps = 0.0;
+Cir_slot = ((cyl(d=5.0, h=sl_dep) dif Cyl(d=3.0, h=sl_dep)) at degx=-90) \
+dif blo(x=3.0, y=sl_dep, z=3.0) \
+dif (blo(x=3.0, y=sl_dep, z=3.0) at movz=-3.0, movx=MEPS);\ problems
+
+Mzeps = 0.0;
+slot3 = (blo(x=2.0, y=sl_dep, z=1) un \
+(slot_end1 at movz=0.5, movx=2.0) un (slot_end2 at movz=-3.5+MZeps) un\
+(Cir_slot at movz=-1.5)) \
+at movx=9.0, movy=h-sl_dep+0.1, movz=w*3/4;
+DTH = 1.5;
+DTW = 1.2;
+D_tail = (Wed(x=w, y=dth, z= dtw/2) at degy = -90 un\
+         Wed(x=w, y=dth, z= dtw/2) at degy = 90, movz=w) at degz=-90,\
+         movx=l-dth/2, movy=2.5;
+SLOTS = T_SLOT1 un SLOT2 un slot3 un D_tail;
+
+{					}
+{		Holes			}
+{					}
+LEN = 1.2;
+dia = .7;
+C_B_H = 0.55
+K_Len = Dia*0.8
+HOLE = CYL(D=dia, H=LEN) at DEGX=-90;
+HOLE_thru = CYL(D=dia, H=h+1) at DEGX=-90;
+kon = con(d=dia, h=K_Len) at degx =-90;
+C_bore = CYL(D=dia*1.6, H=C_B_H) at DEGX=-90;
+
+{	Two opposing Holes	}
+
+HOLE1a = Hole un (kon at movy=-K_Len) un (C_bore at movy=len-C_B_H);
+Hole1b = Hole1a at degz=180, movy=len;
+Hole1 = ((Hole1a at movy=h-1.0-(len/2.0)) un Hole1b) at MOVX=2.5, MOVZ=2;
+
+{	Two Holes that Cross	}
+
+{ HOLE2 = (HOLE_thru un C_bore) at MOVX=2.5, MOVZ=2, movy=-1; }
+Hole4 = (Cyl(d=dia*.8, h=3.5) un (Con(d=dia*.8, h=dia) at movz=-dia)) \ 
+at degy=-90, movx=3.5, movy=C_B_H, movz=2;
+Hole5 = Cyl(d=dia*1.4, h=0.5)  \ 
+at degy=-90, movx=1, movy=C_B_H, movz=2;
+
+key_way = (blo(x=dia/4, y=2, z= dia/4) \
+Un Cyl(r=dia/4, h=dia/4) )\
+at movx=dia/2.1, movy=h-2, movz=-dia/8;
+Hole6 = (Hole_Thru un key_way) at movx=l-2*dia, movz=2*dia;
+
+BAD_Hole = Cyl(d=dia, h=2) at degx=-90, movy=h-1.6, movz=w/2+1
+
+{	Holes through slots	}
+All_HOLES = HOLE1 UN hole4 un HOLE5 un Hole6 un BAD_Hole;
+{					}
+{		Fillet Mignon		}
+{					}
+fil =0.25;
+fillet = (blo(x=fil, y= fil, z=l) dif cyl(r=fil, h=l)) \
+at degy=90, movy=h-fil, movz=fil;
+PART = STOCK dif POCKET UN Island DIF SLOTS DIF All_HOLES dif Fillet;
+;\ Part = stock dif slot3
+DELTA = STOCK dif part;
+
+

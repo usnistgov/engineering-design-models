@@ -1,0 +1,921 @@
+%!PS-Adobe-2.0
+%%Creator: LEDA GraphWin
+%%CreationDate: Mon Nov 27 06:03:35 2000
+%%Pages:  1
+%%BoundingBox:  62.5386 77.1167 532.811 560.012
+%%EndComments
+/LEDA_dict 100 dict def
+LEDA_dict begin
+%%
+%% COLORS
+/white { 1.000 1.000 1.000 } def
+/black { 0.000 0.000 0.000 } def
+/red { 1.000 0.000 0.000 } def
+/green { 0.000 0.933 0.000 } def
+/blue { 0.000 0.000 0.804 } def
+/yellow { 1.000 1.000 0.000 } def
+/violet { 0.627 0.125 0.941 } def
+/orange { 1.000 0.549 0.000 } def
+/cyan { 0.000 1.000 1.000 } def
+/brown { 0.627 0.322 0.176 } def
+/pink { 1.000 0.000 1.000 } def
+/green2 { 0.047 0.702 0.627 } def
+/blue2 { 0.392 0.584 0.929 } def
+/grey1 { 0.851 0.851 0.851 } def
+/grey2 { 0.702 0.702 0.702 } def
+/grey3 { 0.451 0.451 0.451 } def
+/ivory { 1.000 1.000 0.894 } def
+%%
+%% FONTS
+/font_dict 2 dict def
+/set_font {
+  font_dict
+  begin
+    /font_size exch def /font_name exch def
+    font_name cvn findfont font_size scalefont setfont
+  end
+} def
+%%
+%% POLYGONS
+/polygon_dict 1 dict def
+/poly_line {
+  polygon_dict
+  begin
+    /points exch def
+    points 2 mul dup 2 sub roll
+    moveto
+    points 1 sub
+    dup { dup 2 mul 1 add -2 roll lineto 1 sub} repeat
+    pop
+  end
+} def
+/polygon { newpath poly_line closepath } def
+%%
+%% Round Rectangles
+/rrect {
+  5 dict
+  begin
+   newpath
+   /r exch def /y1 exch def /x1 exch def /y0 exch def /x0 exch def
+   x0 r add y0 moveto
+   x1 y0 x1 y1 r arct
+   x1 y1 x0 y1 r arct
+   x0 y1 x0 y0 r arct
+   x0 y0 x1 y0 r arct
+   closepath
+  end
+} def
+%%
+%% ELLIPSES
+/ellipse_dict 4 dict def
+/ellipse {
+  ellipse_dict
+  begin
+    newpath
+    /yrad exch def /xrad exch def /ypos exch def /xpos exch def
+    matrix currentmatrix
+    xpos ypos translate
+    xrad yrad scale
+    0 0 1 0 360 arc
+    setmatrix
+    closepath
+  end
+} def
+%%
+%% hatching
+/hatch1_dict 4 dict def
+/hatch1_rect {
+ hatch1_dict
+ begin
+  0.25 units setlinewidth
+  /ymax exch def /xmax exch def /ymin exch def /xmin exch def
+  xmin ymax ymin sub sub 3 units xmax 
+  { ymin moveto ymax ymin sub dup rlineto stroke } for
+ end
+} def
+%
+/hatch2_dict 4 dict def
+/hatch2_rect {
+ hatch2_dict
+ begin
+  0.25 units setlinewidth
+  /ymax exch def /xmax exch def /ymin exch def /xmin exch def
+  xmax ymax ymin sub add -3 units xmin 
+  { ymin moveto ymin ymax sub ymax ymin sub rlineto stroke } for
+ end
+} def
+%%
+%% TEXT
+/draw_text {
+  3 dict begin
+    /label exch def /ypos exch def /xpos exch def
+    xpos ypos moveto
+    label show
+  end
+} def
+%%
+/draw_ctext {
+  8 dict begin
+   /sz exch def /label exch def /ypos exch def /xpos exch def
+   xpos ypos moveto
+   label stringwidth pop -2 div sz -0.32 mul rmoveto
+   label show
+  end
+} def
+%%
+%% PIXMAPS
+/draw_pixmap {
+ 10 dict begin
+   /ly exch def /lx exch def /h exch def /w exch def /y exch def /x exch def
+   /pix w 3 mul string def
+   x y translate
+   lx ly scale
+   w h 8 [w 0 0  0 h sub  0 h]
+   {currentfile pix readhexstring pop}
+   false 3 colorimage
+ end
+} def
+%%
+%% LINESTYLES
+/units  { f_scale div } def
+/solid  { [ ] } def
+/dashed { [ 3 units 2 units] } def
+/dotted { [ 0.5 units 2 units ] } def
+/dashed_dotted { [ 3 units 2 units 0.5 units 2 units ] } def
+/set_line_style { 0 setdash } def
+%%
+%% INIT
+1 1 scale
+1 setlinewidth
+(Helvetica) 12.0 set_font
+%%EndProlog
+%%
+%%BeginProgram
+236.389546 254.521394 translate
+/f_scale 0.250205  def
+0.250205 0.250205 scale
+(Times-Roman) 11.797153 set_font
+0.907473 setlinewidth
+265.557153 345.430929 357.042809 -77.455950 2 poly_line stroke
+260.412226 373.581293 243.597373 485.987737 2 poly_line stroke
+227.415393 502.818876 94.334142 528.111075 2 poly_line stroke
+373.646671 -95.987942 794.327746 -236.656853 2 poly_line stroke
+373.164129 -97.234295 699.466540 -241.423703 2 poly_line stroke
+374.306710 -92.948851 677.113463 -124.869406 2 poly_line stroke
+374.385283 -91.353550 554.191802 -90.166486 2 poly_line stroke
+367.454955 -79.184235 433.529726 30.539924 2 poly_line stroke
+353.907154 -78.526622 240.985465 158.240039 2 poly_line stroke
+350.118689 -81.156455 86.834782 191.135967 2 poly_line stroke
+348.761950 -82.668866 101.613924 109.211939 2 poly_line stroke
+347.155494 -85.270488 94.619749 35.530176 2 poly_line stroke
+346.036693 -88.617235 95.917852 -38.162118 2 poly_line stroke
+346.319452 -87.464392 -75.904142 34.859595 2 poly_line stroke
+345.767968 -92.079940 -71.374460 -110.510052 2 poly_line stroke
+346.203951 -95.008945 -25.486781 -190.462743 2 poly_line stroke
+351.775672 -103.116357 133.959489 -409.543055 2 poly_line stroke
+354.941047 -104.813599 239.113475 -406.660177 2 poly_line stroke
+351.100428 -102.605661 261.877430 -213.596046 2 poly_line stroke
+363.436233 -105.362404 398.979695 -252.273017 2 poly_line stroke
+362.367658 -105.578229 406.031602 -374.080672 2 poly_line stroke
+367.275982 -103.817895 530.148097 -383.397701 2 poly_line stroke
+371.961768 -99.418194 558.117321 -224.181865 2 poly_line stroke
+373.424794 -86.291889 594.371255 -0.987623 2 poly_line stroke
+373.651414 -86.922384 817.915932 61.115818 2 poly_line stroke
+374.376335 -91.962885 877.147736 -110.055303 2 poly_line stroke
+710.085909 -233.109711 693.825322 -140.470426 2 poly_line stroke
+726.848265 -246.308852 793.617209 -242.097823 2 poly_line stroke
+713.165928 -232.906942 722.866553 -3.596105 2 poly_line stroke
+694.616510 -112.431972 720.205476 -3.231334 2 poly_line stroke
+677.621384 -122.313497 582.236263 -94.128678 2 poly_line stroke
+55.318555 986.127939 -63.440691 936.416794 2 poly_line stroke
+82.798483 990.567508 273.643995 976.019683 2 poly_line stroke
+-84.783827 919.111104 -247.644359 683.393375 2 poly_line stroke
+481.822098 842.917253 299.751942 966.874993 2 poly_line stroke
+479.394983 833.605801 364.471804 823.493091 2 poly_line stroke
+499.348555 821.725499 558.989975 684.115111 2 poly_line stroke
+293.325954 961.676388 344.803538 835.493400 2 poly_line stroke
+302.017879 977.410628 396.375661 994.001159 2 poly_line stroke
+554.848406 660.576798 187.192154 271.660743 2 poly_line stroke
+405.795823 982.950783 354.890465 835.767649 2 poly_line stroke
+345.995613 808.557159 181.573204 274.938663 2 poly_line stroke
+-255.367514 685.925153 -247.141557 969.958266 2 poly_line stroke
+-242.578692 666.082196 67.066840 536.317127 2 poly_line stroke
+-270.014743 673.154598 -575.350499 706.175722 2 poly_line stroke
+-269.437973 675.911255 -398.810377 716.609009 2 poly_line stroke
+-268.632159 665.305547 -395.757325 602.883520 2 poly_line stroke
+-268.466532 664.978871 -535.654260 525.188005 2 poly_line stroke
+-263.621857 683.593577 -424.714138 929.718435 2 poly_line stroke
+-243.601153 664.094050 -134.015211 596.427643 2 poly_line stroke
+-254.415546 657.364933 -242.982247 538.124814 2 poly_line stroke
+-257.736759 657.433668 -290.198534 421.931611 2 poly_line stroke
+-253.515021 657.480199 -209.434228 382.618951 2 poly_line stroke
+-248.761713 659.139060 -96.659125 388.823436 2 poly_line stroke
+-244.396237 662.937375 -56.853719 519.995714 2 poly_line stroke
+-241.471887 672.020452 20.938427 679.448751 2 poly_line stroke
+-241.516848 672.819054 -104.460182 684.383906 2 poly_line stroke
+79.095598 342.498302 77.108104 215.741600 2 poly_line stroke
+65.098982 358.456550 -75.417840 374.702912 2 poly_line stroke
+-247.500991 1109.342688 -246.815700 998.583571 2 poly_line stroke
+-552.225088 993.088105 -445.708201 947.345557 2 poly_line stroke
+400.651785 625.122590 405.593181 542.759086 2 poly_line stroke
+397.132645 517.600729 186.675566 272.125868 2 poly_line stroke
+232.589208 694.256994 179.966307 754.725714 2 poly_line stroke
+239.820940 669.306931 179.523892 275.408557 2 poly_line stroke
+-536.804640 218.366746 -437.503324 212.260979 2 poly_line stroke
+-410.232706 205.347972 -194.580239 105.104724 2 poly_line stroke
+-211.278139 -607.247072 -98.436283 -570.017500 2 poly_line stroke
+-77.071525 -553.508324 6.983730 -423.431814 2 poly_line stroke
+1071.598902 369.264011 962.807016 355.457332 2 poly_line stroke
+934.789724 349.903161 752.238007 300.327962 2 poly_line stroke
+866.913681 643.159566 850.246640 540.756704 2 poly_line stroke
+841.793117 513.701169 744.576348 309.501816 2 poly_line stroke
+-523.004419 -68.933573 -431.439490 -0.997300 2 poly_line stroke
+-406.578486 12.665356 -194.962507 93.937740 2 poly_line stroke
+803.355011 -227.623123 728.021218 -2.866721 2 poly_line stroke
+815.618225 -229.136803 883.740651 -122.630061 2 poly_line stroke
+886.842887 -97.017379 836.108918 52.088744 2 poly_line stroke
+879.847316 -102.190357 735.078567 2.327121 2 poly_line stroke
+886.850003 183.677820 837.575711 78.602885 2 poly_line stroke
+880.907742 204.414238 750.443026 288.801112 2 poly_line stroke
+878.621141 197.139851 742.350134 201.908327 2 poly_line stroke
+883.285030 186.058493 733.114762 21.287610 2 poly_line stroke
+729.611548 216.638577 736.854148 282.346529 2 poly_line stroke
+718.962926 213.476588 603.172230 354.611240 2 poly_line stroke
+713.808362 203.930154 191.592436 259.736419 2 poly_line stroke
+713.731295 202.746630 587.941426 205.714423 2 poly_line stroke
+727.701813 188.097247 723.812907 25.018612 2 poly_line stroke
+559.450760 208.027373 191.536556 259.282317 2 poly_line stroke
+564.599096 194.943914 449.945400 53.911919 2 poly_line stroke
+582.342630 194.693156 714.758608 22.065821 2 poly_line stroke
+580.508419 -82.267205 711.470478 2.902120 2 poly_line stroke
+558.591858 -79.745979 450.830297 32.477750 2 poly_line stroke
+736.232206 17.196055 818.736953 59.152331 2 poly_line stroke
+709.247308 12.322693 455.139186 41.187947 2 poly_line stroke
+-46.337035 -181.527231 -78.691897 -123.638332 2 poly_line stroke
+-53.661261 -193.570819 -239.612040 -187.686221 2 poly_line stroke
+-51.488906 -186.430688 -229.715200 -74.925114 2 poly_line stroke
+-33.199886 -181.097474 171.204947 248.331450 2 poly_line stroke
+-49.287485 -204.330937 -91.988005 -248.632298 2 poly_line stroke
+-35.894980 -207.915585 11.295853 -397.516033 2 poly_line stroke
+-30.939479 -205.606402 117.252199 -409.628580 2 poly_line stroke
+-243.285245 -81.575982 -252.486891 -172.989600 2 poly_line stroke
+-230.110398 -59.141382 -101.395568 30.652472 2 poly_line stroke
+-230.584411 -58.500684 166.090637 252.426117 2 poly_line stroke
+-98.069503 27.261834 -245.505659 -175.651982 2 poly_line stroke
+-89.274918 24.532506 -86.055875 -96.831177 2 poly_line stroke
+-76.514520 33.161461 68.744764 -29.649493 2 poly_line stroke
+-101.629819 46.687588 -169.623102 91.225969 2 poly_line stroke
+-98.824773 49.836343 -219.402293 194.381426 2 poly_line stroke
+-78.654861 48.005677 166.358062 252.095190 2 poly_line stroke
+-98.720081 -117.041214 -240.876882 -181.334129 2 poly_line stroke
+-412.022301 706.596001 -409.051645 610.882602 2 poly_line stroke
+-426.742663 719.841743 -575.307041 708.778112 2 poly_line stroke
+-425.066035 714.108491 -583.318340 628.745067 2 poly_line stroke
+-586.533590 693.727779 -551.388557 532.538688 2 poly_line stroke
+-590.637786 693.438055 -594.863482 636.225558 2 poly_line stroke
+-535.839576 525.530768 -421.106812 589.594447 2 poly_line stroke
+-554.323203 531.556484 -589.933614 608.943685 2 poly_line stroke
+-422.793748 598.495510 -581.731761 620.026851 2 poly_line stroke
+-94.647626 671.981836 -117.381881 602.512089 2 poly_line stroke
+-75.894228 684.933935 20.947625 680.507501 2 poly_line stroke
+-82.559637 673.478024 169.722248 273.367178 2 poly_line stroke
+29.064859 666.942426 -39.284388 524.229139 2 poly_line stroke
+39.850577 666.297935 172.755603 274.813510 2 poly_line stroke
+-49.920662 497.712001 -85.186244 389.952855 2 poly_line stroke
+-35.943993 500.629653 167.833678 271.945678 2 poly_line stroke
+-103.922749 375.391457 -192.883450 369.439461 2 poly_line stroke
+-76.492446 370.680323 164.211248 266.924414 2 poly_line stroke
+-220.163027 374.488204 -279.157627 401.745497 2 poly_line stroke
+-193.377618 364.638483 163.568010 265.102909 2 poly_line stroke
+-286.440651 420.876486 -247.328548 510.747812 2 poly_line stroke
+-278.487312 403.485969 163.691659 265.521551 2 poly_line stroke
+-229.034710 530.704958 -134.415560 582.075755 2 poly_line stroke
+-229.485962 516.271250 165.227809 268.860739 2 poly_line stroke
+167.704390 271.829052 -112.181114 578.334882 2 poly_line stroke
+191.244187 264.737148 580.205564 362.199319 2 poly_line stroke
+189.847086 268.254532 555.630016 473.176977 2 poly_line stroke
+190.527620 266.869642 431.886608 369.718798 2 poly_line stroke
+191.479956 258.911630 398.863646 224.461254 2 poly_line stroke
+189.494106 253.664885 386.327087 130.523212 2 poly_line stroke
+181.641380 247.597742 240.245143 60.721308 2 poly_line stroke
+179.619378 247.121601 230.375339 -70.114338 2 poly_line stroke
+179.556673 247.111711 250.709075 -210.607754 2 poly_line stroke
+174.670602 247.196263 100.115431 -142.944651 2 poly_line stroke
+174.732481 247.184579 84.462738 -236.725435 2 poly_line stroke
+170.586108 248.644620 -95.151266 -246.326619 2 poly_line stroke
+163.175667 259.305212 -214.390540 207.326901 2 poly_line stroke
+163.189078 259.210155 -80.453271 224.002367 2 poly_line stroke
+165.057536 253.933135 89.183827 208.752041 2 poly_line stroke
+185.056001 249.187894 227.124509 183.231188 2 poly_line stroke
+188.379562 252.121944 429.893010 51.939409 2 poly_line stroke
+29.058250 -411.970292 219.679975 -419.463414 2 poly_line stroke
+29.013701 -412.668430 111.405163 -419.950911 2 poly_line stroke
+6.053481 -400.039113 -93.222827 -270.308481 2 poly_line stroke
+20.271028 -398.198190 76.320001 -264.008260 2 poly_line stroke
+19.178037 -397.793094 93.003807 -170.620888 2 poly_line stroke
+26.021003 -402.577056 241.640557 -233.584582 2 poly_line stroke
+-168.845906 92.565292 69.132220 -28.826291 2 poly_line stroke
+-167.610727 96.022980 67.717740 44.755063 2 poly_line stroke
+-167.317171 100.064076 76.024815 116.997352 2 poly_line stroke
+-168.288240 104.341045 63.573481 196.156821 2 poly_line stroke
+-173.327877 110.755323 -102.892438 210.269889 2 poly_line stroke
+-187.384609 112.164642 -222.786386 192.280161 2 poly_line stroke
+410.911934 207.950517 400.537468 137.095253 2 poly_line stroke
+415.918881 236.127397 442.123556 361.318716 2 poly_line stroke
+426.941073 225.308261 724.467427 293.383156 2 poly_line stroke
+424.382257 213.451272 569.477637 103.143398 2 poly_line stroke
+413.822202 207.823937 431.664377 -97.078126 2 poly_line stroke
+455.953816 384.614746 557.222120 470.889992 2 poly_line stroke
+458.882782 371.619151 724.596343 300.287823 2 poly_line stroke
+571.286410 466.212818 590.925049 379.639946 2 poly_line stroke
+577.855059 469.678244 728.686940 307.071798 2 poly_line stroke
+607.004202 359.496769 725.510446 302.758230 2 poly_line stroke
+428.763206 50.372020 246.974483 163.593204 2 poly_line stroke
+-80.407552 220.253615 62.669328 203.128872 2 poly_line stroke
+-108.829254 220.196329 -214.365206 207.133094 2 poly_line stroke
+-87.621094 -258.305993 67.535761 -251.432072 2 poly_line stroke
+84.184978 -236.676447 95.080880 -171.128007 2 poly_line stroke
+110.552352 -162.724561 239.784036 -219.035080 2 poly_line stroke
+250.863816 -210.584565 234.681256 -98.419425 2 poly_line stroke
+265.013193 -217.111177 420.395532 -119.011939 2 poly_line stroke
+266.703400 -228.578594 388.550775 -262.362416 2 poly_line stroke
+251.527213 -239.002687 235.365556 -405.776678 2 poly_line stroke
+243.237649 32.804002 233.928197 -69.992899 2 poly_line stroke
+257.369694 53.390262 385.622628 116.601674 2 poly_line stroke
+255.475149 37.835404 421.554351 -102.143426 2 poly_line stroke
+400.521573 108.763412 430.442597 -97.202388 2 poly_line stroke
+743.774077 283.298208 826.146058 78.919425 2 poly_line stroke
+732.580891 283.506467 613.567947 17.238219 2 poly_line stroke
+729.620946 285.285753 589.675636 105.769778 2 poly_line stroke
+572.265540 -218.015129 605.469987 -9.968324 2 poly_line stroke
+567.207344 -246.190909 540.156212 -381.728628 2 poly_line stroke
+559.253501 -222.704515 443.256455 -120.816953 2 poly_line stroke
+523.062974 -394.930528 422.620753 -389.047851 2 poly_line stroke
+532.402094 -382.335570 437.452853 -124.801435 2 poly_line stroke
+407.628332 -373.912232 403.047244 -280.485971 2 poly_line stroke
+409.574639 -373.949308 431.255489 -125.631001 2 poly_line stroke
+405.083039 -252.135631 429.763757 -125.421197 2 poly_line stroke
+219.669785 -420.182404 139.980287 -421.054665 2 poly_line stroke
+88.702186 103.765473 83.309321 55.933406 2 poly_line stroke
+88.032324 132.125201 79.157411 187.293501 2 poly_line stroke
+90.943624 198.733241 220.762856 173.855805 2 poly_line stroke
+418.314878 -109.444623 246.822816 -86.175186 2 poly_line stroke
+440.871480 -99.756052 572.503181 82.865977 2 poly_line stroke
+444.452241 -103.488994 595.774676 -3.711926 2 poly_line stroke
+584.953993 80.757316 603.646239 17.890623 2 poly_line stroke
+81.851421 -21.015544 81.738756 27.391996 2 poly_line stroke
+817.693168 61.849249 621.530616 7.960791 2 poly_line stroke
+(Times-Roman) 13.612100 set_font
+0.544484 setlinewidth
+ivory setrgbcolor
+262.530156 359.423038 14.315789 14.315789 ellipse fill
+black setrgbcolor
+262.530156 359.423038 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+262.530156 359.423038 (0) 13.612100 draw_ctext
+ivory setrgbcolor
+241.479443 500.145992 14.315789 14.315789 ellipse fill
+black setrgbcolor
+241.479443 500.145992 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+241.479443 500.145992 (1) 13.612100 draw_ctext
+ivory setrgbcolor
+360.069805 -91.448059 14.315789 14.315789 ellipse fill
+black setrgbcolor
+360.069805 -91.448059 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+360.069805 -91.448059 (2) 13.612100 draw_ctext
+ivory setrgbcolor
+712.560863 -247.209939 14.315789 14.315789 ellipse fill
+black setrgbcolor
+712.560863 -247.209939 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+712.560863 -247.209939 (3) 13.612100 draw_ctext
+ivory setrgbcolor
+691.350368 -126.370198 14.315789 14.315789 ellipse fill
+black setrgbcolor
+691.350368 -126.370198 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+691.350368 -126.370198 (4) 13.612100 draw_ctext
+ivory setrgbcolor
+68.524106 991.655619 14.315789 14.315789 ellipse fill
+black setrgbcolor
+68.524106 991.655619 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+68.524106 991.655619 (5) 13.612100 draw_ctext
+ivory setrgbcolor
+-76.646242 930.889114 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-76.646242 930.889114 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-76.646242 930.889114 (6) 13.612100 draw_ctext
+ivory setrgbcolor
+493.655667 834.860675 14.315789 14.315789 ellipse fill
+black setrgbcolor
+493.655667 834.860675 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+493.655667 834.860675 (7) 13.612100 draw_ctext
+ivory setrgbcolor
+287.918372 974.931571 14.315789 14.315789 ellipse fill
+black setrgbcolor
+287.918372 974.931571 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+287.918372 974.931571 (8) 13.612100 draw_ctext
+ivory setrgbcolor
+564.682863 670.979935 14.315789 14.315789 ellipse fill
+black setrgbcolor
+564.682863 670.979935 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+564.682863 670.979935 (9) 13.612100 draw_ctext
+ivory setrgbcolor
+410.475168 996.480216 14.315789 14.315789 ellipse fill
+black setrgbcolor
+410.475168 996.480216 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+410.475168 996.480216 (10) 13.612100 draw_ctext
+ivory setrgbcolor
+350.211120 822.238216 14.315789 14.315789 ellipse fill
+black setrgbcolor
+350.211120 822.238216 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+350.211120 822.238216 (11) 13.612100 draw_ctext
+ivory setrgbcolor
+-255.781944 671.615364 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-255.781944 671.615364 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-255.781944 671.615364 (12) 13.612100 draw_ctext
+ivory setrgbcolor
+79.320036 356.812331 14.315789 14.315789 ellipse fill
+black setrgbcolor
+79.320036 356.812331 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+79.320036 356.812331 (13) 13.612100 draw_ctext
+ivory setrgbcolor
+-247.589565 1123.658203 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-247.589565 1123.658203 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-247.589565 1123.658203 (14) 13.612100 draw_ctext
+ivory setrgbcolor
+-246.727127 984.268055 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-246.727127 984.268055 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-246.727127 984.268055 (15) 13.612100 draw_ctext
+ivory setrgbcolor
+-565.379237 998.737015 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-565.379237 998.737015 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-565.379237 998.737015 (16) 13.612100 draw_ctext
+ivory setrgbcolor
+-432.554052 941.696648 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-432.554052 941.696648 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-432.554052 941.696648 (17) 13.612100 draw_ctext
+ivory setrgbcolor
+399.794452 639.412684 14.315789 14.315789 ellipse fill
+black setrgbcolor
+399.794452 639.412684 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+399.794452 639.412684 (18) 13.612100 draw_ctext
+ivory setrgbcolor
+406.450514 528.468991 14.315789 14.315789 ellipse fill
+black setrgbcolor
+406.450514 528.468991 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+406.450514 528.468991 (19) 13.612100 draw_ctext
+ivory setrgbcolor
+241.987135 683.457883 14.315789 14.315789 ellipse fill
+black setrgbcolor
+241.987135 683.457883 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+241.987135 683.457883 (20) 13.612100 draw_ctext
+ivory setrgbcolor
+170.568381 765.524826 14.315789 14.315789 ellipse fill
+black setrgbcolor
+170.568381 765.524826 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+170.568381 765.524826 (21) 13.612100 draw_ctext
+ivory setrgbcolor
+-551.093444 219.245325 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-551.093444 219.245325 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-551.093444 219.245325 (22) 13.612100 draw_ctext
+ivory setrgbcolor
+-423.214520 211.382400 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-423.214520 211.382400 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-423.214520 211.382400 (23) 13.612100 draw_ctext
+ivory setrgbcolor
+-224.873118 -611.732422 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-224.873118 -611.732422 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-224.873118 -611.732422 (24) 13.612100 draw_ctext
+ivory setrgbcolor
+-84.841304 -565.532149 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-84.841304 -565.532149 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-84.841304 -565.532149 (25) 13.612100 draw_ctext
+ivory setrgbcolor
+1085.800781 371.066359 14.315789 14.315789 ellipse fill
+black setrgbcolor
+1085.800781 371.066359 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+1085.800781 371.066359 (26) 13.612100 draw_ctext
+ivory setrgbcolor
+948.605137 353.654984 14.315789 14.315789 ellipse fill
+black setrgbcolor
+948.605137 353.654984 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+948.605137 353.654984 (27) 13.612100 draw_ctext
+ivory setrgbcolor
+869.213450 657.289424 14.315789 14.315789 ellipse fill
+black setrgbcolor
+869.213450 657.289424 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+869.213450 657.289424 (28) 13.612100 draw_ctext
+ivory setrgbcolor
+847.946871 526.626846 14.315789 14.315789 ellipse fill
+black setrgbcolor
+847.946871 526.626846 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+847.946871 526.626846 (29) 13.612100 draw_ctext
+ivory setrgbcolor
+-534.501340 -77.463673 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-534.501340 -77.463673 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-534.501340 -77.463673 (30) 13.612100 draw_ctext
+ivory setrgbcolor
+-419.942568 7.532800 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-419.942568 7.532800 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-419.942568 7.532800 (31) 13.612100 draw_ctext
+ivory setrgbcolor
+807.904611 -241.196736 14.315789 14.315789 ellipse fill
+black setrgbcolor
+807.904611 -241.196736 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+807.904611 -241.196736 (32) 13.612100 draw_ctext
+ivory setrgbcolor
+891.454265 -110.570128 14.315789 14.315789 ellipse fill
+black setrgbcolor
+891.454265 -110.570128 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+891.454265 -110.570128 (33) 13.612100 draw_ctext
+ivory setrgbcolor
+892.928173 196.639211 14.315789 14.315789 ellipse fill
+black setrgbcolor
+892.928173 196.639211 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+892.928173 196.639211 (34) 13.612100 draw_ctext
+ivory setrgbcolor
+728.043102 202.408967 14.315789 14.315789 ellipse fill
+black setrgbcolor
+728.043102 202.408967 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+728.043102 202.408967 (35) 13.612100 draw_ctext
+ivory setrgbcolor
+573.629620 206.052085 14.315789 14.315789 ellipse fill
+black setrgbcolor
+573.629620 206.052085 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+573.629620 206.052085 (36) 13.612100 draw_ctext
+ivory setrgbcolor
+568.507280 -90.071977 14.315789 14.315789 ellipse fill
+black setrgbcolor
+568.507280 -90.071977 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+568.507280 -90.071977 (37) 13.612100 draw_ctext
+ivory setrgbcolor
+723.471618 10.706892 14.315789 14.315789 ellipse fill
+black setrgbcolor
+723.471618 10.706892 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+723.471618 10.706892 (38) 13.612100 draw_ctext
+ivory setrgbcolor
+-39.352635 -194.023629 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-39.352635 -194.023629 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-39.352635 -194.023629 (39) 13.612100 draw_ctext
+ivory setrgbcolor
+-241.851471 -67.332172 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-241.851471 -67.332172 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-241.851471 -67.332172 (40) 13.612100 draw_ctext
+ivory setrgbcolor
+-89.654496 38.843262 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-89.654496 38.843262 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-89.654496 38.843262 (41) 13.612100 draw_ctext
+ivory setrgbcolor
+-85.676297 -111.141933 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-85.676297 -111.141933 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-85.676297 -111.141933 (42) 13.612100 draw_ctext
+ivory setrgbcolor
+-253.920666 -187.233410 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-253.920666 -187.233410 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-253.920666 -187.233410 (43) 13.612100 draw_ctext
+ivory setrgbcolor
+-412.466406 720.904900 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-412.466406 720.904900 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-412.466406 720.904900 (44) 13.612100 draw_ctext
+ivory setrgbcolor
+-589.583298 707.714956 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-589.583298 707.714956 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-589.583298 707.714956 (45) 13.612100 draw_ctext
+ivory setrgbcolor
+-548.338848 518.551511 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-548.338848 518.551511 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-548.338848 518.551511 (46) 13.612100 draw_ctext
+ivory setrgbcolor
+-408.607540 596.573703 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-408.607540 596.573703 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-408.607540 596.573703 (47) 13.612100 draw_ctext
+ivory setrgbcolor
+-595.917969 621.948658 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-595.917969 621.948658 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-595.917969 621.948658 (48) 13.612100 draw_ctext
+ivory setrgbcolor
+80.270092 530.783959 14.315789 14.315789 ellipse fill
+black setrgbcolor
+80.270092 530.783959 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+80.270092 530.783959 (49) 13.612100 draw_ctext
+ivory setrgbcolor
+-90.195086 685.587596 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-90.195086 685.587596 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-90.195086 685.587596 (50) 13.612100 draw_ctext
+ivory setrgbcolor
+35.248483 679.853839 14.315789 14.315789 ellipse fill
+black setrgbcolor
+35.248483 679.853839 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+35.248483 679.853839 (51) 13.612100 draw_ctext
+ivory setrgbcolor
+-45.468012 511.317725 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-45.468012 511.317725 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-45.468012 511.317725 (52) 13.612100 draw_ctext
+ivory setrgbcolor
+-89.638894 376.347131 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-89.638894 376.347131 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-89.638894 376.347131 (53) 13.612100 draw_ctext
+ivory setrgbcolor
+-207.167305 368.483787 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-207.167305 368.483787 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-207.167305 368.483787 (54) 13.612100 draw_ctext
+ivory setrgbcolor
+-292.153350 407.749914 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-292.153350 407.749914 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-292.153350 407.749914 (55) 13.612100 draw_ctext
+ivory setrgbcolor
+-241.615849 523.874384 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-241.615849 523.874384 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-241.615849 523.874384 (56) 13.612100 draw_ctext
+ivory setrgbcolor
+177.357697 261.257605 14.315789 14.315789 ellipse fill
+black setrgbcolor
+177.357697 261.257605 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+177.357697 261.257605 (57) 13.612100 draw_ctext
+ivory setrgbcolor
+-121.834421 588.906329 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-121.834421 588.906329 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-121.834421 588.906329 (58) 13.612100 draw_ctext
+ivory setrgbcolor
+14.753508 -411.407989 14.315789 14.315789 ellipse fill
+black setrgbcolor
+14.753508 -411.407989 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+14.753508 -411.407989 (59) 13.612100 draw_ctext
+ivory setrgbcolor
+-181.598425 99.070296 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-181.598425 99.070296 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-181.598425 99.070296 (60) 13.612100 draw_ctext
+ivory setrgbcolor
+412.985906 222.115278 14.315789 14.315789 ellipse fill
+black setrgbcolor
+412.985906 222.115278 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+412.985906 222.115278 (61) 13.612100 draw_ctext
+ivory setrgbcolor
+445.056531 375.330835 14.315789 14.315789 ellipse fill
+black setrgbcolor
+445.056531 375.330835 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+445.056531 375.330835 (62) 13.612100 draw_ctext
+ivory setrgbcolor
+568.119405 480.173903 14.315789 14.315789 ellipse fill
+black setrgbcolor
+568.119405 480.173903 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+568.119405 480.173903 (63) 13.612100 draw_ctext
+ivory setrgbcolor
+594.092054 365.678861 14.315789 14.315789 ellipse fill
+black setrgbcolor
+594.092054 365.678861 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+594.092054 365.678861 (64) 13.612100 draw_ctext
+ivory setrgbcolor
+440.914876 42.803748 14.315789 14.315789 ellipse fill
+black setrgbcolor
+440.914876 42.803748 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+440.914876 42.803748 (65) 13.612100 draw_ctext
+ivory setrgbcolor
+-94.621890 221.954916 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-94.621890 221.954916 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-94.621890 221.954916 (66) 13.612100 draw_ctext
+ivory setrgbcolor
+-228.572570 205.374507 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-228.572570 205.374507 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-228.572570 205.374507 (67) 13.612100 draw_ctext
+ivory setrgbcolor
+-101.922854 -258.939605 14.315789 14.315789 ellipse fill
+black setrgbcolor
+-101.922854 -258.939605 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+-101.922854 -258.939605 (68) 13.612100 draw_ctext
+ivory setrgbcolor
+81.837522 -250.798461 14.315789 14.315789 ellipse fill
+black setrgbcolor
+81.837522 -250.798461 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+81.837522 -250.798461 (69) 13.612100 draw_ctext
+ivory setrgbcolor
+97.428336 -157.005993 14.315789 14.315789 ellipse fill
+black setrgbcolor
+97.428336 -157.005993 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+97.428336 -157.005993 (70) 13.612100 draw_ctext
+ivory setrgbcolor
+252.908052 -224.753648 14.315789 14.315789 ellipse fill
+black setrgbcolor
+252.908052 -224.753648 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+252.908052 -224.753648 (71) 13.612100 draw_ctext
+ivory setrgbcolor
+244.528826 47.061445 14.315789 14.315789 ellipse fill
+black setrgbcolor
+244.528826 47.061445 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+244.528826 47.061445 (72) 13.612100 draw_ctext
+ivory setrgbcolor
+398.463496 122.930492 14.315789 14.315789 ellipse fill
+black setrgbcolor
+398.463496 122.930492 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+398.463496 122.930492 (73) 13.612100 draw_ctext
+ivory setrgbcolor
+738.422594 296.576139 14.315789 14.315789 ellipse fill
+black setrgbcolor
+738.422594 296.576139 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+738.422594 296.576139 (74) 13.612100 draw_ctext
+ivory setrgbcolor
+570.009283 -232.152000 14.315789 14.315789 ellipse fill
+black setrgbcolor
+570.009283 -232.152000 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+570.009283 -232.152000 (75) 13.612100 draw_ctext
+ivory setrgbcolor
+537.354273 -395.767537 14.315789 14.315789 ellipse fill
+black setrgbcolor
+537.354273 -395.767537 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+537.354273 -395.767537 (76) 13.612100 draw_ctext
+ivory setrgbcolor
+408.329454 -388.210842 14.315789 14.315789 ellipse fill
+black setrgbcolor
+408.329454 -388.210842 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+408.329454 -388.210842 (77) 13.612100 draw_ctext
+ivory setrgbcolor
+402.346122 -266.187361 14.315789 14.315789 ellipse fill
+black setrgbcolor
+402.346122 -266.187361 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+402.346122 -266.187361 (78) 13.612100 draw_ctext
+ivory setrgbcolor
+233.984717 -420.025717 14.315789 14.315789 ellipse fill
+black setrgbcolor
+233.984717 -420.025717 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+233.984717 -420.025717 (79) 13.612100 draw_ctext
+ivory setrgbcolor
+90.306069 117.991132 14.315789 14.315789 ellipse fill
+black setrgbcolor
+90.306069 117.991132 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+90.306069 117.991132 (80) 13.612100 draw_ctext
+ivory setrgbcolor
+76.883666 201.427570 14.315789 14.315789 ellipse fill
+black setrgbcolor
+76.883666 201.427570 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+76.883666 201.427570 (81) 13.612100 draw_ctext
+ivory setrgbcolor
+234.822813 171.161476 14.315789 14.315789 ellipse fill
+black setrgbcolor
+234.822813 171.161476 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+234.822813 171.161476 (82) 13.612100 draw_ctext
+ivory setrgbcolor
+432.500674 -111.369467 14.315789 14.315789 ellipse fill
+black setrgbcolor
+432.500674 -111.369467 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+432.500674 -111.369467 (83) 13.612100 draw_ctext
+ivory setrgbcolor
+580.873988 94.479392 14.315789 14.315789 ellipse fill
+black setrgbcolor
+580.873988 94.479392 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+580.873988 94.479392 (84) 13.612100 draw_ctext
+ivory setrgbcolor
+232.637020 -84.250342 14.315789 14.315789 ellipse fill
+black setrgbcolor
+232.637020 -84.250342 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+232.637020 -84.250342 (85) 13.612100 draw_ctext
+ivory setrgbcolor
+125.665356 -421.211352 14.315789 14.315789 ellipse fill
+black setrgbcolor
+125.665356 -421.211352 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+125.665356 -421.211352 (86) 13.612100 draw_ctext
+ivory setrgbcolor
+81.884739 -35.331295 14.315789 14.315789 ellipse fill
+black setrgbcolor
+81.884739 -35.331295 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+81.884739 -35.331295 (87) 13.612100 draw_ctext
+ivory setrgbcolor
+81.705437 41.707747 14.315789 14.315789 ellipse fill
+black setrgbcolor
+81.705437 41.707747 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+81.705437 41.707747 (88) 13.612100 draw_ctext
+ivory setrgbcolor
+831.497540 65.641494 14.315789 14.315789 ellipse fill
+black setrgbcolor
+831.497540 65.641494 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+831.497540 65.641494 (89) 13.612100 draw_ctext
+ivory setrgbcolor
+607.726244 4.168547 14.315789 14.315789 ellipse fill
+black setrgbcolor
+607.726244 4.168547 14.315789 14.315789 ellipse stroke
+(Times-Roman) 13.612100 set_font
+607.726244 4.168547 (90) 13.612100 draw_ctext
+
+%%EndProgram
+
+showpage
+end %% LEDA_dict
+%%EOF
