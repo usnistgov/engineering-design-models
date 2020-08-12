@@ -1,0 +1,1713 @@
+!trail file version No. 991
+!Pro/ENGINEER  TM  Version H-01-21  (c) 1988-96 by Parametric Technology Corporation  All Rights Reserved.
+!-------------------------------------------------------------------------------
+!
+! TITLE: Pro/MFG Advanced Milling Demo for Release 18.0
+!
+! DATE: Dec-19-1996
+!
+! SUBMITTED BY: Scott Morris
+!
+! VERSION: h-01-20
+!
+! FILENAME: mfgmill18.txt
+!
+! ADDITIONAL TRAIL FILES (IN ORDER):
+!
+! setup18.txt
+!
+! FILETYPE: BASIC
+!
+! TEST CATEGORY: NEWDEMOS
+!
+! MODULE: MFG
+!
+! KEYWORD: CLDATA
+!
+! LENGTH (IN LINES): 1577
+!
+! APPROXIMATE RUN TIME: 2 minutes on sun4_solaris
+!
+! REPLACES TEST:
+!
+! OBJECTS REQUIRED FOR THIS TEST:
+!
+!  a242_1_25.xpr
+!  cl_files/adv_ch_end.ncl
+!  cl_files/change.ncl
+!  cl_files/conv.ncl
+!  cl_files/conv_change.ncl
+!  cl_files/conv_key.ncl
+!  cl_files/cutline.ncl
+!  cl_files/entire.ncl
+!  cl_files/gg.ncl
+!  cl_files/intro.ncl
+!  cl_files/traj1.ncl
+!  cl_files/volume_rough.ncl
+!  cl_files/volume_semi.ncl
+!  cl_files/4x_conv.ncl
+!  color.map
+!  commercial.shd
+!  config.pro
+!  core_work.prt
+!  csize.frm
+!  drill.asm
+!  drill_core_fixture.drw
+!  drill_core_fixture.drw.2
+!  drill_shaft.asm
+!  drill_shaft.prt
+!  drill_shaft_bak.prt
+!  fixture/fixture.idx
+!  fixture/hch.prt
+!  fixture/hch.ptd
+!  fixture/hch6.xpr
+!  fixture/hch8.xpr
+!  fixture/hmj.prt
+!  fixture/hmj.ptd
+!  fixture/hmj6.xpr
+!  fixture/hmj8.xpr
+!  fixture/htj.prt
+!  fixture/htj.ptd
+!  fixture/sub_jaws.asm
+!  fixture/base.prt
+!  fixture/vise.prt
+!  gear.prt
+!  groups/traj_mill.gph
+!  home.shd
+!  housing.prt
+!  housing_core.prt
+!  housing_core_mfg.asm
+!  housing_core_mfg.mfg
+!  housing_mirror.prt
+!  housing_mold.asm
+!  housing_mold.mfg
+!  housing_mold_ref.prt
+!  nc_check.col
+!  params/d_4xconv.mil
+!  params/d_conv.mil
+!  params/d_cutline.mil
+!  params/d_drill.drl
+!  params/d_key_area.mil
+!  params/d_localv.mil
+!  params/d_profile.mil
+!  params/d_roughv.mil
+!  params/d_text.mil
+!  params/d_traj.mil
+!  params/d_traj1.mil
+!  params/d_volflat.mil
+!  params/holes.drl
+!  shaft_sleeve.prt
+!  tools/0_06in_bem.tpm
+!  tools/0_125in_em.tpm
+!  tools/0_125in_rem.tpm
+!  tools/0_1875in_bem.tpm
+!  tools/0_1in_bem.tpm
+!  tools/0_21in_dr.tpm
+!  tools/0_25in_em.tpm
+!  tools/0_25in_rem.tpm
+!  tools/0_2in_bem.tpm
+!  tools/0_375in_bem.tpm
+!  tools/0_375in_em.tpm
+!  tools/0_5in_bem.tpm
+!  tools/0_5in_em.tpm
+!  tools/0_5in_rem.tpm
+!  tools/0_75in_rem.tpm
+!  tools/10_0ball.tpm
+!  tools/15_0_em.tpm
+!  tools/1_fem.tpm
+!  tools/0_1875_ball_cutter.prt
+!  tools/drill_1_4.tpm
+!  wp.prt
+!
+! OBJECTS FROM OTHER TESTS REQUIRED FOR THIS TEST:
+!
+!  None
+!
+! QCR'S REQUIRED FOR THIS TEST:
+!
+!  None
+!
+! TEST DESCRIPTION:
+!
+!  This is the advanced milling demo.  The picks and script for
+!  is can be found in the demo guide.
+!  
+! MODIFICATIONS:
+!
+! 30-dec-96 H-01-21 sm  $$1 Updated sel by menu picks
+!-------------------------------------------------------------------------------
+!Select a menu item.
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#HOUSING.PRT
+!12-Dec-96 14:31:57  Start /disk1/demo/mfgintro17/housing.prt.1
+!12-Dec-96 14:32:07  End   /disk1/demo/mfgintro17/housing.prt.1
+#QUIT WINDOW
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#DRILL.ASM
+!12-Dec-96 14:32:15  Start /disk1/demo/mfgintro17/drill.asm.1
+!12-Dec-96 14:32:16  Start /disk1/demo/mfgintro17/drill_shaft.prt
+!12-Dec-96 14:32:17  End   /disk1/demo/mfgintro17/drill_shaft.prt
+!12-Dec-96 14:32:17  Start /disk1/demo/mfgintro17/gear.prt
+!12-Dec-96 14:32:20  End   /disk1/demo/mfgintro17/gear.prt
+!12-Dec-96 14:32:20  Start /disk1/demo/mfgintro17/shaft_sleeve.prt
+!12-Dec-96 14:32:23  End   /disk1/demo/mfgintro17/shaft_sleeve.prt
+!12-Dec-96 14:32:24  Start /disk1/demo/mfgintro17/housing_mirror.prt
+!12-Dec-96 14:32:25  End   /disk1/demo/mfgintro17/housing_mirror.prt
+!12-Dec-96 14:32:30  End   /disk1/demo/mfgintro17/drill.asm.1
+#QUIT WINDOW
+#MOLD
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#HOUSING_MOLD.MFG
+!12-Dec-96 14:32:43  Start /disk1/demo/mfgintro17/housing_mold.mfg.1
+!12-Dec-96 14:32:45  Start /disk1/demo/mfgintro17/housing_mold_ref.prt
+!12-Dec-96 14:32:47  End   /disk1/demo/mfgintro17/housing_mold_ref.prt
+!12-Dec-96 14:32:47  Start /disk1/demo/mfgintro17/wp.prt
+!12-Dec-96 14:32:48  End   /disk1/demo/mfgintro17/wp.prt
+!12-Dec-96 14:32:48  Start /disk1/demo/mfgintro17/housing_core.prt
+!12-Dec-96 14:32:49  End   /disk1/demo/mfgintro17/housing_core.prt
+!12-Dec-96 14:33:32  End   /disk1/demo/mfgintro17/housing_mold.mfg.1
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#HOUSING_CORE_MFG.MFG
+!12-Dec-96 14:33:38  Start /disk1/demo/mfgintro17/housing_core_mfg.mfg.1
+!12-Dec-96 14:33:39  Start /disk1/demo/mfgintro17/core_work.prt
+!12-Dec-96 14:33:42  End   /disk1/demo/mfgintro17/core_work.prt
+!12-Dec-96 14:33:42  Start /disk1/demo/mfgintro17/vise.prt
+!12-Dec-96 14:33:42  End   /disk1/demo/mfgintro17/vise.prt
+!12-Dec-96 14:33:42  Start /disk1/demo/mfgintro17/base.prt
+!12-Dec-96 14:33:47  End   /disk1/demo/mfgintro17/base.prt
+!12-Dec-96 14:33:47  End   /disk1/demo/mfgintro17/housing_core_mfg.mfg.1
+#QUIT WINDOW
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#DRILL_CORE_FIXTURE.DRW
+!12-Dec-96 14:33:54  Start /disk1/demo/mfgintro17/drill_core_fixture.drw.1
+!12-Dec-96 14:33:57  Start /disk1/demo/mfgintro17/csize.frm
+!12-Dec-96 14:33:59  End   /disk1/demo/mfgintro17/csize.frm
+!12-Dec-96 14:33:59  End   /disk1/demo/mfgintro17/drill_core_fixture.drw.1
+#QUIT WINDOW
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#/TOOLS
+!Directory searched is: /disk1/demo/mfgintro17/tools
+#0_1875_ball_cutter.prt
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#HOUSING_CORE_MFG.MFG
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.159106 0.652214 L
+0.890794 0.101929 L
+!Indicate two locations to define a box for the zoom area.
+#COSMETIC
+!!!!!#SHADE
+#DISPLAY
+!Processing model HOUSING_CORE ...
+!100% has been completed.
+!Processing model VISE ...
+!100% has been completed.
+!Processing model BASE ...
+!100% has been completed.
+!Processing model HOUSING_CORE_MFG ...
+#DONE-RETURN
+#VIEW
+#LAYER DISP
+#WORK
+#DONE-RETURN
+!Warning: You must use Save Status to save layer display changes.
+#VIEW
+#COSMETIC
+!!!!!#SHADE
+#DISPLAY
+!Processing model HOUSING_CORE_MFG ...
+!Processing model HOUSING_CORE ...
+!100% has been completed.
+!Processing model CORE_WORK ...
+!100% has been completed.
+!Processing model VISE ...
+!100% has been completed.
+!Processing model BASE ...
+!100% has been completed.
+#DONE-RETURN
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#MODE
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#HOUSING.PRT
+#VIEW
+#COSMETIC
+!!!!!#SHADE
+#DISPLAY
+!Processing model HOUSING ...
+!100% has been completed.
+#DONE-RETURN
+#MODE
+#MOLD
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#HOUSING_MOLD.MFG
+#VIEW
+#LAYER DISP
+#VOLUMES
+#WORK
+#SURFS
+#DONE-RETURN
+!Warning: You must use Save Status to save layer display changes.
+#VIEW
+#COSMETIC
+!!!!!#SHADE
+#DISPLAY
+!Processing model HOUSING_MOLD ...
+!Processing model HOUSING_MOLD_REF ...
+!100% has been completed.
+!Processing model HOUSING_CORE ...
+!100% has been completed.
+#DONE-RETURN
+#CHANGEWINDOW
+!Select on a window to activate it.
+0.155053 0.794093 L
+#Change_Window 0 <Mfg: HOUSING_CORE_MFG>
+!Processing model HOUSING_CORE_MFG ...
+!Processing model CORE_WORK ...
+!100% has been completed.
+!Processing model VISE ...
+!100% has been completed.
+!Processing model BASE ...
+!100% has been completed.
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.521753 0.641847 3 1 1
+0.521753 0.541558 L
+#Change_Window 3 <Mfg: HOUSING_MOLD>
+#QUIT WINDOW
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.908936 0.608270 2 1 1
+0.908936 0.513228 L
+#Change_Window 2 <Part: HOUSING>
+#QUIT WINDOW
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.960876 0.976312 0 1 1
+0.960876 0.823763 L
+#Change_Window 0 <Mfg: HOUSING_CORE_MFG>
+#CL DATA
+!Select Operation or NC Sequence.
+#NC CHECK
+#COLOR
+#RESTORE FILE
+!NC Check color settings read from file.
+!!!!!#RUN
+#INTRO
+!Preparing data for display.
+#DONE/RETURN
+!Please confirm quit from NC Check.
+#CONFIRM
+#DONE/RETURN
+#MFG SETUP
+#FIXTURE
+#ACTIVATE
+#VISE
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MACHINING
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#APPR WALLS
+#START
+#END
+#WINDOW
+#DONE
+!Select or specify tool.
+#0_75IN_REM
+#DONE SEL
+#RETRIEVE
+#D_ROUGHV
+!/disk1/demo/mfgintro17/params/D_ROUGHV.mil.1 has been read.
+#DONE
+#CREATE WIND
+!Enter name for the machine window [-Quit-] :
+window1
+!Specify machine window.
+#SKETCH
+#GEOM TOOLS
+#OFFSET EDGE
+!Select edge to offset
+#SEL LOOP
+!Select an entity to specify an entity loop, or a surface to specify a contour.
+** 0.521753 0.935740 0 2 2
+0.521753 0.789530 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.491062 0.774851 0 1 1
+0.491062 0.653780 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.551264 0.883975 0 4 4
+0.551264 0.745854 M
+!Enter offset in the direction of the arrow [QUIT]: 
+-.375
+!Entities have been created.
+!Select an entity to specify an entity loop, or a surface to specify a contour.
+#REGENERATE
+!Section regenerated successfully.
+#DONE
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `preview`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `okay`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!CURVE has been created successfully.
+!Select sides of window to be used for tool approach.
+** 0.760201 0.730081 0 1 1
+0.760201 0.616006 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+** 0.737773 0.835009 0 1 1
+0.737773 0.704539 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+** 0.280944 0.720288 0 1 1
+0.280944 0.607743 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+** 0.585497 0.261404 0 1 1
+0.585497 0.220560 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+#DONE
+!Create or select a datum point for the tool's original location.
+** 0.187689 0.325760 0 1 1
+0.187689 0.274860 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+@ sel2d 0 TEXT_DTM_PNT 2 #33
+0 4
+!Showing POINT in feature 7 in model CORE_WORK. 
+!Create or select a datum point for the tool's final location.
+** 0.186509 0.325760 0 1 1
+0.186509 0.274860 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+@ sel2d 0 TEXT_DTM_PNT 2 #33
+0 4
+!Showing POINT in feature 7 in model CORE_WORK. 
+#view
+#orientation
+#default
+#done-return
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #12). . .
+!Creating slices ...
+!Approximately 100% done ...
+!Creating tool path for each slice ...
+!Processing slice 1 out of 5 slices ...
+!Processing slice 2 out of 5 slices ...
+!Processing slice 3 out of 5 slices ...
+!Processing slice 4 out of 5 slices ...
+!Processing slice 5 out of 5 slices ...
+!Tool path computation done.
+!Tool Path display completed.
+#DONE SEQ
+!Regenerating CORE_WORK feature 38 out of 38 ...
+!Regeneration completed successfully.
+#VIEW
+#NAMES
+#RETRIEVE
+#CHUCK_KEY
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#MILL SURFACE
+#UNBLANK
+!Select SURFACE.
+~ Select `sel_str_odd` `Namelist` \
+1  `1`
+~ Activate `sel_str_odd` `Ok`
+#DONE/RETURN
+#DONE/RETURN
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#TRAJECTORY
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#DONE
+!Select or specify tool.
+#0_375IN_EM
+#DONE SEL
+#RETRIEVE
+#D_TRAJ
+!/disk1/demo/mfgintro17/params/D_TRAJ.mil.1 has been read.
+#DONE
+!Select reference type to drive tool along for interactive cut.
+#EDGE
+#DONE
+#START HEIGHT
+#DONE
+!Select edges to form trajectory.
+#BNDRY CHAIN
+!Select a quilt.
+** 0.708262 0.475457 0 2 2
+0.510102 0.283654 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.368296 0.457269 0 1 1
+0.371469 0.277397 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing quilt created by feature 15 (surface CHUCK_KEY_SURF).  Confirm selection.
+** 0.368296 0.457269 0 2 2
+0.371469 0.277397 R
+** 0.407251 0.444678 0 4 4
+0.387354 0.273064 M
+!Select chain option from the menu.
+#FROM-TO
+!Select 'from' vertex/curve end.
+** 0.285666 0.380322 0 1 1
+0.337773 0.250921 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing end of edge in feature 15, model CORE_WORK. 
+!Select 'to' vertex/curve end.
+** 0.430859 0.342548 0 1 1
+0.396981 0.237925 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing end of edge in feature 15, model CORE_WORK. 
+!Specify part of the loop to keep.
+#ACCEPT
+#DONE
+!Select direction of trajectory.
+#FLIP
+#OKAY
+!Pick direction for tool offset.
+#LEFT
+#DONE
+!Specify the start height of the tool path.
+!Please specify a plane or depth where machining will begin.
+** 0.298651 0.388717 0 2 2
+0.343068 0.253810 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.140472 0.476856 0 1 1
+0.278565 0.284136 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.226644 0.474058 0 4 4
+0.313705 0.283173 M
+#SHOW
+#DONE/RETURN
+!Computing tool path for MILLING (NC Sequence #13, Cut Motion #1) ...
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.066104 0.685312 0 1 1
+0.248239 0.355859 L
+** 0.772006 0.166270 0 1 1
+0.536095 0.177273 L
+!Indicate two locations to define a box for the zoom area.
+#DONE-RETURN
+#ENDS
+#START
+#SPECIFY
+#DONE
+!Adjust chain end using mouse (BUTTONS: L=Finish, M=Abort, R=Pause/Continue).
+** 0.472175 0.211039 0 1 1
+0.384158 0.196383 L
+!Select dimension type for this end.
+#EXT LENGTH
+!Enter extension length [0.7472]:
+.5
+#END
+#SPECIFY
+#DONE
+!Computing tool path for MILLING (NC Sequence #13, Cut Motion #1) ...
+!Adjust chain end using mouse (BUTTONS: L=Finish, M=Abort, R=Pause/Continue).
+** 0.308094 0.301976 0 1 1
+0.336926 0.218470 L
+!Select dimension type for this end.
+#EXT LENGTH
+!Enter extension length [0.5906]:
+.5
+#DONE/RETURN
+!Computing tool path for MILLING (NC Sequence #13, Cut Motion #1) ...
+#PLAY CUT
+!Tool Path display completed.
+#DONE CUT
+!AUTO PLUNGE #1 and FOLLOW CUT #1 were added to the tool path.
+!Regenerating CORE_WORK feature 41 out of 41 ...
+!Regeneration completed successfully.
+#TOOL MOTION
+#RETRACT
+~ Activate `retract` `okay`
+#DONE SEQ
+!Regenerating CORE_WORK feature 39 out of 41 ...
+!Regenerating CORE_WORK feature 40 out of 41 ...
+!Regenerating CORE_WORK feature 41 out of 41 ...
+!Regeneration completed successfully.
+#MFG SETUP
+#MFG GEOMETRY
+#MILL SURFACE
+#UNBLANK
+!Select SURFACE.
+~ Select `sel_str_odd` `Namelist` \
+1  `1`
+~ Activate `sel_str_odd` `Ok`
+#DONE/RETURN
+#DONE/RETURN
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#CONVENTL SRF
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#CHECK SURFS
+#DONE
+!Select or specify tool.
+#0_1875_BALL_CUTTER
+#DONE SEL
+#RETRIEVE
+#D_KEY_AREA
+!/disk1/demo/mfgintro17/params/D_KEY_AREA.mil.1 has been read.
+#DONE
+#MILL SURFACE
+#DONE
+#SELECT SRF
+!Select SURFACE.
+~ Select `sellist0` `Namelist` \
+1  `2`
+!Showing quilt created by feature 19 (surface CHUCK_KEY_BOTTOM). 
+!Arrow indicates side of surface to be machined. Pick FLIP or OKAY.
+#OKAY
+!Select surfaces belonging to CHUCK_KEY_BOTTOM.
+#SELECT ALL
+#SHOW
+#DONE/RETURN
+!Select surfaces on reference part to check gouging against.
+** 0.450927 0.436284 0 2 2
+0.378041 0.251091 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.448566 0.454471 0 1 1
+0.377362 0.255508 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 3.473962 0.000000
+!Showing quilt created by feature 19 (surface CHUCK_KEY_BOTTOM).  Confirm selection.
+** 0.449746 0.454471 0 2 2
+0.377702 0.255508 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.537099 0.423693 0 4 4
+0.402846 0.248032 M
+#DONE/RETURN
+#DONE/RETURN
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #14). . .
+!Displaying tip cut motions. Approximately 93% done ...
+!Approximately 100% done ...
+!12-Dec-96 14:46:02  Start /disk1/demo/mfgintro17/0_1875_ball_cutter.prt
+!12-Dec-96 14:46:05  End   /disk1/demo/mfgintro17/0_1875_ball_cutter.prt
+!Material hss was assigned to the part.
+!Tool Path display completed.
+#PREV GOTO
+#PREV GOTO
+#VIEW
+#LAYER DISP
+#WORK
+#DONE SEL
+#REPAINT
+#DONE-RETURN
+#CL MEASURE
+#VIEW
+#COSMETIC
+!!!!!#SHADE
+#DISPLAY
+!Processing model HOUSING_CORE_MFG ...
+!Processing model HOUSING_CORE ...
+!100% has been completed.
+!Processing model 0_1875_BALL_CUTTER ...
+!100% has been completed.
+#DONE-RETURN
+#CLEAR/INTF
+!Select first object.
+** 0.801517 0.585981 0 1 1
+0.478961 0.287449 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 3.473962 0.000000
+!Showing part 0_1875_BALL_CUTTER.
+!Select second object.
+#SURFACE
+!Select second object.
+** 0.517031 0.450274 0 2 2
+0.397070 0.254489 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.661045 0.436284 0 1 1
+0.438525 0.251091 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 3.473962 0.000000
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.694097 0.419495 0 2 2
+0.448039 0.247013 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.696458 0.419495 0 2 2
+0.448719 0.247013 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.696458 0.418096 0 2 2
+0.448719 0.246673 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+#PREVIOUS
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.794434 0.404106 0 4 4
+0.476922 0.243275 M
+!Clearance: 0.09478. Select second object.
+#DONE/RETURN
+#DONE/RETURN
+#DONE SEQ
+!Regenerating CORE_WORK feature 42 out of 42 ...
+!Regeneration completed successfully.
+#VIEW
+#LAYER DISP
+#WORK
+#DONE SEL
+#VIEW
+!Warning: You must use Save Status to save layer display changes.
+#REPAINT
+#DONE-RETURN
+#VIEW
+#NAMES
+#RETRIEVE
+#BACK_ISO
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.453288 0.433486 0 1 1
+0.449897 0.370599 L
+** 0.751938 0.211039 0 1 1
+0.710196 0.207013 L
+!Indicate two locations to define a box for the zoom area.
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#MILL SURFACE
+#BLANK
+!Select SURFACE.
+~ Select `sellistmul0` `Namelist` \
+1  `3`
+~ Select `sellistmul0` `Namelist` \
+2  `2` `3`
+~ Activate `sellistmul0` `Ok`
+!Showing quilt created by feature 15 (surface CHUCK_KEY_SURF). 
+!Showing quilt created by feature 19 (surface CHUCK_KEY_BOTTOM). 
+#UNBLANK
+!Select SURFACE.
+~ Activate `sel_str_odd` `Ok`
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MFG GEOMETRY
+#MILL VOLUME
+#BLANK
+!Select volume or surface.
+~ Select `sellistmul0` `Namelist` \
+0 
+~ Activate `sellistmul0` `Ok`
+#DONE SEL
+#VIEW
+#REPAINT
+#DONE-RETURN
+#DONE/RETURN
+#DONE/RETURN
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#CONTOUR SRF
+#DONE
+#ALONGCUTLINE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#END
+#DONE
+!Select or specify tool.
+#0_1875_BALL_CUTTER
+#DONE SEL
+#RETRIEVE
+#D_CUTLINE
+!/disk1/demo/mfgintro17/params/D_CUTLINE.mil.1 has been read.
+#DONE
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+#MILL SURFACE
+#DONE
+#BLANK
+!Select volume or surface.
+#SELECT SRF
+!Select SURFACE.
+~ Select `sellist0` `Namelist` \
+1  `1`
+!Showing quilt created by feature 21 (surface BATT_HOUS_SRF). 
+!Arrow indicates side of surface to be machined. Pick FLIP or OKAY.
+#OKAY
+!Select surfaces belonging to BATT_HOUS_SRF.
+#VIEW
+#NAMES
+#RETRIEVE
+#BATT_HOUS
+#SELECT ALL
+#SHOW
+#DONE/RETURN
+!Specify surfaces to be used for cutline definition.
+#DONE
+!Specify cutline definition.
+#VIEW
+#REPAINT
+#DONE-RETURN
+#INNER CUTLINE
+#DONE
+!Select option to define the start cut line.
+#DONE
+#TANGNT CHAIN
+!Select an edge from chain.
+** 0.365935 0.363534 0 1 1
+0.472885 0.163131 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+!Select Done/Return to continue or Define/Redo to respecify cut line.
+#DONE/RETURN
+!Select option to define the end cut line.
+#DONE
+#TANGNT CHAIN
+!Select an edge from chain.
+** 0.515851 0.783245 0 1 1
+0.519737 0.273806 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+!Select Done/Return to continue or Define/Redo to respecify cut line.
+#DONE/RETURN
+!Select option to define an inner cut line.
+#DONE
+#TANGNT CHAIN
+!Select an edge from chain.
+** 0.409612 0.606966 0 1 1
+0.486535 0.227323 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+#DEFINE
+!Select option to define an inner cut line.
+#DONE
+** 0.386003 0.739875 0 1 1
+0.479156 0.262370 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.410792 0.707697 0 1 1
+0.486904 0.253885 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.498144 0.686711 0 1 1
+0.514204 0.248351 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.612647 0.690908 0 1 1
+0.549989 0.249458 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.724788 0.731481 0 1 1
+0.585036 0.260156 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+#DONE/RETURN
+!Select direction for cut line contours.
+#OKAY
+#DONE/RETURN
+!Create or select a datum point for the tool's final location.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 7 in model CORE_WORK. 
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+#SEQ SETUP
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!Check mark any optional or pre-defined elements you wish to specify.
+#CHECK SURFS
+#DONE
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!Select surfaces on reference part to check gouging against.
+** 0.480438 0.423693 0 2 2
+0.508670 0.178994 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.541821 0.446077 0 1 1
+0.527854 0.184897 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing quilt created by feature 21 (surface BATT_HOUS_SRF).  Confirm selection.
+** 0.544181 0.436284 0 2 2
+0.528591 0.182315 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.544181 0.433486 0 2 2
+0.528591 0.181577 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 21 (SURFACE), model CORE_WORK.  Confirm selection.
+** 0.544181 0.434885 0 4 4
+0.528591 0.181946 M
+** 0.544181 0.430688 0 4 4
+0.528591 0.180839 M
+#SHOW
+#DONE/RETURN
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+#DONE SEQ
+!Regenerating CORE_WORK feature 43 out of 43 ...
+!Regeneration completed successfully.
+#CL DATA
+!Select Operation or NC Sequence.
+#VIEW
+#orientation
+#default
+#DONE-RETURN
+#INPUT
+!Enter Pro/NC file name [-Quit-]:
+?
+!Directory searched is: /disk1/demo/mfgintro17/cl_files
+#CUTLINE.NCL
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#DONE/RETURN
+#ENVIRONMENT
+#NO HIDDEN
+!Hidden lines will not be displayed.
+#DONE-RETURN
+#MFG SETUP
+#FIXTURE
+#ACTIVATE
+#VISE
+#DONE SEL
+#DONE/RETURN
+#QUIT WINDOW
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /disk1/demo/mfgintro17
+#DRILL_CORE_FIXTURE.DRW
+#VIEWS
+#DISP MODE
+#TOOL PATH
+#SHOW PATHS
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+#NAME
+~ Select `sellist0` `Namelist` \
+1  `11`
+!Showing feature 38 (MILLING) in part CORE_WORK. 
+#DONE/RETURN
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /softail/sm/update_mfgmill_demo
+#HOUSING_CORE_MFG.MFG
+#MFG SETUP
+#FIXTURE
+#ACTIVATE
+#VISE
+#DONE/RETURN
+#ENVIRONMENT
+#HIDDEN LINE
+!Hidden lines will appear in grey.  
+#DONE-RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! Create 4 axis conventional milling NC Sequence
+!
+#MACHINING
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#CONVENTL SRF
+#4 AXIS
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#START
+#END
+#DONE
+!Select or specify tool.
+#0_5IN_BEM
+#DONE SEL
+#RETRIEVE
+#D_4XCONV
+!/saporro/shannon/16d/demo16mfg2/params/D_4XCONV.mil.1 has been read.
+#DONE
+#MILL SURFACE
+#DONE
+#SELECT SRF
+!Select SURFACE.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing quilt created by feature 23 (surface BARREL_SRF). 
+!Arrow indicates side of surface to be machined. Pick FLIP or OKAY.
+#OKAY
+!Select surfaces belonging to BARREL_SRF.
+#SELECT ALL
+#SHOW
+#DONE/RETURN
+!Please specify plane to which the tool axis will be parallel.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+#DATUM
+#NAME
+!#SIDE
+~ Select `sellist0` `Namelist` \
+1  `3`
+!Showing surface SIDE.
+!Create or select a datum point for the tool's original location.
+#SELECT
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 7 in model CORE_WORK.
+#DONE SEQ
+!Regenerating CORE_WORK feature 43 out of 43 ...
+!Regeneration completed successfully.
+#CL DATA
+!Select Operation or NC Sequence.
+#INPUT
+!Enter Pro/NC file name [-Quit-]:
+?
+!Directory searched is: /saporro/shannon/16d/demo16mfg2/cl_files
+#4X_CONV.NCL
+#DONE/RETURN
+#DONE/RETURN
+#DONE/RETURN
+!
+! Modify parameters of conventional milling nc sequence
+!
+#MODIFY
+!Select FEATURE or DIMENSION.
+#MOD NC SEQ
+!Select a NC Sequence.
+#5: CONVENTIONAL SURFACE MILLING, OPERATI
+#PARAMETERS
+#SET
+~ CellSelect `paramtree` `AssyTree` \
+ `node2`
+ `ac0`
+~ CellInput `paramtree` `AssyTree` \
+ `.`
+~ CellInput `paramtree` `AssyTree` \
+ `5`
+~ CellActivate `paramtree` `AssyTree` \
+ `node2`
+ `ac0`
+~ Select `paramtree` `MBar` \
+1  `FileMenu`
+~ Close `paramtree` `MBar`
+~ Activate `paramtree` `Exit
+#DONE
+#DONE/RETURN
+#DONE/RETURN
+#CL DATA
+!Select Operation or NC Sequence.
+#NC SEQUENCE
+#5: CONVENTIONAL SURFACE MILLING, OPERATI
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #5). . .
+!Displaying tip cut motions. Approximately 88% done ...
+!Tool Path display completed.
+#DONE OUTPUT
+#DONE/RETURN
+!
+! Create Grooving NC Sequence
+!
+#MACHINING
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#VIEW
+#REPAINT
+#DONE-RETURN
+#GROOVING
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#DONE
+!Select or specify tool.
+#0_06IN_BEM
+#DONE SEL
+#RETRIEVE
+#D_TEXT
+!/saporro/shannon/16d/demo16mfg2/params/D_TEXT.mil.1 has been read.
+#DONE
+!Select groove features.
+0.527523 0.535844 R
+!Hidden geometry may be selected.
+0.523109 0.545777 L
+@ sel view 0
+ 62.511058 -20.702744 -16.428686 0.000000 42.187757 -53.163248
+ 26.429252 48.966594 38.857497 502.787276 210.998314 102.333603 1.000000 0.000000
+!Showing feature 2 (GROOVE) in part HOUSING_CORE. Confirm selection.
+0.523109 0.544673 M
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #17). . .
+!Tool Path display completed.
+#DONE
+#DONE SEQ
+!Regenerating CORE_WORK feature 44 out of 44 ...
+!Regeneration completed successfully.
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! Place UDF
+!
+#UTILITIES
+#GROUP
+#RETRIEVE
+!Enter UDF name[-Quit-]: 
+traj_mill
+!Retrieving group information... 
+!Specify group place options.
+#DONE
+#DONE
+!Not all elements are defined. Select element(s) or action(s) from dialog box.
+!Enter distance from the reference plane where machining will start [1.0000]: 
+.8
+!Select display option for invariable dimensions.
+#DONE
+!Select operation.
+#SEL BY MENU
+#NAME
+!#OP010
+~ Select `sellist0` `Namelist` \
+1  `26`
+!Showing feature 9 (OPERATION) in part CORE_WORK. 
+!Select machine coordinate system.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing COORDINATE SYSTEM in feature 5 in model CORE_WORK.
+!Select retract plane.
+#SAME
+!Select tool change position.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 7 in model CORE_WORK.
+!Select surface from which start plane will be measured.
+#SAME
+!Select edge, part of tangent chain of edges to be milled.
+0.373019 0.467421 R
+!Hidden geometry may be selected.
+0.370811 0.470731 L
+@ sel view 0
+ 62.511058 -20.702744 -16.428686 0.000000 42.187757 -53.163248
+ 26.429252 48.966594 38.857497 502.787276 210.998314 102.333603 1.000000 0.000000
+!Showing edge created by feature 1 (EXTRACT), model HOUSING_CORE.Confirm selection.
+0.410541 0.467421 R
+!Showing edge created by feature 11 (HOLE), model HOUSING_CORE.Confirm selection.
+0.410541 0.467421 R
+!Showing edge created by feature 1 (EXTRACT), model HOUSING_CORE.Confirm selection.
+0.418266 0.491700 M
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!WARNING: Mfg assembly and group have tools with same ids; tool(s) not copied.
+#DONE/RETURN
+!Creating group feature 1 out of 3...
+!Creating group feature 2 out of 3...
+!Creating group feature 3 out of 3...
+!Group created successfully. Select Done to accept.
+#DONE
+!Group created successfully.
+#DONE/RETURN
+#CL DATA
+!Select Operation or NC Sequence.
+#NC SEQUENCE
+#18: TRAJECTORY MILLING, OPERATION: OP010
+#DONE CL
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.318942 0.513772 L
+0.408334 0.426587 L
+!Indicate two locations to define a box for the zoom area.
+#DISPLAY
+#DONE CL
+#DONE
+#DONE OUTPUT
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! Create three axis conventional milling nc sequence
+!
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#CONVENTL SRF
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#CHECK SURFS
+#DONE
+!Select or specify tool.
+#0_25IN_REM
+#DONE SEL
+#RETRIEVE
+#D_CONV
+!/saporro/shannon/16d/demo16mfg2/params/D_CONV.mil.1 has been read.
+#DONE
+#MILL SURFACE
+#DONE
+#SELECT SRF
+!Select SURFACE.
+~ Select `sellist0` `Namelist` \
+1  `4`
+!Showing quilt created by feature 30 (surface TRIGGER_GRIP). 
+!Arrow indicates side of surface to be machined. Pick FLIP or OKAY.
+#OKAY
+!Select surfaces belonging to TRIGGER_GRIP.
+#SELECT ALL
+#SHOW
+#DONE/RETURN
+!Select surfaces on reference part to check gouging against.
+0.651127 0.393479 R
+!Hidden geometry may be selected.
+0.645609 0.395686 L
+@ sel view 0
+ 62.511058 -20.702744 -16.428686 0.000000 42.187757 -53.163248
+ 26.429252 48.966594 38.857497 502.787276 210.998314 102.333603 1.000000 0.000000
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK. Confirm selection.
+0.645609 0.395686 R
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE. Confirm selection.
+0.804528 0.389065 M
+#DONE SEL
+#SHOW
+#DONE/RETURN
+#DONE SEQ
+!Regenerating CORE_WORK feature 48 out of 48 ...
+!Regeneration completed successfully.
+#CL DATA
+!Select Operation or NC Sequence.
+#INPUT
+!Enter Pro/NC file name [-Quit-]:
+?
+!Directory searched is: /saporro/shannon/16d/demo16mfg2/cl_files
+#CONV.NCL
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! Create profile milling nc sequence
+!
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#PROFILE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#DONE
+!Select or specify tool.
+#0_125IN_EM
+#DONE SEL
+#RETRIEVE
+#D_PROFILE
+!/saporro/shannon/16d/demo16mfg2/params/D_PROFILE.mil.1 has been read.
+#DONE
+#DONE
+!Select surfaces of reference part to be machined.
+#LOOP
+!Select a face.
+0.425992 0.417758 R
+!Hidden geometry may be selected.
+0.440338 0.421069 L
+@ sel view 0
+ 62.511058 -20.702744 -16.428686 0.000000 42.187757 -53.163248
+ 26.429252 48.966594 38.857497 502.787276 210.998314 102.333603 1.000000 0.000000
+!Showing surface created by feature 3 (PROTRUSION), model HOUSING_CORE. Confirm selection.
+0.443649 0.422173 M
+#DONE SEL
+#DONE
+#SHOW
+#DONE/RETURN
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #20). . .
+!Tool Path display completed.
+#DONE
+#DONE SEQ
+!Regenerating CORE_WORK feature 49 out of 49 ...
+!Regeneration completed successfully.
+#DONE/RETURN
+! 
+! replace mfg model
+!
+#MFG MODEL
+#REPLACE
+!Select component in the current assembly.
+#SEL BY MENU
+#HOUSING_CORE.PRT
+!Showing part HOUSING_CORE.
+!Select replacing instance from menu.
+#SQ_TRIGGER
+! 6-Dec-95 09:59:04  Start /saporro/shannon/16d/demo16mfg2/prt0001.prt.1
+! 6-Dec-95 09:59:07  End   /saporro/shannon/16d/demo16mfg2/prt0001.prt.1
+!Regenerating SQ_TRIGGER feature 11 out of 11 ...
+!Regeneration completed successfully.
+!WARNING: Replacing reference model may have some references missing.
+!Model has been replaced.
+#DONE/RETURN
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Regenerating SQ_TRIGGER feature 11 out of 11 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'CORE_WORK' 2 out of 5 ...
+!Enter type of regeneration desired.
+#DONE
+!Regenerating CORE_WORK feature 49 out of 49 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG feature 4 out of 5 ...
+!Regenerating VISE feature 6 out of 6 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'BASE' 5 out of 5 ...
+!Regeneration completed successfully.
+!Automatic regeneration of the parts has been completed.
+#CL DATA
+!Select Operation or NC Sequence.
+#INPUT
+!Enter Pro/NC file name [-Quit-]:
+?
+!Directory searched is: /saporro/shannon/16d/demo16mfg2/cl_files
+#CONV_CHANGE.NCL
+#DONE/RETURN
+#OUTPUT
+!Select Operation or NC Sequence.
+#NC SEQUENCE
+#9: PROFILE MILLING, OPERATION: OP010
+#DONE CL
+#DONE
+#DONE OUTPUT
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! Create volume milling nc sequence
+!
+#MACHINING
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#APPR WALLS
+#END
+#DONE
+!Select or specify tool.
+#0_5IN_EM
+#DONE SEL
+#RETRIEVE
+#D_VOLFLAT
+!/saporro/shannon/16d/demo16mfg2/params/D_VOLFLAT.mil.1 has been read.
+#DONE
+#SELECT VOL
+!Select previously defined milling volume.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing quilt created by feature 31 (volume FLAT_OUTLINE). 
+!Define Approach and Exit walls belonging to FLAT_OUTLINE.
+#QUERY SEL
+!Hidden geometry may be selected.
+0.282523 0.189312 L
+@ sel view 0
+ 62.511227 -20.702800 -16.428731 0.000000 42.187870 -53.163391
+ 26.429323 48.966726 38.857602 502.912433 210.997487 102.386438 1.000000 0.000000
+!Showing surface created by feature 32 (OFFSET), model CORE_WORK. Confirm selection.
+0.346532 0.201452 M
+0.572771 0.153997 R
+!Hidden geometry may be selected.
+0.598154 0.171655 L
+@ sel view 0
+ 62.511227 -20.702800 -16.428731 0.000000 42.187870 -53.163391
+ 26.429323 48.966726 38.857602 502.912433 210.997487 102.386438 1.000000 0.000000
+!Showing surface created by feature 32 (OFFSET), model CORE_WORK. Confirm selection.
+0.608086 0.188209 M
+#REHIGHLIGHT
+#DONE SEL
+#SHOW
+#DONE/RETURN
+!Create or select a datum point for the tool's final location.
+0.228446 0.266565 R
+!Hidden geometry may be selected.
+0.231757 0.268772 L
+@ sel view 0
+ 62.511227 -20.702800 -16.428731 0.000000 42.187870 -53.163391
+ 26.429323 48.966726 38.857602 502.912433 210.997487 102.386438 1.000000 0.000000
+@ sel2d 0 TEXT_DTM_PNT 2 #33
+0 4
+!Showing POINT in feature 7 in model CORE_WORK. Confirm selection.
+0.187613 0.404515 M
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #21). . .
+!Tool Path display completed.
+#VIEW
+#NAMES
+#TOP
+#ORIENTATION
+#DEFAULT
+#DONE SEQ
+!Purging tool path database ...
+!Tool path database purging is completed.
+!Regenerating CORE_WORK feature 50 out of 50 ...
+!Regeneration completed successfully.
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#MILL VOLUME
+#BLANK
+~ Activate `sellistmul0` `SelAll`
+~ Activate `sellistmul0` `Ok`
+!Showing quilt created by feature 21 (surface BATT_HOUS_SRF).
+!Showing quilt created by feature 23 (surface BARREL_SRF).
+!Showing quilt created by feature 30 (surface TRIGGER_GRIP).
+!Showing quilt created by feature 31 (volume FLAT_OUTLINE).
+#DONE SEL
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! Create holemaking nc sequence
+!
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#HOLEMAKING
+#DONE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#START
+#END
+#DONE
+!Select or specify tool.
+#0_21IN_DR
+#DONE SEL
+#RETRIEVE
+#D_DRILL
+!/saporro/shannon/16d/demo16mfg2/params/D_DRILL.drl.1 has been read.
+#DONE
+!Create new hole set or select existing hole set to redefine.
+!Select depth type for the drilling operation.
+#THRU ALL
+#DONE
+!Select holes to be drilled by selecting axes from SQ_TRIGGER.
+#BY DIAMETER
+!Select diameter of holes to be drilled
+#0.210000
+#DONE SEL
+!Continue axes selection or pick "Done".
+!Select diameter of holes to be drilled
+#DONE SEL
+#DONE/RETURN
+#DONE
+#DONE/RETURN
+!Create or select a datum point for the tool's original location.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 7 in model CORE_WORK.
+!Create or select a datum point for the tool's final location.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 7 in model CORE_WORK.
+#PLAY PATH
+#TIME INCREMENT
+!Enter time increment.
+#ENTER
+!Enter time increment [1.0000]:
+.5
+#DONE CL
+!Tool Path display completed.
+#DONE
+#DONE SEQ
+!Regenerating CORE_WORK feature 51 out of 51 ...
+!Regeneration completed successfully.
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+!
+! regen drill assembly and regen design change
+!
+#MODE
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /saporro/shannon/16d/demo16mfg2
+#IN SESSION
+#DRILL.ASM
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.267072 0.662759 L
+0.825497 0.212488 L
+!Indicate two locations to define a box for the zoom area.
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Choose source of values for Pro/PROGRAM inputs for model DRILL.
+#ENTER
+!Please select inputs to specify new values.
+#MOTOR_TYPE
+#DONE SEL
+!ENTER THE DESIRED MODEL (1 FOR HOME, 2 FOR COMMERCIAL). [1.0000] 
+2
+!Regenerating SHAFT_SLEEVE feature 167 out of 167 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING feature 16 out of 76 ...
+!Regeneration completed successfully.
+!Regenerating DRILL_SHAFT feature 28 out of 28 ...
+!Regeneration completed successfully.
+!Regenerating DRILL_SHAFT component 'GEAR' 2 out of 3 ...
+!Regenerating DRILL_SHAFT component 'SHAFT_SLEEVE' 3 out of 3 ...
+!Regeneration completed successfully.
+!Regenerating DRILL component 'HOUSING' 3 out of 5 ...
+!Regenerating DRILL feature 4 out of 5 ...
+!Regenerating DRILL component 'HOUSING_MIRROR' 5 out of 5 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_MIRROR feature 1 out of 1 ...
+!Regeneration completed successfully.
+!Some relations are no longer satisfied in DRILL_SHAFT for MAX_DIAM.
+!Please regenerate again.
+!Automatic regeneration of the parts has been completed.
+#CHANGEWINDOW
+!Select on a window to activate it.
+0.717343 0.753254 L
+#Change_Window 3
+!Processing model HOUSING_MOLD_REF ...
+!Processing model HOUSING_CORE ...
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Regenerating HOUSING_MOLD_REF feature 1 out of 1 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_MOLD component 'WP' 2 out of 20 ...
+!Regenerating WP feature 1 out of 1 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_MOLD component 'HOUSING_CORE' 20 out of 20 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE feature 12 out of 12 ...
+!Regeneration completed successfully.
+!Automatic regeneration of the parts has been completed.
+!Processing model HOUSING_MOLD ...
+!Processing model HOUSING_MOLD_REF ...
+!Processing model HOUSING_CORE ...
+#ENVIRONMENT
+#NO HIDDEN
+!Hidden lines will not be displayed.
+#DONE-RETURN
+#CHANGEWINDOW
+!Select on a window to activate it.
+0.897231 0.715732 L
+#Change_Window 0
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Regenerating HOUSING_CORE feature 12 out of 12 ...
+!Regeneration completed successfully.
+!Regenerating SQ_TRIGGER feature 11 out of 11 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'CORE_WORK' 2 out of 5 ...
+!Enter type of regeneration desired.
+#DONE
+!Purging tool path database ...
+!Tool path database purging is completed.
+!Regenerating CORE_WORK feature 51 out of 51 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'VISE' 3 out of 5 ...
+!Regenerating HOUSING_CORE_MFG feature 4 out of 5 ...
+!Regenerating VISE feature 6 out of 6 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'BASE' 5 out of 5 ...
+!Regeneration completed successfully.
+!Automatic regeneration of the parts has been completed.
+#CL DATA
+!Select Operation or NC Sequence.
+#NC SEQUENCE
+#1: VOLUME MILLING, OPERATION: OP010
+#FILE
+#DONE
+!Enter Pro/NC file name [VOLUME_ROUGH]:
+adv_ch_end
+!Computing tool path for MILLING (NC Sequence #1). . .
+!Approximately 15% done ...
+!Approximately 31% done ...
+!Approximately 47% done ...
+!Approximately 63% done ...
+!Pro/NC file /saporro/cl_files/adv_ch_end.ncl.3 has been created successfully.
+#DONE OUTPUT
+#NC CHECK
+#COLOR
+#RESTORE FILE
+!NC Check color settings read from file.
+!!!!!#RUN
+#ADV_CH_END
+!Preparing data for display.
+#DONE/RETURN
+!Please confirm quit from NC Check.
+#CONFIRM
+#MODE
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /saporro/shannon/16d/demo16mfg2
+#DRILL_CORE_FIXTURE.DRW
+#VIEWS
+#DISP MODE
+#TOOL PATH
+#SHOW PATHS
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+#NAME
+~ Select `sellist0` `Namelist` \
+1  `9`
+!Showing feature 35 (MILLING) in part CORE_WORK. 
+!Computing tool path for MILLING (NC Sequence #10). . .
+#VIEW
+!Indicate two locations to define a box for the zoom area.
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.145676 0.733389 L
+0.386262 0.506047 L
+!Indicate two locations to define a box for the zoom area.
+#EXIT
+!Do you really want to exit? [N]:
+YES
+@ confirm 1

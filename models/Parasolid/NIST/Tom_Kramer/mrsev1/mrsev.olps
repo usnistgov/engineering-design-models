@@ -1,0 +1,238 @@
+;                    SAMPLE MRSEV FILE
+
+; This is a sample file giving the three MRSEV's necessary to produce the
+; part "mrsev1".  The three MRSEV's are a hole, a rectangular pocket, and
+; an other pocket. They are clearly visible on the picture of the part.
+; The idea is that a machining process plan would refer to these MRSEV's.
+; The hole could be drilled.  The two pockets could be milled.
+
+; This file is formatted to be machine-readable and human-readable.
+; It is given in Common LISP property list format.  The names of all
+; attributes and the types of all values are given.
+
+; A properly formatted (hence unintelligible) STEP physical file giving
+; the same information has also been prepared.  It is mrsev1/mrsev.step.
+
+; Each of the three MRSEV's is defined by first defining the most elementary
+; entities and then combining them hierarchically to get to the MRSEV.
+
+
+(setf (symbol-plist 'mrsev1-mrsevs) '
+(header (header
+         file_identification (file_identification
+                 file_name "MRSEV1.MRSEV.STEP"
+                 date   "19890823000000"
+                 author (Tom Kramer "Room A-127, Bldg. 220"
+                         NIST   "Gaithersburg, MD 20899")
+                 organization (Factory Automation Systems Division
+                         NIST   "Gaithersburg, MD 20899")
+                 step_version "STEP Version 1.0"
+                 preprocessor_version "No preprocessor - handwritten"
+                 originating_system "AMRF VWS2 and Computervision CADDS")
+         file_description "This file describes three MRSEVs"
+         imp_level "1.0")
+ data   (data
+         1      (1
+                 type   cartesian_point
+                 local_coordinate_system nil
+                 x_coordinate 0.0
+                 y_coordinate 0.0
+                 z_coordinate nil)
+         2      (2
+                 type   cartesian_point
+                 local_coordinate_system nil
+                 x_coordinate 0.0
+                 y_coordinate 2.5
+                 z_coordinate nil)
+         3      (3
+                 type   cartesian_point
+                 local_coordinate_system nil
+                 x_coordinate 0.5
+                 y_coordinate 0.25
+                 z_coordinate 0.435)
+         4      (4
+                 type   cartesian_point
+                 local_coordinate_system nil
+                 x_coordinate 2.5
+                 y_coordinate 0.0
+                 z_coordinate nil)
+         5      (5
+                 type   cartesian_point
+                 local_coordinate_system nil
+                 x_coordinate 3.0
+                 y_coordinate 2.25
+                 z_coordinate 0.28522)
+         6      (6
+                 type   cartesian_point
+                 local_coordinate_system nil
+                 x_coordinate 5.0
+                 y_coordinate 1.5
+                 z_coordinate 0.535)
+         7      (7
+                 type   direction
+                 local_coordinate_system nil
+                 x      -0.70711
+                 y      0.70711
+                 z      nil)
+         8      (8
+                 type   direction
+                 local_coordinate_system nil
+                 x      0.0
+                 y      -1.0
+                 z      nil)
+         9      (9
+                 type   direction
+                 local_coordinate_system nil
+                 x      0.0
+                 y      0.0
+                 z      1.0)
+         10     (10
+                 type   direction
+                 local_coordinate_system nil
+                 x      1.0
+                 y      0.0
+                 z      0.0)
+         11     (11
+                 type   direction
+                 local_coordinate_system nil
+                 x      1.0
+                 y      0.0
+                 z      nil)
+         12     (12
+                 type   axis2_placement
+                 local_coordinate_system nil
+                 location (ref  3)
+                 axis   (ref    9)
+                 ref_direction (ref 10))
+         13     (13
+                 type   axis2_placement
+                 local_coordinate_system nil
+                 location (ref  5)
+                 axis   (ref    9)
+                 ref_direction (ref 10))
+         14     (14
+                 type   axis2_placement
+                 local_coordinate_system nil
+                 location (ref  6)
+                 axis   (ref    9)
+                 ref_direction (ref 10))
+         15     (15
+                 type   line
+                 local_coordinate_system nil
+                 pnt    (ref    1)
+                 dir    (ref    11))
+         16     (16
+                 type   line
+                 local_coordinate_system nil
+                 pnt    (ref    2)
+                 dir    (ref    8))
+         17     (17
+                 type   line
+                 local_coordinate_system nil
+                 pnt    (ref    4)
+                 dir    (ref    7))
+         18     (18
+                 type   trimmed_curve
+                 local_coordinate_system nil
+                 basis_curve (ref 15)
+                 parameter_1 nil
+                 parameter_2 nil
+                 point_1 (ref   1)
+                 point_2 (ref   4)
+                 sense  true)
+         19     (19
+                 type   trimmed_curve
+                 local_coordinate_system nil
+                 basis_curve (ref 16)
+                 parameter_1 nil
+                 parameter_2 nil
+                 point_1 (ref   2)
+                 point_2 (ref   1)
+                 sense  true)
+         20     (20
+                 type   trimmed_curve
+                 local_coordinate_system nil
+                 basis_curve (ref 17)
+                 parameter_1 nil
+                 parameter_2 nil
+                 point_1 (ref   4)
+                 point_2 (ref   2)
+                 sense  true)
+         21     (21
+                 type   implicit_edge_round
+                 round_dim 0.35)
+         22     (22
+                 type   implicit_edge_round
+                 round_dim 0.4)
+         23     (23
+                 type   linear_feature_sweep_path
+                 path_length 0.2)
+         24     (24
+                 type   linear_feature_sweep_path
+                 path_length 0.3)
+         25     (25
+                 type   axisymmetric_feature_sweep_conical_end
+                 blend  nil
+                 end_angle 118.0
+                 tip_blend nil)
+         26     (26
+                 type   profile_pair
+                 predecessor_curve (ref 18)
+                 successor_curve (ref 20)
+                 blend  (ref    21))
+         27     (27
+                 type   profile_pair
+                 predecessor_curve (ref 19)
+                 successor_curve (ref 18)
+                 blend  (ref    21))
+         28     (28
+                 type   profile_pair
+                 predecessor_curve (ref 20)
+                 successor_curve (ref 19)
+                 blend  (ref    21))
+         29     (29
+                 type   rectangular_feature_sweep_profile
+                 blend  (ref    22)
+                 sweep_length 1.5
+                 sweep_width 2.0)
+         30     (30
+                 type   closed_general_profile
+                 first_curve (ref 18)
+                 element_pairs ((ref 26)
+                         (ref 28) (ref  27)))
+         31     (31
+                 type   other_closed_feature_sweep_profile
+                 sweep_profile (ref 30))
+         32     (32
+                 type   hole
+                 location (ref  13)
+                 sweep_length 0.44978
+                 sweep_end (ref 25)
+                 sweep_size 0.25)
+         33     (33
+                 type   other_pocket
+                 location (ref  12)
+                 sweep_path (ref 24)
+                 sweep_profile (ref 31)
+                 wall_end_blend nil)
+         34     (34
+                 type   rectangular_pocket
+                 location (ref  14)
+                 sweep_path (ref 23)
+                 sweep_profile (ref 29)
+                 wall_end_blend nil)
+         35     (35
+                 type   material_removal_volume
+                 mrsev_name "OTHER_POCKET1"
+                 elementary_volumes ((ref 33))
+                 copy_maker nil)
+         36     (36
+                 type   material_removal_volume
+                 mrsev_name "RECTANGULAR_POCKET1"
+                 elementary_volumes ((ref 34))
+                 copy_maker nil)
+         37     (37
+                 type   material_removal_volume
+                 mrsev_name "HOLE1"
+                 elementary_volumes ((ref 32))
+                 copy_maker nil))))

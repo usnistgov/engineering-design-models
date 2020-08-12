@@ -1,0 +1,137 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'ANC101/MRSEVS2.STEP',
+   '19891025000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'no system');
+ FILE_DESCRIPTION('MRSEVs for second cut of anc101 - right side');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+
+ @1  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @2  = DIRECTION ( , 0.0, 1.0, 0.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+
+ @301  = CARTESIAN_POINT ( , 1.0, 0.75, -0.125);
+ @302  = LINEAR_FEATURE_SWEEP_PATH (0.125);
+ @303  = AXIS2_PLACEMENT ( , #301, #1, #3);
+ @304  = IMPLICIT_EDGE_ROUND (0.125);
+ @305  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#304, 1.0, 0.25);
+ @306  = RECTANGULAR_POCKET (#303, #302, #305, );
+ @307  = MATERIAL_REMOVAL_VOLUME ('LEFT_GROOVE', (#306), );
+/* finish cut groove on left */
+
+ @311  = CARTESIAN_POINT ( , 4.0, 0.75, -0.125);
+ @312  = LINEAR_FEATURE_SWEEP_PATH (0.125);
+ @313  = AXIS2_PLACEMENT ( , #311, #1, #3);
+ @314  = IMPLICIT_EDGE_ROUND (0.125);
+ @315  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#314, 1.0, 0.25);
+ @316  = RECTANGULAR_POCKET (#313, #312, #315, );
+ @317  = MATERIAL_REMOVAL_VOLUME ('RIGHT_GROOVE', (#316), );
+/* finish cut groove on right */
+
+ @321  = CARTESIAN_POINT ( , 2.5, 2.25, -1.75);
+ @322  = LINEAR_FEATURE_SWEEP_PATH (1.75);
+ @323  = AXIS2_PLACEMENT ( , #321, #1, #3);
+ @324  = IMPLICIT_EDGE_ROUND (0.5);
+ @325  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#324, 6.2, 1.5);
+ @326  = RECTANGULAR_POCKET (#323, #322, #325, );
+ @327  = MATERIAL_REMOVAL_VOLUME ('FINISH_BIG_POCKET', (#326), );
+/* finish cut big pocket */
+
+ @331  = CARTESIAN_POINT ( , 2.5, 2.25, -1.74);
+ @332  = LINEAR_FEATURE_SWEEP_PATH (1.74);
+ @333  = AXIS2_PLACEMENT ( , #331, #1, #3);
+ @334  = IMPLICIT_EDGE_ROUND (0.5);
+ @335  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#334, 6.2, 1.48);
+ @336  = RECTANGULAR_POCKET (#333, #332, #335, );
+ @337  = MATERIAL_REMOVAL_VOLUME ('ROUGH_BIG_POCKET', (#336), );
+/* rough cut big pocket */
+
+ @401  = CARTESIAN_POINT ( , 2.75, 0.25, );
+ @402  = CARTESIAN_POINT ( , 4.0,  0.25, );
+ @403  = CARTESIAN_POINT ( , 3.75, 1.25, );
+ @404  = CARTESIAN_POINT ( , 3.0,  1.25, );
+ @412  = DIRECTION ( , 0.24253562503633297, 0.9701425001453319, )
+ @413  = DIRECTION ( , 1.0, 0.0, );
+ @414  = DIRECTION ( , -0.24253562503633297, 0.9701425001453319, )
+ @415  = LINE ( , #401, #413);
+ @416  = LINE ( , #402, #414);
+ @417  = LINE ( , #403, #413);
+ @418  = LINE ( , #404, #412);
+ @425  = TRIMMED_CURVE ( , #415, , , #401, #402, .T.);
+ @426  = TRIMMED_CURVE ( , #416, , , #402, #403, .T.);
+ @427  = TRIMMED_CURVE ( , #417, , , #403, #404, .T.);
+ @428  = TRIMMED_CURVE ( , #418, , , #404, #401, .T.);
+ @437  = IMPLICIT_EDGE_ROUND (0.125);
+ @441  = PROFILE_PAIR (#425, #426, #437);
+ @442  = PROFILE_PAIR (#426, #427, #437);
+ @443  = PROFILE_PAIR (#427, #428, #437);
+ @444  = PROFILE_PAIR (#428, #425, #437);
+ @453  = CLOSED_GENERAL_PROFILE (#425, (#441, #442, #443, #444));
+ @454  = OTHER_CLOSED_FEATURE_SWEEP_PROFILE (#453);
+ @455  = CARTESIAN_POINT ( , 0.0, 0.0, -0.25);
+ @456  = AXIS2_PLACEMENT ( , #455, #1, #3);
+ @457  = LINEAR_FEATURE_SWEEP_PATH (0.25);
+ @458  = OTHER_POCKET (#456, #457, #454, );
+ @459  = MATERIAL_REMOVAL_VOLUME ('FINISH_RIGHT_POCKET', (#458), );
+/* finish cut contour pocket on right */
+
+ @465  = CARTESIAN_POINT ( , -1.75, 0.0, -0.25);
+ @466  = AXIS2_PLACEMENT ( , #465, #1, #3);
+ @467  = LINEAR_FEATURE_SWEEP_PATH (0.25);
+ @468  = OTHER_POCKET (#466, #467, #454, );
+ @469  = MATERIAL_REMOVAL_VOLUME ('FINISH_LEFT_POCKET', (#468), );
+/* finish cut contour pocket on left */
+
+ @501  = CARTESIAN_POINT ( , 2.76, 0.26, );
+ @502  = CARTESIAN_POINT ( , 3.99,  0.26, );
+ @503  = CARTESIAN_POINT ( , 3.74, 1.24, );
+ @504  = CARTESIAN_POINT ( , 3.01,  1.24, );
+ @512  = DIRECTION ( , 0.24253562503633297, 0.9701425001453319, )
+ @513  = DIRECTION ( , 1.0, 0.0, );
+ @514  = DIRECTION ( , -0.24253562503633297, 0.9701425001453319, )
+ @515  = LINE ( , #501, #513);
+ @516  = LINE ( , #502, #514);
+ @517  = LINE ( , #503, #513);
+ @518  = LINE ( , #504, #512);
+ @525  = TRIMMED_CURVE ( , #515, , , #501, #502, .T.);
+ @526  = TRIMMED_CURVE ( , #516, , , #502, #503, .T.);
+ @527  = TRIMMED_CURVE ( , #517, , , #503, #504, .T.);
+ @528  = TRIMMED_CURVE ( , #518, , , #504, #501, .T.);
+ @537  = IMPLICIT_EDGE_ROUND (0.26);
+ @541  = PROFILE_PAIR (#525, #526, #537);
+ @542  = PROFILE_PAIR (#526, #527, #537);
+ @543  = PROFILE_PAIR (#527, #528, #537);
+ @544  = PROFILE_PAIR (#528, #525, #537);
+ @553  = CLOSED_GENERAL_PROFILE (#525, (#541, #542, #543, #544));
+ @554  = OTHER_CLOSED_FEATURE_SWEEP_PROFILE (#553);
+ @555  = CARTESIAN_POINT ( , 0.0, 0.0, -0.24);
+ @556  = AXIS2_PLACEMENT ( , #555, #1, #3);
+ @557  = LINEAR_FEATURE_SWEEP_PATH (0.24);
+ @558  = OTHER_POCKET (#556, #557, #554, );
+ @559  = MATERIAL_REMOVAL_VOLUME ('ROUGH_RIGHT_POCKET', (#558), );
+/* rough cut contour pocket on right */
+
+ @565  = CARTESIAN_POINT ( , -1.75, 0.0, -0.24);
+ @566  = AXIS2_PLACEMENT ( , #565, #1, #3);
+ @567  = LINEAR_FEATURE_SWEEP_PATH (0.24);
+ @568  = OTHER_POCKET (#566, #567, #554, );
+ @569  = MATERIAL_REMOVAL_VOLUME ('ROUGH_LEFT_POCKET', (#568), );
+/* rough cut contour pocket on left */
+
+ENDSEC;
+
+ENDSTEP;

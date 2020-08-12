@@ -1,0 +1,34 @@
+Steve -
+
+There is a shortcoming in release 3 of Parasolid where the surface created
+by blending a circular edge between a cone and a plane is a blend surface
+rather than a torus. I am curious whether this has been fixed in Release
+4.0.
+
+If you start up KID and run the following, the surface type of the
+surface which makes the blend will be printed out.
+
+If you have a minute to run it, I would be curious to know what you get.
+Thanks.
+
+Tom K
+
+(modeller start)
+(define cone1 p_cone)
+(cone1 point '(0 0 0); direction '(0 0 1); lrad 2; urad 0; height 3; create)
+(define block1 p_block)
+(block1 point '(0 0 -1); direction '(0 0 1); x 5; y 5; z 1; create)
+(block1 unite 'cone1)
+(define e2 edge)
+(e2 pick_from 'block1)
+(e2 pick_using '(e2 clash '(2 0 0)))
+(define f2 p_fillet)
+(f2 r1 0.5)
+(f2 apply 'e2)
+(block1 blend_fix)
+(define face1 face)
+(face1 pick_from 'block1) 
+(face1 pick_using '(not (eq (face1 enquire 'type) 'planar)))
+(face1 pick_using '(not (eq (face1 enquire 'type) 'conical)))
+(face1 enquire)
+

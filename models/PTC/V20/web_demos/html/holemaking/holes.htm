@@ -1,0 +1,368 @@
+<HTML>
+<HEAD>
+   
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   
+<META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (Win95; I) [Netscape]">
+   
+<TITLE>PTC - "Generating NC Programs
+for Drilling</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 
+HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+//  This function shows the use of model retrieve, named view, play path, and NC Check  //
+
+
+
+quit_wind();
+
+retrieve_model('holes1.mfg','models/holemaking/');
+set_display('hiddenvis');
+
+function rotate_45()
+
+{
+
+        
+
+        ViewSet('cast_mill.asm', 'mill_flats');
+
+	Play_Path('1','TOP_VOLUME','OP_TOP_VOL','10');
+
+        NC_Check('1x1','B45FACE.ncl');
+
+}
+
+
+
+// This function shows the syntax to play a menu sequence //
+
+function not_optimized()
+
+{
+
+no_1="#MACHINING;#OPTIMIZE;#RULES/ORDER;#ORDER SEQS;#YES;#DONE/RETURN;"
+
+no_2="~ Activate `main_dlg_cur` `ProCmdViewRepaint.view`"
+
+no_3="#DONE/RETURN;#PLAY PATH;#DONE CL;"
+
+ret = document.wm.pwlMacroLoad(no_1);
+
+ret = document.wm.pwlMacroLoad(no_2);
+
+
+// Provide a hint as to what to talk about //
+msg = "\nWith no optimization,  the toolpath will be";
+
+msg = msg + "\noutput in the order that it was programmed.";
+
+msg = msg + "\nEach part will be completed before moving on to the next.\n";
+
+if (confirm(msg)) {
+    }
+
+
+ret = document.wm.pwlMacroLoad(no_3);
+}
+
+
+
+
+function holeset()
+{	
+
+	quit_wind();
+
+	retrieve_model('holes1.mfg','models/holemaking/');
+
+	set_display('wireframe');
+
+	ViewSet('holes1.asm', 'iso1');
+
+	set_display('hiddenvis');
+
+	macroa= "#MACHINING;#NC SEQUENCE;#2: SKETCH, Operation: OP010;#SEQ SETUP;"
+
+	macrob=" #HOLES;#DONE;#Hole Set #1;~ Select `holeset` `Main_Tab`1  `Surfaces`;"
+
+	macro1= "~ Select `holeset` `Surface_List`1  `0 Surf:F10(PROTRUSION)`;"
+
+	macro2= "~ Select `holeset` `Surface_List`1  `1 Surf:F15(CUT)`;"
+
+	macro3= "~ Select `holeset` `Main_Tab`1  `Diameters`;"
+
+	macro4= "~ Activate `holeset` `Diameter_Add`;"
+
+	macro5= "~ Select `drill_diam` `Diam_List`1  `0.500000`;"
+
+	macro6=	"~ Activate `drill_diam` `Diam_OK`;~ Activate `holeset` `OK`;#SHOW;"
+
+	macro7= "#Hole Set #1;#DONE/RETURN;#QUIT SEQ;#CONFIRM;"
+
+	ret = document.wm.pwlMacroLoad(macroa);
+
+	ret = document.wm.pwlMacroLoad(macrob);
+
+	ret = document.wm.pwlMacroLoad(macro1);
+
+	ret = document.wm.pwlMacroLoad(macro2);
+
+	ret = document.wm.pwlMacroLoad(macro3);
+
+	ret = document.wm.pwlMacroLoad(macro4);
+
+	ret = document.wm.pwlMacroLoad(macro5);
+
+	ret = document.wm.pwlMacroLoad(macro6);
+
+	ret = document.wm.pwlMacroLoad(macro7);
+}
+
+// Plays mapkeys for web drilling.
+
+function webseq()
+
+{
+
+	ViewSet('holes1.asm', 'WEB_INITIAL');
+
+	set_display('hiddenvis'); 
+
+	// Play_Path_CL('1','WEB','OP010','1');	
+
+	web1= "#DONE/RETURN;#MACHINING;#NC SEQUENCE;#1: WEB, Operation: OP010;#PLAY PATH;#TIME INCREMENT;#ENTER;2;DONE; "
+
+	web2= "#DONE;#QUIT SEQ;#CONFIRM; "
+
+	ret = document.wm.pwlMacroLoad(web1);
+
+	ret = document.wm.pwlMacroLoad(web2);
+}	
+
+</SCRIPT>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B><FONT SIZE=+2>Generating NC Programs
+for Drilling</FONT></B></CENTER>
+
+<FORM NAME="ui">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+<BR>&nbsp;
+
+<br><FONT SIZE=+0>
+
+Pro/MFG provides an extended set of functionality
+
+specifically for generating programs for drilling.&nbsp; The manufacturing
+
+functionality leverages the information defined in the solid model that
+
+describes hole-type features.</FONT>
+<BR><BR>
+<IMG SRC="holemaking.jpg" width=280>
+<BR>
+
+<BR>
+
+<FONT SIZE=+0>
+
+Pro/MFG enables the selection of holes to be
+
+drilled by picking up the hole features in the design model. Holes can
+
+be selected depending on their <B>size</B>, <B>location</B>, or by pre-defined
+
+<B>groups</B>. In this case we have selected six (6) holes by diameter
+
+and the surface on which they are to be drilled.</FONT>
+<BR>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<br>
+
+
+Notice how the holes are drilled in a particular order. This order
+
+is controlled by the <B>scan type</B> parameter or it can be set up by picking
+
+the holes in the order to be machined.  We can also explicitly define the path that the drill will take between the holes by sketching the trajectory.</FONT>
+</FONT>
+
+<FONT SIZE=+0></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT SIZE=+0>&nbsp;
+
+<INPUT type=button value="Show Example Drilling Path" 
+onclick="ViewSet('holes1', 'sketch');
+
+	set_display('hiddenvis');
+
+	ViewSet('holes1.asm', 'ISO1'); 
+
+	Play_Path('3','SKETCH','OP010','2');
+	View_Repaint()">
+
+
+
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<P>
+
+<FONT SIZE=+0>
+
+The hole <B>depth can be controlled automatically.</B>&nbsp;
+
+In this case you can see how these holes have different starting surfaces
+
+and depths, this is all recognized&nbsp; automatically. The depth can also
+
+be controlled by the drill <B>point </B>or <B>shoulder.&nbsp;</B></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT SIZE=+0>&nbsp;
+<INPUT type=button value="Show Drilling Path Depth" 
+onclick="set_display('hiddenvis'); 
+
+	ViewSet('holes1.asm', 'DEPTH'); 
+
+	Play_Path('3','SKETCH','OP010','1')">
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br><br>
+</B>
+
+<FONT SIZE=+0>
+
+For
+the four (4) <B>counter-bored holes </B>in this component there are three
+
+different drilling cycles utilized. 
+<br>
+1)  Pre-Drill
+<br>
+2)  Drill
+<br>
+3)  Counter Bore
+<br>
+It is only necessary to identify these
+
+four holes once and then have the system create the inner dia as a through
+
+hole then drill to depth using the tool tip to calculate depth for the
+
+socket diameter and then use a facing sequence to generate the flat at
+
+depth that is required.</FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT SIZE=+0>&nbsp;
+
+<INPUT type=button value="Show Socket Tool Path" 
+onclick="set_display('wireframe');
+
+	ViewSet('holes1.asm', 'CENTER'); 
+
+	set_display('hiddenvis');
+
+	Play_Path('5','CENTER','OP010','1');
+
+	Play_Path('6','BORE','OP010','1');
+
+	ViewSet('holes1.asm', 'SOCKET_DEPTH');
+
+	Play_Path('7','Holemaking','OP010','1');
+
+	ViewSet('holes1.ASM', 'CENTER')">
+
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+<FONT SIZE=+0><br>
+On this component there are some additional holes to be drilled 
+through
+
+multiple webs. We can utilize the <B>web drilling</B> functionality to
+
+generate a drilling sequence that will <B>drill at feed where there is
+
+material </B>to be removed, and <B>rapid between the web spacing</B>.</FONT>
+<BR>
+
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT SIZE=+0>&nbsp;
+
+<INPUT type=button value="Show Web Drilling" 
+onclick="webseq()">
+
+<br>
+<IMG SRC="../template/images/divider.gif"><br><br>
+
+Finally it is very easy to recognize the geometry of the chamfers to
+
+setup the countersinking sequence.
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT SIZE=+0>&nbsp;
+
+<INPUT type=button value="Show Countersink" 
+onclick="ViewSet('holes1.asm', 'COUNTER'); 
+
+	NC_Check('1x1','holes_counter.ncl')">
+
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- 
+followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) 
+-->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button 
+(optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG 
+SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" 
+OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 
+HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return 
+true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A><FONT SIZE=+0></FONT></CENTER>
+
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

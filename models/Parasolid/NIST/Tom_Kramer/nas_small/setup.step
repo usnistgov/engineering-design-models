@@ -1,0 +1,48 @@
+/* This is a setup file under a simple application protocol for setup files.
+The protocol will be that there will be 18 entities, all with the exact
+format and meaning shown below. Only the values of attributes for points
+and directions may change. */
+
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'CLEVIS2/SETUP1.STEP',
+   '19910117000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'AMRF VWS2 and Computervision CADDS');
+ FILE_DESCRIPTION('This file describes the setup for plan 1 for clevis2') ;
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1  = CARTESIAN_POINT ( , 0.0, 0.0, 0.0);
+@2  = DIRECTION ( , 0.0, 0.0, 1.0);
+@3  = DIRECTION ( , 1.0, 0.0, 0.0);
+@4  = AXIS2_PLACEMENT ( , #1, #2, #3);  /* design location */
+@5  = CARTESIAN_POINT ( , 0.0, 0.0, 0.0);
+@6  = DIRECTION ( , 0.0, 0.0, 1.0);
+@7  = DIRECTION ( , 1.0, 0.0, 0.0);
+@8  = AXIS2_PLACEMENT ( , #5, #6, #7); /* workpiece location */
+@9  = CARTESIAN_POINT ( , 0.0, 0.0, 0.0);
+@10 = DIRECTION ( , 0.0, 0.0, 1.0);
+@11 = DIRECTION ( , 1.0, 0.0, 0.0);
+@12 = AXIS2_PLACEMENT ( , #9, #10, #11); /* mrsev location */
+@13 = CARTESIAN_POINT ( , 0.0, 0.0, 0.0);
+@14 = DIRECTION ( , 0.0, 0.0, 1.0);
+@15 = DIRECTION ( , 1.0, 0.0, 0.0);
+@16 = AXIS2_PLACEMENT ( , #13, #14, #15); /* fixture location */
+@17 = CARTESIAN_POINT ( , 0.0, 0.0, 0.0); /* box lower left front */
+@18 = CARTESIAN_POINT ( , 4.0, 4.0, 2.0); /* box upper right back */
+
+ENDSEC;
+
+ENDSTEP;

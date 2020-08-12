@@ -1,0 +1,19 @@
+; LOAD PROCESS PLAN
+(load "../parts/mrsev1/plan.olps")
+
+; LOAD BLOCK BREP
+(step-to-plist "../parts/block-6.25-2.975-0.735/brep-design.step-comp" 'junk)
+(link-data (fetch 'junk 'data))
+(put-data 'workpieces 'block1 (fetch 'junk 'data))
+
+; LOAD DESIGN BREP
+(step-to-plist "../parts/mrsev1/brep-design.step-comp" 'junk)
+(link-data (fetch 'junk 'data))
+(put-data 'designs 'mrsev1-design (fetch 'junk 'data))
+
+; LOAD MRSEVS
+(step-to-plist "../parts/mrsev1/mrsev.step" 'junk)
+(link-data (fetch 'junk 'data))
+(put-data 'mrsevs 'mrsev1-mrsevs (fetch 'junk 'data))
+
+(setf (symbol-plist 'junk) nil)

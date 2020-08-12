@@ -1,0 +1,202 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>PTC - "MACHINING IGES DATA"</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+
+
+quit_wind();
+
+retrieve_model('box_iges.prt','models/iges/');
+
+
+function m1() 
+
+{
+
+	quit_wind();
+	retrieve_model('box_iges.mfg','models/iges/');
+	ViewSet('box_iges.asm','GAP');
+}
+
+
+function m3() 
+{
+
+	ViewSet('box_iges.asm','iso1');
+	NC_Check('1x1','semi_finish_iges_surfs.ncl');
+
+}
+
+
+
+function m4() 
+{
+
+	NC_Check('1x1','finish_iges_surfs.ncl');
+
+}
+
+
+
+</SCRIPT>
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B><FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>
+
+Machining
+of IGES Data</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR><IMG SRC="../template/images/divider.gif" >
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+In todays manufacturing environment,
+it is not uncommon for comapnies to utilize many different CAD/CAM tools.
+
+IGES data is a common translation format from a design company to a manufacturing
+
+job shop. In order to be competitive, a CAM system must be able to import
+
+and machine IGES data to address the needs of the manufacturing community.</FONT></FONT>
+
+<BR>
+
+<// ************************************ IMPORTING  *********************************//>
+<BR>
+
+<IMG SRC="images/iges_in.gif" >
+<BR><A NAME="import"></A>
+<B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080">
+<FONT SIZE=+1>Importing
+of IGES surfaces</FONT></FONT></FONT></B><br>
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+The first step in machining
+an iges file is importing the data into Pro/ENGINEER. Pro/ENGINEER not
+
+only provides excellent&nbsp; import capablities, which adhere to the lastest
+
+standards, but functionality to tweak and fix&nbsp; imported geometry.&nbsp;
+
+Once the geometry is imported into Pro/ENGINEER, toolpaths can be applied directly on the unrepaired 
+IGES or the user can easily repair the IGES or convert it into a fully evaluated solid model.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+<INPUT type=button value="Import Example" onclick="m1()"></FONT></FONT>
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+
+<// ************************************  ROUGHING  *********************************//>
+<BR>
+
+<IMG SRC="images/mach_surf.gif" width=300>
+<BR><A NAME="rough"></A>
+<BR><B><FONT FACE="arial,Helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Rough
+Machining of IGES surfaces</FONT></FONT></FONT></B>
+
+<br>
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+The iges part is embedded in a solid block giving us the advantage of
+
+using NC Check with imported geometry. We pick the surfaces we want to machine
+
+directly off the iges model.  Our first toolpath will
+
+semi-finish machine the entire top of the part.  The surfaces to
+
+be machinined are selected and stock allowance added from the parameter
+
+file. The semi-finishing passes are automatically calculated based on the size of the stock, step
+
+over,stock allowance and the surfaces picked to be machined.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+<INPUT type=button value="Semi-Finish Machine IGES Surfaces" onclick="m3()"></FONT></FONT>
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<// ************************************  Finishing ****************************************//>
+
+<A NAME="finish"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Finish
+Machining of IGES surfaces</FONT></FONT></FONT></B>
+
+<br><FONT FACE="arial,Helvetica">
+
+<FONT SIZE=+0>
+
+The next toolpath finish
+machines the iges surfaces using a ball endmill.&nbsp; Pro/MFG
+
+allows you to have all the surfaces selected during the
+
+roughing sequence carried over to the finish tool. There is no need to
+
+re-select surfaces. By using a new tool and a few new parameter settings a finish toolpath can be quickly
+
+and easily generated.</FONT></FONT>
+<BR>
+
+
+<IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+<INPUT type=button value="Finish Machine IGES Surfaces" onclick="m4()"></FONT></FONT>
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM><!-- START OF MENUBAR -->
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) --><!-- followed by the -->
+<!-- the link for the main index goes below --><!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: --><!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

@@ -1,0 +1,267 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; IRIX64 6.2 IP28) [Netscape]">
+
+   <TITLE>PTC - "LIVE TOOLING ON LATHES"</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+// retrieve_model_session('fem_375.asm','models/live_tool/');
+
+
+
+quit_wind();
+
+retrieve_model('hub.mfg','models/live_tool/');
+
+set_display('shade')
+
+ViewSet('hub.asm', 'slot');
+
+function slot_cut()
+
+{
+
+	ViewSet('hub.asm', 'slot');	
+	Play_Path('1','KEYWAY','OP010','.05');
+
+	View_Repaint();
+}
+
+
+
+function text_radial_cut()
+
+{
+
+	ViewSet('hub.asm', 'slot');
+
+	Play_Path('4','PARAMETRIC','OP010','.05');
+
+	View_Repaint();
+}
+
+
+function text_face_cut()
+
+{
+
+	ViewSet('hub.asm', 'TEXT');
+
+	Play_Path('2','part_number','OP010','.05');
+
+	View_Repaint();
+}
+
+
+function drill_ang()
+
+{
+
+	ViewSet('hub.asm', 'hole1');
+
+	Play_Path('3','multi_axis_hole_drilling','OP010','.05');
+
+	View_Repaint();
+}
+
+// This function shows the syntax to play a menu sequence //
+
+
+function not_optimized()
+
+{
+
+
+no_1="#MACHINING;#OPTIMIZE;#RULES/ORDER;#ORDER SEQS;#YES;#DONE/RETURN;"
+
+no_2="~ Activate `main_dlg_cur` `ProCmdViewRepaint.view`"
+
+no_3="#DONE/RETURN;#PLAY PATH;#DONE CL;"
+
+ret = document.wm.pwlMacroLoad(no_1);
+
+ret = document.wm.pwlMacroLoad(no_2);
+
+
+// Provide a hint as to what to talk about //
+
+msg = "\nPro/NC_TURNING allows Programming live milling spindles ";
+
+msg = msg + "\non a Mill/Turn Center with up to 5 axis of motion";
+
+msg = msg + "\nTwo examples show milling as OD slot Parallel to Zaxis\n";
+
+if (confirm(msg)) {
+    }
+
+
+ret = document.wm.pwlMacroLoad(no_3);
+}
+
+</SCRIPT>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B><FONT COLOR="#000080"><FONT SIZE=+3>
+Pro/MFG - Lathe Live Tooling</FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+
+<P>Many modern lathes are equipped with milling spindles which gives greater
+
+flexiblity in programming parts completely on one piece of equipment.
+
+<br>
+<IMG SRC="../template/images/divider.gif" >
+
+
+
+<P>Pro/MFG provides powerful tools for programming lathes
+
+with live tooling. The definition of which head will be milling/drilling,
+
+orientaion, and approach/exit all are controllable within Pro/MFG.
+
+<br>
+<IMG SRC="../template/images/divider.gif" >
+
+
+
+<P>Pro/MFG supports this equipment with up to 5-axis milling control.
+
+OD/Face slots, holes, or text can be programmed and simulated directly.<BR>
+
+
+<UL>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#slot">Slot milling on a lathe</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#mfg">Milling Text</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#nc">Lathe Multi-Axis Hole Drilling</A></UL>
+
+
+
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<// ************************************  slot milling *********************************//>
+<A NAME="slot"></A>
+<BR><B><FONT COLOR="#000080">
+<FONT SIZE=+1>Milling slots on a Lathe</FONT></FONT></B>
+<br>
+
+<IMG SRC="images/slot.gif" width=285><FONT SIZE=+0></FONT><BR>
+
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT SIZE=+0>&nbsp;</FONT>
+<INPUT type=button value="Slot Milling Example" onclick="slot_cut()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<// ************************************  TEXT ****************************************//>
+
+<A NAME="mfg"></A>
+<BR><B><FONT COLOR="#000080">
+<FONT SIZE=+1>Milling Text</FONT></FONT></B><FONT SIZE=+0></FONT>
+
+<br>
+<FONT SIZE=+0>
+Often text characters such as part numbers, labels or
+
+revisions must be engraved on a part while it is on the machine. Pro/MFG
+
+provides this by choosing the whole text directly. It is cut automatically
+
+in one shot. With this powerful functionality, it is no longer necessary
+
+to program letter by letter.</FONT>
+
+<P>
+
+<IMG SRC="images/text.gif" width=285><FONT SIZE=+0></FONT><BR>
+
+
+
+<IMG SRC="../template/images/bullet.gif" ><FONT SIZE=+0>&nbsp;</FONT>
+<INPUT type=button value="Milling Text - Radial Example" onclick="text_radial_cut()">
+<BR>
+<IMG SRC="../template/images/bullet.gif" ><FONT SIZE=+0>&nbsp;</FONT>
+<INPUT type=button value="Milling Text - Face Example" onclick="text_face_cut()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<// ************************************  Multi Axis Hole Drilling *****************************//>
+<A NAME="nc"></A>
+<BR><B><FONT COLOR="#000080">
+<FONT SIZE=+1>Multi Axis Hole Drilling</FONT></FONT></B>
+<FONT SIZE=+0></FONT>
+<BR>
+<FONT SIZE=+0>
+Holes in lathe parts can provide unique challenges to
+
+programming a mill/turn center. Pro/MFG gives multi-axis tool control
+
+for programming holes on shafts or castings.</FONT>
+
+<P>
+<IMG SRC="images/multi_axis.gif" width=285><FONT SIZE=+0></FONT>
+
+<br>
+<FONT SIZE=+0></FONT>
+
+<IMG SRC="../template/images/bullet.gif" ><FONT SIZE=+0>&nbsp;</FONT>
+<INPUT type=button value="Multi-Axis Lathe Hole Drilling Example" onclick="drill_ang()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: --><!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A><FONT SIZE=+0></FONT></CENTER>
+
+<!-- END OF MENUBAR -->
+
+</BODY>
+
+</HTML>

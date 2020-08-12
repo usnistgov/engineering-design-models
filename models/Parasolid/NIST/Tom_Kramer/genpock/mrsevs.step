@@ -1,0 +1,173 @@
+/* This file describes a MRSEV which is a pocket with two islands */
+
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'GENPOCK/MRSEVS2.STEP',
+   '19891206000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'AMRF VWS2 and Computervision CADDS');
+ FILE_DESCRIPTION('This file describes a pocket MRSEV with two islands');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = CARTESIAN_POINT ( , 0.0, 0.0, -0.3);
+ @2  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @5  = AXIS2_PLACEMENT ( , #1, #2, #3);
+
+ @31 = DIRECTION ( , 0.9997737300570649, -0.02127178149057585, );
+ @32 = DIRECTION ( , -0.19611613513818418, 0.9805806756909201, );
+ @33 = DIRECTION ( , 1.0, 0.0, );
+ @34 = DIRECTION ( , 0.0, 1.0, );
+ @35 = DIRECTION ( , -0.9984603532054125, 0.05547001962252285, );
+ @36 = DIRECTION ( , 0.9899494936611664, 0.1414213562373096, );
+ @37 = DIRECTION ( , 0.21693045781865639, 0.9761870601839527, );
+ @38 = DIRECTION ( , 1.0, 0.0, );
+ @39 = DIRECTION ( , 0.11043152607484617, -0.993883734673619, );
+ @40 = DIRECTION ( , 0.9363291775690445, 0.3511234415883916, );
+ @41 = DIRECTION ( , -0.6401843996644796, -0.7682212795973761, );
+ @42 = DIRECTION ( , -0.8682431421244592, 0.49613893835683387, );
+ @43 = DIRECTION ( , -0.447213595499958, 0.894427190999916, );
+ @44 = DIRECTION ( , 1.0, 0.0, );
+ @45 = DIRECTION ( , -0.03701166050988027, -0.9993148337667672, );
+
+ @51  = CARTESIAN_POINT ( , 0.1, 0.2, );
+ @52  = CARTESIAN_POINT ( , 4.8, 0.1, );
+ @53  = CARTESIAN_POINT ( , 4.6, 1.1, );
+ @54  = CARTESIAN_POINT ( , 6.1, 1.1, );
+ @55  = CARTESIAN_POINT ( , 6.1, 1.8, );
+ @56  = CARTESIAN_POINT ( , 4.3, 1.9, );
+ @57  = CARTESIAN_POINT ( , 5.0, 2.0, );
+ @58  = CARTESIAN_POINT ( , 5.2, 2.9, );
+ @59  = CARTESIAN_POINT ( , 3.2, 2.9, );
+ @60  = CARTESIAN_POINT ( , 3.3, 2.0, );
+ @61  = CARTESIAN_POINT ( , 4.1, 2.3, );
+ @62  = CARTESIAN_POINT ( , 3.6, 1.7, );
+ @63  = CARTESIAN_POINT ( , 2.9, 2.1, );
+ @64  = CARTESIAN_POINT ( , 2.5, 2.9, );
+ @65  = CARTESIAN_POINT ( , 0.2, 2.9, );
+
+ 
+ @71  = LINE ( , #51, #31);
+ @72  = LINE ( , #52, #32);
+ @73  = LINE ( , #53, #33);
+ @74  = LINE ( , #54, #34);
+ @75  = LINE ( , #55, #35);
+ @76  = LINE ( , #56, #36);
+ @77  = LINE ( , #57, #37);
+ @78  = LINE ( , #58, #38);
+ @79  = LINE ( , #59, #39);
+ @80  = LINE ( , #60, #40);
+ @81  = LINE ( , #61, #41);
+ @82  = LINE ( , #62, #42);
+ @83  = LINE ( , #63, #43);
+ @84  = LINE ( , #64, #44);
+ @85  = LINE ( , #65, #45);
+
+ @101 = TRIMMED_CURVE ( , #71, , , #51, #52, .T.);
+ @102 = TRIMMED_CURVE ( , #72, , , #52, #53, .T.);
+ @103 = TRIMMED_CURVE ( , #73, , , #53, #54, .T.);
+ @104 = TRIMMED_CURVE ( , #74, , , #54, #55, .T.);
+ @105 = TRIMMED_CURVE ( , #75, , , #55, #56, .T.);
+ @106 = TRIMMED_CURVE ( , #76, , , #56, #57, .T.);
+ @107 = TRIMMED_CURVE ( , #77, , , #57, #58, .T.);
+ @108 = TRIMMED_CURVE ( , #78, , , #58, #59, .T.);
+ @109 = TRIMMED_CURVE ( , #79, , , #59, #60, .T.);
+ @110 = TRIMMED_CURVE ( , #80, , , #60, #61, .T.);
+ @111 = TRIMMED_CURVE ( , #81, , , #61, #62, .T.);
+ @112 = TRIMMED_CURVE ( , #82, , , #62, #63, .T.);
+ @113 = TRIMMED_CURVE ( , #83, , , #63, #64, .T.);
+ @114 = TRIMMED_CURVE ( , #84, , , #64, #65, .T.);
+ @115 = TRIMMED_CURVE ( , #85, , , #65, #51, .T.);
+
+ @121 = IMPLICIT_EDGE_ROUND (0.7);
+ @122 = IMPLICIT_EDGE_ROUND (0.4);
+
+ @124 = IMPLICIT_EDGE_ROUND (0.32);
+ @125 = IMPLICIT_EDGE_ROUND (0.32);
+ @126 = IMPLICIT_EDGE_ROUND (0.04);
+ @127 = IMPLICIT_EDGE_ROUND (0.35);
+ @128 = IMPLICIT_EDGE_ROUND (0.4);
+ @129 = IMPLICIT_EDGE_ROUND (0.35);
+ @130 = IMPLICIT_EDGE_ROUND (0.35);
+ @131 = IMPLICIT_EDGE_ROUND (0.03);
+ @132 = IMPLICIT_EDGE_ROUND (0.3);
+ @133 = IMPLICIT_EDGE_ROUND (1.0);
+ @134 = IMPLICIT_EDGE_ROUND (0.8);
+ @135 = IMPLICIT_EDGE_ROUND (1.0);
+
+ @151 = PROFILE_PAIR (#115, #101, #121);
+ @152 = PROFILE_PAIR (#101, #102, #122);
+ @153 = PROFILE_PAIR (#102, #103, );
+ @154 = PROFILE_PAIR (#103, #104, #124);
+ @155 = PROFILE_PAIR (#104, #105, #125);
+ @156 = PROFILE_PAIR (#105, #106, #126);
+ @157 = PROFILE_PAIR (#106, #107, #127);
+ @158 = PROFILE_PAIR (#107, #108, #128);
+ @159 = PROFILE_PAIR (#108, #109, #129);
+ @160 = PROFILE_PAIR (#109, #110, #130);
+ @161 = PROFILE_PAIR (#110, #111, #131);
+ @162 = PROFILE_PAIR (#111, #112, #132);
+ @163 = PROFILE_PAIR (#112, #113, #133);
+ @164 = PROFILE_PAIR (#113, #114, #134);
+ @165 = PROFILE_PAIR (#114, #115, #135);
+
+ @171 = CLOSED_GENERAL_PROFILE (#115, 
+         (#151, #152, #153, #154, #155, #156, #157, #158, #159, #160
+          #161, #162, #163, #164, #165));
+ @172 = OTHER_CLOSED_FEATURE_SWEEP_PROFILE (#171);
+
+ @321 = CARTESIAN_POINT (.T. , 1.5, 1.6, 0.0);
+ @322 = LINEAR_FEATURE_SWEEP_PATH (0.3);
+ @323 = AXIS2_PLACEMENT ( , #321, #2, #3);
+ @324 = IMPLICIT_EDGE_ROUND (0.25);
+ @325 = RECTANGULAR_FEATURE_SWEEP_PROFILE (#324, 0.5, 0.5);
+ @326 = RECTANGULAR_MESA_ISLAND (#323, #322, #325, );
+/* circular island */
+
+ @401 = DIRECTION ( , 1.0, 0.0, );
+ @402 = DIRECTION ( , -0.8479983040050879, 0.52999894000318, );
+ @403 = DIRECTION ( , -0.7071067811865475, -0.7071067811865475, );
+
+ @411 = CARTESIAN_POINT ( , 2.5, 0.8, );
+ @412 = CARTESIAN_POINT ( , 3.8, 0.8, );
+ @413 = CARTESIAN_POINT ( , 3.0, 1.3, );
+
+ @421 = LINE ( , #411, #401);
+ @422 = LINE ( , #412, #402);
+ @423 = LINE ( , #413, #403);
+
+ @431 = TRIMMED_CURVE ( , #421, , , #411, #412, .T.);
+ @432 = TRIMMED_CURVE ( , #422, , , #412, #413, .T.);
+ @433 = TRIMMED_CURVE ( , #423, , , #413, #411, .T.);
+
+ @441 = PROFILE_PAIR (#433, #431, );
+ @442 = PROFILE_PAIR (#431, #432, );
+ @443 = PROFILE_PAIR (#432, #433, );
+
+ @451 = CLOSED_GENERAL_PROFILE (#433, (#441, #442, #443));
+ @452 = OTHER_CLOSED_FEATURE_SWEEP_PROFILE (#451);
+ @453 = CARTESIAN_POINT (.T. , 0.0, 0.0, 0.0);
+ @454 = AXIS2_PLACEMENT ( , #453, #2, #3);
+ @455 = LINEAR_FEATURE_SWEEP_PATH (0.3);
+ @456 = OTHER_MESA_ISLAND (#454, #455, #452, );
+/* triangular island */
+
+ @501 = LINEAR_FEATURE_SWEEP_PATH (0.3);
+ @502 = OTHER_POCKET_WITH_ISLANDS (#5, #501, #172, , (#326, #456));
+ @503 = MATERIAL_REMOVAL_VOLUME ('OTHER_POCKET1', (#502), );
+
+ENDSEC;
+
+ENDSTEP;

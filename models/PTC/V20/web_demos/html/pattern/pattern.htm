@@ -1,0 +1,322 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>PTC - "Pattern Toolpath Creation"</TITLE>
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+
+quit_wind();
+
+retrieve_model('sw_mill_tooth_cone.mfg','models/pattern/');
+
+set_display('hiddenvis');
+
+ViewSet('sw_mill_tooth_cone.asm','row1_mill');
+
+function single_roughing() 
+
+{
+
+	layer_blank('sw_mill_tooth_cone.asm','ref');
+	NC_Check('1x1','pattern_orig_op20.ncl');
+
+	
+}
+
+
+
+function patterned_roughing()
+{
+	NC_Check('1x1','pattern_new_op20.ncl');
+
+}
+
+function retrieve_tombstone()
+{
+	quit_wind();
+
+	retrieve_model('tombstone.mfg','models/pattern/');
+
+	set_display('hiddeninvis');
+
+	ViewSet('tombstone.asm','ISO1');
+
+}	
+
+function single_finishing() 
+{
+
+	layer_blank('tombstone.asm','ref');
+	NC_Check('1x1','pattern_old_tomb.ncl');
+
+}
+
+
+
+function pattern_finishing() 
+{
+
+	NC_Check('1x1','pattern_new_tomb.ncl');
+
+}
+
+
+
+function holemaking() 
+{
+
+	quit_wind();
+
+	retrieve_model('sub_cavity.mfg','models/pattern/');
+
+	ViewSet('sub_cavity.asm','cavity');
+
+	NC_Check('1x1','pattern_old_cavity.ncl');
+
+}
+
+
+
+function holemakingp() 
+{
+
+	quit_wind();
+
+	retrieve_model('sub_cavity.mfg','models/pattern/');
+
+	ViewSet('sub_cavity.asm','cavity');
+
+	NC_Check('1x1','pattern_new_cavity.ncl');
+
+}
+
+
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>
+<!-- title goes here --><B>
+<FONT COLOR="#000080">
+<FONT SIZE=+3>
+Subroutine
+Programming
+</FONT></FONT></B>&nbsp;
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" HEIGHT=10 WIDTH=280>
+<BR>
+<IMG SRC="./images/pattern_sub.gif" width=285>
+<P>
+<IMG SRC="./images/pattern.gif" width=285>
+
+<P><B>
+
+Subroutine programming</B> is used to <B>reduce overall output size</B>
+
+of a CL Data file and to reduce programming time for <B>multi-part setups</B>.
+
+Some typical applications for subroutine programming are:
+<UL>
+<LI>
+
+<B>Multiple copies </B>of a part on a tombstone fixture..</LI>
+
+<LI>
+
+<B>Repeating features</B> - In gear and turbine manufacturing, features
+
+such as teeth or blades are repeated going around the part.</LI>
+
+<LI>
+
+Conventional milling when <B>more than one part</B> is fixtured on the
+
+machine bed.</LI>
+</UL>
+Traditional programming techniques have used <B>subroutines </B>or <B>macros</B>,
+
+such that the tool path is defined once and then the program simply calls
+
+up the macro and repeats it over and over with the appropriate offsets
+
+defined. Pro/MFG is able to quickly and simply create subroutines. Subroutine
+
+functionality also includes the <B>minimization of tool changes</B>. Alternatively,
+
+the programmer can specify to complete a series of sequences first, completing
+
+a finished part prior to moving on to the next part.
+
+
+<P>Of course, the origin of <FONT COLOR="#000000"><B>subroutines</B> </FONT>lies
+
+in the NC Programmer wanting to <B>reduce the lines of code</B> necessary
+
+to be input on the controller. With the widespread implementation of DNC
+
+systems and increased controller memory capacity, program length is no
+
+longer a major concern for many programmers. Similarly, many low end controllers
+
+do not have subroutine capabilities. For these situations, Pro/MFG
+
+allows the programmer to simply replicate particular sequences, and the
+
+system automatically duplicates the code in other locations to complete
+
+the machining of the parts.
+
+<br>
+<BR>
+
+<// ************************************  ROUGH AND PROFILE  *********************************//>
+<A NAME="rough"></A>
+<BR>
+<IMG SRC="./images/mill_cone_sub.gif" width=285>
+<P>
+<IMG SRC="./images/mill_cone.gif" width=285>
+<BR><B>
+<FONT COLOR="#000080">
+<FONT SIZE=+1>
+Pattern of Rough and Finish
+Sequence (Rotation)
+</FONT></FONT></B>
+<BR>
+
+In this first example, a rough and finish operation is developed to
+
+mill out the area between the teeth of a drilling cone. Two sequences are
+
+created, one for the roughing tool , one for the finishing tool, and the
+
+resulting tool path is displayed. Then a subroutine is created, patterning
+
+the sequences around the part.<br>
+
+
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Original Tool Path" onclick="single_roughing()">
+
+<BR>
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Rotational Pattern Example" onclick="patterned_roughing()">
+
+<BR>
+<IMG SRC="../template/images/divider.gif" HEIGHT=10 WIDTH=280>
+<BR>
+
+<// ************************************  CONTOURING ****************************************//>
+<A NAME="mfg"></A>
+<BR>
+<IMG SRC="./images/tomb_sub.gif" width=285>
+<P>
+<IMG SRC="./images/tomb.gif" width=285>
+
+<P><B>
+<FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Pattern of Finishing Sequence
+(Translation)</FONT></FONT></B>
+
+<BR>Our second example shows a finish surfacing tool path over a casting
+
+die for a hand tool manufacturer. Here, the dies are installed 6 at a time
+
+on the side of a tombstone, yet as described above, only one part is programmed.
+
+The other dies simply duplicate the tool paths using subroutines.<br>
+
+
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Retrieve Tombstone" onclick="retrieve_tombstone()">
+
+<BR>
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Show Single Tool Path" onclick="single_finishing()">
+
+<BR>
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Translation Pattern Example" onclick="pattern_finishing()">
+
+<BR>
+<IMG SRC="../template/images/divider.gif" HEIGHT=10 WIDTH=280>
+<BR>
+
+<// ************************************  TOOLPATH OPTIMIZATION *****************************//>
+<A NAME="nc"></A>
+<BR><IMG SRC="./images/pat_cavity.gif" width=285>
+
+<P><B>
+<FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Pattern of Holemaking Sequence
+(Reference Design Pattern)</FONT></FONT></B>
+
+<BR>In this example, a simple cavity die has 4 mounting holes. The programmer
+
+wants to drill out the holes and then use a flat end mill to cut the spot
+
+face geometry. He programs the milling sequence on one hole, and then simply
+
+selects the pattern option. Pro/MFG can detect any patterns created
+
+during part design, and will automatically pattern machining sequences
+accordingly<br>
+
+
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Holemaking Single CounterBore" onclick="holemaking()"><br>
+
+
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Holemaking Pattern CounterBore" onclick="holemakingp()">
+<BR>
+<IMG SRC="../template/images/divider.gif" HEIGHT=10 WIDTH=280>
+<CENTER>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+<!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the --><!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: --><!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<!-- END OF MENUBAR -->
+</CENTER>
+
+
+</BODY>
+
+</HTML>

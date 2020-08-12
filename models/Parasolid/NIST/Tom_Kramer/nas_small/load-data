@@ -1,0 +1,18 @@
+; LOAD PROCESS PLAN IN STEP FORMAT
+(put-data 'pplans 'nas_plan
+    (step-to-plist "../../parts/nas_small/plan.step" '(olps-plan1)))
+
+; LOAD MRSEVS
+(put-data 'mrsevs 'nas_mrsevs
+  (fetch (step-to-plist "../../parts/nas_small/mrsevs.step"  '(mrsevs)) 'data))
+
+; LOAD SETUP
+(step-to-plist "../../parts/nas_small/setup.step" 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'nas_setup (fetch 'step-in 'data))
+
+(setf (symbol-plist 'step-in) nil)
+
+(put-user 'write-program 'options 'graphics '(on (off)))
+
+(put-user 'write-program 'options 'plan-sequencing '((auto) manual))

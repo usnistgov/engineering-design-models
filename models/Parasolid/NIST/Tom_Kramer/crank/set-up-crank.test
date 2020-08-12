@@ -1,0 +1,25 @@
+(load "../parts/mrsev1/plan.olps")
+(step-to-plist "../parts/vise/brep-design.step-comp" 'vise-design)
+(link-data (fetch 'vise-design 'data))
+(step-to-plist "../parts/block/brep-design.step-comp" 'block)
+(putlink 'block 'data (make-block-brep
+       (fetch 'block 'data)
+      '(center x_coordinate 3.25 y_coordinate 1.5 z_coordinate 0)
+       6.5 3.0 1.5))
+
+(step-to-plist "../parts/rectpock/brep-design.step-comp" 'junk)
+(put-mrsev 'rectangular_pocket 'model-brep (fetch 'junk 'data))
+(setf (symbol-plist 'junk) nil)
+
+(step-to-plist "../parts/holeflat/brep-design.step-comp" 'junk)
+(put-mrsev 'hole 'model-brep 'flat (fetch 'junk 'data))
+(setf (symbol-plist 'junk) nil)
+
+(step-to-plist "../parts/holeconical/brep-design.step-comp" 'junk)
+(put-mrsev 'hole 'model-brep 'conical (fetch 'junk 'data))
+(setf (symbol-plist 'junk) nil)
+
+(step-to-plist "../parts/crank/brep-design.step-comp" 'mrsev1-design)
+(link-data (fetch 'mrsev1-design 'data))
+(step-to-plist "../parts/mrsev1/mrsev.step" 'mrsev1-mrsevs)
+(link-data (fetch 'mrsev1-mrsevs 'data))

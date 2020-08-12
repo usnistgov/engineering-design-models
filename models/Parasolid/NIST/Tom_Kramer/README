@@ -1,0 +1,43 @@
+This directory contains files associated with specific parts.
+
+Each part is in a subdirectory.
+
+Within a subdirectory the file names consist of a prefix which identifies
+what kind of file it is and a suffix which identifies the format.
+
+If there are different versions of the same thing, the version number
+is inserted immediately after the prefix.
+
+Meanings are as follows:
+
+Prefix (what kind of file)
+--------------------------
+brep-design       = design in boundary representation format
+brep-fixture      = fixture in boundary representation format
+brep-workpiece    = workpiece in boundary representation format
+mvsev             = a set of material removal shape element volumes
+features-design   = design in features format
+
+
+Suffix (what format)
+-------------------------
+amrf              = amrf format (usually for a brep-design)
+olps              = common-lisp readable format used by OLPS
+step              = PDES/STEP physical file format
+step-comp         = PDES/STEP physical file format following compression
+                       by substituting references for embedded entities,
+                       deleting duplicate entities, etc.
+step-long         = PDES/STEP physical file format following expansion
+                       by substituting embedded entities for all references
+vws               = franz-lisp readable format used by VWS2 system
+
+
+
+
+Examples
+-------
+1. In the mrsev1 directory, "brep-design.step" is a boundary representation
+design file in PDES/STEP format.
+
+2. In the pipe directory, "brep-workpiece.olps" is a boundary representation
+file describing a workpiece in the common-lisp readable format used by OLPS.

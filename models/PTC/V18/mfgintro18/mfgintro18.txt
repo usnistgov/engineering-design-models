@@ -1,0 +1,2738 @@
+!trail file version No. 991
+!Pro/ENGINEER  TM  Version H-01-21  (c) 1988-96 by Parametric Technology Corporation  All Rights Reserved.
+!-------------------------------------------------------------------------------
+!
+! TITLE: Pro/MFG Intorduction Demo for Release 18.0
+!
+! DATE: Dec-16-1996
+!
+! SUBMITTED BY: Scott Morris
+!
+! VERSION: H-01-20
+!
+! FILENAME: mfgintro18.txt
+!
+! ADDITIONAL TRAIL FILES (IN ORDER):
+!
+! setup18.txt
+!
+! FILETYPE: BASIC
+!
+! TEST CATEGORY: NEWDEMOS
+!
+! MODULE: MFG
+!
+! KEYWORD: 4XTURN : AREA : CLDATA : CONT : CONV : SIM
+!
+! LENGTH (IN LINES): 2590
+!
+! APPROXIMATE RUN TIME: 2 minutes on sun4_solaris
+!
+! REPLACES TEST:
+!
+! OBJECTS REQUIRED FOR THIS TEST:
+!
+!  a242_1_25.xpr
+!  cl_files/cutline.ncl
+!  cl_files/change.ncl
+!  cl_files/intro.ncl
+!  color.map
+!  commercial.shd
+!  config.pro
+!  core_work.prt
+!  csize.frm
+!  drill.asm
+!  drill_core_fixture.drw
+!  drill_shaft.asm
+!  drill_shaft.prt
+!  drill_shaft_bak.prt
+!  fixture/base.prt
+!  fixture/hmj6.xpr
+!  fixture/hmj.prt
+!  fixture/hmj.ptd
+!  fixture/hch.prt
+!  fixture/sub_jaws.asm
+!  fixture/htj.prt
+!  fixture/htj.ptd
+!  fixture/hch.ptd
+!  fixture/hch6.xpr
+!  fixture/hch8.xpr
+!  fixture/fixture.idx
+!  fixture/hmj8.xpr
+!  fixture/vise.prt
+!  gear.prt
+!  groups/face.gph
+!  groups/cut_off.gph
+!  groups/traj_mill.gph
+!  home.shd
+!  housing.prt
+!  housing_core.prt
+!  housing_core_mfg.asm
+!  housing_core_mfg.mfg
+!  housing_core_mfg.tph
+!  housing_mirror.prt
+!  housing_mold.asm
+!  housing_mold.mfg
+!  housing_mold_ref.prt
+!  mfgintro18.idx
+!  nc_check.col
+!  params/d_key_area.mil
+!  params/d_conv.mil
+!  params/d_cutline.mil
+!  params/d_drill.drl
+!  params/d_profile.mil
+!  params/d_roughv.mil
+!  params/d_traj.mil
+!  params/d_volflat.mil
+!  params/face.trn
+!  params/faceh2.trn
+!  params/rough.trn
+!  shaft.asm
+!  shaft.mfg
+!  shaft_sleeve.prt
+!  stock.prt
+!  tools/0_06in_bem.tpm
+!  tools/0_125in_em.tpm
+!  tools/0_125in_rem.tpm
+!  tools/0_1875in_bem.tpm
+!  tools/0_1in_bem.tpm
+!  tools/0_21in_dr.tpm
+!  tools/0_25in_em.tpm
+!  tools/0_25in_rem.tpm
+!  tools/0_2in_bem.tpm
+!  tools/0_375in_bem.tpm
+!  tools/0_375in_em.tpm
+!  tools/0_5in_bem.tpm
+!  tools/0_5in_em.tpm
+!  tools/0_5in_rem.tpm
+!  tools/0_75in_rem.tpm
+!  tools/10_0ball.tpm
+!  tools/15_0_em.tpm
+!  tools/1_fem.tpm
+!  tools/ccfnl_16.prt
+!  tools/cclnl_16.prt
+!  tools/cdjnl_16.prt
+!  tools/ctgpl_16.prt
+!  tools/cut_off.tpm
+!  tools/cvjnl_16.prt
+!  tools/drill_1_4.tpm
+!  tools/0_1875_ball_cutter.prt
+!  wp.prt
+!
+! OBJECTS FROM OTHER TESTS REQUIRED FOR THIS TEST:
+!
+!  None
+!
+! QCR'S REQUIRED FOR THIS TEST:
+!
+!  None
+!
+! TEST DESCRIPTION:
+!
+!  This trail file runs though the picks used in the Pro/MFG Introduction
+!  marketing demo.  This includes the following:
+!  
+!   o retrieval of all models
+!   o nc check display
+!   o volume milling nc sequence creation
+!   o trajectory milling nc sequence creation
+!   o 3 axis conventional milling nc sequence creation
+!   o 3 axis cutline milling nc sequence creation
+!   o milling drawing display
+!   o retrieval of turning model
+!   o turning model drawing creation
+!   o outside area turning nc sequence creation
+!   o material removal creation
+!   o display of tool path on drawing
+!   o MUDF placement of a face turning nc sequence
+!   o pro-program change of design model
+!   o change propagation throughout all models
+!
+! MODIFICATIONS:
+!
+! 30-dec-96 H-01-21 sm  $$1 Updated sel by menu picks
+!-------------------------------------------------------------------------------
+!Select a menu item.
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING.PRT
+!12-Dec-96 14:31:57  Start /disk1/users/user/demo/mfgintro17/housing.prt.1
+!12-Dec-96 14:32:07  End   /disk1/users/user/demo/mfgintro17/housing.prt.1
+#QUIT WINDOW
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#DRILL.ASM
+!12-Dec-96 14:32:15  Start /disk1/users/user/demo/mfgintro17/drill.asm.1
+!12-Dec-96 14:32:16  Start /disk1/users/user/demo/mfgintro17/drill_shaft.prt
+!12-Dec-96 14:32:17  End   /disk1/users/user/demo/mfgintro17/drill_shaft.prt
+!12-Dec-96 14:32:17  Start /disk1/users/user/demo/mfgintro17/gear.prt
+!12-Dec-96 14:32:20  End   /disk1/users/user/demo/mfgintro17/gear.prt
+!12-Dec-96 14:32:20  Start /disk1/users/user/demo/mfgintro17/shaft_sleeve.prt
+!12-Dec-96 14:32:23  End   /disk1/users/user/demo/mfgintro17/shaft_sleeve.prt
+!12-Dec-96 14:32:24  Start /disk1/users/user/demo/mfgintro17/housing_mirror.prt
+!12-Dec-96 14:32:25  End   /disk1/users/user/demo/mfgintro17/housing_mirror.prt
+!12-Dec-96 14:32:30  End   /disk1/users/user/demo/mfgintro17/drill.asm.1
+#QUIT WINDOW
+#MOLD
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING_MOLD.MFG
+!12-Dec-96 14:32:43  Start /disk1/users/user/demo/mfgintro17/housing_mold.mfg.1
+!12-Dec-96 14:32:45  Start /disk1/users/user/demo/mfgintro17/housing_mold_ref.prt
+!12-Dec-96 14:32:47  End   /disk1/users/user/demo/mfgintro17/housing_mold_ref.prt
+!12-Dec-96 14:32:47  Start /disk1/users/user/demo/mfgintro17/wp.prt
+!12-Dec-96 14:32:48  End   /disk1/users/user/demo/mfgintro17/wp.prt
+!12-Dec-96 14:32:48  Start /disk1/users/user/demo/mfgintro17/housing_core.prt
+!12-Dec-96 14:32:49  End   /disk1/users/user/demo/mfgintro17/housing_core.prt
+!12-Dec-96 14:33:32  End   /disk1/users/user/demo/mfgintro17/housing_mold.mfg.1
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING_CORE_MFG.MFG
+!12-Dec-96 14:33:38  Start /disk1/users/user/demo/mfgintro17/housing_core_mfg.mfg.1
+!12-Dec-96 14:33:39  Start /disk1/users/user/demo/mfgintro17/core_work.prt
+!12-Dec-96 14:33:42  End   /disk1/users/user/demo/mfgintro17/core_work.prt
+!12-Dec-96 14:33:42  Start /disk1/users/user/demo/mfgintro17/vise.prt
+!12-Dec-96 14:33:42  End   /disk1/users/user/demo/mfgintro17/vise.prt
+!12-Dec-96 14:33:42  Start /disk1/users/user/demo/mfgintro17/base.prt
+!12-Dec-96 14:33:47  End   /disk1/users/user/demo/mfgintro17/base.prt
+!12-Dec-96 14:33:47  End   /disk1/users/user/demo/mfgintro17/housing_core_mfg.mfg.1
+#QUIT WINDOW
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#DRILL_CORE_FIXTURE.DRW
+!12-Dec-96 14:33:54  Start /disk1/users/user/demo/mfgintro17/drill_core_fixture.drw.1
+!12-Dec-96 14:33:57  Start /disk1/users/user/demo/mfgintro17/csize.frm
+!12-Dec-96 14:33:59  End   /disk1/users/user/demo/mfgintro17/csize.frm
+!12-Dec-96 14:33:59  End   /disk1/users/user/demo/mfgintro17/drill_core_fixture.drw.1
+#QUIT WINDOW
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#/TOOLS
+!Directory searched is: /disk1/users/user/demo/mfgintro17/tools
+#CDJNL_16.PRT
+!12-Dec-96 14:34:06  Start /disk1/users/user/demo/mfgintro17/tools/cdjnl_16.prt.1
+!12-Dec-96 14:34:07  End   /disk1/users/user/demo/mfgintro17/tools/cdjnl_16.prt.1
+!Choose 'Generic' to retrieve CDJNL_16.PRT or specify its instance.
+#CDJNL16_4DX
+!Restoring instance CDJNL16_4DX of cdjnl_16 ...
+!12-Dec-96 14:34:09  Start /disk1/users/user/demo/mfgintro17/PRT0001
+!12-Dec-96 14:34:10  End   /disk1/users/user/demo/mfgintro17/PRT0001
+!Regenerating CDJNL16_4DX feature 19 out of 23 ...
+!Regenerating CDJNL16_4DX feature 20 out of 23 ...
+!Regenerating CDJNL16_4DX feature 21 out of 23 ...
+!Regenerating CDJNL16_4DX feature 22 out of 23 ...
+!Regenerating CDJNL16_4DX feature 23 out of 23 ...
+!Regeneration completed successfully.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model CDJNL16_4DX ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+#DONE-RETURN
+#QUIT WINDOW
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#/TOOLS
+!Directory searched is: /disk1/users/user/demo/mfgintro17/tools
+#CCLNL_16.PRT
+!12-Dec-96 14:34:17  Start /disk1/users/user/demo/mfgintro17/tools/cclnl_16.prt.1
+!12-Dec-96 14:34:17  End   /disk1/users/user/demo/mfgintro17/tools/cclnl_16.prt.1
+!Choose 'Generic' to retrieve CCLNL_16.PRT or specify its instance.
+#CCLNL16_4DX
+!Restoring instance CCLNL16_4DX of cclnl_16 ...
+!12-Dec-96 14:34:19  Start /disk1/users/user/demo/mfgintro17/PRT0001
+!12-Dec-96 14:34:20  End   /disk1/users/user/demo/mfgintro17/PRT0001
+!Regenerating CCLNL16_4DX feature 19 out of 23 ...
+!Regenerating CCLNL16_4DX feature 20 out of 23 ...
+!Regenerating CCLNL16_4DX feature 21 out of 23 ...
+!Regenerating CCLNL16_4DX feature 22 out of 23 ...
+!Regenerating CCLNL16_4DX feature 23 out of 23 ...
+!Regeneration completed successfully.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model CCLNL16_4DX ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+#DONE-RETURN
+#QUIT WINDOW
+#DRAWING
+#CREATE
+!Enter Drawing name [shaft]: 
+shaft
+@ ok
+!Select drawing size.
+#RETR FORMAT
+!Enter Format name  [CSIZE]: 
+csize
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#SHAFT.MFG
+!12-Dec-96 14:34:29  Start /disk1/users/user/demo/mfgintro17/shaft.mfg.1
+!12-Dec-96 14:34:29  Start /disk1/users/user/demo/mfgintro17/stock.prt
+!12-Dec-96 14:34:29  End   /disk1/users/user/demo/mfgintro17/stock.prt
+!12-Dec-96 14:34:29  Start /disk1/users/user/demo/mfgintro17/fixture/hch.prt
+!12-Dec-96 14:34:30  End   /disk1/users/user/demo/mfgintro17/fixture/hch.prt
+!12-Dec-96 14:34:30  Start /disk1/users/user/demo/mfgintro17/fixture/hmj.prt
+!12-Dec-96 14:34:31  End   /disk1/users/user/demo/mfgintro17/fixture/hmj.prt
+!12-Dec-96 14:34:31  Start /disk1/users/user/demo/mfgintro17/A242_1_25<STOCK>.prt
+!12-Dec-96 14:34:32  Start /disk1/users/user/demo/mfgintro17/PRT0001
+!12-Dec-96 14:34:32  End   /disk1/users/user/demo/mfgintro17/PRT0001
+!12-Dec-96 14:34:32  End   /disk1/users/user/demo/mfgintro17/A242_1_25<STOCK>.prt
+!12-Dec-96 14:34:32  Start /disk1/users/user/demo/mfgintro17/fixture/HCH8<HCH>.prt
+!12-Dec-96 14:34:33  End   /disk1/users/user/demo/mfgintro17/fixture/HCH8<HCH>.prt
+!12-Dec-96 14:34:33  Start /disk1/users/user/demo/mfgintro17/fixture/HMJ8<HMJ>.prt
+!12-Dec-96 14:34:34  End   /disk1/users/user/demo/mfgintro17/fixture/HMJ8<HMJ>.prt
+!12-Dec-96 14:34:34  Start /disk1/users/user/demo/mfgintro17/fixture/HCH6<HCH>.prt
+!12-Dec-96 14:34:35  End   /disk1/users/user/demo/mfgintro17/fixture/HCH6<HCH>.prt
+!12-Dec-96 14:34:35  Start /disk1/users/user/demo/mfgintro17/fixture/HMJ6<HMJ>.prt
+!12-Dec-96 14:34:36  End   /disk1/users/user/demo/mfgintro17/fixture/HMJ6<HMJ>.prt
+!Regenerating A242_1_25 feature 4 out of 7 ...
+!Regenerating A242_1_25 feature 5 out of 7 ...
+!Regenerating A242_1_25 feature 6 out of 7 ...
+!Regenerating A242_1_25 feature 7 out of 7 ...
+!Regeneration completed successfully.
+!12-Dec-96 14:34:40  End   /disk1/users/user/demo/mfgintro17/shaft.mfg.1
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING_CORE_MFG.MFG
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.159106 0.652214 L
+0.890794 0.101929 L
+!Indicate two locations to define a box for the zoom area.
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model HOUSING_CORE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model VISE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model BASE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model HOUSING_CORE_MFG ...
+#DONE-RETURN
+#VIEW
+#LAYER DISP
+#WORK
+#DONE-RETURN
+!Warning: You must use Save Status to save layer display changes.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model HOUSING_CORE_MFG ...
+!Processing model HOUSING_CORE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model CORE_WORK ...
+!15% has been completed.
+!30% has been completed.
+!50% has been completed.
+!65% has been completed.
+!80% has been completed.
+!100% has been completed.
+!Processing model VISE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model BASE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+#DONE-RETURN
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#MODE
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING.PRT
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model HOUSING ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+#DONE-RETURN
+#MODE
+#MOLD
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING_MOLD.MFG
+#VIEW
+#LAYER DISP
+#VOLUMES
+#WORK
+#SURFS
+#DONE-RETURN
+!Warning: You must use Save Status to save layer display changes.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model HOUSING_MOLD ...
+!Processing model HOUSING_MOLD_REF ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model HOUSING_CORE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+#DONE-RETURN
+#CHANGEWINDOW
+!Select on a window to activate it.
+0.155053 0.794093 L
+#Change_Window 0 <Mfg: HOUSING_CORE_MFG>
+!Processing model HOUSING_CORE_MFG ...
+!Processing model CORE_WORK ...
+!15% has been completed.
+!30% has been completed.
+!50% has been completed.
+!65% has been completed.
+!80% has been completed.
+!100% has been completed.
+!Processing model VISE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model BASE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.521753 0.641847 3 1 1
+0.521753 0.541558 L
+#Change_Window 3 <Mfg: HOUSING_MOLD>
+#QUIT WINDOW
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.908936 0.608270 2 1 1
+0.908936 0.513228 L
+#Change_Window 2 <Part: HOUSING>
+#QUIT WINDOW
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.960876 0.976312 0 1 1
+0.960876 0.823763 L
+#Change_Window 0 <Mfg: HOUSING_CORE_MFG>
+#CL DATA
+!Select Operation or NC Sequence.
+#NC CHECK
+#COLOR
+#RESTORE FILE
+!NC Check color settings read from file.
+#RUN
+#INTRO
+!Preparing data for display.
+#DONE/RETURN
+!Please confirm quit from NC Check.
+#CONFIRM
+#DONE/RETURN
+#MFG SETUP
+#FIXTURE
+#ACTIVATE
+#VISE
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MACHINING
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#APPR WALLS
+#START
+#END
+#WINDOW
+#DONE
+!Select or specify tool.
+#0_75IN_REM
+#DONE SEL
+#RETRIEVE
+#D_ROUGHV
+!/disk1/users/user/demo/mfgintro17/params/D_ROUGHV.mil.1 has been read.
+#DONE
+#CREATE WIND
+!Enter name for the machine window [-Quit-] :
+rough_all
+!Specify machine window.
+#SKETCH
+#GEOM TOOLS
+#OFFSET EDGE
+!Select edge to offset
+#SEL LOOP
+!Select an entity to specify an entity loop, or a surface to specify a contour.
+** 0.521753 0.935740 0 2 2
+0.521753 0.789530 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.491062 0.774851 0 1 1
+0.491062 0.653780 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.551264 0.883975 0 4 4
+0.551264 0.745854 M
+!Enter offset in the direction of the arrow [QUIT]: 
+-.375
+!Entities have been created.
+!Select an entity to specify an entity loop, or a surface to specify a contour.
+#REGENERATE
+!Section regenerated successfully.
+#DONE
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `preview`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `okay`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!CURVE has been created successfully.
+!Select sides of window to be used for tool approach.
+** 0.760201 0.730081 0 1 1
+0.760201 0.616006 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+** 0.737773 0.835009 0 1 1
+0.737773 0.704539 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+** 0.280944 0.720288 0 1 1
+0.280944 0.607743 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+** 0.585497 0.261404 0 1 1
+0.585497 0.220560 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+!Showing CURVE in feature 37 (CURVE) in part CORE_WORK.
+#DONE
+!Create or select a datum point for the tool's original location.
+** 0.187689 0.325760 0 1 1
+0.187689 0.274860 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+@ sel2d 0 TEXT_DTM_PNT 2 #33
+0 4
+!Showing POINT in feature 7 in model CORE_WORK. 
+!Create or select a datum point for the tool's final location.
+** 0.186509 0.325760 0 1 1
+0.186509 0.274860 L
+@ sel view 0
+ 61.066596 -20.224359 -16.049063 0.000000 41.212911 -51.934788
+ 25.818542 47.835108 37.959604 502.169106 215.771270 -285.929407 1.000000 0.000000
+@ sel2d 0 TEXT_DTM_PNT 2 #33
+0 4
+!Showing POINT in feature 7 in model CORE_WORK. 
+#view
+#orientation
+#default
+#done-return
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #12). . .
+!Creating slices ...
+!Approximately 10% done ...
+!Approximately 20% done ...
+!Approximately 31% done ...
+!Approximately 41% done ...
+!Approximately 52% done ...
+!Approximately 62% done ...
+!Approximately 72% done ...
+!Approximately 83% done ...
+!Approximately 93% done ...
+!Approximately 100% done ...
+!Creating tool path for each slice ...
+!Processing slice 1 out of 5 slices ...
+!Processing slice 2 out of 5 slices ...
+!Processing slice 3 out of 5 slices ...
+!Processing slice 4 out of 5 slices ...
+!Processing slice 5 out of 5 slices ...
+!Tool path computation done.
+!Tool Path display completed.
+#DONE SEQ
+!Regenerating CORE_WORK feature 38 out of 38 ...
+!Regeneration completed successfully.
+#VIEW
+#NAMES
+#RETRIEVE
+#CHUCK_KEY
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#MILL SURFACE
+#UNBLANK
+!Select SURFACE.
+~ Select `sel_str_odd` `Namelist` \
+1  `1`
+~ Activate `sel_str_odd` `Ok`
+#DONE/RETURN
+#DONE/RETURN
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#TRAJECTORY
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#DONE
+!Select or specify tool.
+#0_375IN_EM
+#DONE SEL
+#RETRIEVE
+#D_TRAJ
+!/disk1/users/user/demo/mfgintro17/params/D_TRAJ.mil.1 has been read.
+#DONE
+!Select reference type to drive tool along for interactive cut.
+#EDGE
+#DONE
+#START HEIGHT
+#DONE
+!Select edges to form trajectory.
+#BNDRY CHAIN
+!Select a quilt.
+** 0.708262 0.475457 0 2 2
+0.510102 0.283654 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.368296 0.457269 0 1 1
+0.371469 0.277397 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing quilt created by feature 15 (surface CHUCK_KEY_SURF).  Confirm selection.
+** 0.368296 0.457269 0 2 2
+0.371469 0.277397 R
+** 0.407251 0.444678 0 4 4
+0.387354 0.273064 M
+!Select chain option from the menu.
+#FROM-TO
+!Select 'from' vertex/curve end.
+** 0.285666 0.380322 0 1 1
+0.337773 0.250921 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing end of edge in feature 15, model CORE_WORK. 
+!Select 'to' vertex/curve end.
+** 0.430859 0.342548 0 1 1
+0.396981 0.237925 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing end of edge in feature 15, model CORE_WORK. 
+!Specify part of the loop to keep.
+#ACCEPT
+#DONE
+!Select direction of trajectory.
+#FLIP
+#OKAY
+!Pick direction for tool offset.
+#LEFT
+#DONE
+!Specify the start height of the tool path.
+!Please specify a plane or depth where machining will begin.
+** 0.298651 0.388717 0 2 2
+0.343068 0.253810 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.140472 0.476856 0 1 1
+0.278565 0.284136 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 2.452274 0.000000
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.226644 0.474058 0 4 4
+0.313705 0.283173 M
+#SHOW
+#DONE/RETURN
+!Computing tool path for MILLING (NC Sequence #13, Cut Motion #1) ...
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.066104 0.685312 0 1 1
+0.248239 0.355859 L
+** 0.772006 0.166270 0 1 1
+0.536095 0.177273 L
+!Indicate two locations to define a box for the zoom area.
+#DONE-RETURN
+#ENDS
+#START
+#SPECIFY
+#DONE
+!Adjust chain end using mouse (BUTTONS: L=Finish, M=Abort, R=Pause/Continue).
+** 0.472175 0.211039 0 1 1
+0.384158 0.196383 L
+!Select dimension type for this end.
+#EXT LENGTH
+!Enter extension length [0.7472]:
+.5
+#END
+#SPECIFY
+#DONE
+!Computing tool path for MILLING (NC Sequence #13, Cut Motion #1) ...
+!Adjust chain end using mouse (BUTTONS: L=Finish, M=Abort, R=Pause/Continue).
+** 0.308094 0.301976 0 1 1
+0.336926 0.218470 L
+!Select dimension type for this end.
+#EXT LENGTH
+!Enter extension length [0.5906]:
+.5
+#DONE/RETURN
+!Computing tool path for MILLING (NC Sequence #13, Cut Motion #1) ...
+#PLAY CUT
+!Tool Path display completed.
+#DONE CUT
+!AUTO PLUNGE #1 and FOLLOW CUT #1 were added to the tool path.
+!Regenerating CORE_WORK feature 41 out of 41 ...
+!Regeneration completed successfully.
+#TOOL MOTION
+#RETRACT
+~ Activate `retract` `okay`
+#DONE SEQ
+!Regenerating CORE_WORK feature 39 out of 41 ...
+!Regenerating CORE_WORK feature 40 out of 41 ...
+!Regenerating CORE_WORK feature 41 out of 41 ...
+!Regeneration completed successfully.
+#MFG SETUP
+#MFG GEOMETRY
+#MILL SURFACE
+#UNBLANK
+!Select SURFACE.
+~ Select `sel_str_odd` `Namelist` \
+1  `1`
+~ Activate `sel_str_odd` `Ok`
+#DONE/RETURN
+#DONE/RETURN
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#CONVENTL SRF
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#CHECK SURFS
+#DONE
+!Select or specify tool.
+#0_1875_BALL_CUTTER
+#DONE SEL
+#RETRIEVE
+#D_KEY_AREA
+!/disk1/users/user/demo/mfgintro17/params/D_KEY_AREA.mil.1 has been read.
+#DONE
+#MILL SURFACE
+#DONE
+#SELECT SRF
+!Select SURFACE.
+~ Select `sellist0` `Namelist` \
+1  `2`
+!Showing quilt created by feature 19 (surface CHUCK_KEY_BOTTOM). 
+!Arrow indicates side of surface to be machined. Pick FLIP or OKAY.
+#OKAY
+!Select surfaces belonging to CHUCK_KEY_BOTTOM.
+#SELECT ALL
+#SHOW
+#DONE/RETURN
+!Select surfaces on reference part to check gouging against.
+** 0.450927 0.436284 0 2 2
+0.378041 0.251091 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.448566 0.454471 0 1 1
+0.377362 0.255508 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 3.473962 0.000000
+!Showing quilt created by feature 19 (surface CHUCK_KEY_BOTTOM).  Confirm selection.
+** 0.449746 0.454471 0 2 2
+0.377702 0.255508 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.537099 0.423693 0 4 4
+0.402846 0.248032 M
+#DONE/RETURN
+#DONE/RETURN
+#PLAY PATH
+#DONE CL
+!Computing tool path for MILLING (NC Sequence #14). . .
+!Displaying tip cut motions. Approximately 6% done ...
+!Displaying tip cut motions. Approximately 13% done ...
+!Displaying tip cut motions. Approximately 20% done ...
+!Displaying tip cut motions. Approximately 26% done ...
+!Displaying tip cut motions. Approximately 33% done ...
+!Displaying tip cut motions. Approximately 40% done ...
+!Displaying tip cut motions. Approximately 46% done ...
+!Displaying tip cut motions. Approximately 53% done ...
+!Displaying tip cut motions. Approximately 60% done ...
+!Displaying tip cut motions. Approximately 66% done ...
+!Displaying tip cut motions. Approximately 73% done ...
+!Displaying tip cut motions. Approximately 80% done ...
+!Displaying tip cut motions. Approximately 86% done ...
+!Displaying tip cut motions. Approximately 93% done ...
+!Approximately 9% done ...
+!Approximately 18% done ...
+!Approximately 27% done ...
+!Approximately 36% done ...
+!Approximately 45% done ...
+!Approximately 54% done ...
+!Approximately 63% done ...
+!Approximately 72% done ...
+!Approximately 81% done ...
+!Approximately 90% done ...
+!Approximately 100% done ...
+!12-Dec-96 14:46:02  Start /disk1/users/user/demo/mfgintro17/0_1875_ball_cutter.prt
+!12-Dec-96 14:46:05  End   /disk1/users/user/demo/mfgintro17/0_1875_ball_cutter.prt
+!Material hss was assigned to the part.
+!Tool Path display completed.
+#PREV GOTO
+#PREV GOTO
+#VIEW
+#LAYER DISP
+#WORK
+#DONE SEL
+#REPAINT
+#DONE-RETURN
+#CL MEASURE
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model HOUSING_CORE_MFG ...
+!Processing model HOUSING_CORE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model 0_1875_BALL_CUTTER ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!100% has been completed.
+#DONE-RETURN
+#CLEAR/INTF
+!Select first object.
+** 0.801517 0.585981 0 1 1
+0.478961 0.287449 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 3.473962 0.000000
+!Showing part 0_1875_BALL_CUTTER.
+!Select second object.
+#SURFACE
+!Select second object.
+** 0.517031 0.450274 0 2 2
+0.397070 0.254489 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.661045 0.436284 0 1 1
+0.438525 0.251091 L
+@ sel view 0
+ -66.902511 -13.797321 14.007280 -0.371779 50.557582 48.024043
+ -19.657868 46.000879 -48.579866 516.602228 536.416462 -621.356329 3.473962 0.000000
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.694097 0.419495 0 2 2
+0.448039 0.247013 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.696458 0.419495 0 2 2
+0.448719 0.247013 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.696458 0.418096 0 2 2
+0.448719 0.246673 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+#PREVIOUS
+!Showing surface created by feature 1 (EXTRACT), model HOUSING_CORE.  Confirm selection.
+** 0.794434 0.404106 0 4 4
+0.476922 0.243275 M
+!Clearance: 0.09478. Select second object.
+#DONE/RETURN
+#DONE/RETURN
+#DONE SEQ
+!Regenerating CORE_WORK feature 42 out of 42 ...
+!Regeneration completed successfully.
+#VIEW
+#LAYER DISP
+#WORK
+#DONE SEL
+#VIEW
+!Warning: You must use Save Status to save layer display changes.
+#REPAINT
+#DONE-RETURN
+#VIEW
+#NAMES
+#RETRIEVE
+#BACK_ISO
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.453288 0.433486 0 1 1
+0.449897 0.370599 L
+** 0.751938 0.211039 0 1 1
+0.710196 0.207013 L
+!Indicate two locations to define a box for the zoom area.
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#MILL SURFACE
+#BLANK
+!Select SURFACE.
+~ Select `sellistmul0` `Namelist` \
+1  `3`
+~ Select `sellistmul0` `Namelist` \
+2  `2` `3`
+~ Activate `sellistmul0` `Ok`
+!Showing quilt created by feature 15 (surface CHUCK_KEY_SURF). 
+!Showing quilt created by feature 19 (surface CHUCK_KEY_BOTTOM). 
+#UNBLANK
+!Select SURFACE.
+~ Activate `sel_str_odd` `Ok`
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MFG GEOMETRY
+#MILL VOLUME
+#BLANK
+!Select volume or surface.
+~ Select `sellistmul0` `Namelist` \
+0 
+~ Activate `sellistmul0` `Ok`
+#DONE SEL
+#VIEW
+#REPAINT
+#DONE-RETURN
+#DONE/RETURN
+#DONE/RETURN
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#NEW SEQUENCE
+#CONTOUR SRF
+#DONE
+#ALONGCUTLINE
+#DONE
+!Check mark any optional or pre-defined elements you wish to specify.
+#TOOL
+#END
+#DONE
+!Select or specify tool.
+#0_1875_BALL_CUTTER
+#DONE SEL
+#RETRIEVE
+#D_CUTLINE
+!/disk1/users/user/demo/mfgintro17/params/D_CUTLINE.mil.1 has been read.
+#DONE
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+#MILL SURFACE
+#DONE
+#BLANK
+!Select volume or surface.
+#SELECT SRF
+!Select SURFACE.
+~ Select `sellist0` `Namelist` \
+1  `1`
+!Showing quilt created by feature 21 (surface BATT_HOUS_SRF). 
+!Arrow indicates side of surface to be machined. Pick FLIP or OKAY.
+#OKAY
+!Select surfaces belonging to BATT_HOUS_SRF.
+#VIEW
+#NAMES
+#RETRIEVE
+#BATT_HOUS
+#SELECT ALL
+#SHOW
+#DONE/RETURN
+!Specify surfaces to be used for cutline definition.
+#DONE
+!Specify cutline definition.
+#VIEW
+#REPAINT
+#DONE-RETURN
+#INNER CUTLINE
+#DONE
+!Select option to define the start cut line.
+#DONE
+#TANGNT CHAIN
+!Select an edge from chain.
+** 0.365935 0.363534 0 1 1
+0.472885 0.163131 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+!Select Done/Return to continue or Define/Redo to respecify cut line.
+#DONE/RETURN
+!Select option to define the end cut line.
+#DONE
+#TANGNT CHAIN
+!Select an edge from chain.
+** 0.515851 0.783245 0 1 1
+0.519737 0.273806 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+!Select Done/Return to continue or Define/Redo to respecify cut line.
+#DONE/RETURN
+!Select option to define an inner cut line.
+#DONE
+#TANGNT CHAIN
+!Select an edge from chain.
+** 0.409612 0.606966 0 1 1
+0.486535 0.227323 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+#DEFINE
+!Select option to define an inner cut line.
+#DONE
+** 0.386003 0.739875 0 1 1
+0.479156 0.262370 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.410792 0.707697 0 1 1
+0.486904 0.253885 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.498144 0.686711 0 1 1
+0.514204 0.248351 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.612647 0.690908 0 1 1
+0.549989 0.249458 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+** 0.724788 0.731481 0 1 1
+0.585036 0.260156 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing edge created by feature 21 (SURFACE), model CORE_WORK.
+#DONE
+!Cut line was created successfully.
+#DONE/RETURN
+!Select direction for cut line contours.
+#OKAY
+#DONE/RETURN
+!Create or select a datum point for the tool's final location.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 7 in model CORE_WORK. 
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+#SEQ SETUP
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!Check mark any optional or pre-defined elements you wish to specify.
+#CHECK SURFS
+#DONE
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+!Select surfaces on reference part to check gouging against.
+** 0.480438 0.423693 0 2 2
+0.508670 0.178994 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.541821 0.446077 0 1 1
+0.527854 0.184897 L
+@ sel view 0
+ 61.895825 3.817460 0.324631 1.927858 -26.492716 -56.037407
+ -3.310853 55.940456 -26.560784 535.993718 261.353489 -390.285752 3.199727 0.000000
+!Showing quilt created by feature 21 (surface BATT_HOUS_SRF).  Confirm selection.
+** 0.544181 0.436284 0 2 2
+0.528591 0.182315 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 4 (PROTRUSION), model CORE_WORK.  Confirm selection.
+** 0.544181 0.433486 0 2 2
+0.528591 0.181577 R
+~ Activate `rmb_popup` `Next`
+!Showing surface created by feature 21 (SURFACE), model CORE_WORK.  Confirm selection.
+** 0.544181 0.434885 0 4 4
+0.528591 0.181946 M
+** 0.544181 0.430688 0 4 4
+0.528591 0.180839 M
+#SHOW
+#DONE/RETURN
+!WARNING: STEP_OVER is greater than CUTTER_DIAM.
+#DONE SEQ
+!Regenerating CORE_WORK feature 43 out of 43 ...
+!Regeneration completed successfully.
+#CL DATA
+!Select Operation or NC Sequence.
+#VIEW
+#REPAINT
+#DONE-RETURN
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#INPUT
+!Enter Pro/NC file name [-Quit-]:
+?
+!Directory searched is: /disk1/users/user/demo/mfgintro17/cl_files
+#CUTLINE.NCL
+#DONE/RETURN
+!Material hss was assigned to the part.
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#MFG SETUP
+#MFG GEOMETRY
+#DONE/RETURN
+#ENVIRONMENT
+#NO HIDDEN
+!Hidden lines will not be displayed.
+#DONE-RETURN
+#MFG SETUP
+#FIXTURE
+#ACTIVATE
+#VISE
+#DONE SEL
+#DONE/RETURN
+#QUIT WINDOW
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#DRILL_CORE_FIXTURE.DRW
+#VIEWS
+#DISP MODE
+#TOOL PATH
+#SHOW PATHS
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#CORE_WORK.PRT
+!Showing part CORE_WORK.
+#NAME
+~ Select `sellist0` `Namelist` \
+1  `11`
+!Showing feature 38 (MILLING) in part CORE_WORK. 
+#DONE/RETURN
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17
+#HOUSING_CORE_MFG.MFG
+#MFG SETUP
+#FIXTURE
+#ACTIVATE
+#VISE
+#DONE/RETURN
+#ENVIRONMENT
+#HIDDEN LINE
+!Hidden lines will appear in grey.  
+#DONE-RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#quit window
+!
+! Start of turning stuff
+!
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /softail/sm/update_turn_demo
+#SHAFT.MFG
+#VIEW
+#NAMES
+#ISO
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model A242_1_25 ...
+!15% has been completed.
+!30% has been completed.
+!50% has been completed.
+!65% has been completed.
+!80% has been completed.
+!100% has been completed.
+!Processing model HCH8 ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model HMJ8 ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model SHAFT ...
+#DONE-RETURN
+#QUIT WINDOW
+#DRAWING
+#RETRIEVE
+!Enter Drawing name [shaft]: 
+shaft
+#VIEWS
+!Enter Model name [SHAFT.ASM] ?: 
+shaft.asm
+~ Select `selppfmvwstate` `StepList` \
+1  `STEP 2: Area Turning Sequence`
+~ Activate `selppfmvwstate` `OkButton`
+#SCALE
+#DONE
+!Select CENTER POINT for drawing view.
+0.267090 0.605196 L
+!Any DATUMS or AXES will be temporarily displayed to aid orientation.
+@ draw scale
+ 0.5
+!Drawing scale has been automatically adjusted. 
+!Enter scale for view [0.500]: 
+.8
+#NAMES
+#2D
+#DONE/RETURN
+#ADD VIEW
+#DONE
+!Select CENTER POINT for drawing view.
+0.745340 0.594923 L
+#ADD VIEW
+#DETAILED
+#DONE
+!Select CENTER POINT for drawing view.
+0.466836 0.323268 L
+!Enter scale for view [0.500]: 
+2.5
+!Select center point for detail on an existing view.
+0.392645 0.607478 L
+@ sel view 0
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 1
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 2
+ 0.000000 0.000000 -36.363636 0.000000 -36.363636 0.000000
+ -36.363636 0.000000 0.000000 275.816967 605.195529 0.000000 1.000000 0.000000
+@ sel view 3
+ 36.363636 0.000000 0.000000 0.000000 -36.363636 0.000000
+ 0.000000 0.000000 -36.363636 745.340045 605.195529 8.727273 1.000000 0.000000
+@ sel view 4
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+!Showing edge created by feature 16 (ROUND), model DRILL_SHAFT.
+!Sketch a spline, without intersecting other splines, to define an outline.
+0.416614 0.662266 L
+0.391503 0.657700 L
+0.359544 0.647428 L
+0.349271 0.592640 L
+0.368675 0.570953 L
+0.424604 0.561822 L
+0.469119 0.586933 L
+0.471402 0.629165 L
+0.453139 0.651993 L
+0.430311 0.664549 L
+0.416614 0.662266 L
+0.422321 0.663407 M
+!Enter a name for the detailed view: 
+a
+0.533038 0.719336 L
+#DONE/RETURN
+!Select LOCATION for note.
+#VIEW
+!Indicate two locations to define a box for the zoom area.
+#REPAINT
+#DONE/RETURN
+#DONE/RETURN
+#TABLE
+#BOM BALLOON
+!Select a region.
+** 0.102698 0.257557 0 1 1
+0.102698 0.217314 L
+@ sel view 0
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 1
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 2
+ 0.000000 0.000000 -36.363636 0.000000 -36.363636 0.000000
+ -36.363636 0.000000 0.000000 275.817273 605.196000 -0.000000 1.000000 0.000000
+@ sel view 3
+ 36.363636 0.000000 -0.000000 0.000000 -36.363636 0.000000
+ -0.000000 0.000000 -36.363636 745.340000 605.196000 8.727273 1.000000 0.000000
+@ sel view 4
+ 0.000000 0.000000 -113.636364 0.000000 -113.636364 0.000000
+ -113.636364 0.000000 0.000000 101.632955 335.716016 -52.522308 1.000000 0.000000
+!Showing repeat region.
+!Balloon attribute has been set for the selected region.
+!Select a region.
+#SHOW
+!Select a view in which to show bom balloons.
+** 0.195953 0.616760 0 1 1
+0.195953 0.520391 L
+@ sel view 0
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 1
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 2
+ 0.000000 0.000000 -36.363636 0.000000 -36.363636 0.000000
+ -36.363636 0.000000 0.000000 275.817273 605.196000 -0.000000 1.000000 0.000000
+@ sel view 3
+ 36.363636 0.000000 -0.000000 0.000000 -36.363636 0.000000
+ -0.000000 0.000000 -36.363636 745.340000 605.196000 8.727273 1.000000 0.000000
+@ sel view 4
+ 0.000000 0.000000 -113.636364 0.000000 -113.636364 0.000000
+ -113.636364 0.000000 0.000000 101.632955 337.238346 -52.138042 1.000000 0.000000
+!Showing drawing view main_view of model SHAFT.
+#DONE/RETURN
+#QUIT WINDOW
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /softail/sm/update_turn_demo
+#SHAFT.MFG
+#VIEW
+#NAMES
+#2D
+#machining
+#operation
+#chuck_end
+#activate
+#done oper
+#done/return
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Choose source of values for Pro/PROGRAM inputs for model SHAFT.
+#CURRENT VALS
+!Enter type of regeneration desired.
+#DONE
+!Regenerating SHAFT feature 29 out of 30 ...
+!Regenerating SHAFT feature 30 out of 30 ...
+!Regeneration completed successfully.
+!Automatic regeneration of the parts has been completed.
+#MACHINING
+#NC SEQUENCE
+!Create a New Sequence or select one to redefine.
+#1: Area Turning, Operation: CHUCK_END
+!Check mark any optional or pre-defined elements you wish to specify.
+#ENDS
+#START
+#DONE
+!Select or specify tool.
+#Specify Tool
+#RETRIEVE
+!Select tool.
+#TOOL LIBRARY
+#BY REFERENCE
+#DONE
+!Select tool.
+!Enter Model name [] ?: 
+?
+!Directory searched is: /softail/sm/update_turn_demo
+#IN SESSION
+#CDJNL16_4DX.PRT
+!CDJNL16_4DX has been read.
+!The tool has been added to this NC sequence's workcell.
+#SHOW
+#DONE
+#RETRIEVE
+#ROUGH
+!/softail/sm/update_turn_demo/params/ROUGH.trn.1 has been read.
+#DONE
+#PROFILE
+#DONE
+#CREATE PROFILE
+!Enter name for the turn profile [-Quit-] :
+rough_od_tp
+!Specify turn profile.
+#SELECT SURFACE
+#DONE
+!Select a from surface.
+** 0.504047 0.604518 0 1 1
+0.671580 0.440084 L
+@ sel view 0
+ 0.000000 0.000000 -53.564375 0.000000 -53.564375 0.000000
+ -53.564375 0.000000 0.000000 494.621913 421.900263 -224.167065 5.195542 0.000000
+!Showing surface created by feature 7 (CHAMFER), model DRILL_SHAFT. 
+!Select an end surface.
+** 0.364755 0.635297 0 1 1
+0.644770 0.445082 L
+@ sel view 0
+ 0.000000 0.000000 -53.564375 0.000000 -53.564375 0.000000
+ -53.564375 0.000000 0.000000 494.621913 421.900263 -224.167065 5.195542 0.000000
+!Showing surface created by feature 6 (CUT), model DRILL_SHAFT. 
+!Select direction to specify machine area.
+#DONE
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `okay`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!CURVE has been created successfully.
+!Select cut extension direction for highlighted point
+#DONE
+!Select cut extension direction for highlighted point
+#PERPEND
+#DONE
+!Create or select a datum point for the tool's original location.
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.445025 0.659080 0 1 1
+0.526750 0.511595 L
+** 0.751938 0.368081 0 1 1
+0.733355 0.346311 L
+!Indicate two locations to define a box for the zoom area.
+#START
+#SPECIFY
+#DONE
+!Adjust chain end using mouse (BUTTONS: L=Finish, M=Abort, R=Pause/Continue).
+** 0.762562 0.509384 0 1 1
+0.684299 0.430588 L
+!Select dimension type for this end.
+#OFFSET PLANE
+!Select plane to measure offset from.
+#VIEW
+#NAMES
+#ISO
+#QUERY SEL
+!Hidden geometry may be selected.
+** 0.766104 0.481403 0 1 1
+0.651180 0.407567 L
+@ sel view 0
+ 33.211773 0.000000 -42.025236 0.000000 -53.564375 0.000000
+ -42.025236 0.000000 -33.211773 495.780491 421.900263 -316.361532 1.485511 0.000000
+!Showing surface created by feature 4 (PROTRUSION), model A242_1_25.  Confirm selection.
+** 0.767284 0.474408 0 4 4
+0.651975 0.403594 M
+!Enter offset distance [0.0570]: 
+.03
+#VIEW
+#NAMES
+#2D
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.441483 0.677268 0 1 1
+0.524366 0.521925 L
+** 0.763743 0.355490 0 1 1
+0.741301 0.339159 L
+!Indicate two locations to define a box for the zoom area.
+#END
+#SPECIFY
+#DONE
+!Adjust chain end using mouse (BUTTONS: L=Finish, M=Abort, R=Pause/Continue).
+** 0.416694 0.580734 0 1 1
+0.614762 0.445320 L
+!Select dimension type for this end.
+#EXT LENGTH
+!Enter extension length [0.1721]:
+.125
+#DONE/RETURN
+!Create or select a datum point for the tool's original location.
+#SEL BY MENU
+!Select object (part or assembly) for subsequent menu selection.
+#SEL BY MENU
+#SHAFT.ASM
+!Showing assembly SHAFT.
+~ Select `sellist0` `Namelist` \
+1  `0`
+!Showing POINT in feature 19 in model SHAFT. 
+#PLAY PATH
+#DONE CL
+!Tool Path display completed.
+#DONE SEQ
+#MATRL REMOVE
+!Select a NC Sequence.
+#1: Area Turning, Operation: CHUCK_END
+#DONE
+!Specify assembly feature intersections.
+!Choose auto or manual mode of component selection.
+#AUTO SEL
+!Please confirm automatic intersection (visible in top level assembly).
+#CONFIRM
+#DONE
+!11-Dec-96 16:02:59  Start /softail/sm/update_turn_demo/new/PRT0002
+!11-Dec-96 16:02:59  End   /softail/sm/update_turn_demo/new/PRT0002
+!MATERIAL REMOVAL has been created successfully.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model A242_1_25 ...
+!5% has been completed.
+!15% has been completed.
+!20% has been completed.
+!30% has been completed.
+!35% has been completed.
+!45% has been completed.
+!50% has been completed.
+!60% has been completed.
+!65% has been completed.
+!75% has been completed.
+!80% has been completed.
+!90% has been completed.
+!100% has been completed.
+!Processing model SHAFT ...
+#DONE-RETURN
+#QUIT WINDOW
+#DRAWING
+#RETRIEVE
+!Enter Drawing name  [SHAFT]: 
+
+#VIEWS
+#DISP MODE
+#TOOL PATH
+#SHOW PATHS
+#QUERY SEL
+!Hidden geometry may be selected.
+** 0.450927 0.361086 0 1 1
+0.450927 0.304666 L
+@ sel view 0
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 4
+ 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+ 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 1.000000 0.000000
+@ sel view 1
+ 0.000000 0.000000 -36.363636 0.000000 -36.363636 0.000000
+ -36.363636 0.000000 0.000000 275.817273 605.196000 -0.000000 1.000000 0.000000
+@ sel view 2
+ 36.363636 0.000000 -0.000000 0.000000 -36.363636 0.000000
+ -0.000000 0.000000 -36.363636 745.340000 605.196000 8.727273 1.000000 0.000000
+@ sel view 3
+ 0.000000 0.000000 -113.636364 0.000000 -113.636364 0.000000
+ -113.636364 0.000000 0.000000 101.632955 335.716016 -52.522308 1.000000 0.000000
+!Showing feature 31 (MATERIAL REMOVAL) in assembly SHAFT. Confirm selection.
+** 0.447386 0.359687 0 4 4
+0.447386 0.303486 M
+#QUIT WINDOW
+#MANUFACTURE
+#RETRIEVE
+!Enter Mfg name  [SHAFT]: 
+
+!WARNING: Reference tools have been modified (see Tool Info for details).
+#VIEW
+#NAMES
+#RETRIEVE
+#ZOOM
+#MACHINING
+#UTILITIES
+#GROUP
+#SEARCH/RETR
+#face
+!Specify group place options.
+#DONE
+!Group unit is INCH. Select scaling option from menu.
+#DONE
+!Select display option for invariable dimensions.
+#DONE
+!Select Select the start point.
+** 0.841651 0.163822 0 1 1
+0.736559 0.368515 L
+@ sel view 0
+ 0.000000 0.000000 -53.564375 0.000000 -53.564375 0.000000
+ -53.564375 0.000000 0.000000 494.621913 421.900263 -224.167065 5.195542 0.000000
+@ sel2d 0 TEXT_DTM_PNT -1992 #33
+1 4
+!Showing POINT in feature 6 in model SHAFT. 
+!Select Select the face of the part.
+** 0.522934 0.457619 0 1 1
+0.675215 0.416227 L
+@ sel view 0
+ 0.000000 0.000000 -53.564375 0.000000 -53.564375 0.000000
+ -53.564375 0.000000 0.000000 494.621913 421.900263 -224.167065 5.195542 0.000000
+!Showing edge created by feature 7 (CHAMFER), model DRILL_SHAFT.
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!WARNING: Mfg assembly and group have tools with same ids; tool(s) not copied.
+#DONE/RETURN
+!Creating group feature 1 out of 2...
+!The tool has been added to this NC sequence's workcell.
+!Creating group feature 2 out of 2...
+!Group created successfully. Select Done to accept.
+#DONE
+!Group created successfully.
+#DONE/RETURN
+#CL DATA
+!Select Operation or NC Sequence.
+#NC CHECK
+#RESOLUTION
+!Choose a new resolution. Current resolution is 2x2 pix.
+#2x2 pix
+#DISPLAY
+#COLOR
+#TOOL
+#COLOR 1
+#TOOL
+#COLOR 1
+#RUN
+#CREATE
+!Select Operation or NC Sequence.
+#NC SEQUENCE
+!Select a NC Sequence.
+#2: Area Turning, Operation: CHUCK_END
+!Enter Pro/NC file name [FACE]:
+
+!WARNING: Reference tools have been modified (see Tool Info for details).
+!Preparing data for display.
+@ stop sign picked 4 4
+#CLIP PLANE
+#MOVE PLANE
+!Pick a plane to use for clipping.
+#CLIP
+#FLIP
+#OKAY
+#CONTINUOUS
+#CONTINUE
+#DONE/RETURN
+!Please confirm quit from NC Check.
+#CONFIRM
+#VIEW
+#REPAINT
+#DONE-RETURN
+#SYNCHRONIZE
+!Select which head will control spindle speed.
+#DONE
+!Select Head1 NC Sequence to Synchronize.
+#Area Turning 1, Operation: CHUCK_END
+#DONE SEL
+!Select Head2 NC Sequence to Synchronize.
+#Area Turning 2, Operation: CHUCK_END
+#DONE SEL
+#SYNCH POINTS
+!Specify synchronization to define synch points.
+#SYNCHRONIZE #1
+!WARNING: Reference tools have been modified (see Tool Info for details).
+!WARNING: Reference tools have been modified (see Tool Info for details).
+#ADD
+!Select a synch point for Head 1.
+** 0.821584 0.637745 0 2 2
+0.732697 0.445480 R
+~ Activate `rmb_popup` `Query Sel`
+!Hidden geometry may be selected.
+** 0.777908 0.625154 0 1 1
+0.724291 0.443435 L
+@ sel view 0
+ 0.000000 0.000000 -68.425620 0.000000 -68.425620 0.000000
+ -68.425620 0.000000 0.000000 493.129782 421.907272 -286.361417 5.195542 0.000000
+** 0.777908 0.625154 0 1 1
+0.724291 0.443435 L
+@ sel view 0
+ 0.000000 0.000000 -68.425620 0.000000 -68.425620 0.000000
+ -68.425620 0.000000 0.000000 493.129782 421.907272 -286.361417 5.195542 0.000000
+** 0.780269 0.629351 0 1 1
+0.724745 0.444116 L
+@ sel view 0
+ 0.000000 0.000000 -68.425620 0.000000 -68.425620 0.000000
+ -68.425620 0.000000 0.000000 493.129782 421.907272 -286.361417 5.195542 0.000000
+! Confirm selection.
+#ACCEPT
+!Select a synch point for Head 2.
+#VIEW
+#NAMES
+#ZOOM
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+#ZOOM OUT
+!Indicate two locations to define a box for the zoom area.
+#ZOOM IN
+!Indicate two locations to define a box for the zoom area.
+** 0.365935 0.791639 0 1 1
+0.619193 0.517834 L
+** 0.908936 0.246015 0 1 1
+0.828219 0.340616 L
+!Indicate two locations to define a box for the zoom area.
+#QUERY SEL
+!Hidden geometry may be selected.
+** 0.780269 0.072534 0 1 1
+0.782573 0.353471 L
+@ sel view 0
+ 0.000000 0.000000 -68.425620 0.000000 -68.425620 0.000000
+ -68.425620 0.000000 0.000000 493.129782 421.907272 -286.361417 4.761100 0.000000
+! Confirm selection.
+#NEXT
+! Confirm selection.
+#NEXT
+! Confirm selection.
+#NEXT
+! Confirm selection.
+#ACCEPT
+#DONE/RETURN
+#DONE/RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#CL DATA
+!Select Operation or NC Sequence.
+#OPERATION
+#CHUCK_END
+#STATUS BOX
+#TIME INCREMENT
+!Enter time increment.
+#Enter
+!Enter time increment [1.0000]:
+.05
+#DONE CL
+!WARNING: Reference tools have been modified (see Tool Info for details).
+!WARNING: Reference tools have been modified (see Tool Info for details).
+#DONE OUTPUT
+#DONE/RETURN
+#QUIT WINDOW
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17/new
+#drill.asm
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model GEAR ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model SHAFT_SLEEVE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model DRILL_SHAFT ...
+!Processing model HOUSING ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model HOUSING_MIRROR ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model DRILL ...
+#DONE-RETURN
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Choose source of values for Pro/PROGRAM inputs for model DRILL.
+#ENTER
+!Please select inputs to specify new values.
+#MOTOR_TYPE
+#DONE SEL
+!ENTER THE DESIRED MODEL (1 FOR HOME, 2 FOR COMMERCIAL). [1.0000] 
+2
+!Regenerating DRILL_SHAFT feature 4 out of 28 ...
+!Regenerating DRILL_SHAFT feature 5 out of 28 ...
+!Regenerating DRILL_SHAFT feature 6 out of 28 ...
+!Regenerating DRILL_SHAFT feature 7 out of 28 ...
+!Regenerating DRILL_SHAFT feature 8 out of 28 ...
+!Regenerating DRILL_SHAFT feature 9 out of 28 ...
+!Regenerating DRILL_SHAFT feature 10 out of 28 ...
+!Regenerating DRILL_SHAFT feature 11 out of 28 ...
+!Regenerating DRILL_SHAFT feature 12 out of 28 ...
+!Regenerating DRILL_SHAFT feature 13 out of 28 ...
+!Regenerating DRILL_SHAFT feature 14 out of 28 ...
+!Regenerating DRILL_SHAFT feature 15 out of 28 ...
+!Regenerating DRILL_SHAFT feature 16 out of 28 ...
+!Regenerating DRILL_SHAFT feature 17 out of 28 ...
+!Regenerating DRILL_SHAFT feature 18 out of 28 ...
+!Regenerating DRILL_SHAFT feature 19 out of 28 ...
+!Regenerating DRILL_SHAFT feature 20 out of 28 ...
+!Regenerating DRILL_SHAFT feature 21 out of 28 ...
+!Regenerating DRILL_SHAFT feature 22 out of 28 ...
+!Regenerating DRILL_SHAFT feature 23 out of 28 ...
+!Regenerating DRILL_SHAFT feature 24 out of 28 ...
+!Regenerating DRILL_SHAFT feature 25 out of 28 ...
+!Regenerating DRILL_SHAFT feature 26 out of 28 ...
+!Regenerating DRILL_SHAFT feature 27 out of 28 ...
+!Regenerating DRILL_SHAFT feature 28 out of 28 ...
+!Regeneration completed successfully.
+!Regenerating SHAFT_SLEEVE feature 4 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 5 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 6 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 7 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 8 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 9 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 10 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 11 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 12 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 13 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 14 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 15 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 16 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 17 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 18 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 19 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 20 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 21 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 22 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 23 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 24 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 25 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 26 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 27 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 28 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 29 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 30 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 31 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 32 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 33 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 34 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 35 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 36 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 37 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 38 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 39 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 40 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 41 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 42 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 43 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 44 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 45 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 46 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 47 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 48 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 49 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 50 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 51 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 52 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 53 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 54 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 55 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 56 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 57 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 58 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 59 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 60 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 61 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 62 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 63 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 64 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 65 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 66 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 67 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 68 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 69 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 70 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 71 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 72 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 73 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 74 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 75 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 76 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 77 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 78 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 79 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 80 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 81 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 82 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 83 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 84 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 85 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 86 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 87 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 88 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 89 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 90 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 91 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 92 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 93 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 94 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 95 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 96 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 97 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 98 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 99 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 100 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 101 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 102 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 103 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 104 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 105 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 106 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 107 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 108 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 109 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 110 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 111 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 112 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 113 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 114 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 115 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 116 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 117 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 118 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 119 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 120 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 121 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 122 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 123 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 124 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 125 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 126 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 127 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 128 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 129 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 130 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 131 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 132 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 133 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 134 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 135 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 136 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 137 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 138 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 139 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 140 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 141 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 142 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 143 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 144 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 145 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 146 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 147 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 148 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 149 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 150 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 151 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 152 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 153 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 154 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 155 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 156 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 157 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 158 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 159 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 160 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 161 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 162 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 163 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 164 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 165 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 166 out of 167 ...
+!Regenerating SHAFT_SLEEVE feature 167 out of 167 ...
+!Regeneration completed successfully.
+!Regenerating DRILL_SHAFT component 'GEAR' 2 out of 3 ...
+!Regenerating DRILL_SHAFT component 'SHAFT_SLEEVE' 3 out of 3 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING feature 16 out of 76 ...
+!Regenerating HOUSING feature 17 out of 76 ...
+!Regenerating HOUSING feature 18 out of 76 ...
+!Regenerating HOUSING feature 19 out of 76 ...
+!Regenerating HOUSING feature 20 out of 76 ...
+!Regenerating HOUSING feature 21 out of 76 ...
+!Regenerating HOUSING feature 22 out of 76 ...
+!Regenerating HOUSING feature 23 out of 76 ...
+!Regenerating HOUSING feature 24 out of 76 ...
+!Regenerating HOUSING feature 25 out of 76 ...
+!Regenerating HOUSING feature 26 out of 76 ...
+!Regenerating HOUSING feature 27 out of 76 ...
+!Regenerating HOUSING feature 28 out of 76 ...
+!Regenerating HOUSING feature 29 out of 76 ...
+!Regenerating HOUSING feature 30 out of 76 ...
+!Regenerating HOUSING feature 31 out of 76 ...
+!Regenerating HOUSING feature 32 out of 76 ...
+!Regenerating HOUSING feature 33 out of 76 ...
+!Regenerating HOUSING feature 34 out of 76 ...
+!Regenerating HOUSING feature 35 out of 76 ...
+!Regenerating HOUSING feature 36 out of 76 ...
+!Regenerating HOUSING feature 37 out of 76 ...
+!Regenerating HOUSING feature 38 out of 76 ...
+!Regenerating HOUSING feature 39 out of 76 ...
+!Regenerating HOUSING feature 40 out of 76 ...
+!Regenerating HOUSING feature 41 out of 76 ...
+!Regenerating HOUSING feature 42 out of 76 ...
+!Regenerating HOUSING feature 43 out of 76 ...
+!Regenerating HOUSING feature 44 out of 76 ...
+!Regenerating HOUSING feature 45 out of 76 ...
+!Regenerating HOUSING feature 46 out of 76 ...
+!Regenerating HOUSING feature 47 out of 76 ...
+!Regenerating HOUSING feature 48 out of 76 ...
+!Regenerating HOUSING feature 49 out of 76 ...
+!Regenerating HOUSING feature 50 out of 76 ...
+!Regenerating HOUSING feature 51 out of 76 ...
+!Regenerating HOUSING feature 52 out of 76 ...
+!Regenerating HOUSING feature 53 out of 76 ...
+!Regenerating HOUSING feature 54 out of 76 ...
+!Regenerating HOUSING feature 55 out of 76 ...
+!Regenerating HOUSING feature 56 out of 76 ...
+!Regenerating HOUSING feature 57 out of 76 ...
+!Regenerating HOUSING feature 58 out of 76 ...
+!Regenerating HOUSING feature 59 out of 76 ...
+!Regenerating HOUSING feature 60 out of 76 ...
+!Regenerating HOUSING feature 61 out of 76 ...
+!Regenerating HOUSING feature 62 out of 76 ...
+!Regenerating HOUSING feature 63 out of 76 ...
+!Regenerating HOUSING feature 64 out of 76 ...
+!Regenerating HOUSING feature 65 out of 76 ...
+!Regenerating HOUSING feature 66 out of 76 ...
+!Regenerating HOUSING feature 67 out of 76 ...
+!Regenerating HOUSING feature 68 out of 76 ...
+!Regenerating HOUSING feature 69 out of 76 ...
+!Regenerating HOUSING feature 70 out of 76 ...
+!Regenerating HOUSING feature 71 out of 76 ...
+!Regenerating HOUSING feature 72 out of 76 ...
+!Regenerating HOUSING feature 73 out of 76 ...
+!Regenerating HOUSING feature 74 out of 76 ...
+!Regenerating HOUSING feature 75 out of 76 ...
+!Regenerating HOUSING feature 76 out of 76 ...
+!Regeneration completed successfully.
+!Regenerating DRILL component 'HOUSING' 3 out of 5 ...
+!Regenerating DRILL feature 4 out of 5 ...
+!Regenerating DRILL component 'HOUSING_MIRROR' 5 out of 5 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_MIRROR feature 1 out of 1 ...
+!Regeneration completed successfully.
+!Some relations are no longer satisfied in DRILL_SHAFT for MAX_DIAM.
+!Please regenerate again.
+!Automatic regeneration of the parts has been completed.
+#QUIT WINDOW
+#PART
+#CREATE
+!Enter Part name [PRT0001]: 
+
+@ ok
+#MODE
+#ASSEMBLY
+#RETRIEVE
+!Enter Assembly name  [DRILL]: 
+
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.231366 0.837712 2 1 1
+0.231366 0.706819 L
+** 0.875884 0.129799 2 1 1
+0.875884 0.109518 L
+!Indicate two locations to define a box for the zoom area.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model DRILL_SHAFT ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model SHAFT_SLEEVE ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model DRILL_SHAFT ...
+!Processing model HOUSING ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model HOUSING_MIRROR ...
+!5% has been completed.
+!10% has been completed.
+!15% has been completed.
+!20% has been completed.
+!25% has been completed.
+!30% has been completed.
+!35% has been completed.
+!40% has been completed.
+!45% has been completed.
+!50% has been completed.
+!55% has been completed.
+!60% has been completed.
+!65% has been completed.
+!70% has been completed.
+!75% has been completed.
+!80% has been completed.
+!85% has been completed.
+!90% has been completed.
+!95% has been completed.
+!100% has been completed.
+!Processing model DRILL ...
+#DONE-RETURN
+#MODE
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /disk1/users/user/demo/mfgintro17/new
+#shaft.mfg
+!WARNING: Reference tools have been modified (see Tool Info for details).
+#VIEW
+#NAMES
+#SIDE
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model A242_1_25 ...
+!5% has been completed.
+!15% has been completed.
+!20% has been completed.
+!30% has been completed.
+!35% has been completed.
+!45% has been completed.
+!50% has been completed.
+!60% has been completed.
+!65% has been completed.
+!75% has been completed.
+!80% has been completed.
+!90% has been completed.
+!100% has been completed.
+!Processing model SHAFT ...
+#DONE-RETURN
+#PROGRAM
+#EDIT DESIGN
+!Processing model design; please wait ...
+!Editing completed successfully.
+
+!Choose source of values for Pro/PROGRAM inputs for model SHAFT.
+#CURRENT VALS
+!Regenerating STOCK feature 4 out of 6 ...
+!Regenerating STOCK feature 5 out of 6 ...
+!Regenerating STOCK feature 6 out of 6 ...
+!Regeneration completed with 1 suppressed feature(s) or component(s).
+!Regenerating A242_1_25 feature 4 out of 6 ...
+!Regenerating A242_1_25 feature 5 out of 6 ...
+!Regenerating A242_1_25 feature 6 out of 6 ...
+!Regeneration completed successfully.
+!Regenerating A242_1_25 feature 4 out of 7 ...
+!Regenerating A242_1_25 feature 5 out of 7 ...
+!Regenerating A242_1_25 feature 6 out of 7 ...
+!Enter type of regeneration desired.
+#DONE
+!WARNING: Reference tools have been modified (see Tool Info for details).
+!Regenerating A242_1_25 feature 7 out of 7 ...
+!Regeneration completed successfully.
+#DONE/RETURN
+#CL DATA
+!Select Operation or NC Sequence.
+#OPERATION
+#CHUCK_END
+#DONE CL
+!WARNING: Reference tools have been modified (see Tool Info for details).
+#DONE OUTPUT
+#MODE
+#DRAWING
+#RETRIEVE
+!Enter Drawing name  [SHAFT]: 
+
+#VIEW
+!Indicate two locations to define a box for the zoom area.
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.011804 0.569097 4 1 1
+0.011804 0.480175 L
+** 0.611466 0.073838 4 1 1
+0.611466 0.062301 L
+!Indicate two locations to define a box for the zoom area.
+#CHANGEWINDOW
+!Select on a window to activate it.
+** 0.816862 0.563946 0 1 1
+0.816862 0.475829 L
+#Change_Window 0 <Part: PRT0001>
+#QUIT WINDOW
+#MOLD
+#SEARCH/RETR
+!Directory searched is: /softail/sm/updated_mfgintro_demo
+#housing_mold.mfg
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Regenerating HOUSING_MOLD_REF feature 1 out of 1 ...
+!Regeneration completed successfully.
+!Regenerating WP feature 1 out of 1 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_MOLD component 'WP' 2 out of 20 ...
+!Regenerating HOUSING_MOLD feature 3 out of 20 ...
+!Regenerating HOUSING_MOLD feature 4 out of 20 ...
+!Regenerating HOUSING_MOLD feature 5 out of 20 ...
+!Regenerating HOUSING_MOLD feature 6 out of 20 ...
+!Regenerating HOUSING_MOLD feature 7 out of 20 ...
+!Regenerating HOUSING_MOLD feature 8 out of 20 ...
+!Regenerating HOUSING_MOLD feature 9 out of 20 ...
+!Regenerating HOUSING_MOLD feature 10 out of 20 ...
+!Regenerating HOUSING_MOLD feature 11 out of 20 ...
+!Regenerating HOUSING_MOLD feature 12 out of 20 ...
+!Regenerating HOUSING_MOLD feature 13 out of 20 ...
+!Regenerating HOUSING_MOLD feature 14 out of 20 ...
+!Regenerating HOUSING_MOLD feature 15 out of 20 ...
+!Regenerating HOUSING_MOLD feature 16 out of 20 ...
+!Regenerating HOUSING_MOLD feature 17 out of 20 ...
+!Regenerating HOUSING_MOLD feature 18 out of 20 ...
+!Regenerating HOUSING_MOLD feature 19 out of 20 ...
+!Regenerating HOUSING_MOLD component 'HOUSING_CORE' 20 out of 20 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE feature 1 out of 12 ...
+!Regenerating HOUSING_CORE feature 2 out of 12 ...
+!Regenerating HOUSING_CORE feature 3 out of 12 ...
+!Regenerating HOUSING_CORE feature 4 out of 12 ...
+!Regenerating HOUSING_CORE feature 5 out of 12 ...
+!Regenerating HOUSING_CORE feature 6 out of 12 ...
+!Regenerating HOUSING_CORE feature 7 out of 12 ...
+!Regenerating HOUSING_CORE feature 8 out of 12 ...
+!Regenerating HOUSING_CORE feature 9 out of 12 ...
+!Regenerating HOUSING_CORE feature 10 out of 12 ...
+!Regenerating HOUSING_CORE feature 11 out of 12 ...
+!Regenerating HOUSING_CORE feature 12 out of 12 ...
+!Regeneration completed successfully.
+!Automatic regeneration of the parts has been completed.
+#ENVIRONMENT
+#NO HIDDEN
+!Hidden lines will not be displayed.
+#DONE-RETURN
+#MODE
+#MANUFACTURE
+#SEARCH/RETR
+!Directory searched is: /softail/sm/updated_mfgintro_demo
+#housing_core_mfg.mfg
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+** 0.120405 0.868491 5 1 1
+0.120405 0.732789 L
+** 0.856997 0.115809 5 1 1
+0.856997 0.097714 L
+!Indicate two locations to define a box for the zoom area.
+#REGENERATE
+!Select parts to regenerate.
+#AUTOMATIC
+!Regenerating HOUSING_CORE feature 1 out of 12 ...
+!Regenerating HOUSING_CORE feature 2 out of 12 ...
+!Regenerating HOUSING_CORE feature 3 out of 12 ...
+!Regenerating HOUSING_CORE feature 4 out of 12 ...
+!Regenerating HOUSING_CORE feature 5 out of 12 ...
+!Regenerating HOUSING_CORE feature 6 out of 12 ...
+!Regenerating HOUSING_CORE feature 7 out of 12 ...
+!Regenerating HOUSING_CORE feature 8 out of 12 ...
+!Regenerating HOUSING_CORE feature 9 out of 12 ...
+!Regenerating HOUSING_CORE feature 10 out of 12 ...
+!Regenerating HOUSING_CORE feature 11 out of 12 ...
+!Regenerating HOUSING_CORE feature 12 out of 12 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'CORE_WORK' 2 out of 5 ...
+!Enter type of regeneration desired.
+#DONE
+!Regenerating CORE_WORK feature 4 out of 43 ...
+!Regenerating CORE_WORK feature 5 out of 43 ...
+!Regenerating CORE_WORK feature 6 out of 43 ...
+!Regenerating CORE_WORK feature 7 out of 43 ...
+!Regenerating CORE_WORK feature 8 out of 43 ...
+!Regenerating CORE_WORK feature 9 out of 43 ...
+!Regenerating CORE_WORK feature 10 out of 43 ...
+!Regenerating CORE_WORK feature 11 out of 43 ...
+!Regenerating CORE_WORK feature 12 out of 43 ...
+!Regenerating CORE_WORK feature 13 out of 43 ...
+!Regenerating CORE_WORK feature 14 out of 43 ...
+!Regenerating CORE_WORK feature 15 out of 43 ...
+!Regenerating CORE_WORK feature 16 out of 43 ...
+!Regenerating CORE_WORK feature 17 out of 43 ...
+!Regenerating CORE_WORK feature 18 out of 43 ...
+!Regenerating CORE_WORK feature 19 out of 43 ...
+!Regenerating CORE_WORK feature 20 out of 43 ...
+!Regenerating CORE_WORK feature 21 out of 43 ...
+!WARNING: Design intent is unclear in CORE_WORK.  Use "Info"/"Geom Check" in Part mode.
+!Regenerating CORE_WORK feature 22 out of 43 ...
+!Regenerating CORE_WORK feature 23 out of 43 ...
+!Regenerating CORE_WORK feature 24 out of 43 ...
+!Regenerating CORE_WORK feature 25 out of 43 ...
+!Regenerating CORE_WORK feature 26 out of 43 ...
+!Regenerating CORE_WORK feature 27 out of 43 ...
+!Regenerating CORE_WORK feature 28 out of 43 ...
+!Regenerating CORE_WORK feature 29 out of 43 ...
+!Regenerating CORE_WORK feature 30 out of 43 ...
+!Regenerating CORE_WORK feature 31 out of 43 ...
+!Regenerating CORE_WORK feature 32 out of 43 ...
+!Regenerating CORE_WORK feature 33 out of 43 ...
+!Regenerating CORE_WORK feature 34 out of 43 ...
+!Regenerating CORE_WORK feature 35 out of 43 ...
+!Regenerating CORE_WORK feature 36 out of 43 ...
+!Regenerating CORE_WORK feature 37 out of 43 ...
+!Regenerating CORE_WORK feature 38 out of 43 ...
+!Regenerating CORE_WORK feature 39 out of 43 ...
+!Regenerating CORE_WORK feature 40 out of 43 ...
+!Regenerating CORE_WORK feature 41 out of 43 ...
+!Regenerating CORE_WORK feature 42 out of 43 ...
+!Regenerating CORE_WORK feature 43 out of 43 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'VISE' 3 out of 5 ...
+!Regenerating HOUSING_CORE_MFG feature 4 out of 5 ...
+!Regenerating VISE feature 1 out of 6 ...
+!Regenerating VISE feature 2 out of 6 ...
+!Regenerating VISE feature 3 out of 6 ...
+!Regenerating VISE feature 4 out of 6 ...
+!Regenerating VISE feature 5 out of 6 ...
+!Regenerating VISE feature 6 out of 6 ...
+!Regeneration completed successfully.
+!Regenerating HOUSING_CORE_MFG component 'BASE' 5 out of 5 ...
+!Regeneration completed successfully.
+!Automatic regeneration of the parts has been completed.
+#CL DATA
+!Select Operation or NC Sequence.
+#NC CHECK
+#COLOR
+#RESTORE FILE
+!NC Check color settings read from file.
+#RUN
+#CHANGE
+!Preparing data for display.
+#DONE/RETURN
+!Please confirm quit from NC Check.
+#CONFIRM
+#DONE/RETURN
+#MODE
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /softail/sm/updated_mfgintro_demo
+#drill_core_fixture.drw
+#EXIT
+!Do you really want to exit? [N]:
+YES
+@ confirm 1

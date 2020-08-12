@@ -1,0 +1,53 @@
+(setf (symbol-plist 'mrsev1-plan) '(
+ header (header
+         plan-id mrsev1-plan
+	 brep-design mrsev1-design
+	 design-location nil
+	 workpiece-id block3
+	 workpiece-location nil
+	 fixture-id vise
+	 vise-width 2.975
+	 fixture-location ('axis2_placement nil (nil 0 0 0) (nil 0 0 1)
+					    (nil 1 0 0))
+	 mrsevs mrsev1-mrsevs
+	 mrsev-location nil)
+    
+ data   (data
+           1   (1   work-element    initialize-plan
+                    prog-name       "part")
+           2   (2   work-element    mill-mrsev
+                    mrsev           "rectangular_pocket1"
+                    tool-type-id    end-mill-0.5-2
+                    stepover        0.25
+                    speed           2500
+                    feed-rate       17
+                    pass-depth      0.25
+                    precedent-steps (1))
+           3   (3   work-element    mill-mrsev
+                    mrsev           "other_pocket1"
+                    tool-type-id    end-mill-0.375-2
+                    stepover        0.1875
+                    speed           4583
+                    feed-rate       17
+                    pass-depth      0.1875
+                    precedent-steps (1))
+           4   (4   work-element    twist-drill
+                    mrsev           "hole1"
+                    tool-type-id    drill-0.5-2
+                    speed           2500
+                    feed-rate       3.5
+                    pass-depth      0.5
+                    precedent-steps (1))
+           5   (5   work-element    close-plan
+                    precedent-steps (2 3 4)))
+   tool-requirements (
+           end-mill-0.5-2
+           end-mill-0.375-2
+           drill-0.5-2)))
+
+; This is an AMRF format process plan and will be supplanted by an ALPS
+; format plan.
+
+; It will probably be necessary to change - to _ to satisfy requirements
+; of STEP physical files.  LISP functions which use this data will also
+; have to be changed.

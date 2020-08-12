@@ -1,0 +1,28 @@
+; LOAD PROCESS PLAN
+(load "../../parts/shuttle/plan_all.olps")
+
+; LOAD BLOCK BREP
+(put-data 'workpieces 'block3
+  (fetch (step-to-plist '../../parts/block-5.26-4.99-1.5/brep-design.step-comp
+			'(block))
+	 'data))
+
+; LOAD DESIGN BREP
+(put-data 'designs 'shuttle-design
+  (fetch (step-to-plist '../../parts/shuttle/brep-design.step-comp '(design))
+	 'data))
+
+; LOAD MRSEVS
+(put-data 'mrsevs 'shuttle-mrsevs-all
+  (fetch (step-to-plist '../../parts/shuttle/mrsevs_all.step '(mrsevs)) 'data))
+
+; LOAD SETUP2
+(step-to-plist '../../parts/shuttle/setup2.step 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'shuttle-setup2 (fetch 'step-in 'data))
+
+(setf (symbol-plist 'step-in) nil)
+
+; Brep data are not linked during loading because they must be transformed
+; before linking.  The linking is done during initialization of writing
+; a program.

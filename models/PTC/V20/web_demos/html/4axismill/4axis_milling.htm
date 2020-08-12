@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   
+<META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (WinNT; U) [Netscape]">
+   
+<META NAME="Author" CONTENT="Dave Rossi">
+   
+<TITLE>PTC - "4 Axis Machining"</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+
+quit_wind();
+
+retrieve_model("mill_tooth_cone.prt","models/4axismill")
+
+ViewSet('mill_tooth_cone.prt','ISO1');
+set_display('shade');
+
+
+function Rad_Mill()
+
+{
+	quit_wind();
+
+	retrieve_model("mill_tooth_cone.mfg","models/4axismill");
+
+	set_display('hiddeninvis');
+
+	ViewSet('mill_tooth_cone.asm', 'RAD_MILL')
+
+	layer_blank('mill_tooth_cone.asm','ref');
+	NC_Check('1x1','4axismill_cone.ncl' )
+
+}
+
+
+function retrieve_insert()
+{
+	quit_wind();
+	retrieve_model('sieve.mfg','models/4axismill/');
+	set_display('hiddeninvis');
+
+	ViewSet('sieve.asm','DRILLING');
+}
+
+function Rad_Drill()
+{
+	NC_Check ('1X1','4axismill_sieve_op10.ncl');
+}
+
+function retrieve_drill_casing()
+{
+	quit_wind();
+	retrieve_model('downhole.mfg','models/4axismill/');
+	set_display('hiddeninvis');
+
+	ViewSet('downhole.asm','MILLING');	
+}
+
+function Hel_Mill()
+{
+	NC_Check ('1X1','4axismill_helix.ncl');
+}
+
+</SCRIPT>
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><br><br>
+<CENTER><B><FONT COLOR="#000080"><FONT SIZE=+2>4 Axis Machining</FONT></FONT></B></CENTER>
+<FORM NAME="ui">
+<BR><IMG SRC="images/mill.gif" HEIGHT=74 WIDTH=97><IMG SRC="images/downhole.gif" HEIGHT=74 WIDTH=95>
+<IMG SRC="images/sieve.gif" HEIGHT=74 WIDTH=96>
+<BR><FORM NAME="ui">
+
+The addition of a <B>programmable rotary table</B> is a very popular
+addition to the traditional 3 axis milling machine. Industries such as
+aerospace, petrochemical, and medical all require various types of radial
+machining. Programming 4 axis operations, while difficult or impossible
+using 2-D drafting based CAM systems, is very simple in Pro/MFG. Upon defining
+a 4 axis milling sequence, the system automatically outputs both the <B>tool
+location and its orientation</B>.  
+
+<P><IMG SRC="../template/images/divider.gif"><BR>
+<BR>The following example is a downhole drilling bit for an oil well operation.
+This shows the rough and finish passes used to machine 
+the teeth on the first row.
+<P>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Radial Milling Operation" onclick='Rad_Mill()'>
+<BR><IMG SRC="../template/images/divider.gif" >
+
+<P>The next example is a medical plastic insert with a radial hole
+pattern.  By selecting any single hole, the system can <B>automatically
+create the toolpath for the entire hole pattern</B>, including necessary
+rotation commands.
+
+<P><IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Retrieve Plastic Insert" onclick='retrieve_insert()'> 
+
+<BR><IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Radial Drilling Operation" onclick='Rad_Drill()'>
+
+<BR><IMG SRC="../template/images/divider.gif" >
+
+<BR>The final example is another downhole drilling casing. This shows a
+4 axis milling of <B>helical slots</B> along the side of a cylindrical
+part.
+
+<P><IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Retrieve Drill Casing" onclick='retrieve_drill_casing()'>
+
+<BR><IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Helical Milling Operation" onclick='Hel_Mill()'>
+
+<BR><IMG SRC="../template/images/divider.gif" >
+
+<P><!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the --><!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" NOSAVE BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+<!-- END OF MENUBAR -->
+
+</BODY>
+</HTML>

@@ -1,0 +1,221 @@
+<HTML>
+<HEAD>
+   
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   
+<META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; IRIX64 6.2 IP28) [Netscape]">
+   
+<TITLE>PTC - "Family Table"</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language = "JavaScript"> 
+
+
+
+quit_wind(); 
+
+retrieve_model('turn.mfg','models/family_table/');
+ViewSet('turn.asm','ISO');
+set_display('shade');
+component_display('VIS0001');
+
+function show_shaft_toolpath() 
+{
+
+
+
+
+	ViewSet('turn.asm','TURN_VIEW');
+
+	NC_Check('2x2','fam_tbl_turn_orig.ncl');
+
+}
+
+
+
+function insert_instance() {
+
+
+	mp_replace('FT_FITTING.PRT','FT_FITTING2');
+
+	new_regenmodel();
+//	regenmodel('turn.mfg'); 
+
+//	regenmodel('turn.mfg');
+} 
+	
+
+
+function run_updated_turn() {
+
+
+	NC_Check('2x2','fam_tbl_turn_update.ncl')
+}
+
+
+
+function retr_mill(){
+
+	quit_wind();
+
+	retrieve_model('mill_fam_table.mfg','models/family_table/');
+
+	set_display('hiddenvis');
+	ViewSet('mill_fam_table.asm','ISO1');
+}
+
+
+
+function show_mill_toolpath()
+{
+	NC_Check('1x1','mill_generic.ncl');	
+}
+
+function set_mill_inst(){
+
+
+	mp_replace('mill_fam_table.PRT','MILL'); 
+
+	new_regenmodel();
+
+//	regenmodel('spacer_fam.mfg');
+
+//	regenmodel('stock_fam.prt');
+
+//	regenmodel('spacer_fam.asm');
+	}
+	 
+
+
+function run_updated_mill()
+{
+
+
+	NC_Check('1x1','mill_fam_table_instance.ncl');
+}
+
+
+
+</SCRIPT>
+
+<IMG SRC="../template/images/logo.gif" NOSAVE HEIGHT=32 WIDTH=287>
+
+<CENTER><!-- title goes here --><B><FONT COLOR="#000080">
+<FONT SIZE=+2>Programming
+Families of Parts</FONT></FONT></B></CENTER>
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" NOSAVE HEIGHT=10 WIDTH=280>
+
+<P>
+
+<FONT SIZE=+0>
+Pro/Engineer <B>family table</B> functionality greatly
+
+reduces the programming time for families of parts.  Family tables enable
+
+a user to define the varying <B>dimensions</B>, <B>features</B>, <B>parameters</B>,
+
+and <B>components </B>of a model.  By entering different values into the
+
+rows and columns of this table, new variations (instances) are quickly
+
+created.  Once the manufacturing process is captured for one of the instances,
+
+any of the instances of that model can easily be <B>replaced</B> to be
+
+the current manufacturing model. Upon regeneration, the tool paths are
+
+automatically updated according to definitions defined in the family table.</FONT>
+
+<P>
+<FONT SIZE=+0>This utilization of Family Tables works in all manufacturing
+
+solutions offered by Parametric Technology Corporation including:  Milling, Turning,
+
+and Wire-EDM. The following examples demonstrate the power of family tables
+
+for turning and milling applications.</FONT><BR><BR>
+
+<IMG SRC="../template/images/bullet.gif" NOSAVE HEIGHT=10 WIDTH=11><FONT SIZE=+0>
+<U>
+<FONT COLOR="#000000">
+<A HREF="#turn">Programming Family of Lathe Parts</A></FONT></U></FONT>
+<BR>
+
+</FONT></U>
+
+<IMG SRC="../template/images/divider.gif" NOSAVE HEIGHT=10 WIDTH=280>
+
+
+<BR><A NAME="turn"></A>
+<BR><B><FONT SIZE=+1>
+EXAMPLE: Programming Family of Lathe Parts</FONT></B>
+
+<P>
+<FONT SIZE=+0>The following example shows a turned part that is a member
+of a family table. Some of the features that change from instance to instance
+are the <B>diameter</B>, the <B>distance between grooves, </B>and if the
+<B>inner diameter</B> exists. When a new instance is replaced, you will
+see how the tool path updates without any extra programming effort.</FONT>
+
+
+<P>
+<IMG SRC="images/generic.gif" NOSAVE width=300>
+
+<P>
+<IMG SRC="images/instance.gif" NOSAVE width=300>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Generic Tool Path" onclick="show_shaft_toolpath()">
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Replace Model w/Instance" onclick="insert_instance()"><br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Updated Tool Path" onclick="run_updated_turn()">
+<br>
+<IMG SRC="../template/images/divider.gif" NOSAVE HEIGHT=10 WIDTH=280>
+<BR><A NAME="mill"></A>
+
+
+
+
+
+<BR><!--   #######################    end of document content    #######################
+  -->
+</FORM>
+<!-- START OF MENUBAR -->
+
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) 
+-->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index 
+button (optional) --><!-- last is the: --><!-- the link for the next button goes below --><!-- mouseover text goes below for 
+the next button (optional) -->
+
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return 
+true">
+
+<IMG SRC="../template/images/back.gif" NOSAVE BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" NOSAVE BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; 
+return true">
+<IMG SRC="../template/images/next.gif" NOSAVE BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

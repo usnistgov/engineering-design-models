@@ -1,0 +1,19 @@
+; depth of cylindrical part of drill hole
+
+(- 3.0 (* 0.25 (tan-degrees 31))) => 2.84978484524311
+
+; z-axis direction, tilted back 30 degrees.
+
+(normalize (list -1.0 (sqrt 3.0))) => (-0.5 0.8660254037844386)
+
+; location of corner of slanted face (which is used as the origin for mrsevs)
+; untilted, it is at x=5.5, y=4.5, so
+
+(setq length (sqrt (+ (expt 5.5 2) (expt 4.5 2))))
+(setq angle (atan 4.5 5.5))
+
+; new x is given by
+(* length (cos (+ angle (/ pi 6)))) => 2.513139720814413
+
+; new y is given by
+(* length (sin (+ angle (/ pi 6)))) => 6.647114317029974

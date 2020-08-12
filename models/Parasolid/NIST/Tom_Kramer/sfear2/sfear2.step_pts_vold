@@ -1,0 +1,37 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+ 'PARASOLID TO STEP',
+ 'some date',
+ ('Noman'),
+ ('NIST'),
+ '1.0',
+ '1.0',
+ 'originating system');
+ FILE_DESCRIPTION('This file was produced by the NIST parasolid_to_step tool.');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1 = CARTESIAN_POINT(, 0.0, 0.0, 0.0);
+@2 = DIRECTION(, 0.0, 0.0, 1.0);
+@3 = AXIS2_PLACEMENT(, #1, #2, );
+@4 = SPHERICAL_SURFACE(, 12.0, #3);
+@5 = SURFACE_LOGICAL_STRUCTURE(#4, .T.);
+@6 = FACE(, (), #5);
+@7 = FACE_LOGICAL_STRUCTURE(#6, .T.);
+@8 = CLOSED_SHELL((#7));
+@9 = SHELL_LOGICAL_STRUCTURE(#8, .T.);
+@10 = CARTESIAN_POINT(, 0.0, 0.0, 0.0);
+@11 = AXIS2_PLACEMENT(, #10, #2, );
+@12 = TOROIDAL_SURFACE(, 6.0, 2.0, #11);
+@13 = SURFACE_LOGICAL_STRUCTURE(#12, .F.);
+@14 = FACE(, (), #13);
+@15 = FACE_LOGICAL_STRUCTURE(#14, .F.);
+@16 = CLOSED_SHELL((#15));
+@17 = SHELL_LOGICAL_STRUCTURE(#16, .F.);
+@18 = REGION(#9, (#9, #17));
+ENDSEC;
+
+ENDSTEP;

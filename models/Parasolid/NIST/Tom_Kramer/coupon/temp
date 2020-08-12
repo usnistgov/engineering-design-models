@@ -1,0 +1,20 @@
+(setf (symbol-plist 'step-in) '(
+
+header (
+ (file_identification "coupon/e_move_plan1" "19920130000000" ("Tom Kramer" "Room B-124, Bldg. 220" "NIST" "Gaithersburg, MD 20899") ("Robot Systems Division" "NIST" "Gaithersburg, MD 20899") "STEP Version 1.0" "No preprocessor - handwritten" "No system")
+ (file_description "This is an adacs e_move process plan for coupon")
+ (imp_level "1.0")
+)
+
+data (
+10 (chamfer_face_open_elementary_line  0.01 ("#606") nil  nil  nil  nil  nil )
+20 (chamfer_face_open_elementary_arc  0.01 ("#630") nil  nil  nil  nil  nil )
+101 (adacs_e_move_startup  1)
+102 (fixture_part  2 "COUPON_BLANK_A" "VISE1" "IN THE TRAY")
+103 (chamfer_feature  3 (ref 10) 50000 nil )
+104 (chamfer_feature  4 (ref 20) 50000 nil )
+105 (unfixture_part  5 "COUPON_BLANK_A" "BACK ON TRAY")
+106 (adacs_e_move_shutdown  6)
+107 (adacs_plan  "e_move_plan1" "MAKES TWO CHAMFERS" .e_move. ((ref 101) (ref 102) (ref 103) (ref 104) (ref 105) (ref 106)))
+)
+))

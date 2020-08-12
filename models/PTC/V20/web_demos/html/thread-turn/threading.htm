@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (WinNT; U) [Netscape]">
+   <TITLE>PTC - "Thread Milling"</TITLE>
+
+<BODY BGCOLOR="#FFFFFF">
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language="JavaScript">
+
+quit_wind();
+set_display('hiddeninvis');
+
+retrieve_model('thread-turn.mfg','models/thread-turn/')
+ViewSet('thread-turn.asm','ISO1');
+
+function thread_turn()
+{
+	Play_Path_Disp_Cycles('1','UNIFIED-ISO','OP010','0.1');
+}
+
+function thread_mill()
+{
+	quit_wind();
+	retrieve_model('mfg_turn_mill.mfg','models/thread-turn/blade/')
+	ViewSet('mfg_turn_mill.asm','THREAD-MILL');
+	component_display('VIS0001');
+	View_Repaint();
+	Play_Path('2','Thread Milling','5XMILLING','0.1');
+	View_Repaint();
+}
+
+</SCRIPT>
+</HEAD>
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><br><br>
+<CENTER><B>
+<FONT SIZE=+3 COLOR="#000080">
+
+<!-- title goes here -->
+
+
+
+	Thread Turning and Milling</FONT></B></CENTER>
+
+<FORM NAME="ui"><br>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=287><br>
+<BR>
+
+Pro/MFG enables a programmer to easily generate tool paths
+to machine threads on either a lathe or milling machine. Both internal
+and external threads can be machined. Also, a face thread sequence (consisting
+of a single radial move) can be programmed for a lathe.
+
+<P>Thread Turning supports ISO standard thread output. The different thread
+types include Unified, Acme, Buttress, and User Defined.
+
+<P>Pro/MFG also provides a set of turning thread parameters which
+can be set to further define the threading sequence.
+
+<br><IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Thread Turning" onclick="thread_turn()">
+<br><IMG SRC="../template/images/divider.gif" WIDTH=287><br>
+<P>
+
+<P>Thread milling enables the creation of helical milling of cylindrical
+surfaces. The tool path is also further controlled by setting milling thread
+parameters.
+
+
+<br>
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Thread Milling" onclick="thread_mill()">
+<br><IMG SRC="../template/images/divider.gif" WIDTH=287><br>
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+<!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the --><!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<center><A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></center>
+<!-- END OF MENUBAR -->
+
+</BODY>
+</HTML>

@@ -1,0 +1,23 @@
+; This prints out the coordinates of the centers of the holes in the
+; top of anc101.
+
+(do ((delta (/ pi 6))
+     (angle (/ pi 3) (+ angle delta))
+     (stop (* pi 1.83)))
+    (( > angle stop))
+    (format t "(~A, ~A)~%"
+	    (+ 4 (* 1.625 (cos angle))) (+ 2.5 (* 1.625 (sin angle)))))
+
+(4.8125, 3.9072912811497127)
+(4.0, 4.125)
+(3.1875, 3.907291281149713)
+(2.5927087188502878, 3.3125)
+(2.375, 2.5)
+(2.592708718850287, 1.6875)
+(3.1875, 1.0927087188502878)
+(4.0, 0.875)
+(4.8125, 1.0927087188502873)
+
+; depth of cylindrical part of drill hole
+
+(- 0.6 (* 0.158 (tan-degrees 31))) => 0.5050640221936454

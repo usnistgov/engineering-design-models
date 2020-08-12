@@ -1,0 +1,169 @@
+<HEAD>
+
+<TITLE>PTC - "4 Axis Turning"</TITLE>
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+
+</SCRIPT>
+
+
+<SCRIPT language = "JavaScript">
+
+
+
+
+quit_wind();
+
+retrieve_model('4x_shaft.mfg','models/4xturn/');
+
+set_display('shade');
+ViewSet('4x_shaft.asm', 'iso');
+
+
+function turn_zoomout() 
+
+{
+
+	ViewSet('4x_shaft.asm', 'side');
+	set_display('hiddeninvis');
+	points_display('yes');
+	Play_Path('3','4xturn','CHUCK_END','.01');
+
+}
+
+
+function turn_zoomin() 
+{
+        ViewSet('4x_shaft.asm', 'zoom2');
+        set_display('hiddeninvis');
+	points_display('yes');
+        Play_Path('3','4xturn','CHUCK_END','.001');
+}
+
+
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF">
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+
+<CENTER><FONT SIZE=+3 COLOR="#000080" ><B>
+
+
+<!-- title goes here -->
+
+	4 Axis Rough Turning</FONT SIZE></B></CENTER></FONT>
+
+
+
+<form NAME="ui">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+
+<font  size=+0>
+<br>
+<IMG SRC="./images/4xturn.gif" HEIGHT=300 WIDTH=370 >
+<br>
+<br>
+Pro/MFG provides a full suite of tools for multi-axis turning.  Pinch turning tool paths
+can be created quickly and easily from a single tool path.  In addition, any combination
+of tool paths from Head 1 and Head 2 can easily be synchronized to optimize cutting time.
+<br>
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<// ************************************ 4 Axis Roughing *********************************//>
+<br>
+<B>
+<FONT SIZE=+1 COLOR="#000080">4 Axis Simultaneous Roughing</FONT SIZE></B>
+<br>
+<font  size=+0>
+
+
+In the following example, a 4 axis (pinch turning) tool path rough machines the shaft
+from the bar stock.  The user simply creates the tool path for Head 1 and Pro/MFG
+automatically determines the correct tool path for Head 2.
+
+
+<br>
+
+<br>
+<IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="4 Axis Tool Path" onclick="turn_zoomout()">
+
+<br>
+<br>
+As we zoom in on this tool path, notice the correct offsets, step depths, and synchronization
+have automatically been applied to the resulting tool path.  In addition, any of these values
+can simply be changed by modifying parameter values.
+<br>
+<br>
+<IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Close Up of Synchronization" onclick="turn_zoomin()">
+<br>
+<br><br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<!--   #######################    end of document content    #######################   -->
+
+</form>
+
+<!-- START OF MENUBAR -->
+
+<center>
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: -->
+
+<!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+        
+<a href="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true"
+>
+<img src="../template/images/back.gif" width=75 height=40 border=0></a>
+<a href=" ../intro/mill_intro.htm"
+ OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<img src="../template/images/index.gif" width=128 height=40 border=0></a>
+<a href="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+
+<!-- END OF MENUBAR -->
+
+
+
+</BODY>
+
+</HTML>

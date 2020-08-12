@@ -1,0 +1,63 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'NAS_SMALL/MRSEVS.STEP',
+   '19940922000000',
+   ('Tom Kramer',
+    'Room b-124, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Intelligent Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'no system');
+ FILE_DESCRIPTION('MRSEVs for cutting small NAS part');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+
+ @1  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @2  = DIRECTION ( , 0.0, 1.0, 0.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @4  = DIRECTION ( , 0.70710678, 0.70710678, 0.0);
+
+ @331  = CARTESIAN_POINT (.T. , 0.0, 0.0, 0.0);
+ @332  = LINEAR_FEATURE_SWEEP_PATH (0.3125);
+ @333  = AXIS2_PLACEMENT ( , #331, #1, #3);
+ @334  = IMPLICIT_EDGE_ROUND (1.5);
+ @335  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#334, 3.0, 3.0);
+ @336  = RECTANGULAR_MESA_ISLAND (#333, #332, #335, );
+/* circle island */
+
+ @341  = CARTESIAN_POINT ( , 2.0, 2.0, 1.6875);
+ @342  = LINEAR_FEATURE_SWEEP_PATH (0.3125);
+ @343  = AXIS2_PLACEMENT ( , #341, #1, #3);
+ @344  = IMPLICIT_EDGE_ROUND (0.16);
+ @345  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#344, 4.27, 4.27);
+ @346  = RECTANGULAR_POCKET_WITH_ISLANDS (#343, #342, #345, , (#336));
+ @347  = MATERIAL_REMOVAL_VOLUME ('CUT_CIRCLE', (#346), );
+/* pocket with circle island in it */
+
+ @431  = CARTESIAN_POINT (.T. , 0.0, 0.0, 0.0);
+ @432  = LINEAR_FEATURE_SWEEP_PATH (0.15625);
+ @433  = AXIS2_PLACEMENT ( , #431, #1, #4);
+ @435  = RECTANGULAR_FEATURE_SWEEP_PROFILE ( , 2.121320343, 2.121320343);
+ @436  = RECTANGULAR_MESA_ISLAND (#433, #432, #435, );
+/* diamond island */
+
+ @441  = CARTESIAN_POINT ( , 2.0, 2.0, 1.84375);
+ @442  = LINEAR_FEATURE_SWEEP_PATH (0.15625);
+ @443  = AXIS2_PLACEMENT ( , #441, #1, #3);
+ @444  = IMPLICIT_EDGE_ROUND (1.81);
+ @445  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#444, 3.62, 3.62);
+ @446  = RECTANGULAR_POCKET_WITH_ISLANDS (#443, #442, #445, , (#436));
+ @447  = MATERIAL_REMOVAL_VOLUME ('CUT_DIAMOND', (#446), );
+/* circle pocket with diamond island in it */
+
+ENDSEC;
+
+ENDSTEP;

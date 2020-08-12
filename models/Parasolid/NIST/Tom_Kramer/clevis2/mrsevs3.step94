@@ -1,0 +1,55 @@
+ISO-10303-21;
+
+HEADER;
+FILE_DESCRIPTION(('CLEVIS2/MRSEVS3.STEP',
+                 '19891025000000'),
+         	 'implementation level - ');
+FILE_NAME('mrsevs3.step94',
+        '1994-02-25',
+        ('Tom Kramer', 'NIST', 'Gaithersburg, MD, USA'),
+        ('RSD', 'Rockville, MD, USA'),
+        'no preprocessor',
+        'Hand-crafted',
+        'Approved by Good Housekeeping');
+FILE_SCHEMA(('mrsev.exp'));
+ENDSEC;
+
+DATA;
+
+ #249  = DIRECTION ($, 1.0, 0.0, 0.0);
+ #250  = DIRECTION ($, 0.0, 1.0, 0.0);
+ #251  = CARTESIAN_POINT ($, 3.2, 0.61, -0.11);
+ #252  = LINEAR_FEATURE_SWEEP_PATH (2.39);
+ #253  = AXIS2_PLACEMENT ($, #251, #250, #249);
+ #254  = IMPLICIT_EDGE_ROUND (0.5);
+ #255  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#254, 7.6, 1.0);
+ #256  = RECTANGULAR_POCKET (#253, #252, #255, $);
+ #257  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET25', (#256), $);
+/* rough cut back of whole part */
+
+ #261  = CARTESIAN_POINT ($, 1.8, 0.6, -0.1);
+ #262  = LINEAR_FEATURE_SWEEP_PATH (1.9);
+ #263  = AXIS2_PLACEMENT ($, #261, #250, #249);
+ #265  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#254, 4.8, 1.0);
+ #266  = RECTANGULAR_POCKET (#263, #262, #265, $);
+ #267  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET26', (#266), $);
+/* finish back of left boss */
+
+ #271  = CARTESIAN_POINT ($, 5.025, 0.61, -0.01);
+ #272  = LINEAR_FEATURE_SWEEP_PATH (1.5);
+ #273  = AXIS2_PLACEMENT ($, #271, #250, #249);
+ #275  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#254, 4.0, 1.0);
+ #276  = RECTANGULAR_POCKET (#273, #272, #275, $);
+ #277  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET27', (#276), $);
+/* rough cut back of right boss */
+
+ #281  = CARTESIAN_POINT ($, 5.025, 0.6, 0.0);
+ #282  = LINEAR_FEATURE_SWEEP_PATH (1.5);
+ #283  = AXIS2_PLACEMENT ($, #281, #250, #249);
+ #286  = RECTANGULAR_POCKET (#283, #282, #275, $);
+ #287  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET28', (#286), $);
+/* finish back of right boss */
+
+ENDSEC;
+
+END-ISO-10303-21;

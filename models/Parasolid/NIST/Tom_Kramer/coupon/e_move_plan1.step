@@ -1,0 +1,32 @@
+STEP;
+HEADER;
+ FILE_IDENTIFICATION(
+   'coupon/e_move_plan1',
+   '19920130000000',
+   ('Tom Kramer',
+    'Room B-124, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Robot Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'No system');
+ FILE_DESCRIPTION('This is an adacs e_move process plan for coupon');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@10   = CHAMFER_FACE_OPEN_ELEMENTARY_LINE (0.01, ('#606'), , , , , );
+@20   = CHAMFER_FACE_OPEN_ELEMENTARY_ARC (0.01, ('#630'), , , , , );
+@101  = ADACS_E_MOVE_STARTUP (1);
+@102  = FIXTURE_PART (2, 'COUPON_BLANK_A', 'VISE1', 'IN THE TRAY');
+@103  = CHAMFER_FEATURE (3, #10, 50000,  );
+@104  = CHAMFER_FEATURE (4, #20, 50000,  );
+@105  = UNFIXTURE_PART (5, 'COUPON_BLANK_A', 'BACK ON TRAY');
+@106  = ADACS_E_MOVE_SHUTDOWN (6);
+@107  = ADACS_PLAN ('e_move_plan1', 'MAKES TWO CHAMFERS', .E_MOVE.,
+          (#101, #102, #103, #104, #105, #106));
+ENDSEC;
+ENDSTEP;

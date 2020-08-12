@@ -1,0 +1,176 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>PTC - "Multi-Axis Milling"</TITLE>
+</HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language = "JavaScript">
+
+quit_wind();
+retrieve_model('multi_axis.mfg','models/multi_axis/');
+layer_blank('multi_axis.asm','wp');
+layer_normal('multi_axis.asm','fixture');
+set_display("shade");
+
+function five_axis_tool_path()
+{
+	ViewSet('multi_axis.asm', 'ISO1');
+
+	layer_blank('multi_axis.asm','wp');
+
+	layer_normal('multi_axis.asm','fixture');
+
+	Play_Path('2','ROUGH_MIDDLE','WAX','.1');
+
+	View_Repaint();
+}
+
+function five_axis_nck_gouge()
+{
+	set_display("hiddeninvis");
+	ViewSet('multi_axis.asm', 'ISO_NCK');
+
+	layer_blank('multi_axis.asm','fixture');
+
+	layer_normal('multi_axis.asm','wp');
+
+	NC_Check('1x1','multi_axis2.ncl' );
+
+}
+
+function five_axis_nck()
+{
+	set_display("hiddeninvis");
+	ViewSet('multi_axis.asm', 'ISO_NCK');
+
+	layer_blank('multi_axis.asm','fixture');
+
+	layer_normal('multi_axis.asm','wp');
+
+	NC_Check('1x1','multi_axis1.ncl' );
+
+}
+
+
+</SCRIPT>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B>
+<FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>
+Multi-Axis Milling</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+<UL>
+<BR>
+</UL>
+
+
+<IMG SRC="images/multi_axis1.gif" height=300 width=300>
+
+<BR>
+<FONT SIZE=-2>
+<B>Courtesy of:
+<BR>
+<BR>
+Flowdata Inc. Richardson,TX<BR>
+Pedro Fernandez, Engineering Manager<BR></B>
+
+<P>
+<br>
+<BR>
+<FONT SIZE=+0>
+
+Pro/MFG provides a wide variety of powerful options for multi-axis
+machining.  In the following example, a 5 axis milling tool path is 
+required to finish machine this very complex geometry.
+
+
+<P>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="5 Axis Tool Path" 
+onclick="five_axis_tool_path()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+<br>
+<br>
+For complex geometry, control of the tool axis is critical to ensure
+high quality, accurate tool paths.  The following tool path has no axis
+control applied and the tool stays normal to the sufaces being machined
+at all times.  This tool path is not acceptable for such complex geometry.
+
+<P>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Tool Path Normal to Surface" 
+onclick="five_axis_nck_gouge()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+<br>
+<br>
+Pro/MFG provides a number of easy-to-use options to automatically control
+the orientation of the tool including axis definition, synchronization curves, 
+and tool orientation with lead and tilt angles either fixed or relative to the
+surfaces being cut.  In this example, the user simply defines the 
+required tool orientation at critical locations and Pro/MFG interpolates
+the rest.  This gives the user complete control and ensures a high quality
+ final tool path.
+<P>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Tool Path with Axis Definition" 
+onclick="five_axis_nck()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM><!-- START OF MENUBAR -->
+
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+
+<!-- END OF MENUBAR -->
+
+</BODY>
+
+</HTML>

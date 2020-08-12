@@ -1,0 +1,396 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>PTC - "Rough Machining with Localized Clean-Up"</TITLE>
+</HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+
+
+
+
+
+// *******  ORIGINAL SCRIPT FROM OLD LOCAL_MILL TEMPLATE  *****  //
+
+
+
+
+
+
+
+
+function new_mapkey()
+
+{
+
+	ret = document.wm.pwlMacroLoad("#CL DATA; #OUTPUT");
+
+}
+
+
+
+function repaint()
+
+{
+
+	ret = document.wm.pwlMacroLoad("#DONE SEQ; #VIEW; #REPAINT");
+
+}
+
+
+
+
+
+//  *****  END ORIGINAL SCRIPT FROM OLD LOCAL_MILL TEMPLATE  *****  //
+
+
+
+set_display("hiddenvis");
+quit_wind();
+
+retrieve_model('volumes.mfg','models/local_mill/');
+
+function vol_default_path()
+{
+	ViewSet('volumes.asm', 'DEF_VOLUME');
+
+	layer_blank('volumes.asm','note_2');
+
+	layer_blank('volumes.asm','note_3');
+
+	layer_blank('volumes.asm','note_4');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note_6');
+
+	layer_normal('volumes.asm','note1');
+
+	Play_Path('1','DEF_VOLUME','OP010','1');
+
+	View_Repaint();
+}
+
+function default_local_mill()
+{
+	ViewSet('volumes.asm', 'LOCAL_DEF');
+
+	layer_blank('volumes.asm','note1');
+
+	layer_blank('volumes.asm','note_3');
+
+	layer_blank('volumes.asm','note_4');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note_6');
+
+	layer_normal('volumes.asm','note_2');
+
+	Play_Path('2','DEF_LOCAL','OP010','1');
+
+	View_Repaint();
+}
+
+function order_local_mill()
+{
+	ViewSet('volumes.asm', 'OMIT_REGIONS');
+
+	layer_blank('volumes.asm','note_2');
+
+	layer_blank('volumes.asm','note1');
+
+	layer_blank('volumes.asm','note_3');
+
+	layer_blank('volumes.asm','note_4');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note_6');
+
+	layer_normal('volumes.asm','note_3');
+
+	Play_Path('3','OMIT_REGION','OP010','1');
+
+	View_Repaint();
+}
+
+function rough_local_mill()
+{
+	 ViewSet('volumes.asm', 'ROUGH_LOCAL');
+
+	 layer_blank('volumes.asm','note_3');
+
+	 layer_blank('volumes.asm','note1');
+
+	 layer_blank('volumes.asm','note_2');
+
+	 layer_blank('volumes.asm','note_4');
+
+	 layer_blank('volumes.asm','note_5');
+
+	 layer_blank('volumes.asm','note_6');
+
+	 layer_normal('volumes.asm','note_4');
+
+	 Play_Path('4','ROUGH_LOCAL','OP010','.6');
+
+	 View_Repaint();
+}
+
+function secondary_local_mill()
+{
+	ViewSet('volumes.asm', 'ROUGH_LOCAL');
+
+	layer_blank('volumes.asm','note_4');
+
+	layer_blank('volumes.asm','note1');
+
+	layer_blank('volumes.asm','note_3');
+
+	layer_blank('volumes.asm','note_2');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note_6');
+
+	layer_normal('volumes.asm','note_5');
+
+	Play_Path('5','SECONDARY_LOCAL','OP010','1');
+
+	View_Repaint();
+
+	ViewSet('volumes.asm', 'LOCAL_CLOSE');
+}
+
+function order_regions()
+{
+	ViewSet('volumes.asm', 'DEF_VOLUME');
+
+	layer_blank('volumes.asm','note1');
+
+	layer_blank('volumes.asm','note_2');
+
+	layer_blank('volumes.asm','note_3');
+
+	layer_blank('volumes.asm','note_4');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note_6');
+
+	Play_Path('6','BUILD_CUT_1','OP010','2')
+
+	View_Repaint();
+}
+
+function slice_by_slice()
+{
+	ViewSet('volumes.asm', 'DEF_VOLUME');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note1');
+
+	layer_blank('volumes.asm','note_3');
+
+	layer_blank('volumes.asm','note_4');
+
+	layer_blank('volumes.asm','note_5');
+
+	layer_blank('volumes.asm','note_6');
+
+	layer_normal('volumes.asm','note_6');
+
+	Play_Path('7','SLICES','OP010','2');
+
+	View_Repaint();
+
+	ViewSet('volumes.asm', 'SIDE')
+}
+</SCRIPT>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B>
+<FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>
+Rough
+Machining with Localized Clean-Up</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+For components with multiple pockets
+and machining areas,
+
+machining sequences can be defined to rough the pockets with a relatively
+
+large tool and then secondary sequences can be defined to clean up the
+
+remaining material.</FONT></FONT>
+<UL>
+<BR>
+</UL>
+
+
+<IMG SRC="images/volume1.jpg" width=285>
+
+<P>
+The area of material to be removed is easily identified. This component
+
+is a support bracket with internal ribs. The area of interest is the internal
+
+material around the ribs.
+
+<P>The first sequence is intended to remove material as quickly as possible,
+
+therefore the tool used is required to be larger than the smallest radius
+
+in the area being machined.
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Default Volume Toolpath" 
+onclick="vol_default_path()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+This results in a compromise in that this will leave material in these
+
+areas. In order to deal with this situation local milling sequences can
+
+very easily be generated which will automatically clean up the areas left
+
+by the initial sequence. In this case the material left is calculated from
+
+the previous tool path
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Default Local Mill" 
+onclick="default_local_mill()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+Pro/MFG enables detailed control of the sequences. For example
+
+it is possible to control which of the corners are machined with each individual
+
+sequence, and also the order in which they will be cut. This will help
+
+to ensure that the sequences generated are as efficient as possible.
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Selected Regions Local Mill" 
+onclick="order_local_mill()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+Depending on how rough the initial volume sequence needs to be it may
+
+be required to nest more than one local milling sequence. This is achieved
+
+very easily simply by referring to the previous local sequence and selecting
+
+a smaller tool.
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Rough Local Mill"
+onclick="rough_local_mill()">
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Secondary Local Mill" 
+onclick="secondary_local_mill()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+<IMG SRC="images/local.jpg" >
+
+<P>
+It is also often necessary to control the order in which different segments
+
+of the main volume cut are performed. Initially here we are simply asking
+
+the system to machine neighboring areas one after the other.
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Ordered Sequences" 
+onclick="order_regions()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+As the ribs are relatively thin here, perhaps a better way to handle
+
+the initial material clearance would be by machining all pockets together
+
+at each height pass. This will help to prevent distortion of ribs when
+
+machining an area with no material supporting it.
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Slice By Slice Sequence" 
+onclick="slice_by_slice()">
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM><!-- START OF MENUBAR -->
+
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+
+<!-- END OF MENUBAR -->
+
+</BODY>
+
+</HTML>

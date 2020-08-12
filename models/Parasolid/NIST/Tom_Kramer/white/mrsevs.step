@@ -1,0 +1,58 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'WHITE/MRSEVS.STEP',
+   '19901124000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'Computervision CADDS');
+ FILE_DESCRIPTION('This file describes MRSEV's for the white part);
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = CARTESIAN_POINT ( , 4.0, 1.5, -0.6);
+ @2  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @4  = AXIS2_PLACEMENT ( , #1, #2, #3);
+ @5  = LINEAR_FEATURE_SWEEP_PATH (0.6);
+ @6  = IMPLICIT_EDGE_ROUND (0.7);
+ @7  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#6, 3.0, 2.0);
+ @8  = RECTANGULAR_POCKET (#4, #5, #7);
+ @9  = MATERIAL_REMOVAL_VOLUME ('FINISH_POCKET', (#8), );
+/* finish pocket */
+
+ @11 = CARTESIAN_POINT ( , 4.0, 1.5, -0.59);
+ @14 = AXIS2_PLACEMENT ( , #11, #2, #3);
+ @15 = LINEAR_FEATURE_SWEEP_PATH (0.59);
+ @16 = IMPLICIT_EDGE_ROUND (0.69);
+ @17 = RECTANGULAR_FEATURE_SWEEP_PROFILE (#16, 2.98, 1.98);
+ @18 = RECTANGULAR_POCKET (#14, #15, #17);
+ @19 = MATERIAL_REMOVAL_VOLUME ('ROUGH_POCKET', (#18), );
+/* rough pocket */
+
+ @21 = CARTESIAN_POINT ( , 0.8, 0.9, -1.55);
+ @22 = AXISYMMETRIC_FEATURE_SWEEP_CONICAL_END ( , 118.0, );
+ @24 = AXIS2_PLACEMENT ( , #21, #2, #3);
+ @28 = HOLE (#24, 1.55, #22, 0.25);
+ @29 = MATERIAL_REMOVAL_VOLUME ('HOLE1', (#28), );
+/* drill hole */
+
+ @31 = CARTESIAN_POINT ( , 0.8, 0.9, 0.0);
+ @32 = AXISYMMETRIC_FEATURE_SWEEP_CONICAL_END ( , 90.0, );
+ @34 = AXIS2_PLACEMENT ( , #31, #2, #3);
+ @38 = HOLE (#34, 0.0, #32, 0.09);
+ @39 = MATERIAL_REMOVAL_VOLUME ('CENTER_DRILL_HOLE', (#38), );
+/* center drill hole */
+
+ENDSEC;
+
+ENDSTEP;

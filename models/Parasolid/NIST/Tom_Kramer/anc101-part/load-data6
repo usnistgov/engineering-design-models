@@ -1,0 +1,25 @@
+; LOAD PROCESS PLAN6
+(load "../../parts/anc101/plan6.olps")
+
+; LOAD INTERMEDIATE WORKPIECE BREP
+(put-data 'workpieces 'anc101-after5
+  (fetch (step-to-plist '../../parts/anc101/design5.step '(workpiece)) 'data))
+
+; LOAD DESIGN BREP
+(put-data 'designs 'anc101-design
+  (fetch (step-to-plist '../../parts/anc101/brep-design.step '(design)) 'data))
+
+; LOAD MRSEVS6
+(put-data 'mrsevs 'anc101-mrsevs6
+  (fetch (step-to-plist '../../parts/anc101/mrsevs6.step  '(mrsevs)) 'data))
+
+; LOAD SETUP6
+(step-to-plist '../../parts/anc101/setup6.step 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'anc101-setup6 (fetch 'step-in 'data))
+
+(setf (symbol-plist 'step-in) nil)
+
+; Brep data are not linked during loading because they must be transformed
+; before linking.  The linking is done during initialization of writing
+; a program.

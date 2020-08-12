@@ -1,0 +1,122 @@
+(put-data 'pplans 'clevis2-plan2 '(clevis2-plan2
+ header (header
+         plan-id            clevis2-plan2
+	 design-id          clevis2-design
+	 workpiece-id       block2
+         material	    aluminum
+	 fixture-id         vise
+	 vise-width         3.0
+	 mrsevs             clevis2-mrsevs2
+         setup-id	    clevis2-setup2)
+
+ data   (data
+           1   (1   work-element    initialize-plan
+                    program-x-zero  17.1
+                    program-y-zero  7.3
+                    program-name    cl28nc)
+           2   (2   work-element    rough-mill
+                    mrsev           "rectangular_pocket21"
+                    tool-type-id    ruf-mill-0.625-4
+                    stepover        0.375
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.625
+                    precedent-steps (14))
+           3   (3   work-element    rough-mill
+                    mrsev           "rectangular_pocket23"
+                    tool-type-id    ruf-mill-0.625-4
+                    stepover        0.375
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.625
+                    precedent-steps (14))
+           4   (4   work-element    finish-mill
+                    mrsev           "rectangular_pocket22"
+                    tool-type-id    end-mill-0.625-2
+                    stepover        0.375
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.625
+                    precedent-steps (2))
+           5   (5   work-element    finish-mill
+                    mrsev           "rectangular_pocket24"
+                    tool-type-id    end-mill-0.625-2
+                    stepover        0.375
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.625
+                    precedent-steps (3))
+           6   (6   work-element    rough-mill
+                    mrsev           "rectangular_pocket29"
+                    tool-type-id    ruf-mill-0.625-4
+                    stepover        0.375
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.5
+                    precedent-steps (2))
+           7   (7   work-element    rough-mill
+                    mrsev           "other_pocket31"
+                    tool-type-id    ruf-mill-0.625-4
+                    stepover        0.375
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.625
+                    precedent-steps (2 3))
+           8   (8   work-element    finish-mill
+                    mrsev           "other_pocket32"
+                    tool-type-id    end-mill-0.5-3
+                    stepover        0.25
+                    speed           3500
+                    feed-rate       17
+                    pass-depth      0.8
+                    precedent-steps (4 5 7))
+           9   (9   work-element    twist-drill
+                    mrsev           "hole1"
+                    tool-type-id    drill-0.5-2
+                    speed           2500
+                    feed-rate       3.5
+                    pass-depth      0.5
+                    precedent-steps (12 13))
+           10  (10  work-element    twist-drill
+                    mrsev           "hole2"
+                    tool-type-id    drill-0.5-2
+                    speed           2500
+                    feed-rate       3.5
+                    pass-depth      0.5
+                    precedent-steps (12 13))
+           11  (11  work-element    counterbore
+                    mrsev           "hole30"
+                    tool-type-id    end-mill-1.0-2
+                    speed           2500
+                    feed-rate       6
+                    precedent-steps (6))
+           12  (12  work-element    center-drill
+                    mrsev           "center_drill_hole1"
+                    tool-type-id    center-drill-0.1875-2
+                    speed           5000
+                    feed-rate       8
+                    precedent-steps (5 6))
+           13  (13  work-element    center-drill
+                    mrsev           "center_drill_hole2"
+                    tool-type-id    center-drill-0.1875-2
+                    speed           5000
+                    feed-rate       8
+                    precedent-steps (5 6))
+           14  (14  work-element    set0-corner
+                    tool-type-id    probe-0.25
+                    near-x          0.0
+                    near-y          0.0
+                    corner-type     1
+                    precedent-steps (1))
+           15  (15  work-element    close-plan
+                    precedent-steps (8 9 10 11)))
+   tool-requirements (
+           probe-0.25
+           center-drill-0.1875-2
+           end-mill-1.0-2
+           end-mill-0.625-2
+           ruf-mill-0.625-4
+           drill-0.5-2)))
+
+; This is an AMRF format process plan and will be supplanted by an ALPS
+; format plan.

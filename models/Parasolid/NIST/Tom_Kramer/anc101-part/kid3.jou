@@ -1,0 +1,57 @@
+(modeller start)
+(load "plisp/load_functions.l")
+(define workpiece body)
+(workpiece receive "olps_workpiece_in.xmt_txt")
+(workpiece point '(0 0 0))
+(workpiece direction '(0.5773502691896257 -0.5773502691896257 -0.5773502691896257))
+(workpiece angle -120.0)
+(workpiece rotate)
+(translate_body 5.0 0.0 10.75)
+(init_graphics)
+(make_pocket 'rectangular_pocket1 2.5 3.255 8.76 6.2 3.49 1.99 0.5)
+(workpiece subtract 'rectangular_pocket1)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_pocket 'rectangular_pocket2 2.5 3.25 8.75 6.2 3.5 2.0 0.5)
+(workpiece subtract 'rectangular_pocket2)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'other_pocket3 '(
+(3.17 2.287)
+(3.887 4.06)
+(1.83 3.713)
+(1.113 1.94)) 8.51 '(
+0.26
+0.26
+0.26
+0.26) 0.24)
+(workpiece subtract 'other_pocket3)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'other_pocket4 '(
+(3.179870212341166 2.276529929961102)
+(3.897111731280388 4.069633727309157)
+(1.820129787658834 3.723470070038898)
+(1.102888268719612 1.930366272690843)) 8.5 '(
+0.25
+0.25
+0.25
+0.25) 0.25)
+(workpiece subtract 'other_pocket4)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_pocket 'rectangular_pocket5 4.0 0.75 10.5 3.0 0.5 0.25 0.25)
+(workpiece subtract 'rectangular_pocket5)
+(graphics clear)
+(graphics sketch 'workpiece)
+(workpiece merge)
+(translate_body -5.0 0.0 -10.75)
+(workpiece point '(0 0 0))
+(workpiece direction '(0.5773502691896257 -0.5773502691896257 -0.5773502691896257))
+(workpiece angle 120.0)
+(workpiece rotate)
+(workpiece transmit "olps_workpiece_out")
+(graphics clear)
+(graphics sketch 'workpiece)
+(graphics ar)
+-- (quit)

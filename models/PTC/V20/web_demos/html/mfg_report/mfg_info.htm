@@ -1,0 +1,123 @@
+<HEAD>
+<TITLE>PTC - "Manufacturing Process Information"</TITLE>
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language="JavaScript">
+
+quit_wind();
+set_display('hiddeninvis');
+
+retrieve_model('mfg_turn_mill.mfg','models/thread-turn/blade/');
+ViewSet('mfg_turn_mill.asm', 'ISO1');
+
+function route()
+{
+	macro1="~ Select `main_dlg_cur` `MenuBar1`1  `Info`;"
+	macro2="~ Close `main_dlg_cur` `MenuBar1`;"
+	macro3="~ Activate `main_dlg_cur` `Info.psh_info_mfg`;"
+	macro4="~ Select `mfg_info` `InfoLevelRadio`1  `Route`;~ Activate `mfg_info` `close`;"
+	ret = document.wm.pwlMacroLoad(macro1+macro2+macro3+macro4);
+}
+
+function custom()
+{
+	quit_wind();
+	retrieve_model('drw_mfg_turn_mill.drw','models/mfg_report/')
+}
+
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF">
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+
+<CENTER><FONT size=+3 COLOR="#000080" ><B>
+
+
+<!-- title goes here -->
+	Manufacturing Process Information</FONT></B></CENTER></FONT>
+
+
+
+<form NAME="ui">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+<font >
+
+
+Maunfacturing Process Information in the form of route sheets, bill of
+
+materials, and customized reports can be created for manufacturing models.
+<br>
+<br>
+
+The Route Sheet contains information on the machine and processes used
+
+for each sequence including, volume of removed material, set-up time, and
+run time.
+<br>
+
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Show Route Sheet" onclick="route()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br><br>
+
+
+A Bill of Materials can be created for the manufacturing model including
+
+a tool list. 
+<br>
+<br>
+A Customized Report for the manufacturing model can be created using Pro/REPORT.
+
+Information in this report can include operation, workcell, 
+
+and NC sequence parameters. The report is created in a drawing of
+
+the manufacturing model.
+
+<br>
+
+
+<IMG SRC="../template/images/bullet.gif" HEIGHT=10 WIDTH=11>&nbsp;
+<INPUT type=button value="Show Custom Report" onclick="custom()"><br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+
+
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: --><!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<!-- END OF MENUBAR -->
+</CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+STEP;
+HEADER;
+ FILE_IDENTIFICATION(
+   'NAS_PLAN',
+   '19940922000000',
+   ('Tom Kramer',
+    'Room B-124, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Intelligent Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'No system');
+ FILE_DESCRIPTION('This is a machining process plan for the small NAS part');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1  = START_PLAN ('CUT NAS PART', '1', 'START_PLAN', '1', (),
+          );
+@2  = INITIALIZE_PROGRAM ('SET UP PROGRAM', '2', 'INITIALIZE_PROGRAM', '1', (),
+          #1, ,
+          'INITIALIZE_PROGRAM', (), '10', , , , ,
+          'NAS_NC', 'NAS_DESIGN', 'NAS_MRSEVS', 'NAS_SETUP',
+              'BLOCK2', 'ALUMINUM', 'VISE', 0.0, 0.0, ); 
+@3  = FINISH_MILL ('CUT THE CIRCLE', '3', 'FINISH_MILL', '1', (),
+          #2, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-0.25-2', 'CUT_CIRCLE', 3500, 16.0, 0.19);
+@4  = FINISH_MILL ('CUT THE DIAMOND', '4', 'FINISH_MILL', '1', (),
+          #3, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-0.25-2', 'CUT_DIAMOND', 3500, 16.0, 0.19);
+@5  = END_PROGRAM ('END PROGRAM', '5', 'END_PROGRAM', '1', (),
+          #4, ,
+          'END_PROGRAM', (), '10', , , , );
+@6  = END_PLAN ('END CUT', '6', 'END_PLAN', '1', (), 
+          #5);
+@7  = PLAN ('EQUIPMENT', 'OLPS', 'NAS_PLAN', '1', (),
+          (#1, #2, #3, #4, #5, #6));
+ENDSEC;
+ENDSTEP;

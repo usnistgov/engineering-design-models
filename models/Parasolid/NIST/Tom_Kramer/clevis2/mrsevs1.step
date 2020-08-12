@@ -1,0 +1,174 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'CLEVIS2/MRSEVS1.STEP',
+   '19891102000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'AMRF VWS2 and Computervision CADDS');
+ FILE_DESCRIPTION('This file describes MRSEVs for the first cut of clevis2');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = DIRECTION ( , 0.0, -1.0, 0.0);
+ @2  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @4  = AXISYMMETRIC_FEATURE_SWEEP_CONICAL_END ( , 118.0, );
+ @5  = AXISYMMETRIC_FEATURE_SWEEP_CONICAL_END ( , 90.0, );
+
+ @21  = CARTESIAN_POINT ( , 0.2, 0.7, 0.2);
+ @25  = AXIS2_PLACEMENT ( , #21, #1, #3);
+ @26  = HOLE (#25, 0.7, #4, 0.0983);
+ @27  = MATERIAL_REMOVAL_VOLUME ('HOLE3', (#26), );
+/* 0.1966 hole at lower left */
+
+ @31  = CARTESIAN_POINT ( , 3.2, 0.7, 0.2);
+ @35  = AXIS2_PLACEMENT ( , #31, #1, #3);
+ @36  = HOLE (#35, 0.7, #4, 0.0983);
+ @37  = MATERIAL_REMOVAL_VOLUME ('HOLE4', (#36), );
+/* 0.1966 hole at lower middle */
+
+ @41  = CARTESIAN_POINT ( , 6.2, 0.7, 0.2);
+ @45  = AXIS2_PLACEMENT ( , #41, #1, #3);
+ @46  = HOLE (#45, 0.7, #4, 0.0983);
+ @47  = MATERIAL_REMOVAL_VOLUME ('HOLE5', (#46), );
+/* 0.1966 hole at lower right */
+
+ @51  = CARTESIAN_POINT ( , 0.2, 0.7, 1.3);
+ @55  = AXIS2_PLACEMENT ( , #51, #1, #3);
+ @56  = HOLE (#55, 0.7, #4, 0.0983);
+ @57  = MATERIAL_REMOVAL_VOLUME ('HOLE6', (#56), );
+/* 0.1966 hole at upper left */
+
+ @61  = CARTESIAN_POINT ( , 3.2, 0.7, 1.3);
+ @65  = AXIS2_PLACEMENT ( , #61, #1, #3);
+ @66  = HOLE (#65, 0.7, #4, 0.0983);
+ @67  = MATERIAL_REMOVAL_VOLUME ('HOLE7', (#66), );
+/* 0.1966 hole at upper middle */
+
+ @71  = CARTESIAN_POINT ( , 6.2, 0.7, 1.3);
+ @75  = AXIS2_PLACEMENT ( , #71, #1, #3);
+ @76  = HOLE (#75, 0.7, #4, 0.0983);
+ @77  = MATERIAL_REMOVAL_VOLUME ('HOLE8', (#76), );
+/* 0.1966 hole at upper right */
+
+ @81  = CARTESIAN_POINT ( , 0.2, 0.2, 0.2);
+ @85  = AXIS2_PLACEMENT ( , #81, #1, #3);
+ @86  = HOLE (#85, 0.2, , 0.125);
+ @87  = MATERIAL_REMOVAL_VOLUME ('HOLE9', (#86), );
+/* 0.25 counterbore at lower left */
+
+ @91  = CARTESIAN_POINT ( , 3.2, 0.2, 0.2);
+ @95  = AXIS2_PLACEMENT ( , #91, #1, #3);
+ @96  = HOLE (#95, 0.2, , 0.125);
+ @97  = MATERIAL_REMOVAL_VOLUME ('HOLE10', (#96), );
+/* 0.25 counterbore at lower middle */
+
+ @101  = CARTESIAN_POINT ( , 6.2, 0.2, 0.2);
+ @105  = AXIS2_PLACEMENT ( , #101, #1, #3);
+ @106  = HOLE (#105, 0.2, , 0.125);
+ @107  = MATERIAL_REMOVAL_VOLUME ('HOLE11', (#106), );
+/* 0.25 counterbore at lower right */
+
+ @111  = CARTESIAN_POINT ( , 0.2, 0.2, 1.3);
+ @115  = AXIS2_PLACEMENT ( , #111, #1, #3);
+ @116  = HOLE (#115, 0.2, , 0.125);
+ @117  = MATERIAL_REMOVAL_VOLUME ('HOLE12', (#116), );
+/* 0.25 counterbore at upper left */
+
+ @121  = CARTESIAN_POINT ( , 3.2, 0.2, 1.3);
+ @125  = AXIS2_PLACEMENT ( , #121, #1, #3);
+ @126  = HOLE (#125, 0.2, , 0.125);
+ @127  = MATERIAL_REMOVAL_VOLUME ('HOLE13', (#126), );
+/* 0.25 counterbore at upper middle */
+
+ @131  = CARTESIAN_POINT ( , 6.2, 0.2, 1.3);
+ @135  = AXIS2_PLACEMENT ( , #131, #1, #3);
+ @136  = HOLE (#135, 0.2, , 0.125);
+ @137  = MATERIAL_REMOVAL_VOLUME ('HOLE14', (#136), );
+/* 0.25 counterbore at upper right */
+
+ @161  = CARTESIAN_POINT ( , 3.2, 0.2, 0.75);
+ @162  = LINEAR_FEATURE_SWEEP_PATH (0.2);
+ @163  = AXIS2_PLACEMENT ( , #161, #1, #3);
+ @164  = IMPLICIT_EDGE_ROUND (0.25);
+ @165  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#164, 7.6, 0.5);
+ @166  = RECTANGULAR_POCKET (#163, #162, #165, );
+ @167  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET16', (#166), );
+/* groove in base - finish cut */
+
+ @171  = CARTESIAN_POINT ( , -0.5, 2.0, 0.75);
+ @172  = LINEAR_FEATURE_SWEEP_PATH (2.0);
+ @173  = AXIS2_PLACEMENT ( , #171, #1, #3);
+ @174  = IMPLICIT_EDGE_ROUND (0.5);
+ @175  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#174, 1.0, 3.5);
+ @176  = RECTANGULAR_POCKET (#173, #172, #175, );
+ @177  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET17', (#176), );
+/* finish left end */
+
+ @181  = CARTESIAN_POINT ( , 6.9, 2.0, 0.75);
+ @183  = AXIS2_PLACEMENT ( , #181, #1, #3);
+ @186  = RECTANGULAR_POCKET (#183, #172, #175, );
+ @187  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET18', (#186), );
+/* finish right end */
+
+ @191  = CARTESIAN_POINT ( , 3.2, 0.7, 1.99);
+ @192  = LINEAR_FEATURE_SWEEP_PATH (0.7);
+ @193  = AXIS2_PLACEMENT ( , #191, #1, #3);
+ @195  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#174, 8.6, 1.0);
+ @196  = RECTANGULAR_POCKET (#193, #192, #195, );
+ @197  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET19', (#196), );
+/* finish front of base */
+
+ @201  = CARTESIAN_POINT ( , 3.2, 0.7, -0.49);
+ @203  = AXIS2_PLACEMENT ( , #201, #1, #3);
+ @206  = RECTANGULAR_POCKET (#203, #192, #195, );
+ @207  = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET20', (#206), );
+/* finish back of base */
+
+ @211  = CARTESIAN_POINT ( , 0.2, 0.0, 0.2);
+ @212  = AXIS2_PLACEMENT ( , #211, #1, #3);
+ @213  = HOLE (#212, 0.0, #5, 0.085);
+/* center-drill hole at lower left */
+
+ @221  = CARTESIAN_POINT ( , 3.2, 0.0, 0.2);
+ @222  = AXIS2_PLACEMENT ( , #221, #1, #3);
+ @223  = HOLE (#222, 0.0, #5, 0.085);
+/* center-drill hole at lower middle */
+
+ @231  = CARTESIAN_POINT ( , 6.2, 0.0, 0.2);
+ @232  = AXIS2_PLACEMENT ( , #231, #1, #3);
+ @233  = HOLE (#232, 0.0, #5, 0.085);
+/* center-drill hole at lower right */
+
+ @241  = CARTESIAN_POINT ( , 0.2, 0.0, 1.3);
+ @242  = AXIS2_PLACEMENT ( , #241, #1, #3);
+ @243  = HOLE (#242, 0.0, #5, 0.085);
+/* center-drill hole at upper left */
+
+ @251  = CARTESIAN_POINT ( , 3.2, 0.0, 1.3);
+ @252  = AXIS2_PLACEMENT ( , #251, #1, #3);
+ @253  = HOLE (#252, 0.0, #5, 0.085);
+/* center-drill hole at upper middle */
+
+ @261  = CARTESIAN_POINT ( , 6.2, 0.0, 1.3);
+ @262  = AXIS2_PLACEMENT ( , #261, #1, #3);
+ @263  = HOLE (#262, 0.0, #5, 0.085);
+/* center-drill hole at upper right */
+
+ @271  = MATERIAL_REMOVAL_VOLUME 
+            ('CENTER_DRILL_HOLES', (#213, #223, #233, #243, #253, #263), );
+
+
+ENDSEC;
+
+ENDSTEP;

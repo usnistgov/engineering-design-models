@@ -1,0 +1,386 @@
+<HEAD>
+<TITLE>PTC - "Volume Milling Techniques"</TITLE>
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+
+
+
+
+
+// ******   ORIGINAL SCRIPT FROM OLD_CAVITY.HTM  ****** //
+
+
+
+
+
+
+
+function new_mapkey()
+{
+	ret = document.wm.pwlMacroLoad("#CL DATA; #OUTPUT");
+}
+
+function fixture()
+{
+	ret = document.wm.pwlMacroLoad("#MFG SETUP;#FIXTURE;#ACTIVATE;#FSETP1;#DONE SEL;#DONE/RETURN;#DONE/RETURN");
+}
+
+
+function layers()
+{
+	ret = document.wm.pwlMacroLoad("#LAYER; #TOP LEVEL;#SET DISPLAY") 
+}
+
+function resume()
+{
+	ret = document.wm.pwlMacroLoad(" #MACHINING;#UTILITIES;#RESUME;#ALL;#DONE")
+}	
+
+
+
+
+
+
+
+
+// ****** END ORIGINAL SCRIPT ******* //
+
+
+
+
+
+
+
+
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=white>
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+<CENTER><FONT SIZE=5 COLOR="#000080" face="arial,helvetica"><B>
+
+<!-- title goes here -->
+	Volume Milling Techniques</FONT SIZE></B></CENTER></FONT>
+
+<form NAME="ui">
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+<font face="arial,Helvetica" size=3>
+
+
+This set of sequences machines a simple cavity for a casting.  It is intended to illustrate the 
+use of
+different scan types for getting the most suitable automatic toolpath and the behaviour seen in 
+relation to internal
+bosses upstands or islands within a volume.  The component also illustrates the use of ramp angle 
+and helical 
+movement between slices for high speed material removal.  In addition a profile sequence is 
+included to illustrate
+the capability to clean up the drafted/filleted side walls.  It is also possible to make a change 
+to the component
+to add an additional internal boss in order to show associativity between geometry and toolpath.
+
+<br>
+<ul>
+<IMG SRC="../template/images/bullet.gif">
+<A HREF="http://monkey/online/proe/manufacture/mill_seq.htm#1005013">View the Pro/NC Documentation 
+for Scan_Type</A>
+<br>
+<IMG SRC="../template/images/bullet.gif">
+<A HREF="/gascar/user/mfg_demos/alan/volumes.html">Multi Region Volume Milling</A>
+<br><br>
+<input type=button value="RETRIEVE MODEL" 
+onclick=retrieve_model('volumes.mfg','models/local_mill/')>
+
+
+</ul>
+<A HREF="javascript:retrieve_model('mfg','cavity_mach')"><IMG SRC="./images/cavity_mach.jpg" width=285></A>
+<br>
+	In this component it is required to machine to the flange depth
+	before clearing the material from the remaining area of the cavity.
+	This is achieved easily by defining these areas as individual milling
+	areas or volumes.  By doing this it is very straight forward to let
+	Pro/MANUFACTURE know which areas of the component we are intending
+	to deal with at any given time.  
+<br><br>
+	The first machining sequence cleans down to the flange height.
+	The shape of the part here will demand control of the way that
+	the tool will scan across the workpiece.  Initially we will see
+	the default tool path with the tool moving in straight lines.
+
+<br>
+<input type=button value="SHOW FIRST TOP VOLUME SEQUENCE" onclick="ViewSet('cavity_mach', 
+'TOP_VOL'); 
+Play_Path('1','TOP_VOLUME','OP_TOP_VOL','10')">
+<br>
+
+<br>
+
+	In order to achieve something more effective it is only neccessary 
+	to alter a couple of the sequence parameters which control all
+	aspects of machining.
+
+	For example the component is longer in one direction than the
+	other so modifying the cut angle will give us more continuous cutting.
+
+<br>
+<BODY bgcolor=white>
+<br><IMG SRC="./images/pram_tree.gif" HEIGHT=420 WIDTH=600>
+
+
+<br>
+<input type=button value="SHOW TOP VOLUME WITH 90 DEGREE ANGLE" onclick="ViewSet('cavity_mach', 
+'90_DEGREE');Play_Path('3','TOP_VOL_90','OP_TOP_VOL','10')">
+<br>
+<br>
+	It is also easy to control the sequence to only cut in one direction.
+
+<br>
+<input type=button value="SHOW ONE DIRECTION SEQUENCE" onclick="ViewSet('cavity_mach', 
+'90_DEGREE');Play_Path('4','TOP_VOL_ONE_DIR','OP_TOP_VOL','10')">
+<br>
+<br>
+
+	For this type of volume with a somewhat circular profile it is
+	perhaps even more effective to utilise a spiral motion, again a simple
+	modification to the parameter set achieves this.  Because this motion
+	is very effective for this kind of geometry it is possible also to select
+	a larger tool.
+
+<br>
+<input type=button value="SHOW SPIRAL TOOL PATH" onclick="ViewSet('cavity_mach' , 'spiral'); 
+Play_Path('2','SPIRAL_TOP','OP_TOP_VOL','10')">
+<br>
+<input type=button value="SHOW SOLID TOOL" onclick="fixture();ViewSet('cavity_mach' , 'spiral'); 
+Play_Path('5','SOLID_TOOL','OP_TOP_VOL','10')">
+<br>
+<input type=button value="TOGGLE FIXTURE" onclick="fixture()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+
+<br>
+<br>	
+<B>  MAIN VOLUME  </B>
+<br>
+
+
+
+
+	For the main volume the geometry contains internal bosses or islands
+	which require to be avoided.  Pro/MANUFACTURE will achieve this automatically
+	again allowing for the scan type to be easily controlled.
+
+	In the first sequence the parameters are set to have the tool retract on
+	encountering an island.
+
+
+
+
+<br>
+<input type=button value="SHOW TYPE_1 VOLUME SEQUENCE" onclick="ViewSet('cavity_mach', 
+'MAIN_TYPE1'); Play_Path('1','TYPE_1','OP010','15')">
+<br>
+<br>
+
+
+	It is also very easy to control the tool to pass around the internal islands.
+	There are a number of possibilities here, one is to have the tool follow the profile of 
+the 
+	islands on encountering them.
+
+
+
+<br>
+<input type=button value="SHOW TYPE_2 VOLUME SEQUENCE" onclick="ViewSet('cavity_mach', 
+'MAIN_TYPE1'); Play_Path('2','TYPE_2','OP010','15');ViewSet('cavity_mach', 'TOP')">
+<br>
+<br>
+
+	You will have noticed how the tool in the previous sequence followed the
+	profile of the islands with the tool continuing across the component.  Another
+	possibility is to have the tool change direction each time it encounters an island.
+	Again this is entirely automatic depending on parameter selections.
+
+
+<br>
+<input type=button value="SHOW TYPE_3 VOLUME SEQUENCE" onclick="ViewSet('cavity_mach', 'TOP'); 
+Play_Path('3','TYPE_3','OP010','15');ViewSet('cavity_mach', 'MAIN_TYPE1')">
+<br>
+<br>
+
+	
+	Because of we are machining female geometry here it is necessary to have the tool
+	plunge to each slice within the material to be cut.  It would be possible to machine
+	a small area initially to give access for the tool.  It is also possible to modify the 
+	tool movement to reduce the effect of plunging into the material.  This is done here
+	by providing a helical plunge movement between slices.  Again this is controlled very
+	simply by modifying parameters. 
+
+<br>
+<br>
+<IMG SRC="./images/helical.gif" HEIGHT=300 WIDTH=600>
+
+<br>
+<input type=button value="SHOW HELICAL SEQUENCE" onclick="ViewSet('cavity_mach', 'HELICAL'); 
+Play_Path('5','HELICAL','OP010','15');ViewSet('cavity_mach', 'HELICAL_CLOSE')">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+<br>
+<br>
+
+<B>	PROFILING    </B>
+<br>
+
+	Another requirement for this type of geometry is to clean up the walls
+	which have both draft and fillets associated with them.  This is achieved
+	using an automatic profiling sequence using an angled radiused cutter.
+
+
+
+<br>
+<input type=button value="SHOW PROFILE WITH STEPS" onclick="ViewSet('cavity_mach', '90_degree'); 
+Play_Path('6','PROFILE_STEP_DEPTH','OP010','15')">
+<br>
+<br>
+
+	It is probably ok to run a single at depth profiling pass here, again this
+	is achived by manipulation of parameters.  The step depth is simply set to
+	a value greater than the profile surface height.
+
+<br>
+<input type=button value="SHOW PROFILE AT DEPTH" onclick="ViewSet('cavity_mach', '90_degree'); 
+Play_Path('7','PROFILE_AT_DEPTH','OP010','15')">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+<br>
+<br>
+
+<B>   CUTLINE    </B>
+<br>
+
+	It is necessary to also clean up the rad at the top of the side wall.
+	It is possible here to ask the system to follow the contours of the
+	fillet surfaceswith a ball nosed cutter to achieve this. 
+
+
+<br>
+<input type=button value="SHOW CUTLINE SEQUENCE" onclick="ViewSet('cavity_mach', 
+'fillet_cutline'); Play_Path('8','FILLET_CUTLINE','OP010','15')">
+<br>
+
+
+<BODY bgcolor=white>
+<P><IMG SRC="./images/info_box.gif" HEIGHT=170 WIDTH=600></P>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+<br><br>
+<CENTER><B><FONT SIZE=+2>Volume Milling - Core Geometry </FONT SIZE></B></CENTER>
+<form NAME="ui">
+<br>
+<br>
+<A HREF="javascript:retrieve_model('mfg','tool_1')"><IMG SRC="./images/core_part.jpg" WIDTH=285></A>
+<br>
+<br>
+
+
+	In order to machine this type of geometry we can utilise
+	volume machining in a similar way to that used for cavity
+	geometry.  In this case all that I need to do is to indicate that
+	I want to machine all the material within the extent of the 
+	workpiece.
+
+
+<br>
+<input type=button value="SHOW VOLUME FIRST PASS" onclick="ViewSet('tool_1', 'first_volume'); 
+Play_Path('1','MAIN_VOL_APPROACH','OP010','15');ViewSet('core', 'top')">
+<br>
+<br>
+	It will be necessary for the tool to move outside of
+	the boundaries of the workpiece here.  Also we want the 
+	plunge motions to take place outside of the material.  This  is
+	set up by simply letting Pro/MANUFACTURE allow this type
+	of motion.
+
+
+<br>
+<input type=button value="SHOW VOLUME WITH APPROACHES" onclick="ViewSet('tool_1', 
+'first_approach'); Play_Path('2','VOLUME_APPROACH','OP010','15');ViewSet('core', 'top')">
+<br>
+<br>
+
+
+	There will be a number of stages in the clean up and finish
+	machining of this type of component.  An important capability
+	is the need to machine the basic shape of the surfaces on the model
+	ignoring for the time being, the detail features such as the boss
+	and rib entitys on this example.  The following sequence indicates how 
+	this can be achieved by defining the area to be machined excluding
+	these features.
+
+
+
+<br>
+<br>
+<input type=button value="SHOW SURFACE MACHINING OF MAIN GEOMETRY" 
+onclick="resume();ViewSet('tool_1', 'conv_main'); 
+Play_Path('5','MAIN_3_AXIS','OP010','15');ViewSet('tool_1', 'close_conv')">
+<br>
+<br>
+<CENTER><B><FONT SIZE=+1>5 Axis with Axis def. </FONT SIZE></B></CENTER>
+<form NAME="ui">
+
+<br>
+<A HREF="javascript:retrieve_model('mfg','cutline_lip_1')"><IMG SRC="./images/surface.jpg" WIDTH=285></A>
+<br>
+<br>
+
+<input type=button value="5 AXIS CUTLINE ON COMPONENT GEOMETRY" 
+onclick="resume();ViewSet('cutline_lip_1', 'cutline'); 
+Play_Path('4','AXIS_CONTROL','OP010','1');ViewSet('tool_1', 
+'close_conv');Viewset('cutline_lip_1','close')">
+
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+
+
+
+
+
+
+<!--   #######################    end of document content    #######################   -->
+</form>
+
+<!-- START OF MENUBAR -->
+<center>
+<!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+
+        <a href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to Milling Index'; return true"
+        ><img src="../template/images/back.gif" width=75 height=40 border=0></a><a
+        href=" ../intro/NC_intro.htm"
+        OnMouseOver="window.status='Return to the Manufacturing Index'; return true"
+        ><img src="../template/images/index.gif" width=128 height=40 border=0></a><a
+        href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to Milling Index'; return true"
+        ><img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+<!-- END OF MENUBAR -->
+
+</BODY>
+</HTML>

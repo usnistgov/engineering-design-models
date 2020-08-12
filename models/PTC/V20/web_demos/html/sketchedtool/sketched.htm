@@ -1,0 +1,126 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; IRIX64 6.2 IP28) [Netscape]">
+
+   <TITLE>PTC - "Using Sketched Tools"</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+
+//  This function shows the use of model retrieve, named view, play path, and NC Check  //
+
+
+quit_wind();
+
+retrieve_model('route.mfg','models/sketchedtool/');
+
+set_display('shade');
+
+ViewSet('route.asm', 'sketched');
+
+function sketched()
+
+{
+
+	Play_Path('1','sketched_tool_traj','OP010','1');
+ 
+
+}
+
+
+
+// Provide a hint as to what to talk about //
+
+msg = "\nCreate an unusual tool profile and drive an edge";
+
+
+
+</SCRIPT>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B><FONT COLOR="#000080">
+<FONT SIZE=+3>Creating
+and Using a Sketched Tool</FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+
+A few applications of sketched tools include edge chamfering, corner rounding,
+
+or routing bits. Pro/MFG provides a method to sketch a tool's profile and 
+
+cut geometry by driving the tool along an edge on the part.  This is accomplished
+
+ with the use of a control point on the tool's sketched profile.
+<UL>
+
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#drv_edge">Routing Example-Sketched
+Tool</A></UL>
+
+<IMG SRC="images/traj_sketch.gif" >
+
+<br>
+
+
+<// ************************************  Drive Trajectory*********************************//>
+
+<A NAME="drv_edge"></A>
+<BR><B><FONT COLOR="#000080">
+<FONT SIZE=+1>Routing Tool Example</FONT></FONT></B>
+<BR>
+
+The sketch below was created to define an actual profile of a routing
+
+bit. Note that a coordinate system is placed at a point along the tool's profile.
+
+  This point will be used to drive the tool along the desired path.
+
+<P>
+
+<IMG SRC="images/tcp.gif" ><BR>
+
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Trajectory Sketched Tool Path" onclick="sketched();">
+
+<BR><IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM><!-- START OF MENUBAR -->
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) --><!-- followed by the -->
+<!-- the link for the main index goes below --><!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: --><!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

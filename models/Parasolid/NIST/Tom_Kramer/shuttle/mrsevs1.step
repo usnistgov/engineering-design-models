@@ -1,0 +1,62 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'SHUTTLE/MRSEVS1.STEP',
+   '19900817000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'Computervision CADDS');
+ FILE_DESCRIPTION('This file describes two MRSEVs');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = CARTESIAN_POINT ( , 4.51, 2.495, 0.5)
+ @2  = DIRECTION ( , 0.0, 0.0, -1.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @4  = AXIS2_PLACEMENT ( , #1, #2, #3);
+ @5  = LINEAR_FEATURE_SWEEP_PATH (0.5);
+ @6  = IMPLICIT_EDGE_ROUND (0.5);
+ @7  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#6, 3.48, 2.89);
+ @8  = RECTANGULAR_POCKET (#4, #5, #7, );
+ @9  = MATERIAL_REMOVAL_VOLUME ('ROUGH_POCKET1', (#8), );
+/* pocket between prongs */
+
+ @11 = CARTESIAN_POINT ( , 1.76, 2.495, 1.23);
+ @14 = AXIS2_PLACEMENT ( , #11, #2, #3);
+ @15 = LINEAR_FEATURE_SWEEP_PATH (1.23);
+ @16 = IMPLICIT_EDGE_ROUND (0.32);
+ @17 = RECTANGULAR_FEATURE_SWEEP_PROFILE (#16, 2.98, 2.1);
+ @18 = RECTANGULAR_POCKET (#14, #15, #17, );
+ @19 = MATERIAL_REMOVAL_VOLUME ('ROUGH_POCKET2', (#18), );
+/* pocket inside shell */
+
+ @21  = CARTESIAN_POINT ( , 4.51, 2.495, 0.5)
+ @24  = AXIS2_PLACEMENT ( , #21, #2, #3);
+ @25  = LINEAR_FEATURE_SWEEP_PATH (0.5);
+ @26  = IMPLICIT_EDGE_ROUND (0.5);
+ @27  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#26, 3.5, 2.91);
+ @28  = RECTANGULAR_POCKET (#24, #25, #27, );
+ @29  = MATERIAL_REMOVAL_VOLUME ('FINISH_POCKET1', (#28), );
+/* pocket between prongs */
+
+ @31 = CARTESIAN_POINT ( , 1.76, 2.495, 1.24);
+ @34 = AXIS2_PLACEMENT ( , #31, #2, #3);
+ @35 = LINEAR_FEATURE_SWEEP_PATH (1.24);
+ @36 = IMPLICIT_EDGE_ROUND (0.3);
+ @37 = RECTANGULAR_FEATURE_SWEEP_PROFILE (#36, 3.0, 2.12);
+ @38 = RECTANGULAR_POCKET (#34, #35, #37, );
+ @39 = MATERIAL_REMOVAL_VOLUME ('FINISH_POCKET2', (#38), );
+/* pocket inside shell */
+
+ENDSEC;
+
+ENDSTEP;

@@ -1,0 +1,65 @@
+(modeller start)
+(load "plisp/load_functions.l")
+(define workpiece body)
+(workpiece receive "olps_workpiece_in.xmt_txt")
+(translate_body 0.0 0.0 0.0)
+(init_graphics)
+(make_other_pocket 'RECTANGULAR_POCKET_WITH_ISLANDS1 '(
+(4.135 -0.1349999999999998)
+(4.135 4.135)
+(-0.1349999999999998 4.135)
+(-0.1349999999999998 -0.1349999999999998)) 1.6875 '(
+0.16
+0.16
+0.16
+0.16) 0.3125)
+(make_other_pocket 'RECTANGULAR_POCKET_WITH_ISLANDS1_ISLE_1 '(
+(1.5 -1.5)
+(1.5 1.5)
+(-1.5 1.5)
+(-1.5 -1.5)) 0.0 '(
+1.5
+1.5
+1.5
+1.5) 0.3125)
+(RECTANGULAR_POCKET_WITH_ISLANDS1_ISLE_1 direction '(2.0 2.0 1.6875))
+(RECTANGULAR_POCKET_WITH_ISLANDS1_ISLE_1 move)
+(RECTANGULAR_POCKET_WITH_ISLANDS1 subtract 'RECTANGULAR_POCKET_WITH_ISLANDS1_ISLE_1)
+(workpiece subtract 'RECTANGULAR_POCKET_WITH_ISLANDS1)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'RECTANGULAR_POCKET_WITH_ISLANDS2 '(
+(3.81 0.18999999999999995)
+(3.81 3.81)
+(0.18999999999999995 3.81)
+(0.18999999999999995 0.18999999999999995)) 1.84375 '(
+1.81
+1.81
+1.81
+1.81) 0.15625)
+(make_other_pocket 'RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 '(
+(1.0606601715 -1.0606601715)
+(1.0606601715 1.0606601715)
+(-1.0606601715 1.0606601715)
+(-1.0606601715 -1.0606601715)) 0.0 '(
+NIL
+NIL
+NIL
+NIL) 0.15625)
+(RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 point '(0.0 0.0 0.0))
+(RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 direction '(0 0 1))
+(RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 angle 45.0)
+(RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 rotate)
+(RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 direction '(2.0 2.0 1.84375))
+(RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1 move)
+(RECTANGULAR_POCKET_WITH_ISLANDS2 subtract 'RECTANGULAR_POCKET_WITH_ISLANDS2_ISLE_1)
+(workpiece subtract 'RECTANGULAR_POCKET_WITH_ISLANDS2)
+(graphics clear)
+(graphics sketch 'workpiece)
+(workpiece merge)
+(translate_body 0.0 0.0 0.0)
+(workpiece transmit "olps_workpiece_out")
+(graphics clear)
+(graphics sketch 'workpiece)
+(graphics ar)
+-- (quit)

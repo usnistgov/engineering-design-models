@@ -1,0 +1,566 @@
+<HEAD>
+<TITLE>PTC - "Pro/NC-SHEETMETAL Automation"</TITLE>
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+//  *****  Setup functions to start demo  **** //
+quit_wind();
+retrieve_model("mfg_rough_profile.mfg","models/shtmtl_manual");
+set_display('wireframe');
+search_path("models/shtmtl_auto");
+//  ***** End of setup  *****//
+
+//  ******  ORIGINAL SCRIPT FROM OLD NC_SHEETMETAL_AUTOMATION  ***** //
+
+
+multisheet_step1_done = "no"
+multisheet_step2_done = "no"
+
+function startup()
+{
+// This function creates a new smtmfg model and orients the view //
+quit_wind();
+
+multisheet_step1_done = "no"
+
+file_new="~ Activate `main_dlg_cur` `ProCmdModelNew.file`";
+file_mfg="~ Select `new` `Type` 1  `Manufacturing`";
+file_sht="~ Select `new` `RadioGroup10` 1  `Sheetmetal`";
+ok_button="~ Activate `new` `OK`";
+fabrication="~ Activate `smm_type` `SMMTypeFabCheck`1";
+fab_ok="~ Activate `smm_type` `SMMOkPush`";
+//This is were it dies\\
+view_fr1="~ Select `smmp_main` `SMMPMenuBar` 1  `ViewMenuPane`";
+view_fr2="~ Close `smmp_main` `SMMPMenuBar`";
+view_fr3="~ Activate `smmp_main` `SMMPWpFrontViewPush`";
+
+wrk_1="~ Select `smmp_main` `SMMPTopTab` 1  `SMMPWorkCellTab`";
+wrk_2="~ Activate `smmp_main` `SMMPWcRetrPush`";
+wrk_3="~ Activate `UI Message Dialog` `yes`";
+wrk_4="~ Select `file_open` `Ph_list.Filelist` 1  `punch_press.gph`";
+wrk_5="~ Activate `file_open` `Open`";
+wrk_6="~ Activate `smmp_main` `SMMPWcNameInput` `punch_press`";
+wrk_7="~ Select `smmp_main` `SMMPTopTab` 1  `SMMPWpSizeTab`";
+
+
+ret = document.wm.pwlMacroLoad(file_new);
+ret = document.wm.pwlMacroLoad(file_mfg);
+ret = document.wm.pwlMacroLoad(file_sht);
+ret = document.wm.pwlMacroLoad(ok_button);
+ret = document.wm.pwlMacroLoad(fabrication);
+ret = document.wm.pwlMacroLoad(fab_ok);
+
+ret = document.wm.pwlMacroLoad(view_fr1);
+ret = document.wm.pwlMacroLoad(view_fr2);
+ret = document.wm.pwlMacroLoad(view_fr3);
+ret = document.wm.pwlMacroLoad(wrk_1);
+ret = document.wm.pwlMacroLoad(wrk_2);
+ret = document.wm.pwlMacroLoad(wrk_3);
+ret = document.wm.pwlMacroLoad(wrk_4);
+ret = document.wm.pwlMacroLoad(wrk_5);
+ret = document.wm.pwlMacroLoad(wrk_6);
+ret = document.wm.pwlMacroLoad(wrk_7);
+}
+
+function preview_parts()
+{
+// This function hits the Place button to preview the nest //
+preview1="~ Activate `smmp_main` `SMMPPreviewPush`";
+ret = document.wm.pwlMacroLoad(preview1);
+}
+
+function place_parts()
+{
+// This function hits the Make MFG button to place the nest //
+place_1="~ Activate `smmp_main` `SMMPPreviewPush`";
+place_2=" ~ Activate `smmp_main` `SMMPMakeMfgPush`";
+place_3=" ~ Select `smm_auto_make` `SMMPMakeRadio`1  `Multiple`";
+place_4=" ~ Activate `smm_auto_make` `SMMPOkPush`";
+
+ret = document.wm.pwlMacroLoad(place_1);
+ret = document.wm.pwlMacroLoad(place_2);
+ret = document.wm.pwlMacroLoad(place_3);
+ret = document.wm.pwlMacroLoad(place_4);
+}
+
+function place_parts_single()
+{
+// This function hits the Make MFG button to place the nest //
+
+
+pplace_1="~ Activate `smmp_main` `SMMPMakeMfgPush`";
+pplace_2=" ~ Activate `smm_auto_make` `SMMPOkPush`";
+ 
+ret = document.wm.pwlMacroLoad(pplace_1);
+ret = document.wm.pwlMacroLoad(pplace_2);
+set_display('hiddeninvis');
+}
+
+function redefine_nest()
+{
+// This function redefines the nest by hitting automation and yes //
+
+// Reset these variables to let multisheet know it needs to start over. //
+multisheet_step1_done='no';
+multisheet_step2_done='no';
+
+redef_1="~ Activate `smmp_info` `SMMPOkPush`";
+redef_2="~ Activate `smm_list` `SmmpBldDonePush`";
+redef_3="#AUTOMATION";
+redef_4="~ Activate `UI Message Dialog` `yes`";
+redef_5="~ Activate `0_std_confirm` `OK`";
+ret = document.wm.pwlMacroLoad(redef_1);
+ret = document.wm.pwlMacroLoad(redef_2);
+ret = document.wm.pwlMacroLoad(redef_3);
+ret = document.wm.pwlMacroLoad(redef_4);
+ret = document.wm.pwlMacroLoad(redef_5);
+}
+
+
+function remove_parts()
+{
+// This function removes all parts from the order list //
+
+rp4="~ Activate `smmp_main` `SMMPRemAllPush`";
+rp5="~ FocusIn `UI Message Dialog` `no`";
+rp6="~ FocusIn `UI Message Dialog` `yes`";
+rp7="~ Activate `UI Message Dialog` `yes`";
+
+ret = document.wm.pwlMacroLoad(rp4);
+ret = document.wm.pwlMacroLoad(rp5);
+ret = document.wm.pwlMacroLoad(rp6);
+ret = document.wm.pwlMacroLoad(rp7);
+}
+
+
+function loadlist(order_list_name)
+{
+quit_wind();
+// This function brings up the autonesting UI and loads
+// various existing order lists to show the new functionality.
+// To add to the page, copy a current section and change the
+// list name to your new order list.
+
+// Make sure Pro/Engineer is running... //
+startup();
+//redefine_nest(); // Bring back the Nesting Dialog Box //
+//remove_parts();  // Empty the order list by removing all parts //
+line_1="~ Select `smmp_main` `SMMPMenuBar` 1  `FileMenuPane`";
+line_2="~ Close `smmp_main` `SMMPMenuBar`";
+line_3="~ Activate `smmp_main` `SMMPLoadPush`";
+
+line_4=" ~ Activate `smmp_save` `SMMPSearchPush`";
+line_5=" ~ Activate `file_open` `Ph_path.up_directory`";
+line_6=" ~ Activate `file_open` `Ph_path.up_directory`";
+line_7=" ~ Select `file_open` `Ph_list.Filelist`1  `models`";
+line_8=" ~ Select `file_open` `Ph_list.Filelist`0";
+line_9=" ~ Activate `file_open` `Ph_list.Filelist`1  `models`";
+line_10=" ~ Select `file_open` `Ph_list.Filelist`1  `shtmtl_auto`";
+line_11=" ~ Select `file_open` `Ph_list.Filelist`0";
+line_12=" ~ Activate `file_open` `Ph_list.Filelist`1  `shtmtl_auto`";
+line_13=" ~ Select `file_open` `Ph_list.Filelist`1 `" + order_list_name + "`";
+line_14=" ~ Select `file_open` `Ph_list.Filelist`0";
+line_15=" ~ Activate `file_open` `Ph_list.Filelist`1 `" + order_list_name + "`";
+
+line_16="~ Select `smmp_save` `SMMPNameList` 1 `" + order_list_name + "`";
+line_17="~ Activate `smmp_save` `SMMPOkPush`";
+
+ret = document.wm.pwlMacroLoad(line_1);
+ret = document.wm.pwlMacroLoad(line_2);
+ret = document.wm.pwlMacroLoad(line_3);
+ret = document.wm.pwlMacroLoad(line_4);
+ret = document.wm.pwlMacroLoad(line_5);
+ret = document.wm.pwlMacroLoad(line_6);
+ret = document.wm.pwlMacroLoad(line_7);
+ret = document.wm.pwlMacroLoad(line_8);
+ret = document.wm.pwlMacroLoad(line_9);
+ret = document.wm.pwlMacroLoad(line_10);
+ret = document.wm.pwlMacroLoad(line_11);
+ret = document.wm.pwlMacroLoad(line_12);
+ret = document.wm.pwlMacroLoad(line_13);
+ret = document.wm.pwlMacroLoad(line_14);
+ret = document.wm.pwlMacroLoad(line_15);
+//ret = document.wm.pwlMacroLoad(line_16);
+ret = document.wm.pwlMacroLoad(line_17);
+
+if (order_list_name == 'part_multisheet.dat'){
+    multisheet_step1_done='yes';
+    }
+}
+
+function part_flip(order_list_name)
+{
+// This function is the same as loadlist() but hits Make MFG at the end //
+
+// Make sure Pro/Engineer is running... //
+if (check == "no"){
+    startup();
+    }
+redefine_nest();
+remove_parts();
+line_1="~ Select `smmp_main` `SMMPMenuBar` 1  `FileMenuPane`";
+line_2="~ Close `smmp_main` `SMMPMenuBar`";
+line_3="~ Activate `smmp_main` `SMMPLoadPush`";
+line_4="~ Select `smmp_save` `SMMPNameList` 1 `" + order_list_name + "`";
+line_5="~ Activate `smmp_save` `SMMPOkPush`";
+ret = document.wm.pwlMacroLoad(line_1);
+ret = document.wm.pwlMacroLoad(line_2);
+ret = document.wm.pwlMacroLoad(line_3);
+ret = document.wm.pwlMacroLoad(line_4);
+ret = document.wm.pwlMacroLoad(line_5);
+// preview_parts();
+place_parts();
+
+if (order_list_name == 'PART_MULTISHEET'){
+    multisheet_step1_done='yes';
+    }
+}
+
+function multi_sheet_step2()
+{
+// This function hits Make mfg and Multiple sheets to place the nest //
+
+if (multisheet_step1_done == 'no'){
+    loadlist('part_multisheet.dat');
+    }
+mss_2_1="~ Activate `smmp_main` `SMMPPreviewPush`"
+mss_2_2="~ Activate `smmp_main` `SMMPMakeMfgPush`"
+mss_2_3="~ Activate `smmp_main` `SMMPReMakeMfgPush`"
+mss_2_4="~ Select `smmp_mk_mfg` `SMMPMakeRadio` 1  `Multiple`"
+mss_2_5="~ Activate `smmp_mk_mfg` `SMMPOkPush`"
+ret = document.wm.pwlMacroLoad(mss_2_1);
+ret = document.wm.pwlMacroLoad(mss_2_2);
+ret = document.wm.pwlMacroLoad(mss_2_3);
+ret = document.wm.pwlMacroLoad(mss_2_4);
+ret = document.wm.pwlMacroLoad(mss_2_5);
+multisheet_step2_done='yes'
+
+}
+
+function multi_sheet_step3()
+{
+// This function brings up the placing information window //
+if (multisheet_step2_done == 'no'){
+    multi_sheet_step2();
+}
+mss_3_1="~ Select `smm_list` `SmmpBldMfgList` 1  `0`"
+mss_3_2="~ Select `smm_list` `SmmpBldMenuBar` 1  `SmmpBldInfoMenu`"
+mss_3_3="~ Close `smm_list` `SmmpBldMenuBar`"
+mss_3_4="~ Activate `smm_list` `SmmpBldInfoPush`"
+ret = document.wm.pwlMacroLoad(mss_3_1);
+ret = document.wm.pwlMacroLoad(mss_3_2);
+ret = document.wm.pwlMacroLoad(mss_3_3);
+ret = document.wm.pwlMacroLoad(mss_3_4);
+
+}
+
+function auto_tool()
+{
+// This function demonstrates auto tooling //
+
+//loadlist('part_auto_tool.dat');
+//place_parts_single();
+//at_1="#MACHINING;#AUTO TOOL;#DONE;"
+//at_2="#CL DATA;#OUTPUT;#OPERATION;#OP010;"
+//at_3="#OP010 (CURRENT);#DONE CL;#DONE/OUTPUT;"
+//ret = document.wm.pwlMacroLoad(at_1);
+//ret = document.wm.pwlMacroLoad(at_2);
+//ret = document.wm.pwlMacroLoad(at_3);
+}
+
+function auto_tool1()
+{
+quit_wind();
+retrieve_model("mfg_autotool.mfg","models/shtmtl_auto");
+//auto1="~ Activate `main_dlg_cur` `ProCmdModelOpen.file`"
+//auto2="~ Select `file_open` `Ph_list.Filelist`1  `mfg_autotool.mfg`"
+//auto3="~ Select `file_open` `Ph_list.Filelist`0 "
+//auto4="~ Activate `file_open` `Ph_list.Filelist`1  `mfg_autotool.mfg`"
+//auto5="~ FocusOut `newtree` `AssyTree`"
+}
+
+function auto_tool2()
+{
+auto2="#MACHINING;#AUTO TOOL;#DONE"
+ret = document.wm.pwlMacroLoad(auto2);
+}
+
+function auto_tool3()
+{
+auto3="#CL DATA;#OPERATION;#OP010;#DONE"
+ret = document.wm.pwlMacroLoad(auto3);
+}
+
+function auto_tool4()
+{
+auto4="#DONE;#DONE OUTPUT;#DONE/RETURN;#OPTIMIZE;#RULES/ORDER;#RULES;"
+auto5="#TOOL CHANGES;#ROTATE&LOAD;"
+auto6="#TOOL TRAVEL;#BY CHAINS;#DONE/RETURN;#DONE/RETURN;#DONE;"
+auto7="#CL DATA;#OPERATION;#OP010;#DONE"
+ret = document.wm.pwlMacroLoad(auto4);
+ret = document.wm.pwlMacroLoad(auto5);
+ret = document.wm.pwlMacroLoad(auto6);
+ret = document.wm.pwlMacroLoad(auto7);
+}
+
+
+
+
+// ******  END ORIGINAL SCRIPT ******  //
+
+
+
+
+
+
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=white>
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+<CENTER><FONT SIZE=5 COLOR="#000080" face="arial,helvetica"><B>
+
+<!-- title goes here -->
+	Pro/NC-SHEETMETAL Automation</FONT SIZE></B></CENTER></FONT>
+
+<form NAME="ui">
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+<font face="arial,Helvetica" size=3>
+AutoNesting is the first phase of our automation technology.
+
+Capabilities include nesting multiple parts over multiple sheets that have been ordered by an extenal MRP system.
+Parts ordered to the nest can come from the design, previous manufacturing models, or parts that were previously nested
+as well as direct DXF import.
+
+These parts can be nested with respect to grain, indexable tooling,
+
+<ul>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#multi">MultiSheet Nesting</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#cluster">Clustering</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#grain">Grain Orientation</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#flip">Part Flipping</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#pip">Part in Part Nesting</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#atool">Automatic Tooling</A>
+</ul>
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  MULTI-SHEET NESTING  *********************************//>
+<A NAME="multi"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">MultiSheet Nesting</FONT SIZE></B>
+<br><font face="arial,Helvetica" size=3>
+
+In demand flow technology (dynamic nesting) the basic inputs
+are usually derived from a scheduling list.  This list can
+include information about the parts such as material thickness
+and type,  the number of parts required,  and orientation
+requrements if any.  Many shops utilize standard sheet or coil
+sizes to nest the parts to eliminate a shear to size step.
+Once a sheet size in input into Pro/NC-Sheetmetal,  the optimum
+placement of the parts on the sheet can be determined.  If 
+more than one sheet is required to fit all of the ordered parts,
+Pro/NC-Sheetmetal will prompt the user to either save the remainder
+file to be processed later, or Pro/NC-Sheetmetal will continue to
+create new sheets until the order has been filled.
+<br>
+<br>
+Usage:    Shops with high volume part runs 
+<br>
+<br>
+Benefits: Increases throughput and maximizes material usage.
+<br><br>
+<IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Step 1:" onclick="loadlist('part_multisheet.dat')"> Retrieve Order List from External System
+<br>
+<IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Step 2:" onclick="place_parts()"> Nest 480 Parts over Multiple Sheets
+<br>
+<IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Step 3:" onclick="multi_sheet_step3()"> Review Placement Information
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  PART CLUSTERING  ****************************************//>
+<A NAME="cluster"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Clustering (True Shape Nesting)</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+
+Automated nesting can be executed in two basic ways, by
+approximating the shape of the part with the largest rectangle
+the part wil fit in, and true shape nesting.  It is often
+desirable to nest the true shape of the part in order to
+maximize the sheet utilization.  Pro/NC-Sheetmetal allows the user
+to "cluster" the parts by simply selecting the "Clustering"
+check box in the Automation dialog box.
+<br>
+<br>
+Usage:    Shops with high volume part runs 
+<br>
+<br>
+Benefits: Maximizes material usage.
+<br><br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Clustering Disabled" onclick="loadlist('part_cluster_off.dat');preview_parts()">
+<br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Clustering Enabled" onclick="loadlist('part_cluster_on.dat');preview_parts()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  GRAIN ORIENTATION  *****************************//>
+<A NAME="grain"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Grain Orientation</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+For parts that are made of stainless steel designers need to orient
+the internal bends of the part with repspect to the "grain".
+Pro/NC-Sheetmetal allows the user to orient all parts of
+a given grain in the same direction by simply checking the 
+"Grain Alignment" box in the part setup dialog box.
+<br>
+<br>
+Usage:    Part made from materials with a natural grain or "texture".
+<br>
+<br>
+Benefits: Ensures parts are aligned to grain of material.
+<br>
+<br><dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Grain Orientation Disabled" onclick="loadlist('part_grain_off.dat');preview_parts()">
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Grain Orientation Enabled" onclick="loadlist('part_grain_on.dat');preview_parts()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// *******************************************************  PART FLIPPING  *********************//>
+<A NAME="flip"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Part Flipping</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+If the parts to be nested can be punched from either side 
+(ie. no form features or surface quality issues) this 
+functionality can be used to increase the efficiency of the
+nest by allowing the user to not only rotate the parts at any
+angle,  but also to turn them "green" or top side down. This 
+is accomplished by turning on the "Flip Allowance" check box
+in the part setup dialog box.
+<br>
+
+<br>
+Usage:    Shops with high volume part runs 
+<br>
+<br>
+Benefits: Increases nesting efficiency.
+<br><br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Part Flipping Disabled" onclick="loadlist('part_flip_off.dat');place_parts_single()">
+<br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Part Flipping Enabled" onclick="loadlist('part_flip_on.dat');place_parts_single()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// *******************************************************  PART IN PART *************************//>
+<A NAME="pip"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Part in Part Nesting</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+To increase sheet utilization,  parts that have large voids or
+cutouts can have these areas filled up by smaller parts.  Some
+shops will use this approach to run the larger parts as ordered
+and create runs of the smaller parts that can be put into stock.
+This technique can balance the part demand load for a shop. This
+option is accessed in the Clustering Tab by checking the box for
+"Use Holes".
+<br>
+<br>
+Usage:    Parts with large cutouts that could hold smaller parts inside.
+<br>
+<br>
+Benefits: Maximizes material usage.
+<br><br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Part In Part Nesting Disabled" onclick="loadlist('part_in_part_off.dat');preview_parts()">
+<br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Part In Part Nesting Enabled" onclick="loadlist('part_in_part_on.dat');preview_parts()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// *******************************************************  AUTOTOOL  *************************//>
+<A NAME="atool"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Automatic Tooling</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+The Auto Tool option in the Machining menu provides automatic
+creation of punching NC sequences. Auto-Tool automatically creates
+Punch NC sequences by matching the shape of the tools in the turret
+with the part geometry (holes and slots). Partial matching on the
+outside contour of the reference part is also be performed; for
+example, if the tool size matches the radius of a semi-circular notch,
+this notch is included in the Auto-Tool sequence.
+<br>
+<br>
+Usage:    Parts with a large number of internal features.
+<br>
+<br>
+Benefits: Increases programming efficiency.
+<br><br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Start Manufacturing" onclick="auto_tool1()">
+<br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Auto-Tool" onclick="auto_tool2()">
+<br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Show Operation" onclick="auto_tool3()">
+<br>
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Optimize Tool Path" onclick="auto_tool4()">
+<br>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+<!--   #######################    end of document content    #######################   -->
+</form>
+
+<!-- START OF MENUBAR -->
+<center>
+<!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+
+        <a href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to Milling Index'; return true"
+        ><img src="../template/images/back.gif" width=75 height=40 border=0></a><a
+        href=" ../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to the Manufacturing Index'; return true"
+        ><img src="../template/images/index.gif" width=128 height=40 border=0></a><a
+        href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to Milling Index'; return true"
+        ><img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+<!-- END OF MENUBAR -->
+
+</BODY>
+</HTML>

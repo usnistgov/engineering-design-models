@@ -1,0 +1,185 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (WinNT; U) [Netscape]">
+   <TITLE>PTC - "Mill Geometry"</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>&nbsp;
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+
+</SCRIPT>
+&nbsp;<SCRIPT language="JavaScript">
+
+quit_wind();
+retrieve_model('dbeam.mfg','models/mill_geometry/dbeam/');
+ViewSet('dbeam.asm','PROF_SURF');
+component_display('VIS0001');
+
+function mill_window() 
+{
+	quit_wind();
+	retrieve_model('dbeam.mfg','models/mill_geometry/dbeam/');
+	ViewSet('dbeam.asm','MILL_WIN');
+	component_display('VIS0001');
+	NC_Check('1x1','mill_window_expl.ncl');
+}
+
+function turn_blade() 
+{
+	quit_wind();
+	retrieve_model('mfg_turn_mill.mfg','models/thread-turn/blade/');
+	ViewSet('mfg_turn_mill.asm','STEVE');
+	component_display('VIS0001');
+	layer_blank('mfg_turn_mill.mfg','STEVE');
+	NC_Check('1x1','steve.ncl');
+}
+
+</SCRIPT>
+<P>&nbsp;
+<CENTER><!-- title goes here --><B><FONT FACE="arial,helvetica"><FONT COLOR="#000080">
+<FONT SIZE=+2>
+Pro/MFG Definition of Machining Geometries
+</FONT></FONT></FONT></B></CENTER>
+
+
+<P><IMG SRC="../template/images/divider.gif" >
+<BR><FORM NAME="ui">
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Pro/MFG provides several tools to capture the manufacturing geometry to be machined while
+maintaining the machining intent.&nbsp; For example, the user can select surfaces or edges to be 
+machined directly fromt the solid models.  In addition, the user can also define additional geometry 
+to specify the areas to machine.  In either case, the definition of the geometry may
+be re-used in various NC sequences within the manufacturing model.
+
+</FONT></FONT>
+
+<UL><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+<A HREF="#vol">Mill Volumes</A></FONT></FONT>
+<BR><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+<A HREF="#surfs">Selection of Surfaces from Model</A></FONT></FONT>
+<BR><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+<A HREF="#wind">Mill Windows</A></FONT></FONT>
+<BR><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+<A HREF="#millsurf">Mill Surfaces</A></FONT></FONT>
+<BR><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+<A HREF="#tp">Turn Profiles</A></FONT></FONT></UL>
+<IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;<// ************************************  MILL VOLUMES      
+ *********************************//></FONT></FONT>
+<BR><A NAME="vol"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Mill
+Volumes</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+One way to define the geometry to be machined is with <B>MIll Volumes</B>. This is the volume to be removed
+during an NC sequence. Volumes can be quickly and easily created in several ways.  
+One way to quickly create a Mill Volume is by selecting
+the <B>seed and bounding surfaces</B> from the design model. The system
+will then create the volume by gathering the seed surface and all its neighboring
+surfaces until it reaches the bounding surfaces.  The resulting surfaces will define the volume.
+
+</FONT></FONT><br>
+<br><IMG SRC="mill_vol.gif" width=300>
+<br><IMG SRC="../template/images/divider.gif" >
+<br>
+
+<// ************************************  SURFACE SELECTION *********************************//>
+<A NAME="surfs"></A>
+<br>
+<B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>
+
+Selection of Surfaces from Model</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Another way of defining a Mill Volume is to simply select each continuous surface from the design
+model.&nbsp;
+
+</FONT></FONT>
+
+<P><IMG SRC="pick_surfs.gif" >
+<br><IMG SRC="../template/images/divider.gif" >
+<br>
+<BR><// ************************************  MILL WINDOWS      *********************************//>
+<A NAME="wind"></A>
+<B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Mill
+Windows</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+A Mill Window can be created
+by sketching or selecting a contour in the retract plane. All surfaces
+within the contour will be machined. This window below was easily created by
+using the sketcher tool "USE EDGE" and selecting the "chain" of edges from
+the design model.  By selecting edges from the design, we are guaranteeing the 
+associative link between the design and our tool paths.
+
+</FONT></FONT>
+
+<br><br><IMG SRC="mill_window.gif" >
+
+<br><IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Toolpath using a Mill Window" onclick="mill_window()">
+
+<br><IMG SRC="../template/images/divider.gif" >
+<BR><// ************************************  MILL SURFACES *********************************//>
+<BR><A NAME="millsurf"></A>
+<B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Mill
+Surfaces</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Mill Surfaces are special
+surface features created by a variety of methods that can be used in surface
+milling NC sequences. These "quilts" can also be utilized in other BLANKS
+such as creating Mill Volumes and specifying start and end surfaces for holemaking.
+
+</FONT></FONT>
+
+<br><br><IMG SRC="mill_surf.gif" width=345>
+<br>
+<IMG SRC="../template/images/divider.gif" >
+<br>
+<BR><// ************************************  TURN PROFILES *********************************//>
+<A NAME="tp"></A>
+<B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Turn
+Profiles</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Turn profiles are used for
+turning sequences. A Turn Profile can be defined at any time the tool path creation process 
+and can be referenced in more than one Turning NC sequence. For instance,
+the same Turn Profile can be used when creating a rough, semi-finish
+and finish NC sequences.
+<br>
+</FONT></FONT>
+
+<br><IMG SRC="turn_profile.gif" width=310>
+
+<br><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>&nbsp;
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Turning Toolpath using Turn Profile" onClick="turn_blade()">
+<br><IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+
+<!--   #######################    end of document content    #######################   -->
+</FORM><!-- START OF MENUBAR --></FONT></FONT>
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

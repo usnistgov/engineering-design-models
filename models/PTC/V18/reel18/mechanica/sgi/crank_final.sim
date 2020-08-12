@@ -1,0 +1,684 @@
+refcon_version 16.0(58)
+mechanism
+  name crank_final
+
+subassy
+  name World
+  tag 330
+  end
+
+subassy
+  name World.subassy1
+  tag 336
+  end
+
+part
+  name World.Ground
+  tag 342
+  ground
+  refcon_bnum -1
+  point 11500 World.subassy1.point_2 2.625 0. -1.735
+  point 11488 World.subassy1.point_1 0.03125 -0.00125000000000002 0.635
+  point 354 World.Ground_com$ 0. 0. 0.
+  vector 11578 _v11578 0. 0. 1.
+  vector 11576 _v11576 0. 1. 0.
+  vector 11574 _v11574 1. 0. 0.
+  vector 11572 _v11572 0. 0. 1.
+  vector 11570 _v11570 0. 1. 0.
+  vector 11568 _v11568 1. 0. 0.
+  vector 11546 _v11546 0. 1. 0.
+  vector 11544 _v11544 0. 0. 1.
+  end
+
+part
+  name World.subassy1.prt1_HANDLE_A
+  tag 498
+  com 1.24148453142922 -2.0005181255946e-05 -0.0485127049638693
+  mass 0.00016486265737336
+  inertia 3.10098966969923e-05 0.00020273774815204 0.000177777107966749 -3.55658855050408e-09 4.20971864396593e-05 -5.66562106480654e-10
+  lcs_to_com 1.24148453142922 -2.00051812559471e-05 -0.0485127049638694
+  lcs 1 0 0 0 1 0 0 0 1
+  refcon_bnum 0
+  point 11516 World.subassy1.point_6 -1.21023453142922 -0.00122999481874408 0.683512704963869
+  point 11512 World.subassy1.point_5 1.38351546857078 2.00051812559763e-05 -0.31148729503613
+  point 510 World.subassy1.prt1_HANDLE_A_com$ 0. 0. 0.
+  vector 11558 _v11558 0. 1. 0.
+  vector 11556 _v11556 0. 0. 1.
+  vector 11550 _v11550 0. 1. 0.
+  vector 11548 _v11548 0. 0. 1.
+  end
+
+part
+  name World.subassy1.prt4_T_KNOB
+  tag 4640
+  com 2.625 0 -1.57326597082767
+  mass 5.56521031668765e-05
+  inertia 1.04862097381079e-05 1.87498005221706e-05 1.25106034772388e-05 0. 0. 5.814085745739e-12
+  lcs_to_com 0. 0. 0.161734029172334
+  lcs -0.0357599708784119 -0.999360407702234 0 0.999360407702234 -0.0357599708784119 0 0 0 1
+  refcon_bnum 1
+  point 11508 World.subassy1.point_4 0. 0. 1.21326597082767
+  point 11504 World.subassy1.point_3 0. 0. -0.161734029172334
+  point 4652 World.subassy1.prt4_T_KNOB_com$ 0. 0. 0.
+  vector 11582 _v11582 -0.999360407702234 -0.0357599708784119 0.
+  vector 11580 _v11580 0. 0. 1.
+  vector 11562 _v11562 -0.999360407702234 -0.0357599708784119 0.
+  vector 11560 _v11560 0. 0. 1.
+  end
+
+joint
+  name World.subassy1.joint_1
+  tag 11540
+  type pin
+  refcon_jnum 0
+  refcon_jcoord 0
+  part1 World.subassy1.point_1 _v11544 _v11546 
+  part2 World.subassy1.point_6 _v11548 _v11550
+  refcon_axis_pres 1
+  driver
+    axis 1
+    name  World.subassy1.driver_1
+    tag   11588
+#   dnum  0
+    accel (0.0)
+    vel   (25.13+0.0*am_time)
+    pos   ((25.13+0.0*am_time/2.0)*am_time)
+    free_initial pos 
+    end
+  end
+
+joint
+  name World.subassy1.joint_2
+  tag 11552
+  type pin
+  refcon_jnum 1
+  refcon_jcoord 1
+  part1 World.subassy1.point_5 _v11556 _v11558 
+  part2 World.subassy1.point_4 _v11560 _v11562
+  end
+
+joint
+  name World.subassy1.joint_3
+  tag 11564
+  type bushing
+  refcon_jnum 2
+  refcon_jcoord 0
+  refcon_loopjoint
+  part1 World.subassy1.point_2 _v11568 _v11570 _v11572
+  part2 World.subassy1.point_3 _v11580 _v11582
+  refcon_axis_pres 6
+  driver
+    axis 6
+    name  World.subassy1.driver_2
+    tag   11592
+#   dnum  1
+    accel 0.
+    vel   (0.0)
+    pos   (0.0+0.0*am_time)
+    end
+  load
+    axis 1
+    name  World.subassy1.force_1
+    tag   11584
+#   lnum  0
+    function (100.0*cos(2.0*am_pi*am_time/0.25+0.0)+0.0)
+    depends_on velocity
+    end
+  end
+
+end
+
+gravity 0. 0. 0.
+
+measure
+  name am_time
+  tag -128
+  refcon_builtin
+  refcon_fnum 0
+  function t
+  depends_on time
+  used_in position
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_tfinal
+  tag -127
+  refcon_builtin
+  refcon_fnum 1
+  function am_time
+  depends_on time
+  used_in display
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_loopperr
+  tag -108
+  refcon_builtin
+  refcon_fnum 2
+  function Mam_loopperr()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partlocerr_req
+  tag -112
+  refcon_builtin
+  refcon_fnum 3
+  function Mam_partlocerr_req()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partlocerr_des
+  tag -113
+  refcon_builtin
+  refcon_fnum 4
+  function Mam_partlocerr_des()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partorierr_req
+  tag -114
+  refcon_builtin
+  refcon_fnum 5
+  function Mam_partorierr_req()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partorierr_des
+  tag -115
+  refcon_builtin
+  refcon_fnum 6
+  function Mam_partorierr_des()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_poserr_req
+  tag -118
+  refcon_builtin
+  refcon_fnum 7
+  function Mam_poserr_req()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_poserr_des
+  tag -119
+  refcon_builtin
+  refcon_fnum 8
+  function Mam_poserr_des()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_assembled
+  tag -120
+  refcon_builtin
+  refcon_fnum 9
+  function Mam_assembled()
+  depends_on position
+  used_in velocity
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_ke
+  tag -107
+  refcon_builtin
+  refcon_fnum 10
+  function Mam_ke()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_loopverr
+  tag -109
+  refcon_builtin
+  refcon_fnum 11
+  function Mam_loopverr()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partangvelerr_req
+  tag -110
+  refcon_builtin
+  refcon_fnum 12
+  function Mam_partangvelerr_req()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partangvelerr_des
+  tag -111
+  refcon_builtin
+  refcon_fnum 13
+  function Mam_partangvelerr_des()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partlinvelerr_req
+  tag -116
+  refcon_builtin
+  refcon_fnum 14
+  function Mam_partlinvelerr_req()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_partlinvelerr_des
+  tag -117
+  refcon_builtin
+  refcon_fnum 15
+  function Mam_partlinvelerr_des()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_velerr_req
+  tag -121
+  refcon_builtin
+  refcon_fnum 16
+  function Mam_velerr_req()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_velerr_des
+  tag -122
+  refcon_builtin
+  refcon_fnum 17
+  function Mam_velerr_des()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_separating
+  tag -123
+  refcon_builtin
+  refcon_fnum 18
+  function Mam_separating()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_compatible
+  tag -124
+  refcon_builtin
+  refcon_fnum 19
+  function Mam_compatible()
+  depends_on velocity
+  used_in acceleration
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_analyzecputime
+  tag -100
+  refcon_builtin
+  refcon_fnum 20
+  function Mam_simulatorcputime()
+  depends_on acceleration
+  used_in terminate
+  method difference
+  report tfinal
+  end
+
+measure
+  name am_analyzeelapsedtime
+  tag -101
+  refcon_builtin
+  refcon_fnum 21
+  function Mam_timeofday()
+  depends_on acceleration
+  used_in terminate
+  method difference
+  report tfinal
+  end
+
+measure
+  name am_analyzeeqnevals
+  tag -102
+  refcon_builtin
+  refcon_fnum 22
+  function Mam_analyzeeqnevals()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_static
+  tag -125
+  refcon_builtin
+  refcon_fnum 23
+  function Mam_static()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_mobility
+  tag -129
+  refcon_builtin
+  refcon_fnum 24
+  function Mam_mobility()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_analyzederivevals
+  tag -130
+  refcon_builtin
+  refcon_fnum 25
+  function Mam_analyzederivevals()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_analyzeintervals
+  tag -131
+  refcon_builtin
+  refcon_fnum 26
+  function Mam_analyzeintervals()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_analyzesubsteps
+  tag -132
+  refcon_builtin
+  refcon_fnum 27
+  function Mam_analyzesubsteps()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_analyzeavgsubstepsz
+  tag -133
+  refcon_builtin
+  refcon_fnum 28
+  function Mam_analyzeavgsubstepsz()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report tfinal
+  end
+
+measure
+  name am_intervaleqnevals
+  tag -134
+  refcon_builtin
+  refcon_fnum 29
+  function Mam_intervaleqnevals()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalderivevals
+  tag -135
+  refcon_builtin
+  refcon_fnum 30
+  function Mam_intervalderivevals()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalsubsteps
+  tag -136
+  refcon_builtin
+  refcon_fnum 31
+  function Mam_intervalsubsteps()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalminstepsz
+  tag -137
+  refcon_builtin
+  refcon_fnum 32
+  function Mam_intervalminstepsz()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalmaxstepsz
+  tag -138
+  refcon_builtin
+  refcon_fnum 33
+  function Mam_intervalmaxstepsz()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalavgstepsz
+  tag -139
+  refcon_builtin
+  refcon_fnum 34
+  function Mam_intervalavgstepsz()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalminderivits
+  tag -140
+  refcon_builtin
+  refcon_fnum 35
+  function Mam_intervalminderivits()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalmaxderivits
+  tag -141
+  refcon_builtin
+  refcon_fnum 36
+  function Mam_intervalmaxderivits()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalavgderivits
+  tag -142
+  refcon_builtin
+  refcon_fnum 37
+  function Mam_intervalavgderivits()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervallength
+  tag -143
+  refcon_builtin
+  refcon_fnum 38
+  function Mam_intervallength()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name am_intervalrejectstepratio
+  tag -144
+  refcon_builtin
+  refcon_fnum 39
+  function Mam_intervalrejectstepratio()
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name World.Time
+  tag 442
+  refcon_fnum 40
+  function am_time
+  depends_on velocity
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name World.Cpu_time
+  tag 446
+  refcon_fnum 41
+  function am_analyzecputime
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name World.Elapsed_time
+  tag 450
+  refcon_fnum 42
+  function am_analyzeelapsedtime
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name World.Ke
+  tag 454
+  refcon_fnum 43
+  function am_ke
+  depends_on velocity
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+
+measure
+  name World.Redundancy
+  tag 458
+  refcon_fnum 44
+  function am_mobility
+  depends_on acceleration
+  used_in terminate
+  method eachtstep
+  report eachtstep
+  end
+refcon_grounded 1
+refcon_nloop 1
+refcon_ncoord 2
+refcon_nball 0
+refcon_ncons 2
+refcon_nucons 0
+refcon_nlcoord 6
+refcon_nlball 0
+refcon_formulation kane
+refcon_breakup 0
+refcon_envdebug 0
+refcon_envoptimize 0
+refcon_envver 16.0(58)
+refcon_dyndebug 0
+refcon_dynoptimize 0
+refcon_dynver 16.0(58)
+
+quit

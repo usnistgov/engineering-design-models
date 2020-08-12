@@ -1,0 +1,30 @@
+; LOAD PROCESS PLAN 1 IN STEP FORMAT
+;(load "../../parts/clevis2/plan1.olps")
+(put-data 'pplans 'clevis2-plan1
+    (step-to-plist "../../parts/clevis2/plan1.step" '(olps-plan1)))
+
+; LOAD BLOCK BREP
+(put-data 'workpieces 'block2
+  (fetch (step-to-plist "../../parts/block-6.5-3.0-1.5/brep-design.step-comp"
+                      '(block))
+       'data))
+
+; LOAD DESIGN BREP
+(put-data 'designs 'clevis2-design
+  (fetch (step-to-plist "../../parts/clevis2/brep-design.step-comp" '(design))
+       'data))
+
+; LOAD MRSEVS1
+(put-data 'mrsevs 'clevis2-mrsevs1
+  (fetch (step-to-plist "../../parts/clevis2/mrsevs1.step"  '(mrsevs)) 'data))
+
+; LOAD SETUP1
+(step-to-plist "../../parts/clevis2/setup1.step" 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'clevis2-setup1 (fetch 'step-in 'data))
+
+(setf (symbol-plist 'step-in) nil)
+
+; Brep data are not linked during loading because they must be transformed
+; before linking.  The linking is done during initialization of writing
+; a program.

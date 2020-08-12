@@ -1,0 +1,71 @@
+n0010 (ID,PROG,cl29nc,a part,1)
+n0020 g0 g90 W-9.0
+n0030 p66=+17.1000 p67=+8.8200
+n0040 g56 g90 x(p66) y(p67)
+n0050 p91 = 0
+n0060 p12 = 91 m950
+n0070 ! Changing tool to probe-0.25
+n0080 m9
+n0090 m6
+n0100 g53
+n0110 g0 x+36.5 y+15.0
+n0120 t13 d13 m6
+n0130 g56 g90 x(p66) y(p67)
+n0140 ! setting xy-origin from corner
+n0150 p90=50 p88=-0.25 p70=0
+n0160 p83=+3.8500 p84=+0.4900 p85=1
+n0170 m28 m67
+n0180 g0 g90 x(p83) y(p84)
+n0190 (GSUB,OUTVWS)
+n0200 p66=(p97-3.8500) p67=(p98-0.4900)
+n0210 g56 g90 x(p66) y(p67)
+n0220 ! Changing tool to end-mill-1.0-2
+n0230 g53
+n0240 g0 x+36.5 y+15.0
+n0250 t21 d21 m6
+n0260 g56 g90 x(p66) y(p67)
+n0270 f8.0 s2500 m3
+n0280 ! milling a rectangular pocket
+n0290 g0 x+6.5 y+1.6
+n0300 g0 z+3.1 m8
+n0310 g1 y+1.6 z+3.0
+n0320 g1 x-0.1 z+2.5
+n0330 g1 x+6.5 z+2.5
+n0340 g1 x-0.1 z+2.0
+n0350 g1 x+6.5 z+2.0
+n0360 g1 x-0.1 z+1.5
+n0370 g1 x+6.5 z+1.5
+n0380 g1 x-0.1 z+1.0
+n0390 g1 x+6.5 z+1.0
+n0400 g1 x-0.1 z+0.61
+n0410 g1 x+6.5
+n0420 g0 z+4.0
+n0430 ! milling a rectangular pocket
+n0440 g0 x+6.525 y+1.5
+n0450 g0 z+2.21
+n0460 g1 y+1.5 z+2.11
+n0470 g1 x+3.525 z+1.61
+n0480 g1 x+6.525 z+1.61
+n0490 g1 x+3.525 z+1.11
+n0500 g1 x+6.525 z+1.11
+n0510 g1 x+3.525 z+0.61
+n0520 g1 x+6.525
+n0530 g0 z+4.0 f10.0
+n0540 ! +1.9 deep rectangular pocket
+n0550 g0 x+3.7 y+1.59
+n0560 g0 z+2.6
+n0570 g1 z+0.6
+n0580 g1 x-0.1
+n0590 g0 z+4.0
+n0600 ! +1.5 deep rectangular pocket
+n0610 g0 x+6.525 y+1.49
+n0620 g0 z+2.2
+n0630 g1 z+0.6
+n0640 g1 x+3.525
+n0650 m5 m9
+n0660 m6
+n0670 g53
+n0680 p91 = 0
+n0690 p12 = 91 m950
+n0700 g0 x+0.5 y+19.5
+n0710 (END,PROG)

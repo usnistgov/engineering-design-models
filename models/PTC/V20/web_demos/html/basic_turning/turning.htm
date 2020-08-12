@@ -1,0 +1,571 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>PTC - "Basic Turning"</TITLE>
+</HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+
+quit_wind();
+
+retrieve_model('fitting.prt','models/basic_turning/');
+
+set_display('shade');
+
+ViewSet('fitting.prt','ISO1');
+
+ViewSet('fitting.prt','ISO2');
+
+
+function turning_mfg()
+
+{
+
+quit_wind();
+retrieve_model('turning.asm','models/basic_turning/');
+Activate_SimpRep ('turning.asm', 'nocuts');
+activate_window();
+
+	quit_wind();
+
+	set_display('wireframe');
+
+	csys_display('yes');
+
+	retrieve_model('turning.mfg','models/basic_turning/');
+
+	ViewSet('turning.asm','iso');
+
+	component_display('OPEN');
+
+
+//  Call up turning.mfg  //
+
+//  Set Simp Rep to Nocuts.  Shade.  Spin.  Cutaway.  //
+
+//  Set Simp Rep back to master.  Saved view turn.  //
+
+}
+
+
+
+function redefine_NC()
+
+{
+// quit_wind();
+// retrieve_model('turning.asm','models/basic_turning/');
+// Activate_SimpRep ('turning.asm', 'nocuts');
+// activate_window();
+
+
+set_display('wireframe');
+	
+csys_display('yes');
+		
+retrieve_model('turning.mfg','models/basic_turning/');
+			
+activate_window();
+
+ViewSet('turning.asm','turning');
+
+component_display('ALL');
+
+
+
+//      Activate_SimpRep ('turning.asm', 'nocuts');	
+
+//	activate_window();
+
+
+
+	Play_Path('1','FACING','OP010','.4');
+
+//   facing NCSeq.  //
+
+//  Zoom in.  Play path.  Time increment .05.  // 
+
+}
+
+
+
+function NCCheck_1()
+
+{
+	quit_wind();
+	retrieve_model ('turning.asm','models/basic_turning/');
+	Activate_SimpRep ('turning.asm','nocuts');
+	activate_window();
+
+	quit_wind();
+	retrieve_model ('turning.mfg','models/basic_turning/');
+
+	ViewSet('turning.asm','TURNING3');
+
+	NC_Check('1x1','turning_facing.ncl');
+
+//	NC_Check_clip('1x1','turning_facing.ncl','FITTING.PRT','DTM1');
+
+}
+
+
+
+function redefine_otr_rgh()
+
+{
+	quit_wind();
+	retrieve_model ('turning.asm','models/basic_turning/');
+	Activate_SimpRep ('turning.asm','nocuts');
+	activate_window ();
+
+
+	quit_wind();
+	retrieve_model ('turning.mfg','models/basic_turning/');
+
+
+	ViewSet('turning.asm','TURNING2');
+
+//	Activate_SimpRep ('turning.asm', 'nocuts');	
+
+	activate_window();
+
+	Play_Path('2','RGH_OUTER','OP010','.5');
+
+}
+
+
+
+function NCCheck_2()
+
+{
+	quit_wind();
+	retrieve_model ('turning.asm','models/basic_turning/');
+	Activate_SimpRep ('turning.asm','noface');
+	activate_window ();
+
+	quit_wind();
+
+
+
+	retrieve_model ('turning.mfg','models/basic_turning/');
+
+
+	ViewSet('turning.asm','TURNING4');
+
+//	Activate_SimpRep ('turning.mfg', 'noface');
+
+//	activate_window();
+
+	NC_Check_clip('1x1','b_turn_2.ncl','FITTING.PRT','DTM1');
+//	NC_Check('1x1','b_turn_2.ncl');
+
+//  Saved view ISO.  NCCHeck.  1x1 resolution.  Run.  set clip plane to DTM7.  //
+
+}
+
+
+
+
+function profile_pass()
+
+{
+
+	set_display('hiddeninvis');
+
+	ViewSet('turning.asm','TURNING3');
+
+	Play_Path('3','FIN_OUTER','OP010','.6');
+
+}
+
+
+
+
+function shade_mode()
+
+{
+	quit_wind();
+	retrieve_model ('turning.asm','models/basic_turning/');
+	Activate_SimpRep ('turning.asm','masterrep');
+	activate_window();
+
+
+	quit_wind();
+	retrieve_model ('turning.mfg','models/basic_turning/');
+
+	ret = document.wm.pwlMacroLoad("#DONE");
+	set_display('wireframe');
+
+	ViewSet('turning.asm','iso');
+
+//	Activate_Master_Rep ('turning.asm')
+
+	component_display('WORKPIECE');
+
+	set_display('shade');
+
+//   shade mode.  done seq.   //
+
+}
+
+
+
+
+function redefine_groove_sequence()
+
+{
+
+//   groove seq.  Zoom in on groove.  Play path.  //
+
+
+	set_display('wireframe');
+
+	ViewSet('turning.asm','GROOVE');
+
+	component_display('ALL');
+
+	NC_Check('1x1','b_turn_groove2.ncl');
+
+}
+
+
+
+
+function inside_dia_turning()
+
+{
+
+//  Save view TURNING.  CLData each inner seq.  time incr .3.  //
+
+	set_display('wireframe');
+
+	ViewSet('turning.asm','TURNING5');
+
+	set_display('hiddenvis');
+
+	NC_Check_clip('1x1','b_turn_innr.ncl','FITTING.PRT','DTM1');
+
+}
+
+
+
+</SCRIPT>
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<br><br>
+<CENTER>
+<!-- title goes here --><B><FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>2
+
+
+Axis Turning</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+
+<IMG SRC="../template/images/divider.gif" ><br>
+<BR>
+<IMG SRC="images/screen.gif" >
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Pro/MFG provides the
+NC Programmer with a wide suite of tools for lathe programming. In the
+
+following example, a locking fitting is to be machined from slightly oversized
+
+bar stock. As you can see, the finished design will require both ID and
+
+OD turning, and the slots on the back end must be milled as a secondary
+operation.</FONT></FONT>
+
+<BR>
+
+<IMG SRC="../template/images/divider.gif" >
+
+<FONT SIZE=+2></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+To program this part, we
+first imbed the part inside the bar stock and define where the programming
+
+origin should be located. We don't need to worry where the part was constructed
+
+in 3-D space. The NC Programmer places machine zero. In this case we have
+
+set it on the finished part surface.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Retrieve Manufacturing Assembly" onclick="turning_mfg()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<FONT SIZE=+2></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+We can always look at our
+model in a shaded view or in wireframe. Our first operation is face off
+1
+/4" of stock from the front. We've chosen a Mazak turning center and a
+
+standard 80 degree insert. We've chosen to take off .05" with each pass,
+
+and we can view the resultant path in a number of manners. We will start
+
+with a wireframe display of the tool path.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Toolpath" onclick="redefine_NC()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<!FONT SIZE=+2></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+<!FONT SIZE=+0>
+
+<!We can also use Pro/NC-CHECK
+to display the tool path as a solid model simulation.></FONT></FONT>
+
+<!IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica">
+<!FONT SIZE=+0>&nbsp;</FONT></FONT>
+<!INPUT type=button value="NC Check" onclick="NCCheck_1()">
+<!IMG SRC="../template/images/divider.gif" >
+
+<FONT SIZE=+2></FONT>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Notice on the final pass, we machined to the finish part surface.  
+Some of the options we have at our disposal include parameters
+
+for stock allowance. Suppose we intend to come back with a second tool
+
+later, so now we want to leave .030" with this tool path. Without any changes
+
+to geometry, we simply modify the parameter in the table.</FONT></FONT><FONT SIZE=+2></FONT>
+
+<BR>
+
+<IMG SRC="images/param1.gif" ><FONT SIZE=+2></FONT>
+
+<FONT SIZE=+2></FONT>
+<P><FONT FACE="arial,Helvetica">
+
+<FONT SIZE=+0>
+
+Let's move on the outside
+diameters. We will use the same roughing tool, and the system knows that
+
+the tool will now move in a lateral direction to work on the outside. Next,
+
+we identify what we wish to machine. We could simply pick a starting and
+
+ending surface and generate the tool path across the entire part, but we
+
+want to be a little more specific. We want the tool path to ignore the
+
+grooves for now, as we will come back with a groove insert later. Second,
+
+we don't want to machine all the way back to the far end, since the part
+
+is held in a chuck and we can only machine up to its face. Accordingly,
+
+we will define this tool path using some of the part profile and some of
+
+our own constraints.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT><FONT SIZE=+2>&nbsp;</FONT>
+<INPUT type=button value="Show Toolpath" onclick="redefine_otr_rgh()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<FONT SIZE=+2></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Notice that we currently
+have the stock allowance set to .015" and that the system has offset the
+
+tool path accordingly. I can also place different stock allowances on the
+
+x and z surfaces.</FONT></FONT><FONT SIZE=+2></FONT>
+
+<BR>
+
+<IMG SRC="images/param2.gif" ><FONT SIZE=+2></FONT>
+
+
+<FONT SIZE=+2></FONT>
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+We also have options for
+finish machining. Maybe after the roughing paths, we want a cleanup pass
+
+across the entire area, leaving .005" for the finish tool.</FONT></FONT><FONT SIZE=+2></FONT>
+<BR><br>
+<IMG SRC="images/param3.gif" ><FONT SIZE=+2></FONT>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>&nbsp;</FONT></FONT>
+<FONT SIZE=+2></FONT>
+<br><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+We can use Pro/NC-CHECK
+to display the tool path as a solid model simulation.
+
+</FONT></FONT><FONT SIZE=+2></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="NC Check" onclick="NCCheck_2()">
+<BR>
+<IMG SRC="../template/images/divider.gif" ><FONT SIZE=+2></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+
+<FONT SIZE=+0>
+
+Now we're ready for our finish
+tool. Notice how tools are defined in Pro/MFG: we provide the
+
+system with the insert and holder dimensions such as lead and trailing
+
+angles, nose radius, tool holder width and turret station number.</FONT></FONT>
+<BR><BR>
+
+<IMG SRC="images/tool.gif" width=500><FONT FACE="arial,Helvetica"><FONT SIZE=+0></FONT></FONT>
+
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0></FONT></FONT>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+For this sequence, we will
+be machining the same geometry as the roughing sequence, but using a different
+
+tool and making only profile passes. We can even have multiple profile
+
+passes, removing small amounts of material with each pass (or even no more
+
+material, for a spring back pass).</FONT></FONT><BR>
+
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Profile Pass" onclick="profile_pass()">
+<BR>
+<IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+2></FONT></FONT>
+
+
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Finally, notice as we turn
+on the shaded mode, after each tool path is created we can also show the
+
+material that was removed, helping us to keep track of where we are at
+
+and allowing us to make drawings showing in-process part configurations.</FONT></FONT><BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Shade Mode" onclick="shade_mode()">
+<br>
+<IMG SRC="../template/images/divider.gif" >
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+2></FONT></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Now let us program the two
+ring grooves. We have selected a groove tool, the groove surfaces, and
+
+our machining parameters. All of the stock allowance parameters described
+
+above are applicable here as well, along with the capability to rough or
+
+profile or both. Various types of machining motions are also available.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Redefine Groove Sequence" onclick="redefine_groove_sequence()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+2></FONT></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+
+<FONT SIZE=+0>
+
+Finally, let's finish this
+part with the inside diameter turning. Pro/MFG knows to rotate the tool
+
+appropriately, and the same roughing and finishing sequences are available.</FONT></FONT><BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Play ID Toolpaths" onclick="inside_dia_turning()">
+<BR>
+<IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+2></FONT></FONT>
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the --><!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) --><!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+
+<!-- END OF MENUBAR -->
+
+
+</BODY>
+
+</HTML>

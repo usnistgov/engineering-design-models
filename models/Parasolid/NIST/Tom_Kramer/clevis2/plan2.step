@@ -1,0 +1,107 @@
+STEP;
+HEADER;
+ FILE_IDENTIFICATION(
+   'CLEVIS2_PLAN2',
+   '19910115000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'No system');
+ FILE_DESCRIPTION('This is a machining process plan for clevis2 second cut');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1  = START_PLAN ('CLEVIS2 SECOND CUT', '1', 'START_PLAN', '1', (),
+          );
+@2  = INITIALIZE_PROGRAM ('SET UP PROGRAM', '2', 'INITIALIZE_PROGRAM', '1', (),
+          #1, ,
+          'INITIALIZE_PROGRAM', (), '10', , , , ,
+          'CL28NC', 'CLEVIS2-DESIGN', 'CLEVIS2-MRSEVS2', 'CLEVIS2-SETUP2',
+              'BLOCK2', 'ALUMINUM', 'VISE', 17.1, 7.3, ); 
+@3  = SET0_CORNER ('LOCATE THE PART', '3', 'SET0_CORNER', '1', (),
+          #2, ,
+          'SET0_CORNER', (), '10', , , , ,
+          'PROBE-0.25', 0.0, 0.0, 0.0, 0.0, 1); 
+@4  = PARAMETERIZED ('SPLIT', '4', 'PARAMETERIZED', '1', (),
+          #3,
+           , 'PARALLEL', 'ALL',
+          ());
+@5  = ROUGH_MILL ('ROUGH POCKET 21', '5', 'ROUGH_MILL', '1', (),
+          #4, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'RUF-MILL-0.625-4', 'RECTANGULAR_POCKET21', 3500, 17.0,
+             0.625, 0.375);
+@6  = ROUGH_MILL ('ROUGH POCKET 23', '6', 'ROUGH_MILL', '1', (),
+          #4, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'RUF-MILL-0.625-4', 'RECTANGULAR_POCKET23', 3500, 17.0,
+             0.625, 0.375);
+@7  = JOIN ('JOIN', '7', 'JOIN', '1', (),
+           ,
+          (#5, #6));
+@8  = PARAMETERIZED ('SPLIT', '8', 'PARAMETERIZED', '1', (),
+          #7,
+           , 'PARALLEL', 'ALL',
+          ());
+@9  = FINISH_MILL ('FINISH POCKET 22', '9', 'FINISH_MILL', '1', (),
+          #8, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-0.625-2', 'RECTANGULAR_POCKET22', 3500, 17.0, 0.375);
+@10 = FINISH_MILL ('FINISH POCKET 24', '10', 'FINISH_MILL', '1', (),
+          #8, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-0.625-2', 'RECTANGULAR_POCKET24', 3500, 17.0, 0.375);
+@11 = ROUGH_MILL ('ROUGH POCKET 29', '11', 'ROUGH_MILL', '1', (),
+          #8, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'RUF-MILL-0.625-4', 'RECTANGULAR_POCKET29', 3500, 17.0,
+             0.5, 0.375);
+@12 = ROUGH_MILL ('ROUGH POCKET 31', '12', 'ROUGH_MILL', '1', (),
+          #8, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'RUF-MILL-0.625-4', 'OTHER_POCKET31', 3500, 17.0,
+             0.625, 0.375);
+@13 = CENTER_DRILL ('CENTER DRILL HOLE 1', '13', 'CENTER_DRILL', '1', (),
+          #8, ,
+          'CENTER_DRILL', (), '10', , , , ,
+          'CENTER-DRILL-0.1875-2', 'CENTER_DRILL_HOLE1', 5000, 8.0);
+@14 = CENTER_DRILL ('CENTER DRILL HOLE 2', '14', 'CENTER_DRILL', '1', (),
+          #8, ,
+          'CENTER_DRILL', (), '10', , , , ,
+          'CENTER-DRILL-0.1875-2', 'CENTER_DRILL_HOLE2', 5000, 8.0);
+@15 = COUNTERBORE ('COUNTERBORE HOLE30', '15', 'COUNTERBORE', '1', (),
+          #11, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-1.0-2', 'HOLE30', 2500, 6.0);
+@16 = FINISH_MILL ('FINISH POCKET 32', '16', 'FINISH_MILL', '1', (),
+          #12, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-0.5-3', 'OTHER_POCKET32', 3500, 17.0, 0.25);
+@17 = TWIST_DRILL ('DRILL HOLE1', '17', 'TWIST_DRILL', '1', (),
+          #13, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.5-2', 'HOLE1', 2500, 3.5, 0.5);
+@18 = TWIST_DRILL ('DRILL HOLE2', '18', 'TWIST_DRILL', '1', (),
+          #14, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.5-2', 'HOLE2', 2500, 3.5, 0.5);
+@19 = JOIN ('JOIN', '19', 'JOIN', '1', (),
+           ,
+          (#9, #10, #15, #16, #17, #18));
+@20 = END_PROGRAM ('END PROGRAM', '20', 'END_PROGRAM', '1', (),
+          #19, ,
+          'END_PROGRAM', (), '10', , , , );
+@21 = END_PLAN ('END SECOND CUT', '21', 'END_PLAN', '1', (), 
+          #20);
+@22 = PLAN ('EQUIPMENT', 'OLPS', 'CLEVIS2_PLAN2', '1', (),
+          (#1, #2, #3, #4, #5, #6, #7, #8, #9, #10, #11, #12, #13, #14,
+           #15, #16, #17, #18, #19, #20, #21));
+ENDSEC;
+ENDSTEP;

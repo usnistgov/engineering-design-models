@@ -1,0 +1,163 @@
+<HEAD>
+
+<TITLE>PTC - "Milling Steel Molds"</TITLE>
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+
+<SCRIPT language = "JavaScript">
+
+
+
+quit_wind();
+
+retrieve_model('cavity.mfg','models/zlevel/');
+
+ViewSet('cavity.asm','nccheck');
+set_display('hiddeninvis');
+
+function zcut()
+
+{
+
+        NC_Check('1x1','drl_v1_v2.ncl');
+
+}
+
+
+
+// This function shows the syntax to play a menu sequence //
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF">
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+
+<CENTER><FONT SIZE=+3 COLOR="#000080" ><B>
+
+
+<!-- title goes here -->
+	Roughing Steel Cavities</FONT SIZE></B></CENTER></FONT>
+
+
+
+<form NAME="ui">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+
+<font size=+0>
+
+
+Cutting Steel Molds, Z plunge control 
+<ul>
+
+
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#z_ncheck">Z Plunge Control</A>
+
+</ul>
+
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<br>
+
+
+
+<// ************************************  Zlevel rough  *********************************//>
+
+
+<A NAME="rough"></A>
+<B><FONT SIZE=+1 COLOR="#000080">Plunge control</FONT SIZE></B>
+<br>
+<font size=+0>
+
+
+When cutting steel molds, cavities, castings, etc., it is sometimes desirable 
+
+to plunge into the material at the same location for each z depth.  
+<br>
+<br>
+
+<IMG SRC="./images/zplunge.gif" width=285>
+<br>
+<br>
+
+Pro/MFG provides several tools to define the approach and exit position for tool paths.  
+This functionality provides safe entry and exit conditions for the tool path.  
+For example, an approach axis or point may be specified so that the tool will move to each z depth 
+at that location.  This prevents the tool from plunging directly into the material.  
+The following example shows a mold cavity with two deep cavities.  A hole is 
+
+drilled at the deepest location of each cavity. The roughing tool paths
+
+then use this hole as their safe entry location to move to the next depth 
+for each roughing slice.<br>
+<br>
+
+
+<IMG SRC="./images/zplgnck.gif" width=285>
+<br>
+<A NAME="z_ncheck"></A>
+<BR><IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="Z plunge position control example" onclick="zcut()">
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+
+<!--   #######################    end of document content    #######################   -->
+</form>
+
+
+<!-- START OF MENUBAR -->
+<center>
+
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+        
+<a href="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<img src="../template/images/back.gif" width=75 height=40 border=0></a>
+<a href=" ../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<img src="../template/images/index.gif" width=128 height=40 border=0></a>
+<a href="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+
+<!-- END OF MENUBAR -->
+
+
+
+</BODY>
+
+</HTML>

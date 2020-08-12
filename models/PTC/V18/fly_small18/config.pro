@@ -1,0 +1,3 @@
+SEARCH_PATH /home/chad/MARC/dig_camera 
+mapkey vr #VIEW;#REPAINT;#DONE-RETURN; 
+SYSTEM_BACKGROUND_COLOR 0 0 70 

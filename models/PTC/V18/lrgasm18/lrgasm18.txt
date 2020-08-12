@@ -1,0 +1,1770 @@
+!trail file version No. 939
+!Pro/ENGINEER  TM  Version G-03-18  (c) 1988-96 by Parametric Technology Corporation  All Rights Reserved.
+!-------------------------------------------------------------------------------
+!
+! TITLE: Large Assembly Demo
+!
+! DATE: Aug-29-1996
+!
+! SUBMITTED BY: Corrin DeBettencourt
+!
+! VERSION: G-03-21
+!
+! FILENAME: largeasm17.txt
+!
+! FILETYPE: PRODUCTION
+!
+! TEST CATEGORY: NEWDEMOS
+!
+! MODULE: ASSEMBLY
+!
+! KEYWORD: MISC
+!
+! LENGTH (IN LINES): 1595
+!
+! APPROXIMATE RUN TIME: 10 minutes on sun4_solaris
+!
+! REPLACES TEST: largeasm16
+!
+! OBJECTS REQUIRED FOR THIS TEST:
+!
+!
+! OBJECTS FROM OTHER TESTS REQUIRED FOR THIS TEST:
+!
+!  test/newdemos/largeasm16
+!    /reg/spg/objects/test/newdemos/largeasm16/bearing_inner_race.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/143564-pwr.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/auger.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/auger.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/ball.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bearing.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/bearing_outer_race.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bearing_retainer.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bearing_seperator.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/belt_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bolt_2.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bolt_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bolt_3.ptd
+!    /reg/spg/objects/test/newdemos/largeasm16/bolt_j3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bolt_j4.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/box_3_ml.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/box_plate_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/box_processor_3.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/box_simp.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/conv1_with_frame_ml.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/box_wall_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/box_wall_r3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/brack_rear.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/brack_rear.ptd
+!    /reg/spg/objects/test/newdemos/largeasm16/bracket.drw
+!    /reg/spg/objects/test/newdemos/largeasm16/bracket.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/bracket_3_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/cap_wall_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/cb_bus_bar.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/cb_bus_bar.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/cb_bus_bar_mnt.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/channel_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/circ_brkr.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/circ_brkr_box.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/circ_brkr_box.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/clip.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/collar_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/color.map
+!    /reg/spg/objects/test/newdemos/largeasm16/config.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/conv1_slider.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/conveyor1_assy.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/conveyor_belt1.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/conveyor_3.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_c_channel_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/corner_brace_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/cover_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/cover_mot_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/cto_layout.lay
+!    /reg/spg/objects/test/newdemos/largeasm16/cust_bom.fmt
+!    /reg/spg/objects/test/newdemos/largeasm16/duct_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/en.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/end_plate_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/final_dir.idx
+!    /reg/spg/objects/test/newdemos/largeasm16/flow_3_ml.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/flow_box_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/footing_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/form_louvr_top.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_a_ml.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_assembly_ml.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_crossbar.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/shd_surf_no.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/config.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/english.dtl
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/menu_def.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/metric.dtl
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/shd_surf_yes.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/silh_off.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/silh_on.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/tol_off.dtl
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/configs/tol_on.dtl
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/README.txt
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/clean
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/format_dir/csize_top.frm
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/format_dir/al.frm
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/format_dir/ap.frm
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/format_dir/c_bom.frm
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/format_dir/csize.frm
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/start_files/startshmtl.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/start_files/startassy.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/start_files/startpart.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/templates/template.drw
+!    /reg/spg/objects/test/newdemos/largeasm16/pro_stds/menu_def.pro
+!    /reg/spg/objects/test/newdemos/largeasm16/guard_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_rail_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_top_bar_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/frame_upright.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/guide_3.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/guide_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/junction_box.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/latch_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/leg_3_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/missref.lst
+!    /reg/spg/objects/test/newdemos/largeasm16/motor.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/motor_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/nut.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/nut_j3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/outer_box_surfs.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/outside-env.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/pedestal_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/plate_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/plate_bot_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/plate_stiff_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/power_top_level.dgm
+!    /reg/spg/objects/test/newdemos/largeasm16/roller1.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/roller1.xrp
+!    /reg/spg/objects/test/newdemos/largeasm16/roller_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/setup.txt
+!    /reg/spg/objects/test/newdemos/largeasm16/shaft_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/shaft_roller.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/shaft_sh_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/shelf_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/side_plate_sm3_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/sm_support_3_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/start_button.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/stiff_plate_ml.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/stiffener_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/stop_button.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/support_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/switch.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/switch_assembly.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/switch_cover.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/table_3.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/tank_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/top_level.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/top_level.drw
+!    /reg/spg/objects/test/newdemos/largeasm16/tray_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/top_level_3d_layout.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/transition_3.prt
+!    /reg/spg/objects/test/newdemos/largeasm16/transition_3.ptd
+!    /reg/spg/objects/test/newdemos/largeasm16/unit_3.asm
+!    /reg/spg/objects/test/newdemos/largeasm16/washer.prt
+!
+! QCR'S REQUIRED FOR THIS TEST:
+!
+!
+! TEST DESCRIPTION:
+!
+!  This is the 17.0 Large Assembly Demo
+!
+!
+! MODIFICATIONS:
+!
+!-------------------------------------------------------------------------------
+!Select a menu item.
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /disk1/dboyd/largeasm16
+#CONV1_WITH_FRAME_ML.ASM
+!12-Jul-96 11:44:49  Start /disk1/dboyd/largeasm16/conv1_with_frame_ml.asm.1
+!12-Jul-96 11:45:02  Start /disk1/dboyd/largeasm16/frame_upright.prt
+!12-Jul-96 11:45:06  End   /disk1/dboyd/largeasm16/frame_upright.prt
+!12-Jul-96 11:45:06  Start /disk1/dboyd/largeasm16/frame_crossbar.prt
+!12-Jul-96 11:45:07  End   /disk1/dboyd/largeasm16/frame_crossbar.prt
+!12-Jul-96 11:45:07  Start /disk1/dboyd/largeasm16/footing_ml.prt
+!12-Jul-96 11:45:07  End   /disk1/dboyd/largeasm16/footing_ml.prt
+!12-Jul-96 11:45:07  Start /disk1/dboyd/largeasm16/frame_top_bar_ml.prt
+!12-Jul-96 11:45:08  End   /disk1/dboyd/largeasm16/frame_top_bar_ml.prt
+!12-Jul-96 11:45:08  Start /disk1/dboyd/largeasm16/corner_brace_ml.prt
+!12-Jul-96 11:45:08  End   /disk1/dboyd/largeasm16/corner_brace_ml.prt
+!12-Jul-96 11:45:08  Start /disk1/dboyd/largeasm16/bolt_3.prt
+!Restoring family table instances of bolt_3 from family table file.
+!12-Jul-96 11:45:09  End   /disk1/dboyd/largeasm16/bolt_3.prt
+!12-Jul-96 11:45:09  Start /disk1/dboyd/largeasm16/nut.prt
+!12-Jul-96 11:45:10  End   /disk1/dboyd/largeasm16/nut.prt
+!12-Jul-96 11:45:10  Start /disk1/dboyd/largeasm16/frame_c_channel_ml.prt
+!12-Jul-96 11:45:11  End   /disk1/dboyd/largeasm16/frame_c_channel_ml.prt
+!12-Jul-96 11:45:11  Start /disk1/dboyd/largeasm16/bolt_2.prt
+!12-Jul-96 11:45:11  End   /disk1/dboyd/largeasm16/bolt_2.prt
+!12-Jul-96 11:45:11  Start /disk1/dboyd/largeasm16/washer.prt
+!12-Jul-96 11:45:11  End   /disk1/dboyd/largeasm16/washer.prt
+!12-Jul-96 11:45:11  Start /disk1/dboyd/largeasm16/frame_rail_ml.prt
+!12-Jul-96 11:45:12  End   /disk1/dboyd/largeasm16/frame_rail_ml.prt
+!12-Jul-96 11:45:13  Start /disk1/dboyd/largeasm16/conveyor_belt1.prt
+!12-Jul-96 11:45:14  End   /disk1/dboyd/largeasm16/conveyor_belt1.prt
+!12-Jul-96 11:45:14  Start /disk1/dboyd/largeasm16/roller1.prt
+!12-Jul-96 11:45:15  End   /disk1/dboyd/largeasm16/roller1.prt
+!12-Jul-96 11:45:15  Start /disk1/dboyd/largeasm16/shaft_roller.prt
+!12-Jul-96 11:45:16  End   /disk1/dboyd/largeasm16/shaft_roller.prt
+!12-Jul-96 11:45:16  Start /disk1/dboyd/largeasm16/conv1_slider.prt
+!12-Jul-96 11:45:16  End   /disk1/dboyd/largeasm16/conv1_slider.prt
+!12-Jul-96 11:45:17  Start /disk1/dboyd/largeasm16/bearing_inner_race.prt
+!12-Jul-96 11:45:17  End   /disk1/dboyd/largeasm16/bearing_inner_race.prt
+!12-Jul-96 11:45:17  Start /disk1/dboyd/largeasm16/ball.prt
+!12-Jul-96 11:45:17  End   /disk1/dboyd/largeasm16/ball.prt
+!12-Jul-96 11:45:17  Start /disk1/dboyd/largeasm16/bearing_seperator.prt
+!12-Jul-96 11:45:18  End   /disk1/dboyd/largeasm16/bearing_seperator.prt
+!12-Jul-96 11:45:18  Start /disk1/dboyd/largeasm16/bearing_outer_race.prt
+!12-Jul-96 11:45:19  End   /disk1/dboyd/largeasm16/bearing_outer_race.prt
+!12-Jul-96 11:45:19  Start /disk1/dboyd/largeasm16/bearing_retainer.prt
+!12-Jul-96 11:45:19  End   /disk1/dboyd/largeasm16/bearing_retainer.prt
+!12-Jul-96 11:45:19  Start /disk1/dboyd/largeasm16/brack_rear.prt
+!Restoring family table instances of brack_rear from family table file.
+!12-Jul-96 11:45:20  End   /disk1/dboyd/largeasm16/brack_rear.prt
+!12-Jul-96 11:45:20  Start /disk1/dboyd/largeasm16/BOLT_1<BOLT_3>.prt
+!12-Jul-96 11:45:21  Start /disk1/dboyd/largeasm16/prt0001.prt.1
+!12-Jul-96 11:45:22  End   /disk1/dboyd/largeasm16/prt0001.prt.1
+!12-Jul-96 11:45:22  End   /disk1/dboyd/largeasm16/BOLT_1<BOLT_3>.prt
+!12-Jul-96 11:45:22  Start /disk1/dboyd/largeasm16/BRACK_REAR_MIRROR<BRACK_REAR>.prt
+!12-Jul-96 11:45:23  Start /disk1/dboyd/largeasm16/prt0001.prt.1
+!12-Jul-96 11:45:24  End   /disk1/dboyd/largeasm16/prt0001.prt.1
+!12-Jul-96 11:45:24  End   /disk1/dboyd/largeasm16/BRACK_REAR_MIRROR<BRACK_REAR>.prt
+!Regenerating BRACK_REAR_MIRROR feature 1 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 2 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 3 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 4 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 5 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 6 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 7 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 8 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 9 out of 10 ...
+!Regenerating BRACK_REAR_MIRROR feature 10 out of 10 ...
+!Regeneration completed successfully.
+!Regenerating BOLT_1 feature 1 out of 3 ...
+!Regenerating BOLT_1 feature 2 out of 3 ...
+!Regenerating BOLT_1 feature 3 out of 3 ...
+!Regeneration completed successfully.
+!12-Jul-96 11:45:47  End   /disk1/dboyd/largeasm16/conv1_with_frame_ml.asm.1
+#QUIT WINDOW
+#ASSEMBLY
+#RETRIEVE REP
+!Directory searched is: /disk1/dboyd/largeasm16
+#TOP_LEVEL.ASM
+!12-Jul-96 11:46:00  Start /disk1/dboyd/largeasm16/top_level.asm.1
+!Select a simplified representation name.
+#LAYOUT
+#DONE
+!12-Jul-96 11:46:02  Start /disk1/dboyd/largeasm16/top_level_3d_layout.prt
+!12-Jul-96 11:46:02  End   /disk1/dboyd/largeasm16/top_level_3d_layout.prt
+!12-Jul-96 11:46:04  Start /disk1/dboyd/largeasm16/plate_3.prt
+!All layouts referenced by model PLATE_3 will also be retrieved.
+!12-Jul-96 11:46:06  Start /disk1/dboyd/largeasm16/cto_layout.lay
+!12-Jul-96 11:46:12  End   /disk1/dboyd/largeasm16/cto_layout.lay
+!12-Jul-96 11:46:12  End   /disk1/dboyd/largeasm16/plate_3.prt
+!12-Jul-96 11:46:12  Start /disk1/dboyd/largeasm16/end_plate_3.prt
+!12-Jul-96 11:46:12  End   /disk1/dboyd/largeasm16/end_plate_3.prt
+!12-Jul-96 11:46:12  Start /disk1/dboyd/largeasm16/tray_3.prt
+!12-Jul-96 11:46:13  End   /disk1/dboyd/largeasm16/tray_3.prt
+!12-Jul-96 11:46:13  Start /disk1/dboyd/largeasm16/support_3.prt
+!12-Jul-96 11:46:14  End   /disk1/dboyd/largeasm16/support_3.prt
+!12-Jul-96 11:46:14  Start /disk1/dboyd/largeasm16/auger.prt
+!12-Jul-96 11:46:14  End   /disk1/dboyd/largeasm16/auger.prt
+!12-Jul-96 11:46:14  Start /disk1/dboyd/largeasm16/collar_3.prt
+!12-Jul-96 11:46:16  End   /disk1/dboyd/largeasm16/collar_3.prt
+!12-Jul-96 11:46:16  Start /disk1/dboyd/largeasm16/bolt_j3.prt
+!12-Jul-96 11:46:16  End   /disk1/dboyd/largeasm16/bolt_j3.prt
+!12-Jul-96 11:46:16  Start /disk1/dboyd/largeasm16/nut_j3.prt
+!12-Jul-96 11:46:17  End   /disk1/dboyd/largeasm16/nut_j3.prt
+!12-Jul-96 11:46:17  Start /disk1/dboyd/largeasm16/sm_support_3_ml.prt
+!12-Jul-96 11:46:18  End   /disk1/dboyd/largeasm16/sm_support_3_ml.prt
+!12-Jul-96 11:46:18  Start /disk1/dboyd/largeasm16/side_plate_sm3_ml.prt
+!12-Jul-96 11:46:18  End   /disk1/dboyd/largeasm16/side_plate_sm3_ml.prt
+!12-Jul-96 11:46:19  Start /disk1/dboyd/largeasm16/flow_box_ml.prt
+!12-Jul-96 11:46:19  End   /disk1/dboyd/largeasm16/flow_box_ml.prt
+!12-Jul-96 11:46:19  Start /disk1/dboyd/largeasm16/tank_3.prt
+!12-Jul-96 11:46:21  End   /disk1/dboyd/largeasm16/tank_3.prt
+!12-Jul-96 11:46:23  Start /disk1/dboyd/largeasm16/belt_3.prt
+!All layouts referenced by model BELT_3 will also be retrieved.
+!12-Jul-96 11:46:23  End   /disk1/dboyd/largeasm16/belt_3.prt
+!12-Jul-96 11:46:24  Start /disk1/dboyd/largeasm16/box_wall_3.prt
+!12-Jul-96 11:46:25  End   /disk1/dboyd/largeasm16/box_wall_3.prt
+!12-Jul-96 11:46:25  Start /disk1/dboyd/largeasm16/box_wall_r3.prt
+!12-Jul-96 11:46:25  End   /disk1/dboyd/largeasm16/box_wall_r3.prt
+!12-Jul-96 11:46:25  Start /disk1/dboyd/largeasm16/cover_3.prt
+!12-Jul-96 11:46:26  End   /disk1/dboyd/largeasm16/cover_3.prt
+!12-Jul-96 11:46:26  Start /disk1/dboyd/largeasm16/pedestal_3.prt
+!12-Jul-96 11:46:27  End   /disk1/dboyd/largeasm16/pedestal_3.prt
+!12-Jul-96 11:46:27  Start /disk1/dboyd/largeasm16/box_plate_3.prt
+!12-Jul-96 11:46:27  End   /disk1/dboyd/largeasm16/box_plate_3.prt
+!12-Jul-96 11:46:27  Start /disk1/dboyd/largeasm16/stiffener_3.prt
+!12-Jul-96 11:46:27  End   /disk1/dboyd/largeasm16/stiffener_3.prt
+!12-Jul-96 11:46:27  Start /disk1/dboyd/largeasm16/cap_wall_3.prt
+!12-Jul-96 11:46:27  End   /disk1/dboyd/largeasm16/cap_wall_3.prt
+!12-Jul-96 11:46:28  Start /disk1/dboyd/largeasm16/latch_3.prt
+!12-Jul-96 11:46:28  End   /disk1/dboyd/largeasm16/latch_3.prt
+!All layouts referenced by model TABLE_3 will also be retrieved.
+!12-Jul-96 11:46:29  Start /disk1/dboyd/largeasm16/shaft_3.prt
+!12-Jul-96 11:46:29  End   /disk1/dboyd/largeasm16/shaft_3.prt
+!12-Jul-96 11:46:29  Start /disk1/dboyd/largeasm16/guide_3.prt
+!12-Jul-96 11:46:29  End   /disk1/dboyd/largeasm16/guide_3.prt
+!12-Jul-96 11:46:34  Start /disk1/dboyd/largeasm16/outside-env.prt
+!12-Jul-96 11:46:34  End   /disk1/dboyd/largeasm16/outside-env.prt
+!12-Jul-96 11:46:38  End   /disk1/dboyd/largeasm16/top_level.asm.1
+#SIMPLFD REP
+#REDEFINE
+!Select a simplified representation name.
+#DONE
+!Select a component to activate it in the Simplified Representation.
+#DONE
+#QUIT WINDOW
+#DRAWING
+#VIEWONLY RET
+!Directory searched is: /disk1/dboyd/largeasm16
+#TOP_LEVEL.DRW
+!12-Jul-96 11:47:16  Start /disk1/dboyd/largeasm16/top_level.drw.1
+!12-Jul-96 11:47:22  Start /disk1/dboyd/largeasm16/pro_stds/format_dir/csize_top.frm
+!12-Jul-96 11:47:22  End   /disk1/dboyd/largeasm16/pro_stds/format_dir/csize_top.frm
+!12-Jul-96 11:47:22  End   /disk1/dboyd/largeasm16/top_level.drw.1
+#QUIT WINDOW
+#ENVIRONMENT
+#SHADING
+!Shaded model will be displayed
+#DONE-RETURN
+#PART
+#SEARCH/RETR
+!Directory searched is: /disk1/dboyd/largeasm16
+#BRACKET.PRT
+!12-Jul-96 11:47:28  Start /disk1/dboyd/largeasm16/bracket.prt.1
+!12-Jul-96 11:47:29  End   /disk1/dboyd/largeasm16/bracket.prt.1
+!Processing model BRACKET ...
+#VIEW
+#NAMES
+#INTRO_ISO
+#VIEW
+#COSMETIC
+#SHADE
+#RESTORE
+!Enter File Name [BRACKET]: 
+shade
+!Can not access SHADE.shd.
+!Specified SHADE FILE could not be found in directory.
+#DONE-RETURN
+#VIEW
+#COSMETIC
+#SHADE
+#RESTORE
+!Enter File Name [BRACKET]: 
+zoom_in
+!Can not access ZOOM_IN.shd.
+!Specified SHADE FILE could not be found in directory.
+#DONE-RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#QUIT WINDOW
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /disk1/dboyd/largeasm16
+#BRACKET.DRW
+!12-Jul-96 11:47:37  Start /disk1/dboyd/largeasm16/bracket.drw.1
+!12-Jul-96 11:47:38  Start /disk1/dboyd/largeasm16/pro_stds/format_dir/csize.frm
+!12-Jul-96 11:47:38  End   /disk1/dboyd/largeasm16/pro_stds/format_dir/csize.frm
+!12-Jul-96 11:47:38  End   /disk1/dboyd/largeasm16/bracket.drw.1
+#QUIT WINDOW
+#DRAWING
+#VIEWONLY RET
+!Directory searched is: /disk1/dboyd/largeasm16
+#TOP_LEVEL.DRW
+#VIEW
+!Indicate two locations to define a box for the zoom area.
+#NAMES
+#TOP
+#FRONT
+#RIGHT
+#VIEW
+!Indicate two locations to define a box for the zoom area.
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.773948 0.237255 L
+0.741361 0.213556 L
+!Indicate two locations to define a box for the zoom area.
+#PREVIOUS
+!Indicate two locations to define a box for the zoom area.
+#QUIT WINDOW
+#ASSEMBLY
+#RETRIEVE REP
+!Directory searched is: /disk1/dboyd/largeasm16
+#TOP_LEVEL.ASM
+!Select a simplified representation name.
+#ZONE_A
+#DONE
+!12-Jul-96 11:47:47  Start /disk1/dboyd/largeasm16/switch.prt
+!12-Jul-96 11:47:47  End   /disk1/dboyd/largeasm16/switch.prt
+!12-Jul-96 11:47:47  Start /disk1/dboyd/largeasm16/switch_cover.prt
+!12-Jul-96 11:47:48  End   /disk1/dboyd/largeasm16/switch_cover.prt
+!12-Jul-96 11:47:48  Start /disk1/dboyd/largeasm16/stop_button.prt
+!12-Jul-96 11:47:48  End   /disk1/dboyd/largeasm16/stop_button.prt
+!12-Jul-96 11:47:48  Start /disk1/dboyd/largeasm16/start_button.prt
+!12-Jul-96 11:47:48  End   /disk1/dboyd/largeasm16/start_button.prt
+!12-Jul-96 11:47:49  Start /disk1/dboyd/largeasm16/circ_brkr_box.prt
+!12-Jul-96 11:47:50  End   /disk1/dboyd/largeasm16/circ_brkr_box.prt
+!12-Jul-96 11:47:50  Start /disk1/dboyd/largeasm16/cb_bus_bar_mnt.prt
+!12-Jul-96 11:47:50  End   /disk1/dboyd/largeasm16/cb_bus_bar_mnt.prt
+!12-Jul-96 11:47:50  Start /disk1/dboyd/largeasm16/cb_bus_bar.prt
+!12-Jul-96 11:47:53  End   /disk1/dboyd/largeasm16/cb_bus_bar.prt
+!12-Jul-96 11:47:53  Start /disk1/dboyd/largeasm16/circ_brkr.prt
+!12-Jul-96 11:47:53  End   /disk1/dboyd/largeasm16/circ_brkr.prt
+!12-Jul-96 11:47:54  Start /disk1/dboyd/largeasm16/clip.prt
+!12-Jul-96 11:47:54  End   /disk1/dboyd/largeasm16/clip.prt
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_UPRIGHT ...
+!Processing model FRAME_CROSSBAR ...
+!Processing model FOOTING_ML ...
+!Processing model FRAME_TOP_BAR_ML ...
+!Processing model CORNER_BRACE_ML ...
+!Processing model BOLT_3 ...
+!Processing model NUT ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_C_CHANNEL_ML ...
+!Processing model BOLT_2 ...
+!Processing model WASHER ...
+!Processing model FRAME_RAIL_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model CONVEYOR_BELT1 ...
+!Processing model ROLLER1 ...
+!Processing model SHAFT_ROLLER ...
+!Processing model CONV1_SLIDER ...
+!Processing model BEARING ...
+!Processing model BEARING_INNER_RACE ...
+!Processing model BALL ...
+!Processing model BEARING_SEPERATOR ...
+!Processing model BEARING_OUTER_RACE ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model BEARING_RETAINER ...
+!Processing model BRACK_REAR ...
+!Processing model BOLT_1 ...
+!Processing model BRACK_REAR_MIRROR ...
+!Processing model SWITCH_ASSEMBLY ...
+!Processing model SWITCH ...
+!Processing model SWITCH_COVER ...
+!Processing model STOP_BUTTON ...
+!Processing model START_BUTTON ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CB_BUS_BAR ...
+!Processing model CB_BUS_BAR_MNT ...
+!Processing model CB_BUS_BAR ...
+!Processing model CIRC_BRKR ...
+!Processing model CLIP ...
+#VIEW
+#NAMES
+#ZONE_A
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.515494 0.533270 L
+0.477750 0.503203 L
+!Indicate two locations to define a box for the zoom area.
+#SIMPLFD REP
+#CREATE
+!Enter name for simplified representation [REP0001]:
+work
+!Select default rule for components of new state.
+#EXCLUDE COMP
+!Select a component to activate it in the Simplified Representation.
+#SCREEN PICK
+#PICK MDL
+0.507631 0.519120 L
+@ sel view 0
+ 2.952035 0.057587 -1.603435 -0.986097 2.713834 -1.718007
+ 1.265674 1.980055 2.401308 241.435990 220.904281 109.791286 26.494209 0.000000
+!Showing part FRAME_UPRIGHT.
+0.492392 0.522064 L
+@ sel view 0
+ 2.952035 0.057587 -1.603435 -0.986097 2.713834 -1.718007
+ 1.265674 1.980055 2.401308 241.435990 220.904281 109.791286 26.494209 0.000000
+!Showing part BEARING_RETAINER.
+0.483679 0.523098 L
+@ sel view 0
+ 2.952035 0.057587 -1.603435 -0.986097 2.713834 -1.718007
+ 1.265674 1.980055 2.401308 241.435990 220.904281 109.791286 26.494209 0.000000
+!Showing part ROLLER1.
+#DONE
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+#SET CURRENT
+!Select a simplified representation name.
+#WORK_SIMP_ROLLR
+#DONE
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model ROLLER1 ...
+#DONE/RETURN
+#COMPONENT
+#ASSEMBLE
+!Enter Name [ROLLER1.PRT]: 
+bracket
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.699962 0.637135 L
+0.286732 0.124813 L
+!Indicate two locations to define a box for the zoom area.
+#MATE
+!Select mating surface or datum plane on one part.
+0.525152 0.378541 R
+!Hidden geometry may be selected.
+0.447062 0.382382 L
+@ sel view 0
+ -45.908823 -20.321593 -86.440094 -64.558219 74.451371 16.784125
+ 60.967971 63.533482 -47.316808 399.066528 187.286892 85.337685 1.646914 0.000000
+!Showing surface created by feature 1 (SURFACE), model BRACKET. Confirm selection.
+0.443221 0.383662 R
+!Showing surface created by feature 1 (SURFACE), model BRACKET. Confirm selection.
+0.443221 0.383662 M
+!Select mating surface or datum plane on other part.
+0.493228 0.522541 L
+@ sel view 0
+ 2.952035 0.057587 -1.603435 -0.986097 2.713834 -1.718007
+ 1.265674 1.980055 2.401308 241.435990 220.904281 109.791286 26.494209 0.000000
+!Showing surface created by feature 5 (PROTRUSION), model BEARING_RETAINER. 
+#ALIGN
+!Select aligning surface, axis, datum plane, pnt, vertex or crv end on one part.
+0.492154 0.523934 L
+@ sel view 0
+ 2.952035 0.057587 -1.603435 -0.986097 2.713834 -1.718007
+ 1.265674 1.980055 2.401308 241.435990 220.904281 109.791286 26.494209 0.000000
+!Showing surface created by feature 5 (PROTRUSION), model BEARING_RETAINER. 
+!Select aligning surface or datum plane on other part.
+0.431700 0.582088 L
+@ sel view 0
+ -45.908823 -20.321593 -86.440094 -64.558219 74.451371 16.784125
+ 60.967971 63.533482 -47.316808 399.066528 187.286892 85.337685 1.646914 0.000000
+!Showing surface created by feature 1 (SURFACE), model BRACKET. 
+#ALIGN
+!Select aligning surface, axis, datum plane, pnt, vertex or crv end on one part.
+0.345929 0.288930 L
+#Change_Window 2 <Part: BRACKET>
+@ sel view 0
+ -45.908823 -20.321593 -86.440094 -64.558219 74.451371 16.784125
+ 60.967971 63.533482 -47.316808 399.066528 187.286892 85.337685 1.646914 0.000000
+!Showing surface created by feature 1 (SURFACE), model BRACKET. 
+!Select aligning surface or datum plane on other part.
+0.487777 0.511679 L
+@ sel view 0
+ 2.952035 0.057587 -1.603435 -0.986097 2.713834 -1.718007
+ 1.265674 1.980055 2.401308 241.435990 220.904281 109.791286 26.494209 0.000000
+!Showing surface created by feature 5 (PROTRUSION), model BEARING_RETAINER. 
+!Component can now be placed.
+#DONE
+!COMPONENT has been created successfully.
+@ trail error  : Creating feature 225 in model TOP_LEVEL - error 0
+ 0 
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+#VIEW
+#NAMES
+#BRKT_ASSMBLD
+#DONE/RETURN
+#MODIFY
+!Select FEATURE or DIMENSION.
+#MOD PART
+!Select part or assembly datum plane to modify.
+0.482325 0.497697 L
+@ sel view 0
+ 3.639845 0.071004 -1.977027 -1.215853 3.346144 -2.118294
+ 1.560570 2.441399 2.960801 168.905782 128.084130 228.083013 20.027905 0.000000
+!Showing part BRACKET.
+!Select FEATURE or DIMENSION.
+#FEATURE
+#CREATE
+#WALL
+#EXTRUDED
+#DONE
+#DONE/RETURN
+#DONE/RETURN
+!Select an edge to attach the wall.
+0.485536 0.502855 L
+@ sel view 0
+ 3.639845 0.071004 -1.977027 -1.215853 3.346144 -2.118294
+ 1.560570 2.441399 2.960801 168.905782 128.084130 228.083013 20.027905 0.000000
+!Selected reference(s) will be added.
+!Showing edge created by feature 1 (SURFACE), model BRACKET.
+!Select direction of viewing the sketching plane.
+#OKAY
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model BRACKET ...
+#VIEW
+#NAMES
+#SKETCH_WALL
+#DONE-RETURN
+0.547496 0.341546 L
+0.547402 0.351071 L
+0.552974 0.352845 L
+0.556398 0.353654 M
+#SKETCH
+#ARC
+!Select an end of an entity to determine tangency.
+#FILLET
+!Select two entities.
+0.547340 0.349826 L
+@ sel2d 0 LINE 225 
+2 4
+!Showing section entity.
+0.548492 0.351444 L
+@ sel2d 0 LINE 225 
+3 4
+!Showing section entity.
+!Select two entities.
+#ALIGNMENT
+!Select an option from the Alignment menu.
+!Select one entity or endpoint on the PART and one on the SKETCH.
+0.547464 0.346588 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+@ sel2d 0 LINE 225 
+2 4
+!Showing section entity.
+0.547433 0.346588 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+!Showing surface created by feature 1 (FIRST FEATURE), model FRAME_UPRIGHT. 
+!-- ALIGNED -- 
+#DIMENSION
+0.552009 0.352565 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+@ sel2d 0 LINE 225 
+3 4
+!Showing section entity.
+0.552974 0.354277 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+!Showing surface created by feature 1 (SURFACE), model BRACKET. 
+0.551885 0.353654 M
+@ dimtype
+ 10
+0.547713 0.350915 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+@ sel2d 0 ARC 225 
+4 4
+!Showing section entity.
+0.546250 0.352223 M
+@ dimtype
+ 3
+0.547433 0.341546 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+@ sel2d 0 POINT 225 
+2 1
+!Showing end point of section entity.
+0.553254 0.352845 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+!Showing surface created by feature 1 (SURFACE), model BRACKET. 
+0.554779 0.347740 M
+@ dimtype
+ 2
+#REGENERATE
+!Section regenerated successfully.
+0.551791 0.353717 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+@ sel2d 0 SKETCH_DIM 225 
+2 4
+!Showing section entity.
+!Enter a new value [107.6600]: 
+110
+0.547994 0.352223 L
+@ sel view 0
+ -3.781434 0.000000 0.000000 0.000000 0.000000 3.781434
+ 0.000000 3.781434 0.000000 608.401958 852.020130 -99.092475 33.865535 0.000000
+@ sel2d 0 SKETCH_DIM 225 
+3 4
+!Showing section entity.
+!Enter a new value [0.4100]: 
+.3
+#REGENERATE
+!Section regenerated successfully.
+#DONE
+#DONE
+!Specify bend radius using the menu.
+#THICKNESS
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `okay`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model BRACKET ...
+!WALL has been created successfully.
+@ trail error  : Creating feature 307 in model TOP_LEVEL - error 0
+ 0 
+#VIEW
+#NAMES
+#ZONE_A
+!Processing model TOP_LEVEL ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.522211 0.541906 L
+0.460797 0.495206 L
+!Indicate two locations to define a box for the zoom area.
+#DONE/RETURN
+#DONE
+#SIMPLFD REP
+#CREATE
+!Enter name for simplified representation [REP0001]:
+prox
+!Select default rule for components of new state.
+#EXCLUDE COMP
+!Select a component to activate it in the Simplified Representation.
+#BY RULE
+#DISTANCE
+#COMP CENTER
+0.479313 0.516562 L
+@ sel view 0
+ 3.813558 0.074393 -2.071382 -1.273880 3.505840 -2.219391
+ 1.635049 2.557916 3.102106 149.109892 128.088698 223.397627 16.282899 0.000000
+!Showing part BRACKET.
+!Enter radius [433.0127] : 
+5
+#DONE
+!12-Jul-96 11:49:55  Start /disk1/dboyd/largeasm16/143564-pwr.prt
+!Regenerating 143564-PWR feature 1 out of 1 ...
+!Regeneration completed successfully.
+!12-Jul-96 11:49:56  End   /disk1/dboyd/largeasm16/143564-pwr.prt
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model BEARING ...
+!Processing model 143564-PWR ...
+#VIEW
+#NAMES
+#ZONE_A
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.488945 0.556620 L
+0.438087 0.518236 L
+!Indicate two locations to define a box for the zoom area.
+#DONE/RETURN
+#MODIFY
+!Select FEATURE or DIMENSION.
+#MOD PART
+!Select part or assembly datum plane to modify.
+0.465430 0.537814 L
+@ sel view 0
+ 3.091514 0.060308 -1.679194 -1.032689 2.842058 -1.799180
+ 1.325475 2.073610 2.514765 198.158375 223.953394 129.478580 19.662369 0.000000
+!Showing part BRACKET.
+!Select FEATURE or DIMENSION.
+#FEATURE
+#CREATE
+#SOLID
+#HOLE
+#DONE
+#DONE
+!Select the placement plane.
+0.460551 0.536849 L
+@ sel view 0
+ 3.091514 0.060308 -1.679194 -1.032689 2.842058 -1.799180
+ 1.325475 2.073610 2.514765 198.158375 223.953394 129.478580 19.662369 0.000000
+!Showing surface created by feature 1 (SURFACE), model BRACKET. 
+!Select TWO edges, axes, planar surfaces or datums for DIMENSIONING.
+0.459907 0.539530 L
+@ sel view 0
+ 3.091514 0.060308 -1.679194 -1.032689 2.842058 -1.799180
+ 1.325475 2.073610 2.514765 198.158375 223.953394 129.478580 19.662369 0.000000
+!Showing edge created by feature 1 (SURFACE), model BRACKET.
+!Distance from reference [1.15]: 
+2
+!Select the second reference.
+0.456905 0.532131 L
+@ sel view 0
+ 3.091514 0.060308 -1.679194 -1.032689 2.842058 -1.799180
+ 1.325475 2.073610 2.514765 198.158375 223.953394 129.478580 19.662369 0.000000
+!Showing edge created by feature 1 (SURFACE), model BRACKET.
+!Distance from reference [2.06]: 
+2
+#DONE
+!Select option for the TO end of the feature.
+#THRU ALL
+#DONE
+!Enter DIAMETER [0.12]: 
+2
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `okay`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model BEARING ...
+!Processing model 143564-PWR ...
+!Processing model BRACKET ...
+!HOLE has been created successfully.
+@ trail error  : Creating feature 412 in model TOP_LEVEL - error 0
+ 0 
+#MODE
+#DRAWING
+#SEARCH/RETR
+!Directory searched is: /disk1/dboyd/largeasm16
+#BRACKET.DRW
+#QUIT WINDOW
+#VIEW
+#CHANGEWINDOW
+!Select on a window to activate it.
+0.476903 0.550145 L
+#Change_Window 0 <Assembly: TOP_LEVEL>
+#VIEW
+#NAMES
+#ZONE_A
+#SIMPLFD REP
+#CREATE
+!Enter name for simplified representation [REP0001]:
+cable
+!Select default rule for components of new state.
+#EXCLUDE COMP
+!Select a component to activate it in the Simplified Representation.
+#BY RULE
+#EXPRESSION
+!Enter expression [QUIT]: 
+element_type=="electrical"
+!Enter expression [QUIT]: 
+
+!Confirm rule evaluation or press Cancel to reenter.
+#CONFIRM
+!WARNING: Symbol ELEMENT_TYPE not found in model TOP_LEVEL_3D_LAYOUT. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model UNIT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model AUGER. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model END_PLATE_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model TRAY_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model SUPPORT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model COLLAR_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOLT_J3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model NUT_J3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOX_3_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model SM_SUPPORT_3_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model SIDE_PLATE_SM3_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model FLOW_3_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model FLOW_BOX_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model STIFF_PLATE_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BRACKET_3_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model TRANSITION_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model DUCT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model SHAFT_SH_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model MOTOR_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model COVER_MOT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model SHELF_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOLT_J4. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model TABLE_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model PLATE_BOT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model PLATE_STIFF_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model CONVEYOR_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model ROLLER_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model SHAFT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model GUIDE_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model GUIDE_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model GUARD_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOX_PROCESSOR_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOX_WALL_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOX_WALL_R3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model COVER_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model PEDESTAL_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOX_PLATE_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model STIFFENER_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model CAP_WALL_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model LATCH_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model LEG_3_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model CONV1_WITH_FRAME_ML. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model CONVEYOR1_ASSY. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BEARING. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BALL. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BRACK_REAR. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOLT_1. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model WASHER. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model NUT. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BRACK_REAR_MIRROR. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BOLT_3. Retrieving submodels.
+!WARNING: Symbol ELEMENT_TYPE not found in model BRACKET. Retrieving submodels.
+#DONE
+!12-Jul-96 11:50:35  Start /disk1/dboyd/largeasm16/channel_3.prt
+!12-Jul-96 11:50:36  End   /disk1/dboyd/largeasm16/channel_3.prt
+!12-Jul-96 11:50:36  Start /disk1/dboyd/largeasm16/motor.prt
+!12-Jul-96 11:50:37  End   /disk1/dboyd/largeasm16/motor.prt
+!12-Jul-96 11:50:37  Start /disk1/dboyd/largeasm16/junction_box.prt
+!12-Jul-96 11:50:37  End   /disk1/dboyd/largeasm16/junction_box.prt
+!Processing model TOP_LEVEL ...
+!Processing model TABLE_3 ...
+!Processing model CHANNEL_3 ...
+!Processing model MOTOR ...
+!Processing model JUNCTION_BOX ...
+!Processing model SWITCH_ASSEMBLY ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CB_BUS_BAR ...
+!Processing model 143564-PWR ...
+#VIEW
+#NAMES
+#SHADE_ISO
+#DONE/RETURN
+#APPLICATIONS
+!Select application type.
+#CABLING
+#HARNESS
+#143564-PWR
+#ROUTE
+#ATTACH CONN
+!Select assembly member representing connector
+0.524600 0.548360 L
+@ sel view 0
+ 2.835645 0.055316 -1.540216 -0.947218 2.606835 -1.650271
+ 1.215772 1.901987 2.306631 230.666328 224.428148 96.087942 1.768436 0.000000
+!Showing part CIRC_BRKR_BOX.
+#DONE SEL
+!Select an entry port on a connector.
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.566313 0.575681 L
+0.298070 0.211465 L
+!Indicate two locations to define a box for the zoom area.
+#DONE-RETURN
+#ENVIRONMENT
+#DISP AXES
+!Axes will be displayed.
+#DISP CSYS
+!Coordinate Systems will be displayed.
+#THICK CABLES
+!Cables will be displayed with respect to their thickness.
+#DONE-RETURN
+!Processing model TOP_LEVEL ...
+!Processing model TABLE_3 ...
+!Processing model SWITCH_ASSEMBLY ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CB_BUS_BAR ...
+!Processing model 143564-PWR ...
+0.528519 0.537457 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+@ sel2d 0 TEXT_ENT 92 #34
+0 4
+@ sel2d 0 TEXT_ENT 92 #34
+0 4
+!Showing COORDINATE SYSTEM in feature 13 in model CIRC_BRKR_BOX. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 320 in model TOP_LEVEL - error 0
+ 0 
+!Pick a curve or surface.
+#ALONG AXIS
+@ trail error  : Creating feature -1 in model TOP_LEVEL - error 64
+ 64 
+!Select AXIS (pick ON the axis line). 
+0.494846 0.507425 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 2 (DATUM AXIS), model CLIP. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 321 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 326 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+0.455712 0.478302 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 2 (DATUM AXIS), model CLIP. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 329 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 332 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+0.383815 0.401400 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 2 (DATUM AXIS), model CLIP. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 335 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 338 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+0.306913 0.318582 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 2 (DATUM AXIS), model CLIP. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 341 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 344 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+0.300998 0.304931 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 10 (HOLE), model CHANNEL_3. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 347 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 350 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+0.338311 0.284454 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 2 (DATUM AXIS), model CLIP. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 353 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 356 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+0.385636 0.256242 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+!Showing axis in feature 2 (DATUM AXIS), model CLIP. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 359 in model TOP_LEVEL - error 0
+ 0 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 362 in model TOP_LEVEL - error 0
+ 0 
+!Select AXIS (pick ON the axis line). 
+#CONNECTOR
+@ trail error  : Creating feature -1 in model TOP_LEVEL - error 64
+ 64 
+!Select an entry port on a connector.
+0.410208 0.230304 L
+@ sel view 0
+ 2.827228 0.055152 -1.535644 -0.944407 2.599098 -1.645373
+ 1.212164 1.896342 2.299785 234.704174 223.978185 97.223991 2.316623 0.000000
+@ sel2d 0 TEXT_ENT 98 #34
+0 4
+!Showing COORDINATE SYSTEM in feature 9 in model JUNCTION_BOX. 
+!CABLE LOCATION has been created successfully.
+@ trail error  : Creating feature 365 in model TOP_LEVEL - error 0
+ 0 
+!Cable terminated at an entry port - cannot extend further.
+!Pick a curve or surface.
+#VIEW
+#COSMETIC
+#SHADE
+#DISPLAY
+!Processing model TOP_LEVEL ...
+!Processing model TABLE_3 ...
+!Processing model SWITCH_ASSEMBLY ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CB_BUS_BAR ...
+!Processing model 143564-PWR ...
+#DONE-RETURN
+#DONE/RETURN
+@ trail error  : Creating feature -1 in model TOP_LEVEL - error 64
+ 64 
+#DONE/RETURN
+#SIMPLFD REP
+#SET CURRENT
+!Select a simplified representation name.
+#LAYOUT
+#DONE
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model UNIT_3 ...
+!Processing model AUGER ...
+!Processing model PLATE_3 ...
+!Processing model END_PLATE_3 ...
+!Processing model TRAY_3 ...
+!Processing model SUPPORT_3 ...
+!Processing model AUGER ...
+!Processing model COLLAR_3 ...
+!Processing model BOLT_J3 ...
+!Processing model NUT_J3 ...
+!Processing model BOX_3_ML ...
+!Processing model SM_SUPPORT_3_ML ...
+!Processing model SIDE_PLATE_SM3_ML ...
+!Processing model FLOW_3_ML ...
+!Processing model FLOW_BOX_ML ...
+!Processing model TANK_3 ...
+!Processing model TABLE_3 ...
+!Processing model CONVEYOR_3 ...
+!Processing model BELT_3 ...
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model BOX_WALL_3 ...
+!Processing model BOX_WALL_R3 ...
+!Processing model COVER_3 ...
+!Processing model PEDESTAL_3 ...
+!Processing model BOX_PLATE_3 ...
+!Processing model STIFFENER_3 ...
+!Processing model CAP_WALL_3 ...
+!Processing model LATCH_3 ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model OUTSIDE-ENV ...
+!Processing model CONVEYOR1_ASSY ...
+#VIEW
+#NAMES
+#SHADE_ISO
+#ENVIRONMENT
+#DISP AXES
+!Axes will not be displayed.
+#DISP CSYS
+!Coordinate Systems will not be displayed.
+#DONE-RETURN
+#VIEW
+#REPAINT
+#DONE-RETURN
+#QUIT WINDOW
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /disk1/dboyd/largeasm16
+#AUGER.ASM
+!Processing model AUGER ...
+!Processing model BOX_3_ML ...
+#VIEW
+#COSMETIC
+#EXPLODE
+!Processing model AUGER ...
+!Processing model BOX_3_ML ...
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.571355 0.565452 L
+0.409014 0.354620 L
+!Indicate two locations to define a box for the zoom area.
+#SIMPLFD REP
+#CREATE
+!Enter name for simplified representation [REP0001]:
+limits
+!Select default rule for components of new state.
+#INCLUDE COMP
+!Select a component to deactivate it in the Simplified Representation.
+#BY RULE
+#SIZE
+#ABSOLUTE
+#LESS THAN
+#DONE
+!Enter absolute size to compare against [120.7048]: 
+3
+#UPDATE REP
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+#ZOOM OUT
+!Indicate two locations to define a box for the zoom area.
+#DONE-RETURN
+~ Select `treetool` `MBar` \
+1  `ShowMenu`
+~ Activate `treetool` `Hilite`
+~ Select `treetool` `AssyTree` \
+1  `node53`
+#EXCLUDE
+!Select a component to deactivate it in the Simplified Representation.
+0.563477 0.311793 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part SIDE_PLATE_SM3_ML.
+0.568681 0.327926 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part SM_SUPPORT_3_ML.
+0.510396 0.296181 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part SM_SUPPORT_3_ML.
+0.512998 0.350823 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part SIDE_PLATE_SM3_ML.
+0.566599 0.387771 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part AUGER.
+0.522886 0.415873 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part TRAY_3.
+0.255921 0.363313 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 2.001001 0.000000
+!Showing part SUPPORT_3.
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+#ZOOM OUT
+!Indicate two locations to define a box for the zoom area.
+0.163207 0.393567 L
+0.751256 0.766172 M
+#DONE-RETURN
+0.163207 0.397730 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 1.000500 0.000000
+!Showing part COLLAR_3.
+0.825153 0.393567 L
+@ sel view 0
+ 3.063724 -1.014660 -0.805185 0.000000 2.067660 -2.605579
+ 1.295322 2.399898 1.904441 552.010386 403.045489 52.088937 1.000500 0.000000
+!Showing part COLLAR_3.
+#DONE SEL
+#DONE
+!Processing model AUGER ...
+!Processing model BOX_3_ML ...
+#VIEW
+#COSMETIC
+#UN-EXPLODE
+!Processing model AUGER ...
+!Processing model BOX_3_ML ...
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+#ZOOM IN
+!Indicate two locations to define a box for the zoom area.
+0.260001 0.503891 L
+0.626361 0.317589 L
+!Indicate two locations to define a box for the zoom area.
+#QUIT WINDOW
+#ASSEMBLY
+#SEARCH/RETR
+!Directory searched is: /disk1/dboyd/largeasm16
+#BOX_PROCESSOR_3.ASM
+!Processing model BOX_PROCESSOR_3 ...
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.176045 0.663489 L
+0.801162 0.261854 L
+!Indicate two locations to define a box for the zoom area.
+#SET UP
+#ENVELOPE
+#CREATE
+!Enter envelope name [ENVLP001]:
+env1
+!Select components to add to the envelope.
+#ALL
+#DONE
+!Choose an option to select or create an envelope component.
+#CREATE
+!Enter Part name [PRT0001]: 
+env1
+@ ok
+!Create envelope geometry.
+#PROTRUSION
+#DONE
+#DONE
+!Select or create a SKETCHING PLANE.
+0.712449 0.597893 R
+!Hidden geometry may be selected.
+0.575383 0.514203 L
+@ sel view 0
+ 6.918553 -2.291323 -1.818282 0.000000 4.669226 -5.883963
+ 2.925117 5.419489 4.300642 705.433330 259.839123 -134.835082 1.599701 0.000000
+!Showing surface created by feature 1 (PROTRUSION), model PEDESTAL_3. Confirm selection.
+0.639303 0.520793 M
+!Arrow shows direction of feature creation. Pick FLIP or OKAY.
+#FLIP
+#OKAY
+!Select or create a horizontal or vertical reference for sketching.
+#TOP
+0.651165 0.581418 R
+!Hidden geometry may be selected.
+0.293342 0.559013 L
+@ sel view 0
+ 6.918553 -2.291323 -1.818282 0.000000 4.669226 -5.883963
+ 2.925117 5.419489 4.300642 705.433330 259.839123 -134.835082 1.599701 0.000000
+!Showing surface created by feature 1 (PROTRUSION), model PEDESTAL_3. Confirm selection.
+0.294001 0.560990 M
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model ENV1 ...
+#ENVIRONMENT
+#HIDDEN LINE
+!Hidden lines will appear in grey.  
+#DONE-RETURN
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+#PAN
+!Select new point for SCREEN CENTER.
+0.499601 0.560990 L
+!Select new point for SCREEN CENTER.
+#GEOM TOOLS
+#USE EDGE
+!Select edge to use
+0.343878 0.434599 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 5 (PROTRUSION), model BOX_WALL_R3.
+!Entity has been created.
+!Select edge to use
+0.361670 0.409558 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 5 (PROTRUSION), model BOX_WALL_3.
+!Entity has been created.
+!Select edge to use
+0.463811 0.375291 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 5 (PROTRUSION), model BOX_WALL_3.
+!Entity has been created.
+!Select edge to use
+0.631849 0.416148 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 5 (PROTRUSION), model BOX_WALL_3.
+!Entity has been created.
+!Select edge to use
+0.654254 0.435258 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 5 (PROTRUSION), model BOX_WALL_R3.
+!Entity has been created.
+!Select edge to use
+0.679295 0.547283 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 6 (ROUND), model COVER_3.
+!Entity has been created.
+!Select edge to use
+0.503349 0.734432 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 1 (PROTRUSION), model PEDESTAL_3.
+!Entity has been created.
+!Select edge to use
+0.320814 0.550578 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+!Showing edge created by feature 6 (ROUND), model COVER_3.
+!Entity has been created.
+!Select edge to use
+#GEOM TOOLS
+#TRIM
+!Select two entities to trim.
+0.650959 0.433281 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+9 4
+!Showing section entity.
+0.680613 0.542671 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+11 4
+!Showing section entity.
+!Select two entities to trim.
+0.676000 0.550578 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+11 4
+!Showing section entity.
+0.505326 0.736409 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+13 4
+!Showing section entity.
+!Select two entities to trim.
+0.503349 0.736409 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+13 4
+!Showing section entity.
+0.320155 0.543989 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+15 4
+!Showing section entity.
+!Select two entities to trim.
+0.320155 0.543989 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+15 4
+!Showing section entity.
+0.342560 0.433940 L
+@ sel view 0
+ 0.000000 0.000000 9.725400 0.000000 9.725400 0.000000
+ -9.725400 0.000000 0.000000 500.000000 84.375000 -177.002277 1.599701 0.000000
+@ sel2d 0 LINE 53 
+1 4
+!Showing section entity.
+!Select two entities to trim.
+#REGENERATE
+!Section regenerated successfully.
+#VIEW
+#ORIENTATION
+#DEFAULT
+#DONE-RETURN
+#VIEW
+#PAN/ZOOM
+!Indicate two locations to define a box for the zoom area.
+0.723154 0.674030 L
+0.191857 0.238662 L
+!Indicate two locations to define a box for the zoom area.
+#DONE
+!Specify feature depth in direction indicated by the arrow.
+#UPTO SURFACE
+#DONE
+!Select a surface to extrude up to.
+0.671839 0.530948 R
+!Hidden geometry may be selected.
+0.212580 0.541589 L
+@ sel view 0
+ 6.918553 -2.291323 -1.818282 0.000000 4.669226 -5.883963
+ 2.925117 5.419489 4.300642 635.785403 259.839123 -164.281753 1.882187 0.000000
+!Showing surface created by feature 1 (PROTRUSION), model PEDESTAL_3. Confirm selection.
+0.271387 0.518066 R
+!Showing surface created by feature 1 (PROTRUSION), model PEDESTAL_3. Confirm selection.
+0.270827 0.518626 M
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+~ Activate `Odui_Dlg_01` `okay`
+!All elements have been defined. Select element(s) or action(s) from dialog box.
+!PROTRUSION has been created successfully.
+@ trail error  : Creating feature 1 in model BOX_PROCESSOR_3 - error 0
+ 0 
+#ENVIRONMENT
+#SHADING
+!Shaded model will be displayed
+#DONE-RETURN
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model ENV1 ...
+#DONE
+!Processing model BOX_PROCESSOR_3 ...
+#QUIT WINDOW
+#ASSEMBLY
+#RETRIEVE REP
+!Directory searched is: /disk1/dboyd/largeasm16
+#TOP_LEVEL.ASM
+!Select a simplified representation name.
+#LAYOUT_FINAL
+#DONE
+!12-Jul-96 11:57:38  Start /disk1/dboyd/largeasm16/box_simp.prt
+!12-Jul-96 11:57:38  End   /disk1/dboyd/largeasm16/box_simp.prt
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model UNIT_3 ...
+!Processing model AUGER ...
+!Processing model FLOW_3_ML ...
+!Processing model TABLE_3 ...
+!Processing model CONVEYOR_3 ...
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model BOX_SIMP ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model CONVEYOR1_ASSY ...
+#VIEW
+#NAMES
+#SHADE_ISO
+#MODIFY
+!Select FEATURE or DIMENSION.
+#MOD PART
+!Select part or assembly datum plane to modify.
+#SEL BY MENU
+#TOP_LEVEL_3D_LAYOUT.PRT
+!Showing part TOP_LEVEL_3D_LAYOUT.
+!Select FEATURE or DIMENSION.
+#SEL BY MENU
+#NAME
+#CONV_ANGLE_1
+!Showing feature 5 (DATUM PLANE) in part TOP_LEVEL_3D_LAYOUT. 
+0.317741 0.237098 L
+@ sel view 0
+ 2.356100 0.045962 -1.279745 -0.787031 2.165986 -1.371189
+ 1.010170 1.580337 1.916550 292.353266 231.376431 29.745721 1.768436 0.000000
+@ sel2d 0 TEXT_DIM 1 
+26 3 23 2 -1 -1 -1 -1
+!
+!Enter angle (-360.0 < angle < 360.0) [90.0]: 
+180
+#REGENERATE
+!WARNING: Some models not regenerated in current state. See file missref.lst.
+!Regenerating TOP_LEVEL_3D_LAYOUT feature 5 out of 10 ...
+!Regenerating TOP_LEVEL_3D_LAYOUT feature 6 out of 10 ...
+!Regenerating TOP_LEVEL_3D_LAYOUT feature 7 out of 10 ...
+!Regenerating TOP_LEVEL_3D_LAYOUT feature 8 out of 10 ...
+!Regenerating TOP_LEVEL_3D_LAYOUT feature 9 out of 10 ...
+!Regenerating TOP_LEVEL_3D_LAYOUT feature 10 out of 10 ...
+!WARNING:  Referenced lines in section no longer have original orientation.
+!Regeneration completed successfully.
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model UNIT_3 ...
+!Processing model AUGER ...
+!Processing model FLOW_3_ML ...
+!Processing model TABLE_3 ...
+!Processing model CONVEYOR_3 ...
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model CONVEYOR1_ASSY ...
+#VIEW
+#NAMES
+#FINAL_STRAIGHT
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model UNIT_3 ...
+!Processing model AUGER ...
+!Processing model FLOW_3_ML ...
+!Processing model TABLE_3 ...
+!Processing model CONVEYOR_3 ...
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model CONVEYOR1_ASSY ...
+#DONE
+#SIMPLFD REP
+#SET CURRENT
+!Select a simplified representation name.
+#MASTER REP
+#DONE
+!12-Jul-96 11:58:22  Start /disk1/dboyd/largeasm16/stiff_plate_ml.prt
+!12-Jul-96 11:58:22  End   /disk1/dboyd/largeasm16/stiff_plate_ml.prt
+!12-Jul-96 11:58:22  Start /disk1/dboyd/largeasm16/bracket_3_ml.prt
+!12-Jul-96 11:58:22  End   /disk1/dboyd/largeasm16/bracket_3_ml.prt
+!12-Jul-96 11:58:22  Start /disk1/dboyd/largeasm16/transition_3.prt
+!Restoring family table instances of transition_3 from family table file.
+!12-Jul-96 11:58:23  End   /disk1/dboyd/largeasm16/transition_3.prt
+!12-Jul-96 11:58:23  Start /disk1/dboyd/largeasm16/duct_3.prt
+!12-Jul-96 11:58:24  End   /disk1/dboyd/largeasm16/duct_3.prt
+!12-Jul-96 11:58:24  Start /disk1/dboyd/largeasm16/shaft_sh_3.prt
+!12-Jul-96 11:58:24  End   /disk1/dboyd/largeasm16/shaft_sh_3.prt
+!12-Jul-96 11:58:24  Start /disk1/dboyd/largeasm16/motor_3.prt
+!12-Jul-96 11:58:29  Start /disk1/dboyd/largeasm16/form_louvr_top.prt
+!12-Jul-96 11:58:29  End   /disk1/dboyd/largeasm16/form_louvr_top.prt
+!12-Jul-96 11:58:30  End   /disk1/dboyd/largeasm16/motor_3.prt
+!12-Jul-96 11:58:30  Start /disk1/dboyd/largeasm16/cover_mot_3.prt
+!12-Jul-96 11:58:30  End   /disk1/dboyd/largeasm16/cover_mot_3.prt
+!12-Jul-96 11:58:30  Start /disk1/dboyd/largeasm16/shelf_3.prt
+!12-Jul-96 11:58:30  End   /disk1/dboyd/largeasm16/shelf_3.prt
+!12-Jul-96 11:58:30  Start /disk1/dboyd/largeasm16/bolt_j4.prt
+!12-Jul-96 11:58:31  End   /disk1/dboyd/largeasm16/bolt_j4.prt
+!12-Jul-96 11:58:31  Start /disk1/dboyd/largeasm16/plate_bot_3.prt
+!12-Jul-96 11:58:31  End   /disk1/dboyd/largeasm16/plate_bot_3.prt
+!12-Jul-96 11:58:31  Start /disk1/dboyd/largeasm16/plate_stiff_3.prt
+!12-Jul-96 11:58:32  End   /disk1/dboyd/largeasm16/plate_stiff_3.prt
+!12-Jul-96 11:58:32  Start /disk1/dboyd/largeasm16/roller_3.prt
+!12-Jul-96 11:58:32  End   /disk1/dboyd/largeasm16/roller_3.prt
+!12-Jul-96 11:58:32  Start /disk1/dboyd/largeasm16/guard_3.prt
+!12-Jul-96 11:58:33  End   /disk1/dboyd/largeasm16/guard_3.prt
+!12-Jul-96 11:58:34  Start /disk1/dboyd/largeasm16/leg_3_ml.prt
+!12-Jul-96 11:58:34  End   /disk1/dboyd/largeasm16/leg_3_ml.prt
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model UNIT_3 ...
+!Processing model AUGER ...
+!Processing model BOX_3_ML ...
+!Processing model FLOW_3_ML ...
+!Processing model STIFF_PLATE_ML ...
+!Processing model BRACKET_3_ML ...
+!Processing model TRANSITION_3 ...
+!Processing model DUCT_3 ...
+!Processing model SHAFT_SH_3 ...
+!Processing model MOTOR_3 ...
+!Processing model COVER_MOT_3 ...
+!Processing model SHELF_3 ...
+!Processing model BOLT_J4 ...
+!Processing model TABLE_3 ...
+!Processing model PLATE_BOT_3 ...
+!Processing model PLATE_STIFF_3 ...
+!Processing model CONVEYOR_3 ...
+!Processing model ROLLER_3 ...
+!Processing model SHAFT_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUARD_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model LEG_3_ML ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model SWITCH_ASSEMBLY ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CB_BUS_BAR ...
+!Processing model 143564-PWR ...
+#DONE/RETURN
+#APPLICATIONS
+!Select application type.
+#CABLING
+#REGENERATE
+!Regenerating 143564-PWR feature 1 out of 18 ...
+!Regenerating 143564-PWR feature 2 out of 18 ...
+!Regenerating 143564-PWR feature 3 out of 18 ...
+!Regenerating 143564-PWR feature 4 out of 18 ...
+!Regenerating 143564-PWR feature 5 out of 18 ...
+!Regenerating 143564-PWR feature 6 out of 18 ...
+!Regenerating 143564-PWR feature 7 out of 18 ...
+!Regenerating 143564-PWR feature 8 out of 18 ...
+!Regenerating 143564-PWR feature 9 out of 18 ...
+!Regenerating 143564-PWR feature 10 out of 18 ...
+!Regenerating 143564-PWR feature 11 out of 18 ...
+!Regenerating 143564-PWR feature 12 out of 18 ...
+!Regenerating 143564-PWR feature 13 out of 18 ...
+!Regenerating 143564-PWR feature 14 out of 18 ...
+!Regenerating 143564-PWR feature 15 out of 18 ...
+!Regenerating 143564-PWR feature 16 out of 18 ...
+!Regenerating 143564-PWR feature 17 out of 18 ...
+!Regenerating 143564-PWR feature 18 out of 18 ...
+!Regeneration completed successfully.
+!Processing model TOP_LEVEL ...
+!Processing model TOP_LEVEL_3D_LAYOUT ...
+!Processing model UNIT_3 ...
+!Processing model AUGER ...
+!Processing model BOX_3_ML ...
+!Processing model FLOW_3_ML ...
+!Processing model TABLE_3 ...
+!Processing model CONVEYOR_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model GUIDE_3 ...
+!Processing model BOX_PROCESSOR_3 ...
+!Processing model CONV1_WITH_FRAME_ML ...
+!Processing model FRAME_ASSEMBLY_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model FRAME_A_ML ...
+!Processing model CONVEYOR1_ASSY ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model BEARING ...
+!Processing model SWITCH_ASSEMBLY ...
+!Processing model CIRC_BRKR_BOX ...
+!Processing model CB_BUS_BAR ...
+!Processing model 143564-PWR ...
+#EXIT
+#EXIT
+!Do you really want to exit? [N]: 
+#EXIT
+YES
+@ confirm 1

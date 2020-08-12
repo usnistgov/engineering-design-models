@@ -1,0 +1,423 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>PTC - "MULTIPLE MACHINING STATES"</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 
+HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+
+
+quit_wind();
+
+retrieve_model('mill_tooth_cone.prt','models/simpreps/');
+
+ViewSet('mill_tooth_cone.prt', 'ISO')
+
+set_display('shade');
+
+
+
+function SimpRep_bkup()
+
+{
+
+	set_display('hiddeninvis');
+
+	ViewSet('mill_tooth_cone.asm', 'ROW1_MILL')
+
+        ret = document.wm.pwlMacroLoad("~ Select `main_dlg_cur` `ProCmdEnvMdlDisp.system`1  `Shading`");
+
+        ret = document.wm.pwlMacroLoad("~ FocusOut `newtree` `AssyTree`;#SIMPLFD REP;#CREATE");
+
+        ret = document.wm.pwlMacroLoad("turn_state;#EXCLUDE FEAT;#DONE;#FEATURES;#FROM/TO");
+
+        ret = document.wm.pwlMacroLoad("~ Select `newtree` `AssyTree`1  `node93`");
+
+        ret = document.wm.pwlMacroLoad("~ Select `newtree` `AssyTree`2  `node93` `node81`");
+
+        ret = document.wm.pwlMacroLoad("~ FocusOut `newtree` `AssyTree`;#DONE;~ FocusOut `newtree` `AssyTree`");
+
+        ret = document.wm.pwlMacroLoad("~ Select `main_dlg_cur` `MenuBar1`1  `View`");
+
+        ret = document.wm.pwlMacroLoad("~ Close `main_dlg_cur` `MenuBar1`");
+
+        ret = document.wm.pwlMacroLoad("~ Activate `main_dlg_cur` `View.psh_view_named`");
+
+        ret = document.wm.pwlMacroLoad("~ FocusIn `vwsavretr` `VwSavRetr_PH.NameVw_List`");
+
+        ret = document.wm.pwlMacroLoad("~ Select `vwsavretr` `VwSavRetr_PH.NameVw_List`1  `turned`");
+
+        ret = document.wm.pwlMacroLoad("~ Activate `vwsavretr` `VwSavRetr_PH.NameVw_PB_SetCur`");
+
+        ret = document.wm.pwlMacroLoad("~ Activate `vwsavretr` `Close`");
+
+}
+
+
+
+function mfg_turn1()
+
+{
+	quit_wind();
+	retrieve_model ('mill_tooth_cone_simp_rep.asm','models/simpreps/');
+	Activate_SimpRep ('mill_tooth_cone_simp_rep.asm','TURN_STATE');
+	
+
+
+        quit_wind();
+
+	retrieve_model('mill_tooth_cone_simp_rep.mfg','models/simpreps/');
+
+        ViewSet('mill_tooth_cone_simp_rep.asm', 'ISO');
+
+	set_display('hiddeninvis');
+
+//	Activate_SimpRep ('mill_tooth_cone_simp_rep.asm', 'TURN_STATE');
+
+//	activate_window();
+}
+
+
+
+function mfg_turn2()
+
+{
+//	quit_wind();
+//	retrieve_model ('mill_tooth_cone_simp_rep.asm','models/simpreps/');
+//	Activate_SimpRep ('mill_tooth_cone_simp_rep.asm','TURN_STATE');
+
+//	quit_wind ();
+//	retrieve_model ('mill_tooth_cone_simp_rep.mfg','models/simpreps/');
+
+
+	ViewSet('mill_tooth_cone_simp_rep.asm', 'ISO');
+
+	set_display('hiddeninvis');
+
+//      Activate_SimpRep ('mill_tooth_cone_simp_rep.asm', 'TURN_STATE');
+
+//	activate_window();
+
+	Play_Path('1','FACING',  'OP010','1');
+
+	Play_Path('2','ROUGHING','OP010','1');
+
+	Play_Path('3','CLNUP1',  'OP010','1');
+
+	Play_Path('4','CLNUP2',  'OP010','1');
+
+	Play_Path('5','FINISH',  'OP010','1');
+
+}
+
+
+
+// This does an NC CHECK instead of wireframe display, (same toolpath as above)
+
+
+function mfg_turn2_bkup()
+
+{
+
+        quit_wind();
+
+	retrieve_model('mill_tooth_cone_simp_rep.mfg','models/simpreps/');
+
+	ViewSet('mill_tooth_cone_simp_rep.asm', 'TURN');
+
+        Activate_SimpRep ('mill_tooth_cone_simp_rep.asm', 'TURN_STATE');
+
+	activate_window();
+
+        NC_Check('1x1','turn_op10.ncl');
+
+}
+
+
+
+function mfg_mill1()
+
+{
+	quit_wind();
+	retrieve_model ('mill_tooth_cone_simp_rep.asm','models/simpreps/');
+	layer_normal('mill_tooth_cone_simp_rep.asm','ref');
+	Activate_SimpRep ('mill_tooth_cone_simp_rep.asm','MILL_STATE');
+
+
+	quit_wind();
+	retrieve_model ('mill_tooth_cone_simp_rep.mfg','models/simpreps/');
+
+//	layer_normal('mill_tooth_cone_simp_rep.asm','ref');
+//	Activate_Master_Rep ('mill_tooth_cone_simp_rep.asm');
+
+	ViewSet('mill_tooth_cone_simp_rep.asm', 'ROW1_MILL');
+
+	set_display('hiddeninvis');
+
+//	activate_window();	
+
+
+}
+
+
+function mfg_mill2()
+
+{
+
+        Play_Path_ALL_OPS('6','ROW1_RGH','OP020','.1');
+	//layer_blank('mill_tooth_cone_simp_rep.asm','ref');
+	//NC_Check('1x1','mill_op20.ncl');
+
+}
+
+
+
+</SCRIPT>
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<CENTER>
+<!-- title goes here --><B>
+<FONT FACE="arial,helvetica">
+<FONT COLOR="#000080"><FONT SIZE=+2>
+
+Simplification
+of Geometry for NC Programming</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Often, complex components
+need to be programmed for <B>multiple operations, setups, or machines</B>.
+
+Traditional programming systems on force the user to display all of the
+
+geometry at all times. Pro/ENGINEER enables the users to <B>easily simplify</B>
+
+the model to only the required geometry for that machining step. This functionality
+
+is called a <B>Simplified Representation</B>. The images below provide
+
+an example of various machining steps and their respective Simplified Representations.
+
+</FONT></FONT>
+<BR>
+
+<br><center>
+<IMG SRC="images/cast.gif" HEIGHT=140 WIDTH=160>
+<IMG SRC="images/turn.gif" HEIGHT=140 WIDTH=160>
+<IMG SRC="images/mill.gif" HEIGHT=140 WIDTH=160></center>
+<BR><B>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Casting or Forging Turning
+Steps; Milling Steps</FONT></FONT></B>
+<UL>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+<A HREF="#rough">
+Creating the Simplified Model</A></FONT></FONT>
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+
+<A HREF="#mfg">Use of Simplified Representation for Turning</A></FONT>
+</FONT>
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+<A HREF="#nc">Use of Master Representation for MIlling</A></FONT></FONT></UL>
+
+
+<IMG SRC="../template/images/divider.gif" >
+
+<br><br>
+
+<// ************************************  simp reps  *********************************//>
+
+<A NAME="rough"></A><FONT FACE="arial,Helvetica"><FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+<B>Creating
+the Simplified Model</B>
+
+</FONT></FONT>
+
+<BR>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Simplified representations
+provide an easier method of machining a part or assembly that has multiple
+
+machining operations. This example shows a part that starts as a casting.
+
+</FONT></FONT>
+<UL>
+<LI>
+
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+The first machining steps are
+performed on a lathe, turning it down to net shape.
+
+</FONT></FONT></LI>
+
+<LI>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+The turned part is then machined
+on a 4 or 5 axis milling center.
+
+</FONT></FONT></LI>
+</UL>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+While programming the turning
+operations, it would be easier if the milled slots were not visible in
+
+the model, and this is precisely the functionality Simplified Representations
+provide.
+
+</FONT></FONT>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+A simplified representation
+is created to only show the geometry required for the lathe operations.
+
+</FONT></FONT><br>
+
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+
+<// ************************************  Lathe Work ****************************************//>
+
+<A NAME="mfg"></A><B>
+<FONT FACE="arial,Helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Lathe
+Work Representation
+
+</FONT></FONT></FONT></B>
+
+<br>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+The Simplified Representation
+is then utilized in programming the required operations.
+
+</FONT></FONT><BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Turning Simplified Rep" onclick="mfg_turn1()">
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Turning Operations" onclick="mfg_turn2()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+
+<// ************************************ MILL STATE  ****************************************//>
+<A NAME="nc"></A><B>
+<FONT FACE="arial,Helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Mill
+Work Representation
+
+</FONT></FONT></FONT></B>
+
+<br>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+With the lathe work complete,
+the full model representation is utilized in manufacturing to generate
+
+programs for the milling machine.</FONT></FONT><BR>
+
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Milling Simplified Rep" onclick="mfg_mill1()">
+
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Show Milling Tool Path" onclick="mfg_mill2()">
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR -->
+<CENTER>
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: --><!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+
+<!-- END OF MENUBAR -->
+
+
+</BODY>
+
+</HTML>

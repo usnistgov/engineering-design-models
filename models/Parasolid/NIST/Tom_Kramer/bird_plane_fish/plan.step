@@ -1,0 +1,45 @@
+STEP;
+HEADER;
+ FILE_IDENTIFICATION(
+   'BIRD_PLANE_FISH_PLAN',
+   '19910916000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Robot Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'No system');
+ FILE_DESCRIPTION('This is a machining process plan for BIRD_PLANE_FISH');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1  = START_PLAN ('BIRD_PLANE_FISH', '1', 'START_PLAN', '1', (),
+          );
+@2  = INITIALIZE_PROGRAM ('SET UP PROGRAM', '2', 'INITIALIZE_PROGRAM', '1', (),
+          #1, ,
+          'INITIALIZE_PROGRAM', (), '10', , , , ,
+          'BATMNC', 'BIRD_PLANE_FISH-DESIGN', 'BIRD_PLANE_FISH-MRSEVS',
+              'BIRD_PLANE_FISH-SETUP',
+              'BLOCK1', 'ALUMINUM', 'VISE', 17.2, 7.3, ); 
+@3  = SET0_CORNER ('LOCATE THE PART', '3', 'SET0_CORNER', '1', (),
+          #2, ,
+          'SET0_CORNER', (), '10', , , , ,
+          'PROBE-0.25', 0.0, 0.0, 0.0, 0.0, 1); 
+@4  = ROUGH_MILL ('ROUGH POCKET 1', '4', 'ROUGH_MILL', '1', (),
+          #3, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'END-MILL-0.25-2', 'OTHER_POCKET_1', 3500, 8.0, 0.125, 0.125);
+@5 = END_PROGRAM ('END PROGRAM', '5', 'END_PROGRAM', '1', (),
+          #4, ,
+          'END_PROGRAM', (), '10', , , , );
+@6 = END_PLAN ('END SECOND CUT', '6', 'END_PLAN', '1', (), 
+          #5);
+@7 = PLAN ('EQUIPMENT', 'OLPS', 'BIRD_PLANE_FISH_PLAN', '1', (),
+          (#1, #2, #3, #4, #5, #6));
+ENDSEC;
+ENDSTEP;

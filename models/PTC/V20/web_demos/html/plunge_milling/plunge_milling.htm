@@ -1,0 +1,185 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (X11; I; IRIX64 6.4 IP30) [Netscape]">
+
+   <TITLE>PTC - "Plunge Milling"</TITLE>
+
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class 
+NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+quit_wind();
+
+retrieve_model('plunge_mfgplate.mfg','models/plunge_milling/');
+
+ViewSet('plunge_mfgplate.asm','FLATEM');
+
+
+function plunge_top_surface()
+{
+
+	NC_Check('1x1','plunge_flatem.ncl');
+
+}
+
+
+
+function plunge_pocket()
+{
+
+	ViewSet('plunge_mfgplate.asm','BULLEM');
+
+	NC_Check('1x1','plunge_bullem.ncl');
+
+}
+
+
+
+</SCRIPT>
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+<CENTER><B>
+<FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>
+Plunge
+Milling
+</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Plunge
+Milling</A> cuts in the direction of the Z-axis. This means material removal
+
+can be maximized because the force is along the tool axis and therefore
+
+tool deflection is minimum. 
+
+<A HREF="../tools/flat_end_mill1.gif">Flat endmills</A>, 
+<A HREF="../tools/radius_end_mill.gif">
+
+Radius endmills</A> and the new plunge milling tools</A> are
+
+supported for Plunge Milling.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<br><B>
+<FONT FACE="arial,Helvetica"><FONT COLOR="#000080">
+<FONT SIZE=+1>
+
+Plunge
+Roughing a Flat Surface :&nbsp;
+<P>
+<FORM NAME="ui">
+</FONT></FONT></FONT></B>
+
+<BR>
+<IMG SRC="./images/plunge.gif" width=285>
+
+<br>
+
+This sequence takes a flat endmill and roughs the top part surface.
+
+Plunges are taken using a tool path which moves the tool back and forth
+
+across the entire surface.
+
+<br>
+
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica">
+<FONT 
+SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Plunge Top Surface" onclick="plunge_top_surface()"> 
+
+<br>
+<IMG SRC="../template/images/divider.gif" >
+
+<P><B>
+
+<FONT FACE="arial,Helvetica"><FONT COLOR="#000080">
+<FONT SIZE=+1>Plunge
+Roughing a Pocket:&nbsp;
+<P>
+<FORM NAME="ui"></FONT></FONT></FONT></B>
+
+<BR>
+<IMG SRC="./images/2level.gif" width=285>
+
+<br>
+
+This sequence takes a bull endmill and roughs a 2 level pocket using
+
+a spiral scan type.
+<br>
+
+<IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica">
+<FONT 
+SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Plunge Pocket" onclick="plunge_pocket()"> 
+
+
+<br>
+<IMG SRC="../template/images/divider.gif" >
+<BR>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- 
+START OF MENUBAR -->
+
+<CENTER>
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+</CENTER>
+
+<!-- END OF MENUBAR -->
+
+
+</BODY>
+
+</HTML>

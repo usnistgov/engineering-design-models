@@ -1,0 +1,85 @@
+(modeller start)
+(load "plisp/load_functions.l")
+(define workpiece body)
+(workpiece receive "olps_workpiece_in.xmt_txt")
+(workpiece point '(0 0 0))
+(workpiece direction '(0.5773502691896257 0.5773502691896257 0.5773502691896257))
+(workpiece angle -120.0)
+(workpiece rotate)
+(translate_body 0.0 0.0 0.0)
+(init_graphics)
+(make_pocket 'rectangular_pocket1 2.5 2.25 9.01 6.2 1.48 1.74 0.5)
+(workpiece subtract 'rectangular_pocket1)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_pocket 'rectangular_pocket2 2.5 2.25 9.0 6.2 1.5 1.75 0.5)
+(workpiece subtract 'rectangular_pocket2)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'other_pocket3 '(
+(2.24 0.26)
+(1.99 1.24)
+(1.26 1.24)
+(1.01 0.26)) 10.51 '(
+0.26
+0.26
+0.26
+0.26) 0.24)
+(workpiece subtract 'other_pocket3)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'other_pocket4 '(
+(3.99 0.26)
+(3.74 1.24)
+(3.01 1.24)
+(2.76 0.26)) 10.51 '(
+0.26
+0.26
+0.26
+0.26) 0.24)
+(workpiece subtract 'other_pocket4)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'other_pocket5 '(
+(2.25 0.25)
+(2.0 1.25)
+(1.25 1.25)
+(1.0 0.25)) 10.5 '(
+0.125
+0.125
+0.125
+0.125) 0.25)
+(workpiece subtract 'other_pocket5)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_other_pocket 'other_pocket6 '(
+(4.0 0.25)
+(3.75 1.25)
+(3.0 1.25)
+(2.75 0.25)) 10.5 '(
+0.125
+0.125
+0.125
+0.125) 0.25)
+(workpiece subtract 'other_pocket6)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_pocket 'rectangular_pocket7 1.0 0.75 10.625 1.0 0.25 0.125 0.125)
+(workpiece subtract 'rectangular_pocket7)
+(graphics clear)
+(graphics sketch 'workpiece)
+(make_pocket 'rectangular_pocket8 4.0 0.75 10.625 1.0 0.25 0.125 0.125)
+(workpiece subtract 'rectangular_pocket8)
+(graphics clear)
+(graphics sketch 'workpiece)
+(workpiece merge)
+(translate_body 0.0 0.0 0.0)
+(workpiece point '(0 0 0))
+(workpiece direction '(0.5773502691896257 0.5773502691896257 0.5773502691896257))
+(workpiece angle 120.0)
+(workpiece rotate)
+(workpiece transmit "olps_workpiece_out")
+(graphics clear)
+(graphics sketch 'workpiece)
+(graphics ar)
+-- (quit)

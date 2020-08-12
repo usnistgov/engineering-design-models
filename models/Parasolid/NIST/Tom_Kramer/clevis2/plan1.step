@@ -1,0 +1,127 @@
+STEP;
+HEADER;
+ FILE_IDENTIFICATION(
+   'CLEVIS2_PLAN1',
+   '19910104000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'No system');
+ FILE_DESCRIPTION('This is a machining process plan for clevis2 first cut');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1  = START_PLAN ('CLEVIS2 FIRST CUT', '1', 'START_PLAN', '1', (),
+          );
+@2  = INITIALIZE_PROGRAM ('SET UP PROGRAM', '2', 'INITIALIZE_PROGRAM', '1', (),
+          #1, ,
+          'INITIALIZE_PROGRAM', (), '10', , , , ,
+          'CL27NC', 'CLEVIS2-DESIGN', 'CLEVIS2-MRSEVS1', 'CLEVIS2-SETUP1',
+              'BLOCK2', 'ALUMINUM', 'VISE', 17.1, 8.8, ); 
+@3  = SET0_CORNER ('LOCATE THE PART', '3', 'SET0_CORNER', '1', (),
+          #2, ,
+          'SET0_CORNER', (), '10', , , , ,
+          'PROBE-0.25', -0.05, 0.0, 0.05, 0.0, 1); 
+@4  = PARAMETERIZED ('SPLIT', '4', 'PARAMETERIZED', '1', (),
+          #3,
+           , 'PARALLEL', 'ALL',
+          ());
+@5  = FINISH_MILL ('FINISH POCKET 17', '5', 'FINISH_MILL', '1', (),
+          #4, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET17', 2500, 16.0, 0.5);
+@6  = FINISH_MILL ('FINISH POCKET 18', '6', 'FINISH_MILL', '1', (),
+          #4, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET18', 2500, 16.0, 0.5);
+@7  = FINISH_MILL ('FINISH POCKET 19', '7', 'FINISH_MILL', '1', (),
+          #4, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET19', 2500, 16.0, 0.5);
+@8  = FINISH_MILL ('FINISH POCKET 20', '8', 'FINISH_MILL', '1', (),
+          #4, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET20', 2500, 16.0, 0.5);
+@9  = FINISH_MILL ('FINISH POCKET 16', '9', 'FINISH_MILL', '1', (),
+          #4, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-0.5-2', 'RECTANGULAR_POCKET16', 3500, 8.0, 0.25);
+@10 = CENTER_DRILL ('CENTER DRILL 6 HOLES', '10', 'CENTER_DRILL', '1', (),
+          #4, ,
+          'CENTER_DRILL', (), '10', , , , ,
+          'CENTER-DRILL-0.1875-2', 'CENTER_DRILL_HOLES', 5000, 8.0);
+@11 = PARAMETERIZED ('SPLIT', '11', 'PARAMETERIZED', '1', (),
+          #10,
+           , 'PARALLEL', 'ALL',
+          ());
+@12 = TWIST_DRILL ('DRILL HOLE3', '12', 'TWIST_DRILL', '1', (),
+          #11, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.1966-2', 'HOLE3', 5200, 5.0, 0.2);
+@13 = TWIST_DRILL ('DRILL HOLE4', '13', 'TWIST_DRILL', '1', (),
+          #11, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.1966-2', 'HOLE4', 5200, 5.0, 0.2);
+@14 = TWIST_DRILL ('DRILL HOLE5', '14', 'TWIST_DRILL', '1', (),
+          #11, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.1966-2', 'HOLE5', 5200, 5.0, 0.2);
+@15 = TWIST_DRILL ('DRILL HOLE6', '15', 'TWIST_DRILL', '1', (),
+          #11, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.1966-2', 'HOLE6', 5200, 5.0, 0.2);
+@16 = TWIST_DRILL ('DRILL HOLE7', '16', 'TWIST_DRILL', '1', (),
+          #11, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.1966-2', 'HOLE7', 5200, 5.0, 0.2);
+@17 = TWIST_DRILL ('DRILL HOLE8', '17', 'TWIST_DRILL', '1', (),
+          #11, ,
+          'TWIST_DRILL', (), '10', , , , ,
+          'DRILL-0.1966-2', 'HOLE8', 5200, 5.0, 0.2);
+@18 = COUNTERBORE ('COUNTERBORE HOLE9', '18', 'COUNTERBORE', '1', (),
+          #12, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-0.25-2', 'HOLE9', 5000, 8.0);
+@19 = COUNTERBORE ('COUNTERBORE HOLE10', '19', 'COUNTERBORE', '1', (),
+          #13, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-0.25-2', 'HOLE10', 5000, 8.0);
+@20 = COUNTERBORE ('COUNTERBORE HOLE11', '20', 'COUNTERBORE', '1', (),
+          #14, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-0.25-2', 'HOLE11', 5000, 8.0);
+@21 = COUNTERBORE ('COUNTERBORE HOLE12', '21', 'COUNTERBORE', '1', (),
+          #15, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-0.25-2', 'HOLE12', 5000, 8.0);
+@22 = COUNTERBORE ('COUNTERBORE HOLE13', '22', 'COUNTERBORE', '1', (),
+          #16, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-0.25-2', 'HOLE13', 5000, 8.0);
+@23 = COUNTERBORE ('COUNTERBORE HOLE14', '23', 'COUNTERBORE', '1', (),
+          #17, ,
+          'COUNTERBORE', (), '10', , , , ,
+          'END-MILL-0.25-2', 'HOLE14', 5000, 8.0);
+@24 = JOIN ('JOIN', '24', 'JOIN', '1', (),
+           ,
+          (#18, #19, #20, #21, #22, #23));
+@25 = JOIN ('JOIN', '25', 'JOIN', '1', (),
+           ,
+          (#5, #6, #7, #8, #9, #24));
+@26 = END_PROGRAM ('END PROGRAM', '26', 'END_PROGRAM', '1', (),
+          #25, ,
+          'END_PROGRAM', (), '10', , , , );
+@27 = END_PLAN ('END FIRST CUT', '27', 'END_PLAN', '1', (), 
+          #26);
+@28 = PLAN ('EQUIPMENT', 'OLPS', 'CLEVIS2_PLAN1', '1', (),
+          (#1, #2, #3, #4, #5, #6, #7, #8, #9, #10, #11, #12, #13, #14,
+           #15, #16, #17, #18, #19, #20, #21, #22, #23, #24, #25, #26, #27));
+ENDSEC;
+ENDSTEP;

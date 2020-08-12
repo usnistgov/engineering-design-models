@@ -1,0 +1,190 @@
+<HEAD>
+
+<TITLE>PTC - "Corner Breaks"</TITLE>
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+
+</SCRIPT>
+
+
+<SCRIPT language = "JavaScript">
+
+
+
+
+quit_wind();
+
+retrieve_model('ebox.mfg','models/corner_break/');
+
+set_display('shade');
+ViewSet('ebox.asm', 'automatic');
+
+
+function corner_break()
+
+{
+
+	ViewSet('ebox.asm', 'refit');
+
+	Play_Path('1','CORNER_TRAJ','OP010','.1');
+
+	ViewSet('ebox.asm', 'corner_breaks');
+
+}
+
+
+
+
+
+// Provide a hint as to what to talk about //
+
+msg = "\nPro/NC allows Automatic Corner Breaks";
+
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF">
+
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+
+<CENTER><FONT SIZE=+3 COLOR="#000080" ><B>
+
+
+<!-- title goes here -->
+
+	Pro/MFG Corner Breaks</FONT SIZE></B></CENTER></FONT>
+
+
+
+<form NAME="ui">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+
+<font  size=+0>
+
+
+Breaking sharp corners on parts while they are being machined saves costly time intensive
+
+deburring processes.  Pro/MFG provides automatic and manual corner breaking for
+better part finishes.
+<br>
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<// ************************************ auto corner breaks *********************************//>
+<br>
+<B>
+<FONT SIZE=+1 COLOR="#000080">Corner break</FONT SIZE></B>
+<br>
+<font  size=+0>
+
+
+In the following example a finish toolpath profiling the outer surfaces of the part has
+
+been programmed with automatic corner radius breaks.  No sharp corners are left because
+
+the burrs have been rolled (machined) off.
+
+
+<br>
+<br>
+<IMG SRC="./images/corner_break.gif" >
+
+
+<br>
+<IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="Corner Break Example" onclick="corner_break()">
+
+
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280>
+
+
+
+<// ************************************  corner menu ****************************************//>
+
+
+<A NAME="corner_menu"></A>
+<br>
+<B><FONT SIZE=+1 COLOR="#000080">Corners</FONT SIZE></B>
+</font>
+<font  size=+0>
+<br>
+
+
+The "Corners" menu allows the setup of corner conditons, you may specify each individual
+
+corner or all corners automatically.  Options for corners include concave, convex or 
+
+chamfer.  Corner radius or chamfer length may be setup ahead of time or prompted on 
+the fly.
+
+<br>
+<br>
+
+<IMG SRC="./images/corner_menu.gif" >
+<br><br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<!--   #######################    end of document content    #######################   -->
+
+</form>
+
+<!-- START OF MENUBAR -->
+
+<center>
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: -->
+
+<!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+        
+<a href="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true"
+>
+<img src="../template/images/back.gif" width=75 height=40 border=0></a>
+<a href=" ../intro/mill_intro.htm"
+ OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<img src="../template/images/index.gif" width=128 height=40 border=0></a>
+<a href="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+
+<!-- END OF MENUBAR -->
+
+
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,2616 @@
+
+ SCHEMA config_control_design;
+ --SCHEMA geometry_schema;        
+       
+       -------------------------- 43 --------------------------------------------
+  FUNCTION value_of (m: measure;
+                      u: unit ) : value_select;
+   ----------------------------------------------------------------------------
+   
+     FUNCTION conversion_factor (mu: unit; u: unit) : value_select;
+     LOCAL
+       indeterminate:     unspecified_value;
+       indeterminate_string: STRING 
+                           := 'GENERIC_MEASURES_SCHEMA.UNSPECIFIED_VALUE';
+     END_LOCAL;
+   
+          
+   
+     END_FUNCTION; -- conversion_factor
+   ------------------------------------------------------------------------------  
+   
+     FUNCTION unit_type (u: unit) : STRING;
+       IF 'GENERIC_MEASURES_SCHEMA.SI_UNIT' IN TYPEOF (u) THEN
+          RETURN ('si_unit');
+       ELSE
+          IF 'GENERIC_MEASURES_SCHEMA.CONVERTED_UNIT' IN TYPEOF (u) THEN
+            RETURN ('converted_unit');
+          ELSE
+            IF 'GENERIC_MEASURES_SCHEMA.SI_UNRELATED_UNIT' IN TYPEOF (u) THEN
+              RETURN ('si_unrelated_unit');
+            ELSE
+              IF 'GENERIC_MEASURES_SCHEMA.DERIVED_UNIT' IN TYPEOF (u) THEN
+                RETURN ('derived_unit');
+              ELSE
+                RETURN ('unitless'); 
+              END_IF;
+            END_IF;
+          END_IF; 
+       END_IF;     
+     END_FUNCTION; -- unit_type
+   
+   -------------------------------------------------------------------------------
+    
+   -------------------------------------------------------------------------------
+     
+--     FUNCTION converted_to_si (i: converted_unit; o:si_unit ) :  value_select ;
+     
+--       LOCAL
+--         indeterminate:     unspecified_value;
+--         indeterminate_string: STRING := --'GENERIC_MEASURES_SCHEMA.UNSPECIFIED_VALUE';
+--       END_LOCAL;
+   
+--       IF i.factor.unit_component = o THEN
+--        RETURN (i.factor.numerical_value);
+--       ELSE
+--        IF indeterminate_string IN TYPEOF 
+--            (conversion_factor (i.factor.unit_component, o)) THEN
+--            RETURN (indeterminate);
+--         ELSE
+--           RETURN (i.factor.numerical_value * 
+--                    conversion_factor (i.factor.unit_component, o));
+--        END_IF;
+--      END_IF;
+    
+--     END_FUNCTION;  -- converted_to_si
+   
+   --------------------------------------------------------------------------------
+     
+--     FUNCTION converted_to_converted (i: converted_unit; o : converted_unit) 
+--              : value_select;
+   
+--       LOCAL
+--         indeterminate:     unspecified_value;
+--         wi : unit := i;
+--         wo : unit := o;
+--         ivalue: REAL := 1.0;
+--         ovalue: REAL := 1.0;
+--       END_LOCAL;
+   
+       -- find basis of converted_units in addition to multiplication factors
+       
+--      REPEAT UNTIL unit_type(wi.factor.unit_component) <> 'converted_unit';
+--         ivalue := ivalue * wi.factor.numerical_value;
+--         wi := wi.factor.unit_component;
+ --      END_REPEAT;
+    
+ --      REPEAT UNTIL unit_type(wo.factor.unit_component) <> 'converted_unit';
+ --         ovalue := ovalue * wo.factor.numerical_value;
+--        wo := wo.factor.unit_component;
+ --      END_REPEAT;
+    
+    -- If the basis of the derived units are equivalent then simply derive
+    -- the conversion value
+   
+--       IF wo = wi THEN
+ --        RETURN (ivalue / ovalue);
+--       END_IF;
+   
+    -- otherwise base conversion off of root conversion
+   
+--       CASE unit_type (wi) OF
+--        'si_unit':
+--            CASE unit_type (wo) OF
+   
+ --             'si_unit':  RETURN ( (ivalue/ovalue) * 
+  --                                 (prefix_value(wi) / prefix_value (wo)));
+            
+ --             OTHERWISE : RETURN (indeterminate);
+   
+ --           END_CASE;           
+   
+  --        OTHERWISE : RETURN(indeterminate);
+   
+   --    END_CASE;                
+   
+   --  END_FUNCTION;  -- converted_to_converted
+----------------------------------------------------------
+---------- value_of function
+
+   LOCAL
+
+     calculated_value:  specified_value;
+     indeterminate:     unspecified_value;
+     unitless_string:   STRING := 'GENERIC_MEASURES_SCHEMA.UNITLESS';
+     derived_unit_string:
+                        STRING := 'GENERIC_MEASURES_SCHEMA.DERIVED_UNIT';
+     si_unrelated_unit_string:
+                        STRING := 'GENERIC_MEASURES_SCHEMA.SI_UNRELATED_UNIT';
+     indeterminate_string: STRING := 'GENERIC_MEASURES_SCHEMA.UNSPECIFIED_VALUE';
+
+   END_LOCAL;
+   
+   -- if units are the same return the numerical value
+   
+   IF m.unit_component = u THEN -- u and the units of m are the same
+      RETURN (calculated_value);
+   END_IF;
+   
+   -- unitless conversions are indeterminate
+    
+   IF (unitless_string IN 
+       TYPEOF (u)) OR (unitless_string IN TYPEOF (m.unit_component))
+   THEN
+   RETURN (indeterminate);
+   END_IF;
+   
+   -- only lengths and plane angles are supported, the rest are indeterminate
+   
+   IF  ((m.dimensions <> dimensional_exponents
+          (1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)) AND -- m not a length
+        (m.dimensions <> dimensional_exponents
+          (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))) -- m not an plane angle
+   THEN RETURN (indeterminate);
+   END_IF;
+   
+   -- if the type of unit in the measure or unit is a derived unit
+   -- then the value is indeterminate if the same unit is not shared
+   -- by the u and m.unit_component 
+   
+   IF (derived_unit_string IN TYPEOF (u)) OR (derived_unit_string 
+      IN TYPEOF (m.unit_component)) THEN
+      RETURN (indeterminate);
+   END_IF;
+   
+   -- at this point in the code it is known that the unit type in
+   -- both u and m is a  unit since the others have been ruled out
+   -- the function returns indeterminate if the dimensional values are incompatible
+   
+   IF m.dimensions <> u.dimensions THEN
+      RETURN (indeterminate);
+   END_IF;
+   
+   -- the value_of function does not support si_unrelated_units
+   
+   IF (si_unrelated_unit_string IN TYPEOF (u)) OR (si_unrelated_unit_string 
+      IN TYPEOF (m.unit_component)) THEN
+      RETURN (indeterminate);
+   END_IF;
+   
+   
+   -- The following is now known, the unit types of the measure and unit
+   -- are either an SI_Unit or a CONVERTED_UNIT, the u argument is not the unit
+   -- used in the m argument, the dimensions of the units are compatible
+   
+   -- The code will now determine the value based on a conversion
+   -- of the measures units, m.unit_component into u and return the value
+   
+   IF indeterminate_string IN TYPEOF (conversion_factor (m.unit_component,u)) THEN
+     RETURN (indeterminate);
+   ELSE   
+        END_IF;
+   
+   
+   END_FUNCTION;  -- value_of
+   
+TYPE parameter_value = REAL; 
+END_TYPE;   
+
+ENTITY global_unit_assigned_context
+   SUBTYPE OF ( representation_context );
+   units : SET [1:2] OF unit;
+WHERE
+      WR1 : SIZEOF 
+            ( QUERY 
+              ( x <* units |
+                ( ('SPECIFIC_MEASURES_SCHEMA.LENGTH_UNIT'      IN TYPEOF (x)) OR
+                  ('SPECIFIC_MEASURES_SCHEMA.PLANE_ANGLE_UNIT' IN TYPEOF (x))))
+            = SIZEOF ( units ));
+      WR2 : SIZEOF 
+            ( QUERY ( x <* units |
+              'SPECIFIC_MEASURES_SCHEMA.LENGTH_UNIT' IN TYPEOF (x) )  <= 1)
+            AND
+            SIZEOF 
+            ( QUERY ( x <* units |
+              'SPECIFIC_MEASURES_SCHEMA.PLANE_ANGLE_UNIT' IN TYPEOF (x) ) <= 1);
+END_ENTITY;   
+ENTITY positive_plane_angle_measure 
+SUBTYPE OF (plane_angle_measure);
+WHERE
+   WR1 : value_of (SELF, SELF.unit_component) > 0 ;
+END_ENTITY;
+  
+ENTITY plane_angle_unit
+   SUBTYPE OF (  unit );
+WHERE
+   WR1 : ( SELF.dimensions.length_exponent                    = 0.0 ) AND
+         ( SELF.dimensions.mass_exponent                      = 0.0 ) AND
+         ( SELF.dimensions.time_exponent                      = 0.0 ) AND
+         ( SELF.dimensions.electric_current_exponent          = 0.0 ) AND
+         ( SELF.dimensions.thermodynamic_temperature_exponent = 0.0 ) AND
+         ( SELF.dimensions.amount_of_substance_exponent       = 0.0 ) AND
+         ( SELF.dimensions.luminous_intensity_exponent        = 0.0 );
+END_ENTITY;
+
+ENTITY solid_angle_unit
+   SUBTYPE OF (  unit );
+WHERE
+   WR1 : ( SELF.dimensions.length_exponent                    = 0.0 ) AND
+         ( SELF.dimensions.mass_exponent                      = 0.0 ) AND
+         ( SELF.dimensions.time_exponent                      = 0.0 ) AND
+         ( SELF.dimensions.electric_current_exponent          = 0.0 ) AND
+         ( SELF.dimensions.thermodynamic_temperature_exponent = 0.0 ) AND
+         ( SELF.dimensions.amount_of_substance_exponent       = 0.0 ) AND
+         ( SELF.dimensions.luminous_intensity_exponent        = 0.0 );
+END_ENTITY;
+
+ENTITY area_unit
+   SUBTYPE OF (  unit );
+WHERE
+   WR1 : ( SELF.dimensions.length_exponent = 2.0 )                    AND
+         ( SELF.dimensions.mass_exponent = 0.0 )                      AND
+         ( SELF.dimensions.time_exponent = 0.0 )                      AND
+         ( SELF.dimensions.electric_current_exponent = 0.0 )          AND
+         ( SELF.dimensions.thermodynamic_temperature_exponent = 0.0 ) AND
+         ( SELF.dimensions.amount_of_substance_exponent = 0.0 )       AND
+         ( SELF.dimensions.luminous_intensity_exponent = 0.0 );
+END_ENTITY;
+   
+ENTITY plane_angle_measure 
+   SUBTYPE OF ( measure );
+WHERE
+   WR1 : SELF.unit_component = plane_angle_unit;
+END_ENTITY;
+ 
+--ENTITY positive_length_measure 
+--   SUBTYPE OF ( length_measure );
+--WHERE
+--   WR1 : value_of (SELF, SELF.unit_component) > 0 ;
+--END_ENTITY;
+ 
+TYPE positive_length_measure = length_measure;
+WHERE
+  WR1: SELF > 0;
+END_TYPE;
+ 
+FUNCTION derive_dimensional_exponents ( x : unit ) : dimensional_exponents;
+--   LOCAL
+--      i      : INTEGER;
+--      result : dimensional_exponents := [];
+--   END_LOCAL;
+--  IF 'DERIVED_UNIT' IN TYPEOF(x) THEN -- x is a derived unit
+--      REPEAT i := LOINDEX(x.elements) TO HIINDEX(x.elements);
+--        result.length_exponent := 
+--           result.length_exponent + 
+ --              ( x.elements[i].exponent * 
+ --                x.elements[i].unit.dimensions.length_exponent );
+ --        result.mass_exponent := 
+ --           result.mass_exponent + 
+ --              ( x.elements[i].exponent * 
+ --                x.elements[i].unit.dimensions.mass_exponent );
+ --        result.electric_current_exponent := 
+ --           result.electric_current_exponent + 
+ --              ( x.elements[i].exponent * 
+--               x.elements[i].unit.dimensions.electric_current_exponent );
+ --        result.thermodynamic_temperature_exponent :=
+--               ( x.elements[i].exponent * 
+ --               --x.elements[i].unit.dimensions.thermodynamic_temperature_exponent );
+--         result.amount_of_substance_exponent  :=
+--           result.amount_of_substance_exponent + 
+ --              ( x.elements[i].exponent * 
+ --                x.elements[i].unit.dimensions.amount_of_substance_exponent );
+ --        result.luminous_intensity_exponent := 
+ --           result.luminous_intensity_exponent + 
+ --              ( x.elements[i].exponent * 
+  --               x.elements[i].unit.dimensions.luminous_intensity_exponent );
+  --    END_REPEAT;
+  -- ELSE -- x is a unitless or a named unit
+  --    result := x.dimensions;
+ --  END_IF;
+  -- RETURN ( result );
+END_FUNCTION;
+
+ENTITY dimensional_exponents;
+   length_exponent                    : REAL; 
+   mass_exponent                      : REAL;
+   time_exponent                      : REAL;
+   electric_current_exponent          : REAL;
+   thermodynamic_temperature_exponent : REAL;
+   amount_of_substance_exponent       : REAL;
+   luminous_intensity_exponent        : REAL;
+END_ENTITY;    
+
+TYPE value_select = SELECT ( specified_value, unspecified_value);
+END_TYPE;
+
+TYPE unspecified_value =  STRING;
+END_TYPE;
+
+TYPE specified_value = NUMBER;
+END_TYPE;
+          
+--TYPE unit =   unit ;
+--END_TYPE;
+
+ENTITY  unit;
+   dimensions : dimensional_exponents;
+END_ENTITY;
+           
+ENTITY measure;
+   amount : value_select;
+   unit_component            : unit;
+DERIVE
+   dimensions      : dimensional_exponents 
+                   := derive_dimensional_exponents ( SELF.unit_component );
+END_ENTITY;
+  
+--ENTITY length_measure
+--   SUBTYPE OF ( measure );
+  
+--END_ENTITY;  
+ 
+TYPE length_measure = REAL;
+END_TYPE; 
+  
+ENTITY representation_item; 
+    
+END_ENTITY; 
+
+ENTITY geometric_representation_item 
+  SUBTYPE OF (representation_item);
+
+DERIVE 
+  dim : INTEGER :=3;  
+END_ENTITY; 
+
+TYPE dimension_count = INTEGER; 
+  WHERE 
+  WR1: SELF > 0; 
+END_TYPE; 
+
+ENTITY geometric_representation_context 
+  SUBTYPE OF (representation_context); 
+  coordinate_space_dimension : dimension_count; 
+END_ENTITY; 
+
+ENTITY representation; 
+  items            : SET [1:?] OF representation_item; 
+  context_of_items : representation_context; 
+END_ENTITY;  
+
+ENTITY representation_context; 
+  context_identifier : identifier; 
+  context_type       : text; 
+  INVERSE 
+  contexted_representations : SET [1:?] OF representation FOR 
+context_of_items; 
+END_ENTITY; 
+
+TYPE text = STRING;
+END_TYPE;
+   
+TYPE identifier = STRING; 
+END_TYPE;
+-------------------------------------------------------------------------- 
+ TYPE transition_code = ENUMERATION OF 
+   (discontinuous,
+    continuous,
+    cont_same_gradient,
+    cont_same_gradient_same_curvature);
+ END_TYPE;
+ 
+ TYPE preferred_surface_curve_representation = ENUMERATION OF 
+   (curve_3d,
+    pcurve_s1, 
+    pcurve_s2);
+ END_TYPE;
+ 
+ TYPE bspline_curve_form = ENUMERATION OF (
+   polyline_form,
+   circular_arc,
+   elliptic_arc,
+   parabolic_arc,
+   hyperbolic_arc,
+   unspecified);
+ END_TYPE;
+ 
+ TYPE bspline_surface_form = ENUMERATION OF 
+   (plane_surf,
+    cylindrical_surf,
+    conical_surf,
+    spherical_surf,
+    toroidal_surf,
+    surf_of_revolution,
+    ruled_surf,
+    generalised_cone,
+    quadric_surf,
+    surf_of_linear_extrusion,
+    unspecified);
+ END_TYPE;
+ 
+ TYPE knot_type = ENUMERATION OF 
+   (uniform_knots,
+    unspecified,
+    quasi_uniform_knots,
+    piecewise_bezier_knots);
+ END_TYPE;
+   
+ TYPE extent_enumeration = ENUMERATION OF 
+   (invalid,
+    zero,
+    finite_non_zero,
+    infinite);
+ END_TYPE;
+ 
+ TYPE trimming_preference = ENUMERATION OF 
+   (cartesian, parameter,
+    unspecified);
+ END_TYPE;
+ 
+-- TYPE axis2_placement  =  axis2_placement3d ;
+-- END_TYPE;
+ 
+ TYPE curve_on_surface = SELECT 
+   (pcurve, 
+    surface_curve, 
+    composite_curve_on_surface);
+ END_TYPE;
+ 
+ TYPE pcurve_or_surface = SELECT 
+   (pcurve, 
+    surface);
+ END_TYPE;
+ 
+ TYPE trimming_select = SELECT 
+   (cartesian_point, 
+    parameter_value);
+ END_TYPE;
+ 
+ TYPE vector_or_direction = SELECT
+   (vector, 
+    direction);
+ END_TYPE;
+ 
+ ENTITY point
+   SUPERTYPE OF (ONEOF(cartesian_point, point_on_curve, point_on_surface,
+                       degenerate_pcurve, point_replica))
+   SUBTYPE OF (geometric_representation_item);
+ END_ENTITY;
+ 
+ ENTITY cartesian_point
+   SUBTYPE OF (point);
+   coordinates  : LIST [1:3] OF length_measure;
+ END_ENTITY;
+ 
+ ENTITY point_on_curve
+   SUBTYPE OF (point);
+   basis_curve     : curve;
+   point_parameter : parameter_value;
+ END_ENTITY;
+ 
+ ENTITY point_on_surface
+   SUBTYPE OF (point);
+   basis_surface     : surface;
+   point_parameter_u : parameter_value;
+   point_parameter_v : parameter_value;
+ END_ENTITY;
+ 
+ ENTITY point_replica
+   SUBTYPE OF (point);
+   parent_pt      : point;
+   transformation : cartesian_transformation_operator;
+ WHERE
+   WR1: transformation.dim = parent_pt.dim;
+ END_ENTITY;
+ 
+ ENTITY degenerate_pcurve
+   SUBTYPE OF (point);
+ basis_surface:  surface;
+ reference_to_curve: definitional_representation_item;
+ WHERE
+   WR1: SIZEOF(reference_to_curve.items) = 1;
+   WR2: 'GEOMETRY_SCHEMA.CURVE' IN TYPEOF (reference_to_curve.items[1]);
+   WR3: reference_to_curve.items[1]\geometric_representation_item.dim =2;
+ END_ENTITY;
+ 
+ ENTITY evaluated_degenerate_pcurve
+   SUBTYPE OF (degenerate_pcurve);
+   equivalent_point : cartesian_point;
+ END_ENTITY;
+ 
+ ENTITY direction
+   SUBTYPE OF (geometric_representation_item);
+   direction_ratios : LIST [2:3] OF REAL;
+ WHERE
+   WR1: NOT((direction_ratios[1] = 0.0) AND
+            (direction_ratios[2] = 0.0) AND
+            (direction_ratios[3] = 0.0));
+ END_ENTITY;
+ 
+ ENTITY vector
+   SUBTYPE OF (geometric_representation_item);
+   orientation : direction;
+   magnitude   : length_measure;
+ WHERE
+   WR1 : magnitude >= 0.0;
+ END_ENTITY;
+ 
+ ENTITY placement
+   SUPERTYPE OF (ONEOF(axis1_placement,axis2_placement_2d,axis2_placement_3d))
+   SUBTYPE OF (geometric_representation_item);
+   location : cartesian_point;
+ END_ENTITY;
+ 
+ ENTITY axis1_placement
+   SUBTYPE OF (placement);
+   axis     : OPTIONAL direction;
+ DERIVE
+   z        : direction := NVL(normalise(axis), direction([0.0,0.0,1.0]));
+ WHERE
+   WR1: SELF\geometric_representation_item.dim  = 3;
+ END_ENTITY;
+ 
+ ENTITY axis2_placement_2d
+   SUBTYPE OF (placement);
+   ref_direction : OPTIONAL direction;
+ DERIVE
+   p             : LIST [2:2] OF direction := build_2axes(ref_direction);
+ WHERE
+   WR1: SELF\geometric_representation_item.dim = 2;
+ END_ENTITY;
+ 
+ ENTITY axis2_placement_3d
+   SUBTYPE OF (placement);
+   axis          : OPTIONAL direction;
+   ref_direction : OPTIONAL direction;
+ DERIVE
+   p             : LIST [3:3] OF direction := build_axes(axis,ref_direction);
+ WHERE
+   WR1: SELF\placement.location.dim = 3;
+   WR2: (NOT EXISTS (axis) OR axis.dim = 3);
+   WR3: (NOT EXISTS (ref_direction) OR ref_direction.dim = 3);
+   WR4: NOT EXISTS (axis) OR NOT EXISTS (ref_direction) OR
+          (cross_product(axis,ref_direction).magnitude > 0.0);
+ END_ENTITY;
+ 
+ ENTITY cartesian_transformation_operator
+   SUPERTYPE OF(ONEOF(cartesian_transformation_operator_2d,
+                               cartesian_transformation_operator_3d))
+   SUBTYPE OF (geometric_representation_item);
+                             
+   axis1        : OPTIONAL direction;
+   axis2        : OPTIONAL direction;
+   local_origin : cartesian_point;
+   scale        : OPTIONAL REAL;
+ DERIVE
+   scl          : REAL := NVL(scale, 1.0);
+ WHERE
+   WR1: scl > 0.0;
+ END_ENTITY;
+ 
+ ENTITY cartesian_transformation_operator_3d
+   SUBTYPE OF (cartesian_transformation_operator);
+   axis3 : OPTIONAL direction;
+ DERIVE
+   u     : LIST[3:3] OF direction 
+         := base_axis(3,SELF\cartesian_transformation_operator.axis1,
+                        SELF\cartesian_transformation_operator.axis2,axis3);
+ WHERE
+   WR1: SELF\cartesian_transformation_operator.dim = 3;
+ END_ENTITY;
+ 
+ ENTITY cartesian_transformation_operator_2d
+   SUBTYPE OF (cartesian_transformation_operator);
+ DERIVE
+   u : LIST[2:2] OF direction := 
+       base_axis(2,SELF\cartesian_transformation_operator.axis1,
+                   SELF\cartesian_transformation_operator.axis2,?);
+ WHERE
+   WR1: SELF\cartesian_transformation_operator.dim = 2;
+ END_ENTITY;
+ 
+ ENTITY curve
+   SUPERTYPE OF (ONEOF(line, conic, bounded_curve, pcurve, surface_curve,
+                       offset_curve_2d, offset_curve_3d, curve_replica))
+   SUBTYPE OF (geometric_representation_item);
+ END_ENTITY;
+ 
+ ENTITY line
+   SUBTYPE OF (curve);
+   pnt : cartesian_point;
+   dir : vector;
+ WHERE
+   WR1: dir.dim  = pnt.dim;
+ END_ENTITY;
+ 
+ ENTITY conic
+   ABSTRACT SUPERTYPE OF (ONEOF(circle, ellipse, hyperbola, parabola))
+   SUBTYPE OF (curve);
+   position: axis2_placement_3d;
+ END_ENTITY;
+ 
+ ENTITY circle
+   SUBTYPE OF (conic);
+   radius   : positive_length_measure;
+ END_ENTITY;
+ 
+ ENTITY ellipse
+   SUBTYPE OF (conic);
+   semi_axis_1 : positive_length_measure;
+   semi_axis_2 : positive_length_measure;
+ END_ENTITY;
+ 
+ ENTITY hyperbola
+   SUBTYPE OF (conic);
+   semi_axis      : positive_length_measure;
+   semi_imag_axis : positive_length_measure;
+ END_ENTITY;
+ 
+ ENTITY parabola
+   SUBTYPE OF (conic);
+   focal_dist : length_measure;
+ WHERE
+   WR1: focal_dist <> 0.0;
+ END_ENTITY;
+ 
+ ENTITY bounded_curve
+   SUPERTYPE OF (ONEOF(polyline, b_spline_curve, trimmed_curve,
+                       composite_curve, composite_curve_segment))
+   SUBTYPE OF (curve);
+ END_ENTITY;
+ 
+ ENTITY polyline
+   SUBTYPE OF (bounded_curve);
+   points : LIST [2:?] OF cartesian_point;
+ END_ENTITY;
+ 
+ ENTITY b_spline_curve
+   SUPERTYPE OF (ONEOF(uniform_curve, quasi_uniform_curve, bezier_curve,
+                       b_spline_curve_with_knots)ANDOR rational_b_spline_curve)
+   SUBTYPE OF (bounded_curve);
+   degree               : INTEGER;
+   control_points_list  : LIST [2:?] OF cartesian_point;
+   curve_form           : bspline_curve_form;
+   closed_curve         : LOGICAL;
+   self_intersect       : LOGICAL;
+ DERIVE
+   upper_index_on_control_points  : INTEGER 
+                                  := (SIZEOF(control_points_list) - 1);
+   control_points       : ARRAY [0:upper_index_on_control_points]
+                                                         OF cartesian_point 
+                                  := list_to_array(control_points_list,0,
+                                             upper_index_on_control_points);
+ WHERE
+   WR1: ('GEOMETRY_SCHEMA.UNIFORM_CURVE' IN TYPEOF(self)) OR
+        ('GEOMETRY_SCHEMA.QUASI_UNIFORM_CURVE' IN TYPEOF(self)) OR
+        ('GEOMETRY_SCHEMA.BEZIER_CURVE' IN TYPEOF(self)) OR
+        ('GEOMETRY_SCHEMA.B_SPLINE_CURVE_WITH_KNOTS' IN TYPEOF(self));
+ END_ENTITY;
+ 
+ ENTITY b_spline_curve_with_knots
+   SUBTYPE OF (b_spline_curve);
+   knot_multiplicities  : LIST [2:?] OF INTEGER;
+   knots                : LIST [2:?] OF parameter_value;
+   knot_spec            : knot_type;
+ DERIVE
+   upper_index_on_knots : INTEGER := SIZEOF(knots);
+ WHERE
+   WR1: constraints_param_bspl(degree, upper_index_on_knots,
+                               upper_index_on_control_points,
+                               knot_multiplicities, knots);
+    WR2: SIZEOF(knot_multiplicities) = upper_index_on_knots;
+END_ENTITY;
+ 
+ ENTITY uniform_curve
+   SUBTYPE OF (b_spline_curve);
+ END_ENTITY;
+ 
+ ENTITY quasi_uniform_curve
+   SUBTYPE OF (b_spline_curve);
+ END_ENTITY;
+ 
+ ENTITY bezier_curve
+   SUBTYPE OF (b_spline_curve);
+ END_ENTITY;
+ 
+ ENTITY rational_b_spline_curve
+   SUBTYPE OF (b_spline_curve);
+   weights_data : LIST [2:?] OF REAL;
+                                
+ DERIVE
+   weights              : ARRAY [0:upper_index_on_control_points] OF REAL
+                                  := list_to_array(weights_data,0,
+                                         upper_index_on_control_points);
+ WHERE
+   WR1:  SIZEOF(weights_data) = SIZEOF(SELF\b_spline_curve.control_points_list);
+   WR2:  curve_weights_positive(SELF);
+ END_ENTITY;
+ 
+ ENTITY trimmed_curve
+   SUBTYPE OF (bounded_curve);
+   basis_curve           : curve;
+   trim_1                : SET[1:2] OF trimming_select;
+   trim_2                : SET[1:2] OF trimming_select;
+   sense_agreement       : BOOLEAN;
+   master_representation : trimming_preference;
+ WHERE
+   WR1: (HIINDEX(trim_1) = 1) XOR (TYPEOF(trim_1[1]) <> TYPEOF(trim_1[2]));
+   WR2: (HIINDEX(trim_2) = 1) XOR (TYPEOF(trim_2[1]) <> TYPEOF(trim_2[2]));
+ END_ENTITY;
+ 
+ ENTITY composite_curve
+   SUBTYPE OF (bounded_curve);
+   segments       : LIST [1:?] OF composite_curve_segment;
+   self_intersect : LOGICAL;
+ DERIVE
+   n_segments     : INTEGER := SIZEOF(segments);
+   closed_curve   : BOOLEAN 
+                  := segments[n_segments].transition <> discontinuous;
+ WHERE
+   WR1: ((NOT closed_curve) AND (SIZEOF(QUERY(temp <* segments |
+                temp.transition = discontinuous)) = 1)) OR
+            ((closed_curve) AND (SIZEOF(QUERY(temp <* segments | 
+                temp.transition = discontinuous)) = 0));
+ END_ENTITY;
+ 
+ ENTITY composite_curve_segment
+   SUBTYPE OF (bounded_curve);
+   transition    : transition_code;
+   same_sense    : BOOLEAN;
+   parent_curve  : curve;
+ WHERE
+   WR1 : ('GEOMETRY_SCHEMA.BOUNDED_CURVE' IN TYPEOF(parent_curve))  OR
+          ('GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(parent_curve) AND
+           'GEOMETRY_SCHEMA.BOUNDED_CURVE' 
+              IN TYPEOF(parent_curve\pcurve.reference_to_curve .items[1])) OR
+          ('GEOMETRY_SCHEMA.SURFACE_CURVE' IN TYPEOF(parent_curve) AND
+           'GEOMETRY_SCHEMA.BOUNDED_CURVE' 
+              IN TYPEOF(parent_curve\surface_curve.curve_3d));
+   WR2:  NOT ('GEOMETRY_SCHEMA.COMPOSITE_CURVE_SEGMENT' 
+                IN TYPEOF(parent_curve));
+ END_ENTITY;
+ 
+ ENTITY reparametrised_composite_curve_segment
+   SUBTYPE OF (composite_curve_segment);
+   param_length : parameter_value;
+ WHERE
+   WR1: param_length > 0.0;
+ END_ENTITY;
+ 
+ ENTITY pcurve
+   SUBTYPE OF (curve);
+   basis_surface      : surface;
+   reference_to_curve : definitional_representation_item;
+ WHERE
+   WR1: SIZEOF(reference_to_curve.items) = 1;
+   WR2: 'GEOMETRY_SCHEMA.CURVE' IN TYPEOF
+                    (reference_to_curve.items[1]);
+   WR3: reference_to_curve.items[1]\geometric_representation_item.dim =2;
+ END_ENTITY;
+ 
+ ENTITY definitional_representation_item;
+   items            : SET [1:?] of representation_item;
+   context_of_items : parametric_representation_context;
+ WHERE
+    WR1: SIZEOF(USEDIN(SELF,'')) > 0;
+ END_ENTITY;
+ 
+ ENTITY parametric_representation_context
+   SUBTYPE OF (geometric_representation_context);
+ END_ENTITY;
+ 
+ ENTITY surface_curve
+   SUPERTYPE OF (ONEOF(intersection_curve, seam_curve))
+   SUBTYPE OF (curve);
+   curve_3d              : curve;
+   associated_geometry   : LIST[1:2] OF pcurve_or_surface;
+   master_representation : preferred_surface_curve_representation;
+ DERIVE
+   basis_surface         : surface 
+                         := associated_surface(associated_geometry[1]);
+ WHERE
+   WR1: curve_3d.dim = 3;
+   WR2: 'GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(associated_geometry[1]) OR
+                        (master_representation <> pcurve_s1);
+   WR3: 'GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(associated_geometry[2]) OR
+                        (master_representation <> pcurve_s2);
+   WR4: NOT ('GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(curve_3d));
+ END_ENTITY;
+ 
+ ENTITY intersection_curve
+   SUBTYPE OF (surface_curve);
+ WHERE
+   WR1: SIZEOF(SELF\surface_curve.associated_geometry) = 2;
+   WR2: associated_surface(associated_geometry[1]) <>
+               associated_surface(associated_geometry[2]);
+ END_ENTITY;
+ 
+ ENTITY seam_curve
+   SUBTYPE OF (surface_curve);
+ WHERE
+   WR1: SIZEOF(SELF\surface_curve.associated_geometry) = 2;
+   WR2: associated_surface(associated_geometry[1]) =
+               associated_surface(associated_geometry[2]);
+   WR3: 'GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(associated_geometry[1]);
+   WR4: 'GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(associated_geometry[2]);
+ END_ENTITY;
+ 
+ ENTITY composite_curve_on_surface
+   SUPERTYPE OF(boundary_curve)
+   SUBTYPE OF (composite_curve);
+
+ DERIVE
+   basis_surface : surface :=
+                get_basis_surface(SELF\composite_curve.segments[1].parent_curve);
+ WHERE
+   WR1: constraints_composite_curve_on_surface(SELF);
+ END_ENTITY;
+
+ ENTITY offset_curve_2d
+   SUBTYPE OF (curve);
+   basis_curve    : curve;
+   distance       : length_measure;
+   self_intersect : LOGICAL;
+ WHERE
+   WR1: basis_curve.dim = 2;
+ END_ENTITY;
+ 
+ ENTITY offset_curve_3d
+   SUBTYPE OF (curve);
+   basis_curve    : curve;
+   distance       : length_measure;
+   self_intersect : LOGICAL;
+   ref_direction  : direction;
+ WHERE
+   WR1 : ((basis_curve.dim) = 3) AND ((ref_direction.dim) = 3);
+ END_ENTITY;
+ 
+ ENTITY curve_replica
+   SUBTYPE OF (curve);
+   parent_curve   : curve;
+   transformation : cartesian_transformation_operator;
+ WHERE
+   WR1: transformation.dim = parent_curve.dim;
+ END_ENTITY;
+ 
+ ENTITY surface
+   SUPERTYPE OF (ONEOF(elementary_surface, swept_surface, bounded_surface,
+                       offset_surface, surface_replica))
+   SUBTYPE OF (geometric_representation_item);
+ END_ENTITY;
+ 
+ ENTITY elementary_surface
+   SUPERTYPE OF (ONEOF(plane, cylindrical_surface, conical_surface,
+                       spherical_surface, toroidal_surface))
+   SUBTYPE OF (surface);
+   position :  axis2_placement_3d;
+ END_ENTITY;
+ 
+ ENTITY plane
+ SUBTYPE OF (elementary_surface);
+ END_ENTITY;
+ 
+ ENTITY
+ cylindrical_surface
+   SUBTYPE OF (elementary_surface);
+   radius : positive_length_measure;
+ END_ENTITY;
+ 
+ ENTITY
+ conical_surface
+   SUBTYPE OF (elementary_surface);
+   radius     : length_measure;
+   semi_angle : plane_angle_measure;
+ WHERE
+   WR1: radius >= 0.0;
+ END_ENTITY;
+ 
+ ENTITY spherical_surface
+   SUBTYPE OF (elementary_surface);
+   radius   : positive_length_measure;
+ END_ENTITY;
+ 
+ ENTITY toroidal_surface
+   SUBTYPE OF (elementary_surface);
+   major_radius : positive_length_measure;
+   minor_radius : positive_length_measure;
+ WHERE
+  WR1: major_radius > minor_radius;
+ END_ENTITY;
+ 
+ ENTITY swept_surface
+   SUPERTYPE OF (ONEOF(surface_of_linear_extrusion, surface_of_revolution))
+   SUBTYPE OF (surface);
+   swept_curve : curve;
+ END_ENTITY;
+ 
+ ENTITY surface_of_linear_extrusion
+   SUBTYPE OF (swept_surface);
+   extrusion_axis      : vector;
+ END_ENTITY;
+ 
+ ENTITY surface_of_revolution
+   SUBTYPE OF (swept_surface);
+   axis_position       : axis1_placement;
+ DERIVE
+   axis_line : line := line(axis_position.location,axis_position.z);
+ END_ENTITY;
+ 
+ ENTITY bounded_surface
+   SUPERTYPE OF (ONEOF(b_spline_surface, rectangular_trimmed_surface,
+                       curve_bounded_surface, rectangular_composite_surface,
+                       surface_patch))
+   SUBTYPE OF (surface);
+ END_ENTITY;
+ 
+ ENTITY b_spline_surface
+   SUPERTYPE OF (ONEOF(uniform_surface, quasi_uniform_surface, bezier_surface,
+                 b_spline_surface_with_knots)ANDOR rational_b_spline_surface)
+   SUBTYPE OF (bounded_surface);
+   u_degree             : INTEGER;
+   v_degree             : INTEGER;
+   control_points_list  : LIST [2:?] OF
+                            LIST [2:?] OF cartesian_point;
+   surface_form         : bspline_surface_form;
+   u_closed             : LOGICAL;
+   v_closed             : LOGICAL;
+   self_intersect       : LOGICAL;
+ DERIVE
+   u_upper             : INTEGER := SIZEOF(control_points_list) - 1;
+   v_upper             : INTEGER := SIZEOF(control_points_list[1]) - 1;
+   control_points      : ARRAY [0:u_upper] OF ARRAY [0:v_upper] OF 
+                         cartesian_point 
+                       := make_array_of_array(control_points_list,
+                                              0,u_upper,0,v_upper);
+ WHERE
+   WR1: ('GEOMETRY_SCHEMA.UNIFORM_SURFACE' IN TYPEOF(SELF)) OR
+        ('GEOMETRY_SCHEMA.QUASI_UNIFORM_SURFACE' IN TYPEOF(SELF)) OR
+        ('GEOMETRY_SCHEMA.BEZIER_SURFACE' IN TYPEOF(SELF)) OR
+        ('GEOMETRY_SCHEMA.BSPLINE_SURFACE_WITH_KNOTS' IN TYPEOF(SELF));
+ END_ENTITY;
+ 
+ ENTITY b_spline_surface_with_knots
+   SUBTYPE OF (b_spline_surface);
+   u_multiplicities  : LIST [2:?] OF INTEGER;
+   v_multiplicities  : LIST [2:?] OF INTEGER;
+   u_knots           : LIST [2:?] OF parameter_value;
+   v_knots           : LIST [2:?] OF parameter_value;
+   knot_spec         : knot_type;
+ DERIVE
+   knot_u_upper      : INTEGER := SIZEOF(u_knots);
+   knot_v_upper      : INTEGER := SIZEOF(v_knots);
+ WHERE
+    WR1: constraints_param_bspl(SELF\b_spline_surface.u_degree,
+                   knot_u_upper, SELF\b_spline_surface.u_upper,
+                               u_multiplicities, u_knots);
+    WR2: constraints_param_bspl(SELF\b_spline_surface.v_degree,
+                   knot_v_upper, SELF\b_spline_surface.v_upper,
+                               v_multiplicities, v_knots);
+    WR3: SIZEOF(u_multiplicities) = knot_u_upper;
+    WR4: SIZEOF(v_multiplicities) = knot_v_upper;
+ END_ENTITY;
+ 
+ ENTITY uniform_surface
+   SUBTYPE OF (b_spline_surface);
+ END_ENTITY;
+ 
+ ENTITY quasi_uniform_surface
+   SUBTYPE OF (b_spline_surface);
+ DERIVE
+   ku_up : INTEGER := u_upper - u_degree + 2;
+   kv_up : INTEGER := v_upper - v_degree + 2;
+ END_ENTITY;
+ 
+ ENTITY bezier_surface
+   SUBTYPE OF (b_spline_surface);
+ DERIVE
+   ku_up : INTEGER := (u_upper/u_degree) + 1;
+   kv_up : INTEGER := (v_upper/v_degree) + 1;
+ END_ENTITY;
+ 
+ ENTITY rational_b_spline_surface
+   SUBTYPE OF (b_spline_surface);
+   weights_data : LIST [2:?] OF
+                    LIST [2:?] OF REAL;
+                                
+ DERIVE
+   weights       : ARRAY [0:u_upper] OF
+                      ARRAY [0:v_upper] OF REAL
+                 := make_array_of_array(weights_data,0,u_upper,0,v_upper);
+ WHERE
+   WR1: SIZEOF(weights_data) = SIZEOF(SELF\b_spline_surface.control_points_list)
+           AND SIZEOF(weights_data[1]) =
+                           SIZEOF(SELF\b_spline_surface.control_points_list[1]);
+   WR2: surface_weights_positive(SELF);
+ END_ENTITY;
+ 
+ ENTITY rectangular_trimmed_surface
+   SUBTYPE OF (bounded_surface);
+   basis_surface : surface;
+   u1            : parameter_value;
+   u2            : parameter_value;
+   v1            : parameter_value;
+   v2            : parameter_value;
+   usense        : BOOLEAN;
+   vsense        : BOOLEAN;
+ WHERE
+   WR1: u1 <> u2;
+   WR2: v1 <> v2;
+   WR3: (('GEOMETRY_SCHEMA.ELEMENTARY_SURFACE' IN TYPEOF(basis_surface)) AND
+         (NOT 'GEOMETRY_SCHEMA.PLANE' IN TYPEOF(basis_surface))) OR
+         ('GEOMETRY_SCHEMA.SURFACE_OF_REVOLUTION' IN TYPEOF(basis_surface)) OR
+         (usense = (u2 > u1));
+   WR4: (('GEOMETRY_SCHEMA.SPHERICAL_SURFACE' IN TYPEOF(basis_surface)) OR
+         ('GEOMETRY_SCHEMA.TOROIDAL_SURFACE' IN TYPEOF(basis_surface))) OR
+         (vsense = (v2 > v1));
+ END_ENTITY;
+ 
+ ENTITY curve_bounded_surface
+   SUBTYPE OF (bounded_surface);
+   basis_surface    : surface;
+   boundaries       : SET [1:?] OF boundary_curve;
+   implicit_outer   : BOOLEAN;
+ WHERE
+   WR1: NOT(implicit_outer AND 
+              ('GEOMETRY_SCHEMA.OUTER_BOUNDARY_CURVE' IN TYPEOF(boundaries)));
+   WR2: (NOT(implicit_outer)) OR
+               ('GEOMETRY_SCHEMA.BOUNDED_SURFACE' IN TYPEOF(basis_surface));
+   WR3: SIZEOF(QUERY(temp <* boundaries | 
+                 'GEOMETRY_SCHEMA.OUTER_BOUNDARY_CURVE' IN
+                                        TYPEOF(temp))) <= 1;
+   WR4: SIZEOF(QUERY(temp <* boundaries |
+           (temp\composite_curve_on_surface.basis_surface <>
+                                        SELF.basis_surface))) = 0;
+ END_ENTITY;
+ 
+ ENTITY boundary_curve
+   SUBTYPE OF (composite_curve_on_surface);
+ WHERE
+   WR1: SELF\composite_curve_on_surface\composite_curve.closed_curve;
+ END_ENTITY;
+ 
+ ENTITY outer_boundary_curve
+   SUBTYPE OF (boundary_curve);
+ END_ENTITY;
+ 
+ ENTITY rectangular_composite_surface
+   SUBTYPE OF (bounded_surface);
+   segments      : LIST [1:?] OF LIST [1:?] OF surface_patch;
+ DERIVE
+   n_u : INTEGER := SIZEOF(segments);
+   n_v : INTEGER := SIZEOF(segments[1]);
+ WHERE
+   WR1: constraints_rect_comp_surface(SELF);
+ END_ENTITY;
+ 
+ ENTITY surface_patch
+   SUBTYPE OF (bounded_surface);
+   parent_surface : bounded_surface;
+   u_transition   : transition_code;
+   v_transition   : transition_code;
+   u_sense        : BOOLEAN;
+   v_sense        : BOOLEAN;
+ WHERE
+   WR1: (NOT ('GEOMETRY_SCHEMA.CURVE_BOUNDED_SURFACE' 
+                 IN TYPEOF(parent_surface)))
+             AND (NOT('GEOMETRY_SCHEMA.SURFACE_PATCH' 
+                 IN TYPEOF(parent_surface)));
+ END_ENTITY;
+ 
+ ENTITY offset_surface
+   SUBTYPE OF (surface);
+   basis_surface  : surface;
+   distance       : length_measure;
+   self_intersect : LOGICAL;
+ END_ENTITY;
+ 
+ ENTITY surface_replica
+   SUBTYPE OF (surface);
+   parent_surface : surface;
+   transformation : cartesian_transformation_operator_3d;
+ END_ENTITY;
+ 
+ FUNCTION associated_surface(arg : pcurve_or_surface) : surface;
+   LOCAL
+     surf : surface;
+   END_LOCAL;
+   
+   IF 'GEOMETRY_SCHEMA.PCURVE' IN TYPEOF(arg) THEN
+     surf := arg.basis_surface;
+   ELSE
+     surf := arg;
+   END_IF;
+   RETURN(surf);
+ END_FUNCTION;
+ 
+ FUNCTION base_axis(dim : INTEGER; axis1, axis2, axis3 : direction) :
+                                                  LIST [2:3] OF direction;
+   LOCAL
+     vec    : direction;
+     u      : LIST [2:3] OF direction;
+     factor : REAL;
+   END_LOCAL;
+   
+   IF (dim = 3) THEN
+     u[3] := NVL(axis3, direction([0.0,0.0,1.0]));
+     u[1] := first_proj_axis(u[3],axis1);
+     u[2] := second_proj_axis(u[3],u[1],axis2);
+   ELSE
+     u[3] := ?;
+     
+     IF EXISTS(axis1) THEN
+       u[1] := normalise(axis1);
+       u[2] := orthogonal_complement(u[1]);
+       IF EXISTS(axis2) THEN
+         factor := dot_product(axis2,u[2]);
+         IF (factor < 0.0) THEN
+           u[2].direction_ratios[1] := -u[2].direction_ratios[1];
+           u[2].direction_ratios[2] := -u[2].direction_ratios[2];
+         END_IF;
+       END_IF;
+     ELSE
+       IF EXISTS(axis2) THEN
+         u[2] := normalise(axis2);
+         u[1] := orthogonal_complement(u[2]);
+         u[1].direction_ratios[1] := -u[1].direction_ratios[1];
+         u[1].direction_ratios[2] := - u[1].direction_ratios[2];
+       ELSE
+         u[1].direction_ratios[1] := 1.0;
+         u[1].direction_ratios[2] := 0.0;
+         u[2].direction_ratios[1] := 0.0;
+         u[2].direction_ratios[2] := 1.0;
+       END_IF;
+     END_IF;
+   
+   END_IF;
+   RETURN(u);
+ END_FUNCTION;
+ 
+ FUNCTION build_2axes(ref_direction : direction) : LIST [2:2] OF direction;
+   LOCAL
+     u : LIST[2:2] OF direction;
+   END_LOCAL;
+   
+   u[1] := NVL(normalise(ref_direction), direction([1.0,0.0]));
+   u[2] := orthogonal_complement(u[1]);
+   RETURN(u);
+ END_FUNCTION;
+ 
+ FUNCTION build_axes(axis, ref_direction : direction) :
+                                          LIST [3:3] OF direction;
+   LOCAL
+     u : LIST[3:3] OF direction;
+   END_LOCAL;
+   
+   u[3] := NVL(normalise(axis), direction([0.0,0.0,1.0]));
+   u[1] := first_proj_axis(u[3],ref_direction);
+   u[2] := normalise(cross_product(u[3],u[1]));
+   RETURN(u);
+ END_FUNCTION;
+ 
+ FUNCTION orthogonal_complement(vec : direction) : direction;
+   LOCAL
+     result : direction;
+   END_LOCAL;
+   
+   IF (vec.dim <> 2) OR NOT EXISTS (vec) THEN
+     RETURN(?);
+   ELSE
+     result.direction_ratios[1] := -vec.direction_ratios[2];
+     result.direction_ratios[2] := vec.direction_ratios[1];
+     RETURN(result);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION first_proj_axis(z_axis, arg : direction) : direction;
+   LOCAL
+     x_axis : direction;
+     v      : direction;
+   END_LOCAL;
+   
+   IF NOT EXISTS(z_axis) OR arg.dim <> 3 THEN
+     x_axis := ?;
+   ELSE
+     z_axis := normalise(z_axis);
+     
+     IF NOT EXISTS(arg) THEN
+       IF (z_axis <> direction([1.0,0.0,0.0])) THEN
+         v := [1.0,0.0,0.0];
+       ELSE
+         v := [0.0,1.0,0.0];
+       END_IF;
+     ELSE
+       IF ((cross_product(arg,z_axis).magnitude) = 0.0) THEN
+         x_axis := ?;
+       ELSE
+         v := arg;
+       END_IF;
+     END_IF;
+     
+     x_axis := scalar_times_vector(dot_product(v, z_axis), z_axis);
+     x_axis := vector_diff(v, x_axis);
+     x_axis := normalise(x_axis);
+   END_IF;
+   RETURN(x_axis);
+ END_FUNCTION;
+ 
+ FUNCTION second_proj_axis(z_axis, x_axis, arg: direction) : direction;
+   LOCAL
+     y_axis : vector;
+     v      : direction;
+     temp   : direction;
+   END_LOCAL;
+   
+   IF NOT EXISTS(arg) THEN
+     v := direction([0.0,1.0,0.0]);
+   ELSE
+     v := arg;
+   END_IF;
+   
+   temp   := scalar_times_vector(dot_product(v, z_axis), z_axis);
+   y_axis := vector_diff(v, temp);
+   temp   := scalar_times_vector(dot_product(v, x_axis), x_axis);
+   y_axis := vector_diff(y_axis, temp);
+   y_axis := normalise(y_axis);
+   RETURN(y_axis.orientation);
+ END_FUNCTION;
+ 
+ FUNCTION cross_product (arg1, arg2 : direction) : vector;
+   LOCAL
+     mag    : REAL;
+     res    : direction;
+     v1,v2  : LIST[3:3] OF REAL;
+     result : vector;
+   END_LOCAL;
+   
+   IF ( NOT EXISTS (arg1) OR (arg1.dim = 2)) OR
+      ( NOT EXISTS (arg2) OR (arg2.dim = 2)) THEN
+     RETURN(?);
+   ELSE
+     BEGIN
+       v1  := normalise(arg1).direction_ratios;
+       v2  := normalise(arg2).direction_ratios;
+       res.direction_ratios[1] := (v1[2]*v2[3] - v1[3]*v2[2]);
+       res.direction_ratios[2] := (v1[3]*v2[1] - v1[1]*v2[3]);
+       res.direction_ratios[3] := (v1[1]*v2[2] - v1[2]*v2[1]);
+       mag := 0.0;
+       
+       REPEAT i := 1 TO 3;
+         mag := mag + res.direction_ratios[i]*res.direction_ratios[i];
+       END_REPEAT;
+       
+       result.orientation := res;
+       result.magnitude := SQRT(mag);
+       RETURN(result);
+     END;
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION dot_product(arg1, arg2 : direction) : REAL;
+   LOCAL
+     scalar : REAL;
+     vec1, vec2: direction;
+     ndim : INTEGER;
+   END_LOCAL;
+   
+   IF NOT EXISTS (arg1) OR NOT EXISTS (arg2) THEN
+     scalar := ?;
+     
+   ELSE
+     IF (arg1.dim <> arg2.dim) THEN
+       scalar := ?;
+     
+     ELSE
+       BEGIN
+         vec1   := normalise(arg1);
+         vec2   := normalise(arg2);
+         ndim   := arg1.dim;
+         scalar := 0.0;
+         REPEAT  i := 1 TO ndim;
+           scalar := scalar +
+                       vec1.direction_ratios[i]*vec2.direction_ratios[i];
+         END_REPEAT;
+       END;
+       RETURN (scalar);
+     END_IF;
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION normalise (arg : vector_or_direction) : vector_or_direction;
+   LOCAL
+     ndim   : INTEGER;
+     v      : direction;
+     result : vector_or_direction;
+     vec    : vector;
+     mag    : REAL;
+   END_LOCAL;
+   
+   IF NOT EXISTS (arg) THEN
+     result := ?;
+     
+   ELSE
+     ndim := arg.dim;
+     IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF(arg) THEN
+       BEGIN
+         vec := arg;
+         v := arg.orientation;
+         
+         IF arg.magnitude = 0.0 THEN
+           RETURN(?);
+         ELSE
+           vec.magnitude := 1.0;
+         END_IF;
+       END;
+     ELSE
+       v := arg;
+     END_IF;
+     mag := 0.0;
+     
+     REPEAT  i := 1 TO ndim;
+       mag := mag + v.direction_ratios[i]*v.direction_ratios[i];
+     END_REPEAT;
+     
+     IF mag > 0.0 THEN
+       mag := SQRT(mag);
+       
+       REPEAT  i := 1 TO ndim;
+         v.direction_ratios[i] := v.direction_ratios[i]/mag;
+       END_REPEAT;
+       
+       IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF(arg) THEN
+         vec.orientation := v;
+         result := vec;
+       ELSE
+         result := v;
+       END_IF;
+     ELSE
+       RETURN(?);
+     END_IF;
+     RETURN (result);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION scalar_times_vector (scalar : NUMBER; vec : vector_or_direction)
+                                      : vector;
+   LOCAL
+     v      : direction;
+     mag    : REAL;
+     result : vector;
+   END_LOCAL;
+   
+   IF NOT EXISTS (scalar) OR NOT EXISTS (vec) THEN
+     result := ?;
+   
+   ELSE
+     IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF (vec) THEN
+       v   := vec.orientation;
+       mag := scalar * vec.magnitude;
+     ELSE
+       v   := vec;
+       mag := scalar;
+     END_IF;
+     
+     result.orientation := normalise(v);
+     result.magnitude   := mag;
+     RETURN (result);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION vector_sum(arg1, arg2 : vector_or_direction) : vector;
+   LOCAL
+     result          : vector;
+     res, vec1, vec2 : direction;
+     mag, mag1, mag2 : REAL;
+     ndim            : INTEGER;
+   END_LOCAL;
+   
+   IF ((arg1.dim <> arg2.dim) OR (NOT EXISTS (arg1)) OR (NOT EXISTS (arg2)))
+       THEN
+     result := ?;
+   
+   ELSE
+     BEGIN
+       IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF(arg1) THEN
+         mag1 := arg1.magnitude;
+         vec1 := arg1.orientation;
+       ELSE
+         mag1 := 1.0;
+         vec1 := arg1;
+       END_IF;
+       
+       IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF(arg2) THEN
+         mag2 := arg2.magnitude;
+         vec2 := arg2.orientation;
+       ELSE
+         mag2 := 1.0;
+         vec2 := arg2;
+       END_IF;
+       
+       vec1 := normalise (vec1);
+       vec2 := normalise (vec2);
+       ndim := SIZEOF(vec1.direction_ratios);
+       
+       REPEAT i := 1 TO ndim;
+         res.direction_ratios[i] := mag1*vec1.direction_ratios[i] +
+                                    mag2*vec2.direction_ratios[i];
+         mag := mag + (res.direction_ratios[i]*res.direction_ratios[i]);
+       END_REPEAT;
+
+       result.magnitude := SQRT(mag);
+       result.orientation := res;
+     END;
+     RETURN (result);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION vector_diff(arg1, arg2 : vector_or_direction) : vector;
+   LOCAL
+     result          : vector;
+     res, vec1, vec2 : direction;
+     mag, mag1, mag2 : REAL;
+     ndim            : INTEGER;
+   END_LOCAL;
+   
+   IF ((arg1.dim <> arg2.dim) OR (NOT EXISTS (arg1)) OR (NOT EXISTS (arg2)))
+       THEN
+     result := ?;
+   
+   ELSE
+     BEGIN
+       IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF(arg1) THEN
+         mag1 := arg1.magnitude;
+         vec1 := arg1.orientation;
+       ELSE
+         mag1 := 1.0;
+         vec1 := arg1;
+       END_IF;
+       
+       IF 'GEOMETRY_SCHEMA.VECTOR' IN TYPEOF(arg2) THEN
+         mag2 := arg2.magnitude;
+         vec2 := arg2.orientation;
+       ELSE
+         mag2 := 1.0;
+         vec2 := arg2;
+       END_IF;
+          
+       vec1 := normalise (vec1);
+       vec2 := normalise (vec2);
+       ndim := SIZEOF(vec1.direction_ratios);
+       
+       REPEAT i := 1 TO ndim;
+         res.direction_ratios[i] := mag1*vec1.direction_ratios[i] -
+                                         mag2*vec2.direction_ratios[i];
+         mag := mag + (res.direction_ratios[i]*res.direction_ratios[i]);
+       END_REPEAT;
+          
+       result.magnitude := SQRT(mag);
+       result.orientation := res;
+     END;
+     RETURN (result);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION default_bspl_knot_mult(degree, up_knots : INTEGER;
+                                          uniform : knot_type) 
+                                                  : LIST [2:?] OF INTEGER;
+   LOCAL
+     knot_mult : LIST [1:up_knots] OF INTEGER;
+   END_LOCAL;
+   
+   REPEAT i := 1 TO up_knots;
+     knot_mult[i] := 0;
+   END_REPEAT;
+      
+   IF uniform = uniform_knots THEN
+     REPEAT i := 1 TO up_knots;
+       knot_mult[i] := 1;
+     END_REPEAT;
+   END_IF;
+      
+   IF uniform = quasi_uniform_knots THEN
+     knot_mult[1] := degree + 1;
+     knot_mult[up_knots] := degree + 1;
+     
+     REPEAT i := 2 TO (up_knots - 1);
+       knot_mult[i] := 1;
+     END_REPEAT;
+   END_IF;
+      
+   IF uniform = piecewise_bezier_knots THEN
+     knot_mult[1] := degree +1;
+     knot_mult[up_knots] := degree + 1;
+     
+     REPEAT i := 2 TO (up_knots - 1);
+       knot_mult[i] := degree;
+     END_REPEAT;
+   END_IF;
+   RETURN(knot_mult);
+ END_FUNCTION;
+ 
+ FUNCTION default_bspl_knots(degree,up_knots : INTEGER;
+                              uniform : knot_type)
+                                      : LIST [2:?] OF parameter_value;
+  LOCAL
+    knots  : LIST [1:up_knots] OF parameter_value;
+    ishift : INTEGER := 1;
+  END_LOCAL;
+  
+  REPEAT i := 1 TO up_knots;
+    knots[i] := 0;
+  END_REPEAT;
+  IF (uniform = uniform_knots) THEN
+     ishift := degree + 1;
+  END_if;
+  IF (uniform = uniform_knots) OR 
+     (uniform = quasi_uniform_knots) OR
+     (uniform = piecewise_bezier_knots) THEN
+    
+    REPEAT i := 1 TO up_knots;
+      knots[i] := i - ishift;
+    END_REPEAT;
+  END_IF;
+  RETURN(knots);
+ END_FUNCTION;
+ 
+ FUNCTION default_bspl_curve_weights(up_cp : INTEGER) 
+                                           : ARRAY [0:up_cp] OF REAL;
+   LOCAL
+     weights : ARRAY [0:up_cp] OF REAL;
+   END_LOCAL;
+   
+   REPEAT i := 0 TO up_cp;
+     weights[i] := 1;
+   END_REPEAT;
+   RETURN(weights);
+ END_FUNCTION;
+ 
+ FUNCTION default_bspl_surface_weights(u_upper, v_upper: INTEGER)
+                                      : ARRAY [0:u_upper] OF 
+                                        ARRAY [0:v_upper] OF REAL;
+   LOCAL
+     weights : ARRAY [0:u_upper] OF ARRAY [0:v_upper] OF REAL;
+   END_LOCAL;
+   
+   REPEAT i := 0 TO u_upper;
+     REPEAT j := 0 TO v_upper;
+       weights[i][j] := 1;
+     END_REPEAT;
+   END_REPEAT;
+   RETURN(weights);
+ END_FUNCTION;
+ 
+ FUNCTION constraints_param_bspl(degree, up_knots, up_cp : INTEGER;
+                                               knot_mult : LIST OF INTEGER;
+                        knots : LIST OF parameter_value) : BOOLEAN;
+   LOCAL
+     result  : BOOLEAN := TRUE;
+     k,l,sum : INTEGER;
+   END_LOCAL;
+   
+   
+   sum := knot_mult[1];
+   
+   REPEAT i := 2 TO up_knots;
+     sum := sum + knot_mult[i];
+   END_REPEAT;
+   
+   
+   IF (degree < 1) OR (up_knots < 2) OR (up_cp < degree) OR
+         (sum <> (degree + up_cp + 2)) THEN
+     result := FALSE;
+     RETURN(result);
+   END_IF;
+   
+   k := knot_mult[1];
+   
+   IF (k < 1) OR (k > degree + 1) THEN
+     result := FALSE;
+     RETURN(result);
+   END_IF;
+      
+   REPEAT i := 2 TO up_knots;
+     IF (knot_mult[i] < 1) OR (knots[i] <= knots[i-1]) THEN
+       result := FALSE;
+       RETURN(result);
+     END_IF;
+        
+     k := knot_mult[i];
+     
+     IF (i < up_knots) AND (k > degree) THEN
+       result := FALSE;
+       RETURN(result);
+     END_IF;
+        
+     IF (i = up_knots) AND (k > degree + 1) THEN
+       result := FALSE;
+       RETURN(result);
+     END_IF;
+   END_REPEAT;
+   RETURN(result);
+ END_FUNCTION;
+ 
+ FUNCTION curve_weights_positive(b: rational_b_spline_curve) : BOOLEAN;
+   LOCAL
+     result : BOOLEAN := TRUE;
+   END_LOCAL;
+
+   REPEAT i := 0 TO b.upper_index_on_control_points;
+     IF b.weights[i] <= 0.0  THEN
+       result := FALSE;
+       RETURN(result);
+     END_IF;
+   END_REPEAT;
+   RETURN(result);
+ END_FUNCTION;
+
+ FUNCTION constraints_composite_curve_on_surface
+               (c: composite_curve_on_surface) : BOOLEAN;
+   LOCAL
+     n_segments : INTEGER := SIZEOF(c.segments);
+   END_LOCAL;
+        
+   REPEAT k := 1 TO n_segments;
+     IF (NOT('GEOMETRY_SCHEMA.PCURVE' IN 
+           TYPEOF(c\composite_curve.segments[k].parent_curve))) AND
+        (NOT('GEOMETRY_SCHEMA.SURFACE_CURVE' IN 
+           TYPEOF(c\composite_curve.segments[k].parent_curve))) AND
+        (NOT('GEOMETRY_SCHEMA.COMPOSITE_CURVE_ON_SURFACE' IN
+           TYPEOF(c\composite_curve.segments[k].parent_curve)))  THEN
+       RETURN (FALSE);
+     END_IF;
+          
+     IF get_basis_surface(c\composite_curve.segments[k].parent_curve) <>
+                     c.basis_surface THEN
+       RETURN (FALSE);
+     END_IF;
+   END_REPEAT;
+   RETURN(TRUE);
+ END_FUNCTION;
+ 
+FUNCTION get_basis_surface (c : curve_on_surface) : surface;
+  CASE TYPEOF(c) OF
+    'GEOMETRY_SCHEMA.PCURVE'                     : RETURN (c.basis_surface);
+    'GEOMETRY_SCHEMA.SURFACE_CURVE'              : RETURN (c.basis_surface);
+    'GEOMETRY_SCHEMA.COMPOSITE_CURVE_ON_SURFACE' : RETURN (c.basis_surface);
+  END_CASE;
+END_FUNCTION;
+
+ FUNCTION surface_weights_positive(b: rational_b_spline_surface) : BOOLEAN;
+   LOCAL
+     result        : BOOLEAN := TRUE;
+   END_LOCAL;
+   
+   REPEAT i := 0 TO b.u_upper;
+     REPEAT j := 0 TO b.v_upper;
+       IF (b.weights[i][j] <= 0.0)  THEN
+         result := FALSE;
+         RETURN(result);
+       END_IF;
+     END_REPEAT;
+   END_REPEAT;
+   RETURN(result);
+ END_FUNCTION;
+ 
+ FUNCTION constraints_rect_comp_surface(s : rectangular_composite_surface)
+                                          : BOOLEAN;
+ 
+ 
+   REPEAT i := 1 TO s.n_u;
+     REPEAT j := 1 TO s.n_v;
+       IF NOT (('GEOMETRY_SCHEMA.B_SPLINE_SURFACE' IN TYPEOF
+                  (s.segments[i][j].parent_surface)) OR
+               ('GEOMETRY_SCHEMA.RECTANGULAR_TRIMMED_SURFACE' IN TYPEOF
+                  (s.segments[i][j].parent_surface))) THEN
+         RETURN(FALSE);
+       END_IF;
+     END_REPEAT;
+   END_REPEAT;
+
+   
+   REPEAT i := 1 TO s.n_u-1;
+     REPEAT j := 1 TO s.n_v;
+       IF s.segments[i][j].u_transition = discontinuous THEN
+         RETURN(FALSE);
+       END_IF;
+     END_REPEAT;
+   END_REPEAT;
+   
+   REPEAT i := 1 TO s.n_u;
+     REPEAT j := 1 TO s.n_v-1;
+       IF s.segments[i][j].v_transition = discontinuous THEN
+         RETURN(FALSE);
+       END_IF;
+     END_REPEAT;
+   END_REPEAT;
+   RETURN(TRUE);
+ END_FUNCTION;
+ 
+ FUNCTION list_to_array(lis : LIST [0:?] OF GENERIC : T; 
+                      low,u : INTEGER) : ARRAY[low:u] OF GENERIC : T;
+   LOCAL
+     n   : INTEGER;
+     res : ARRAY [low:u] OF GENERIC : T;
+   END_LOCAL;
+      
+   n := SIZEOF(lis);
+   IF (n <> (u-low +1)) THEN
+     RETURN(?);
+   ELSE
+     REPEAT i := 1 TO n;
+       res[low+i-1] := lis[i];
+     END_REPEAT;
+     RETURN(res);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION make_array_of_array(lis : LIST[1:?] OF LIST [1:?] OF GENERIC : T;
+                              low1, u1, low2, u2 : INTEGER):
+                 ARRAY[low1:u1] OF ARRAY [low2:u2] OF GENERIC : T;
+   LOCAL
+     n1,n2 : INTEGER;
+     res   : ARRAY[low1:u1] OF ARRAY [low2:u2] OF GENERIC : T;
+     resl  : LIST[1:?] OF ARRAY [low2:u2] OF GENERIC : T;
+   END_LOCAL;
+   
+   
+   n1 := SIZEOF(lis);
+   n2 := SIZEOF(lis[1]);
+   
+   IF (n1 <> (u1 -low1 + 1)) AND (n2 <> (u2 - low2 + 1)) THEN
+     RETURN(?);
+   END_IF;
+      
+   REPEAT i := 1 TO n1;
+     IF (SIZEOF(lis[i]) <> n2) THEN
+       RETURN(?);
+     END_IF;
+   END_REPEAT;
+   
+   
+   REPEAT i := 1 TO  n1;
+     RESL[i] := list_to_array(lis[i],low2,u2);
+   END_REPEAT;
+      
+   res := list_to_array(resl,low1,u1);
+   RETURN(res);
+ END_FUNCTION;
+ 
+-- END_SCHEMA; -- end GEOMETRY schema
+ 
+ 
+ 
+ TYPE shell = SELECT
+   (vertex_shell,
+    wire_shell,
+    open_shell,
+    closed_shell);
+ END_TYPE;
+ 
+ TYPE reversible_topology_item = SELECT 
+   (edge, 
+    path, 
+    face, 
+    face_bound,
+    closed_shell, 
+    open_shell);
+ END_TYPE;
+ 
+ TYPE list_of_reversible_topology_item =
+                               LIST [0:?] of reversible_topology_item;
+ END_TYPE;
+ 
+  TYPE set_of_reversible_topology_item
+         = SET [0:?] of reversible_topology_item;
+  END_TYPE;
+  
+ TYPE reversible_topology = SELECT 
+   (reversible_topology_item,
+   list_of_reversible_topology_item,
+   set_of_reversible_topology_item);
+ END_TYPE;
+ 
+ ENTITY topological_representation_item
+   SUPERTYPE OF (ONEOF(vertex, edge, path, loop, face_bound, face,
+           vertex_shell, wire_shell, connected_edge_set, connected_face_set))
+   SUBTYPE OF (representation_item);
+ END_ENTITY;
+ 
+ ENTITY vertex
+   SUBTYPE OF (topological_representation_item);
+ END_ENTITY;
+ 
+    ENTITY vertex_point
+    SUBTYPE OF(vertex);
+      vertex_geometry : point;
+    END_ENTITY;
+    
+ ENTITY edge
+   SUPERTYPE OF(ONEOF(edge_curve, oriented_edge))
+   SUBTYPE OF (topological_representation_item);
+   edge_start : vertex;
+   edge_end   : vertex;
+ END_ENTITY;
+ 
+ ENTITY edge_curve
+   SUBTYPE OF(edge);
+   edge_geometry : curve;
+   same_sense    : BOOLEAN;
+ END_ENTITY;
+ 
+ ENTITY oriented_edge
+   SUBTYPE OF (edge);
+    edge_element : edge;
+   orientation  : BOOLEAN;
+ DERIVE
+   edge_start   : vertex := boolean_choose (SELF.orientation,
+                                            SELF.edge_element.edge_start,
+                                            SELF.edge_element.edge_end);
+   edge_end     : vertex := boolean_choose (SELF.orientation,
+                                            SELF.edge_element.edge_end,
+                                            SELF.edge_element.edge_start);
+ WHERE
+   WR1: NOT ('TOPOLOGY_SCHEMA.ORIENTED_EDGE' IN TYPEOF (SELF.edge_element));
+ END_ENTITY;
+ 
+ ENTITY path
+   SUPERTYPE OF (ONEOF(open_path, edge_loop, oriented_path))
+    SUBTYPE OF (loop);
+  -- SUBTYPE OF (topological_representation_item);
+   edge_list  : LIST [1:?] OF UNIQUE oriented_edge;
+ WHERE
+   WR1: path_head_to_tail(SELF);
+ END_ENTITY;
+ 
+ ENTITY oriented_path
+   SUBTYPE OF (path);
+   path_element : path;
+   orientation  : BOOLEAN;
+ DERIVE
+   edge_list    : LIST [1:?] OF UNIQUE oriented_edge
+                := conditional_reverse(SELF.orientation,
+                                         SELF.path_element.edge_list);
+ WHERE
+   WR1: NOT ('TOPOLOGY_SCHEMA.ORIENTED_PATH' IN TYPEOF (SELF.path_element));
+ END_ENTITY;
+ 
+ ENTITY open_path
+   SUBTYPE OF (path);
+ DERIVE
+   ne : INTEGER := SIZEOF(SELF\path.edge_list);
+ WHERE
+   WR1: (SELF\path.edge_list[1].edge_element.edge_start) :<>:
+                       (SELF\path.edge_list[ne].edge_element.edge_end);
+ END_ENTITY;
+ 
+ ENTITY loop
+   SUPERTYPE OF (ONEOF(vertex_loop, edge_loop, poly_loop))
+   SUBTYPE OF (topological_representation_item);
+ END_ENTITY;
+ 
+ ENTITY vertex_loop
+   SUBTYPE OF (loop);
+   loop_vertex : vertex;
+ END_ENTITY;
+
+ 
+ ENTITY edge_loop
+   SUBTYPE OF (path);
+ DERIVE
+   ne : INTEGER := SIZEOF(SELF\path.edge_list);
+ WHERE
+   WR1: (SELF\path.edge_list[1].edge_element.edge_start) :=:
+        (SELF\path.edge_list[ne].edge_element.edge_end);
+ END_ENTITY;
+ 
+ ENTITY poly_loop
+   SUBTYPE OF (loop);
+   polygon : LIST [3:?] OF UNIQUE cartesian_point;
+ END_ENTITY;
+ 
+ ENTITY face_bound
+   SUBTYPE OF(topological_representation_item);
+   bound       :  loop;
+   orientation :  BOOLEAN;
+ END_ENTITY;
+ 
+    ENTITY face_outer_bound
+    SUBTYPE OF (face_bound);
+    END_ENTITY;
+    
+ ENTITY face
+   SUPERTYPE OF(ONEOF(face_surface, subface, oriented_face))
+   SUBTYPE OF (topological_representation_item);
+   bounds : SET[1:?] OF face_bound;
+ WHERE
+   WR1: NOT (mixed_loop_type_set(list_to_set(list_face_loops(SELF))));
+   WR2: SIZEOF(QUERY(temp <* bounds | 'TOPOLOGY_SCHEMA.FACE_OUTER_BOUND' IN
+                                               TYPEOF(temp))) <= 1;
+ END_ENTITY;
+ 
+ ENTITY face_surface
+   SUBTYPE OF(face);
+   face_geometry :  surface;
+   same_sense    :  BOOLEAN;
+ END_ENTITY;
+ 
+ ENTITY oriented_face
+   SUBTYPE OF (face);
+   face_element : face;
+   orientation  : BOOLEAN;
+ DERIVE
+   bounds : SET[1:?] OF face_bound
+          := conditional_reverse(SELF.orientation,SELF.face_element.bounds);
+ WHERE
+   WR1: NOT ('TOPOLOGY_SCHEMA.ORIENTED_FACE' IN TYPEOF (SELF.face_element));
+ END_ENTITY;
+ 
+ ENTITY subface
+   SUBTYPE OF (face);
+   parent_face   :  face;
+ WHERE
+   WR1: NOT (mixed_loop_type_set(list_to_set(list_face_loops(SELF)) +
+              list_to_set(list_face_loops(parent_face))));
+ END_ENTITY;
+ 
+ ENTITY connected_face_set
+   SUPERTYPE OF (ONEOF (closed_shell, open_shell))
+   SUBTYPE OF (topological_representation_item);
+   cfs_faces : SET [1:?] OF face;
+ END_ENTITY;
+ 
+ ENTITY vertex_shell
+   SUBTYPE OF (topological_representation_item);
+   vertex_shell_extent : vertex_loop;
+ END_ENTITY;
+ 
+ ENTITY wire_shell
+   SUBTYPE OF (topological_representation_item);
+   wire_shell_extent : SET [1:?] OF loop;
+ WHERE
+   WR1: NOT mixed_loop_type_set(wire_shell_extent);
+ END_ENTITY;
+ 
+ ENTITY open_shell
+   SUBTYPE OF (connected_face_set);
+ END_ENTITY;
+ 
+ ENTITY oriented_open_shell
+   SUBTYPE OF (open_shell);
+   open_shell_element : open_shell;
+   orientation        : BOOLEAN;
+ DERIVE
+   cfs_faces : SET [1:?] OF face
+             := conditional_reverse(SELF.orientation,
+                                     SELF.open_shell_element.cfs_faces);
+ WHERE
+   WR1: NOT ('TOPOLOGY_SCHEMA.ORIENTED_OPEN_SHELL' 
+                IN TYPEOF (SELF.open_shell_element));
+ END_ENTITY;
+ 
+ ENTITY closed_shell
+   SUBTYPE OF (connected_face_set);
+ END_ENTITY;
+ 
+ ENTITY oriented_closed_shell
+   SUBTYPE OF (closed_shell);
+   closed_shell_element : closed_shell;
+   orientation          : BOOLEAN;
+ DERIVE
+   cfs_faces : SET [1:?] OF face
+             := conditional_reverse(SELF.orientation,
+                                     SELF.closed_shell_element.cfs_faces);
+ WHERE
+   WR1: NOT ('TOPOLOGY_SCHEMA.ORIENTED_CLOSED_SHELL' 
+                IN TYPEOF (SELF.closed_shell_element));
+ END_ENTITY;
+ 
+ ENTITY connected_edge_set
+   SUBTYPE OF (topological_representation_item);
+   ces_edges : SET [1:?] OF edge;
+ END_ENTITY;
+ 
+ FUNCTION conditional_reverse (p       : BOOLEAN;
+                               an_item : reversible_topology)
+                                       : reversible_topology;
+   IF p THEN
+     RETURN (an_item);
+   ELSE
+     RETURN (topology_reversed (an_item));
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION topology_reversed (an_item : reversible_topology)
+                                     : reversible_topology;
+
+   IF ('TOPOLOGY_SCHEMA.EDGE' IN TYPEOF (an_item)) THEN
+     RETURN (edge_reversed (an_item));
+   END_IF;
+
+   IF ('TOPOLOGY_SCHEMA.PATH' IN TYPEOF (an_item)) THEN
+     RETURN (path_reversed (an_item));
+   END_IF;
+
+   IF ('TOPOLOGY_SCHEMA.FACE_BOUND' IN TYPEOF (an_item)) THEN
+     RETURN (face_bound_reversed (an_item));
+   END_IF;
+  
+   IF ('TOPOLOGY_SCHEMA.FACE' IN TYPEOF (an_item)) THEN
+     RETURN (face_reversed (an_item));
+   END_IF;
+
+   IF ('TOPOLOGY_SCHEMA.SHELL' IN TYPEOF (an_item)) THEN
+     RETURN (shell_reversed (an_item));
+   END_IF;
+
+   IF ('SET' IN TYPEOF (an_item)) THEN
+     RETURN (set_of_topology_reversed (an_item));
+   END_IF;
+
+   IF ('LIST' IN TYPEOF (an_item)) THEN
+     RETURN (list_of_topology_reversed (an_item));
+   END_IF;
+
+   RETURN (?);
+ END_FUNCTION;
+ 
+ FUNCTION edge_reversed (an_edge : edge) : edge;
+   LOCAL
+     the_reverse : edge;
+   END_LOCAL;
+     
+      RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION path_reversed (a_path : path) : path;
+   LOCAL
+     the_reverse : path;
+   END_LOCAL;
+     
+   RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION face_bound_reversed (a_face_bound : face_bound) : face_bound;
+   LOCAL
+     the_reverse : face_bound;
+   END_LOCAL;
+  
+   IF ('TOPOLOGY_SCHEMA.FACE_OUTER_BOUND' IN TYPEOF (a_face_bound) ) THEN
+     the_reverse := face_outer_bound(a_face_bound.bound,
+                                      (NOT (a_face_bound.orientation)));
+   ELSE
+     the_reverse := face_bound(a_face_bound.bound,
+                               (NOT (a_face_bound.orientation)));
+   END_IF;
+   
+   RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION face_reversed (a_face : face) : face;
+   LOCAL
+     the_reverse : face;
+   END_LOCAL;
+    
+       
+   RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION shell_reversed (a_shell : shell) : shell;
+   LOCAL
+     the_reverse : shell;
+   END_LOCAL;
+  
+   IF ('TOPOLOGY_SCHEMA.ORIENTED_OPEN_SHELL' IN TYPEOF (a_shell) ) THEN
+     the_reverse := oriented_open_shell(a_shell.open_shell_element,
+                                  (NOT (a_shell.orientation)));
+   ELSE
+     IF ('TOPOLOGY_SCHEMA.OPEN_SHELL' IN TYPEOF (a_shell) ) THEN
+       the_reverse := oriented_open_shell (a_shell, FALSE);
+     ELSE
+       IF ('TOPOLOGY_SCHEMA.ORIENTED_CLOSED_SHELL' IN TYPEOF (a_shell) ) THEN
+         the_reverse := oriented_closed_shell
+                               (a_shell.closed_shell_element,FALSE);
+       ELSE
+         IF ('TOPOLOGY_SCHEMA.CLOSED_SHELL' IN TYPEOF (a_shell) ) THEN
+           the_reverse := oriented_closed_shell (a_shell, FALSE);
+         ELSE
+           the_reverse := ?;
+         END_IF;
+       END_IF;
+     END_IF;
+  END_IF;
+
+  RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION set_of_topology_reversed (a_set : set_of_reversible_topology_item)
+                                          : set_of_reversible_topology_item;
+   LOCAL
+     the_reverse : set_of_reversible_topology_item;
+   END_LOCAL;
+   
+   the_reverse := [];
+   REPEAT i := 1 TO SIZEOF (a_set);
+     the_reverse := the_reverse + topology_reversed (a_set [i]);
+   END_REPEAT;
+   
+   RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION list_of_topology_reversed (a_list 
+                                  : list_of_reversible_topology_item)
+                                  : list_of_reversible_topology_item;
+   LOCAL
+     the_reverse : list_of_reversible_topology_item;
+   END_LOCAL;
+    
+   the_reverse := [];
+   REPEAT i := 1 TO SIZEOF (a_list);
+     the_reverse := the_reverse + topology_reversed (a_list [i]);
+   END_REPEAT;
+  
+   RETURN (the_reverse);
+ END_FUNCTION;
+ 
+ FUNCTION boolean_choose (b : boolean; 
+           choice1, choice2 : generic) : generic;
+ 
+   IF b THEN
+     RETURN (choice1);
+   ELSE
+     RETURN (choice2);
+   END_IF;
+ END_FUNCTION;
+ 
+ FUNCTION path_head_to_tail(a_path : path) : boolean;
+   LOCAL
+     n : INTEGER;
+     p : BOOLEAN := TRUE;
+   END_LOCAL;
+     
+     n := SIZEOF (a_path.edge_list);
+     REPEAT i := 2 TO n;
+       p := p AND (a_path.edge_list[i-1].edge_end :=:
+                   a_path.edge_list[i].edge_start);
+     END_REPEAT;
+     
+     RETURN (p);
+ END_FUNCTION;
+ 
+ FUNCTION list_face_loops(f: face) : LIST[0:?] OF loop;
+   LOCAL
+     loops : LIST[0:?] OF loop := [];
+   END_LOCAL;
+   
+   REPEAT i := 1 TO SIZEOF(f.bounds);
+     loops := loops +(f.bounds[i].bound);
+   END_REPEAT;
+      
+   RETURN(loops);
+ END_FUNCTION;
+ 
+ FUNCTION list_loop_edges(l: loop): LIST[0:?] OF edge;
+   LOCAL
+     edges : LIST[0:?] OF edge := [];
+   END_LOCAL;
+      
+   IF 'TOPOLOGY_SCHEMA.EDGE_LOOP' IN TYPEOF(l) THEN
+     REPEAT i := 1 TO SIZEOF(l\path.edge_list);
+       edges := edges + (l\path.edge_list[i].edge_element);
+     END_REPEAT;
+   END_IF;
+
+   RETURN(edges);
+ END_FUNCTION;
+ 
+ FUNCTION list_shell_edges(s : shell) : LIST[0:?] OF edge;
+   LOCAL
+     edges : LIST[0:?] OF edge := [];
+   END_LOCAL;
+      
+   REPEAT i := 1 TO SIZEOF(list_shell_loops(s));
+     edges := edges + list_loop_edges(list_shell_loops(s)[i]);
+   END_REPEAT;
+   
+   RETURN(edges);
+ END_FUNCTION;
+ 
+ FUNCTION list_shell_faces(s : shell) : LIST[0:?] OF face;
+   LOCAL
+     faces : LIST[0:?] OF face := [];
+   END_LOCAL;
+   
+   IF ('TOPOLOGY_SCHEMA.CLOSED_SHELL' IN TYPEOF(s)) OR 
+      ('OPEN_SHELL' IN TYPEOF(s)) THEN
+     REPEAT i := 1 TO SIZEOF(s\connected_face_set.cfs_faces);
+       faces := faces + s\connected_face_set.cfs_faces[i];
+     END_REPEAT;
+   END_IF;
+      
+   RETURN(faces);
+ END_FUNCTION;
+ 
+ FUNCTION list_shell_loops(s : shell) : LIST[0:?] OF loop;
+   LOCAL
+     loops : LIST[0:?] OF loop := [];
+   END_LOCAL;
+      
+   IF 'TOPOLOGY_SCHEMA.VERTEX_SHELL' IN TYPEOF(s) THEN
+     loops := loops + s.vertex_shell_extent;
+   END_IF;
+      
+   IF 'TOPOLOGY_SCHEMA.WIRE_SHELL' IN TYPEOF(s) THEN
+     REPEAT i := 1 TO SIZEOF(s.wire_shell_extent);
+       loops := loops + s.wire_shell_extent[i];
+     END_REPEAT;
+   END_IF;
+      
+   IF ('TOPOLOGY_SCHEMA.OPEN_SHELL' IN TYPEOF(s)) OR 
+      ('TOPOLOGY_SCHEMA.CLOSED_SHELL' IN TYPEOF(s)) THEN
+     REPEAT i := 1 TO SIZEOF(s.cfs_faces);
+       loops := loops + list_face_loops(s.cfs_faces[i]);
+     END_REPEAT;
+   END_IF;
+      
+   RETURN(loops);
+ END_FUNCTION;
+ 
+  FUNCTION mixed_loop_type_set(l: SET[0:?] OF loop): BOOLEAN;
+    LOCAL
+      i             : INTEGER;
+      poly_loop_type: BOOLEAN;
+    END_LOCAL;
+    IF(SIZEOF(l) <= 1) THEN
+      RETURN(FALSE);
+    END_IF;
+    poly_loop_type := ('TOPOLOGY_SCHEMA.POLY_LOOP' IN TYPEOF(l[1]));
+    REPEAT i := 2 TO SIZEOF(l);
+      IF(('TOPOLOGY_SCHEMA.POLY_LOOP' IN TYPEOF(l[i])) :<>: poly_loop_type) THEN
+         RETURN(TRUE);
+       END_IF;
+    END_REPEAT;
+    RETURN(FALSE);
+  END_FUNCTION;
+ 
+ FUNCTION list_to_set(l : LIST [0:?] OF GENERIC:T) : SET OF GENERIC:T;
+   LOCAL
+     s : SET OF GENERIC:T := [];
+   END_LOCAL;
+      
+   REPEAT i := 1 TO SIZEOF(l);
+     s := s + l[i];
+   END_REPEAT;
+   
+   RETURN(s);
+ END_FUNCTION;
+ 
+  
+-- TYPE boolean_operand = SELECT
+--   (solid_model, 
+--    half_space_solid,
+--    csg_primitive,
+--    boolean_result);
+-- END_TYPE;
+
+ ENTITY boolean_operand  
+   SUPERTYPE OF(ONEOF(solid_model,  
+    half_space_solid,
+    csg_select));
+ END_ENTITY;
+ 
+  TYPE boolean_operator = ENUMERATION OF  
+     (union, 
+     intersection, 
+     difference);
+  END_TYPE;
+
+-- ENTITY boolean_operator   
+--   SUPERTYPE OF(ONEOF(union, 
+--    intersection, 
+--    difference);
+-- END_ENTITY;
+ 
+-- TYPE csg_primitive = SELECT
+--   (sphere,
+--    block,
+--    right_angular_wedge,
+--    torus,
+--    right_circular_cone,
+--    right_circular_cylinder);
+-- END_TYPE;
+
+ENTITY csg_primitive  
+
+SUPERTYPE OF(ONEOF(sphere,
+    block,
+     right_angular_wedge,
+     torus,
+    right_circular_cone,
+     right_circular_cylinder)) 
+SUBTYPE OF (csg_select);
+
+END_ENTITY;
+
+
+-- changes made by M. Dach
+--TYPE csg_select = SELECT
+--  (boolean_result,
+--   csg_primitive);
+-- END_TYPE;
+
+ENTITY csg_select  
+   SUPERTYPE OF(ONEOF (boolean_result,
+    csg_primitive));
+END_ENTITY;
+
+ 
+-- TYPE geometric_set_select = SELECT
+--   (point,
+--    curve,
+--    surface);
+-- END_TYPE;
+
+ ENTITY geometric_set_select  
+  SUPERTYPE OF(ONEOF (point,curve, surface));
+ END_ENTITY;
+
+ 
+ TYPE surface_model = SELECT
+   (shell_based_surface_model, 
+    face_based_surface_model);
+ END_TYPE;
+ 
+ TYPE wireframe_model = SELECT
+   (shell_based_wireframe_model,
+    edge_based_wireframe_model);
+ END_TYPE;
+ 
+ ENTITY solid_model
+   SUPERTYPE OF (ONEOF( csg_solid, manifold_solid_brep,
+                        swept_area_solid, solid_replica))
+   SUBTYPE OF (boolean_operand);
+ END_ENTITY;
+ 
+ ENTITY manifold_solid_brep
+   SUPERTYPE OF (facetted_brep ANDOR brep_with_voids)
+   SUBTYPE OF (solid_model);
+   outer : closed_shell;
+ END_ENTITY;
+ 
+ ENTITY brep_with_voids
+   SUBTYPE OF (manifold_solid_brep);
+   voids : SET [1:?] OF oriented_closed_shell;
+ END_ENTITY;
+ 
+ ENTITY facetted_brep
+   SUBTYPE OF (manifold_solid_brep);
+ END_ENTITY;
+ 
+ ENTITY csg_solid
+   SUBTYPE OF (solid_model);
+   tree_root_expression : csg_select;
+ END_ENTITY;
+ 
+ ENTITY boolean_result
+   SUBTYPE OF (csg_select);
+   operator        : boolean_operator;
+   first_operand   :  boolean_operand;
+   second_operand  :  boolean_operand;
+ END_ENTITY;
+ 
+ ENTITY sphere
+   SUBTYPE OF (csg_primitive);
+   radius : positive_length_measure;
+   centre : point;
+ END_ENTITY;
+ 
+ ENTITY right_circular_cone
+   SUBTYPE OF (csg_primitive);
+   position   : axis1_placement;
+   height     : positive_length_measure;
+   radius     : length_measure;
+   semi_angle : plane_angle_measure;
+ WHERE
+   WR1: radius >= 0.0;
+ END_ENTITY;
+ 
+
+ ENTITY right_circular_cylinder
+   SUBTYPE OF (csg_primitive);
+   position   : axis1_placement;
+   height     : positive_length_measure;
+   radius     : positive_length_measure;
+ END_ENTITY;
+ 
+ ENTITY torus
+   SUBTYPE OF (csg_primitive);
+   position     : axis1_placement;
+   major_radius : positive_length_measure;
+   minor_radius : positive_length_measure;
+ WHERE
+   WR1: major_radius > minor_radius;
+ END_ENTITY;
+ 
+ ENTITY block
+   SUBTYPE OF (csg_primitive);
+   position : axis2_placement_3d;
+   x        : positive_length_measure;
+   y        : positive_length_measure;
+   z        : positive_length_measure;
+ END_ENTITY;
+ 
+  ENTITY right_angular_wedge
+   SUBTYPE OF (csg_primitive);
+   position : axis2_placement_3d;
+   x        : positive_length_measure;
+   y        : positive_length_measure;
+   z        : positive_length_measure;
+   ltx      : length_measure;
+ WHERE
+   WR1: ((0.0 <= ltx) AND (ltx < x));
+ END_ENTITY;
+ 
+ ENTITY swept_area_solid
+   SUPERTYPE OF (ONEOF(solid_of_revolution, solid_of_linear_extrusion))
+   SUBTYPE OF (solid_model);
+   swept_face :  face_surface;
+ WHERE
+   WR1: 'GEOMETRY_SCHEMA.PLANE' IN TYPEOF(face_surface.face_geometry);
+ END_ENTITY;
+ 
+ ENTITY solid_of_linear_extrusion
+   SUBTYPE OF (swept_area_solid);
+   extruded_direction : direction;
+   depth              : positive_length_measure;
+ WHERE
+   WR1: dot_product(
+        (SELF\swept_area_solid.swept_face.face_geometry\
+        elementary_surface.position.p[3])
+                                      , extruded_direction) <> 0.0;
+ END_ENTITY;
+ 
+ ENTITY solid_of_revolution
+   SUBTYPE OF (swept_area_solid);
+   axis  : axis1_placement;
+   angle : plane_angle_measure;
+ DERIVE
+   axis_line : line := line(axis.location,axis.z);
+ END_ENTITY;
+ 
+ ENTITY half_space_solid
+   SUBTYPE OF(boolean_operand);
+   base_surface   : surface;
+   agreement_flag : BOOLEAN;
+ END_ENTITY;
+ 
+ ENTITY boxed_half_space
+   SUBTYPE OF(half_space_solid);
+   enclosure : box_domain;
+ END_ENTITY;
+ 
+ ENTITY box_domain;
+   corner  : cartesian_point;
+   xlength : positive_length_measure;
+   ylength : positive_length_measure;
+   zlength : positive_length_measure;
+ WHERE
+   WR1: SIZEOF(QUERY(item <* USEDIN(SELF,'')|
+             NOT 'GEOMETRIC_MODEL_SCHEMA.BOXED_HALF_SPACE' 
+                    IN TYPEOF(item))) = 0;
+ END_ENTITY;
+ 
+ ENTITY solid_replica
+   SUBTYPE OF (solid_model);
+   parent_solid   : solid_model;
+   transformation : cartesian_transformation_operator_3d;
+ END_ENTITY;
+ 
+ ENTITY shell_based_surface_model
+   SUBTYPE OF (geometric_representation_item);
+   sbsm_boundary  : SET [1:?] OF shell;
+ WHERE
+   WR1: constraints_geometry_sb_surface_model(SELF);
+ END_ENTITY;
+ 
+ ENTITY face_based_surface_model
+   SUBTYPE OF (geometric_representation_item);
+   fbsm_faces : SET [1:?] OF connected_face_set;
+ END_ENTITY;
+ 
+ ENTITY shell_based_wireframe_model
+   SUBTYPE OF (geometric_representation_item);
+   sbwm_boundary  : SET [1:?] OF shell;
+ WHERE
+   WR1: constraints_geometry_sb_wf_model(SELF);
+ END_ENTITY;
+ 
+ ENTITY edge_based_wireframe_model
+   SUBTYPE OF (geometric_representation_item);
+   ebwm_boundary  : SET [1:?] OF connected_edge_set;
+ END_ENTITY;
+ 
+ ENTITY geometric_set
+   SUPERTYPE OF (ONEOF(geometric_curve_set,
+                       geometric_set_replica))
+   SUBTYPE OF (geometric_representation_item);
+   elements :  SET [1:?] OF geometric_set_select;
+ END_ENTITY;
+ 
+ ENTITY geometric_curve_set
+   SUBTYPE OF (geometric_set);
+ WHERE
+   WR1: SIZEOF(QUERY(temp <* SELF\geometric_set.elements |
+                            'GEOMETRY_SCHEMA.SURFACE' IN TYPEOF(temp))) = 0;
+ END_ENTITY;
+ 
+   ENTITY geometric_set_replica
+   SUBTYPE OF (geometric_set); 
+     parent_set     : geometric_set; 
+     transformation : cartesian_transformation_operator; 
+   DERIVE 
+     SELF\geometric_set.elements : SET [1:?] OF geometric_set_select := 
+           build_transformed_set(transformation, parent_set); 
+   END_ENTITY; 
+  
+ FUNCTION constraints_geometry_sb_surface_model
+             (m: shell_based_surface_model): BOOLEAN;
+   LOCAL
+     result : BOOLEAN := TRUE;
+   END_LOCAL;
+   
+   REPEAT j := 1 TO SIZEOF(m.sbsm_boundary);
+     IF (NOT ('TOPOLOGY_SCHEMA.OPEN_SHELL' IN TYPEOF(m.sbsm_boundary[j])) AND
+        (NOT ('TOPOLOGY_SCHEMA.CLOSED_SHELL' IN TYPEOF(m.sbsm_boundary[j])))) 
+     THEN
+       result := FALSE;
+       RETURN(result);
+       
+     END_IF;
+   END_REPEAT;
+   
+   RETURN(result);
+ END_FUNCTION;
+ 
+ FUNCTION constraints_geometry_sb_wf_model (m : shell_based_wireframe_model)
+                                              : BOOLEAN;
+   LOCAL
+     result : BOOLEAN := TRUE;
+   END_LOCAL;
+
+   REPEAT j := 1 TO SIZEOF(m.sbwm_boundary);
+     IF (NOT ('TOPOLOGY_SCHEMA.WIRE_SHELL' IN TYPEOF(m.sbwm_boundary[j])) AND
+        (NOT ('TOPOLOGY_SCHEMA.VERTEX_SHELL' IN TYPEOF(m.sbwm_boundary[j]))))
+     THEN
+       result := FALSE;
+       RETURN(result);
+       
+     END_IF;
+   END_REPEAT;
+   
+   RETURN(result);
+ END_FUNCTION;
+ 
+  FUNCTION build_transformed_set(tr: cartesian_transformation_operator;
+           gset : geometric_set) : geometric_set;
+    LOCAL
+     s          : SET [1:?] OF geometric_set_select := gset.elements;
+     trset      : SET [0:?] OF geometric_set_select := ?;
+     trcurve    : curve;
+     trpoint    : point;
+     trsurf     : surface;
+    END_LOCAL;
+    REPEAT j := 1 TO SIZEOF(s);
+      IF ('GEOMETRY_SCHEMA.CURVE' IN TYPEOF(s[j])) THEN
+         trset := trset + curve_replica(s[j],tr); ELSE
+         IF ('GEOMETRY_SCHEMA.POINT' IN TYPEOF(s[j])) THEN
+           trset := trset + point_replica(s[j],tr); ELSE
+           IF ('GEOMETRY_SCHEMA.SURFACE' IN TYPEOF(s[j])) THEN
+             trset := trset + surface_replica(s[j],tr);
+           END_IF;
+         END_IF;
+      END_IF;
+    END_REPEAT;
+    RETURN(trset);
+   END_FUNCTION; 
+ 
+ END_SCHEMA; -- end GEOMETRIC MODEL schema
+ 

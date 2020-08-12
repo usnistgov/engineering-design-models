@@ -1,0 +1,43 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'FLANGE-1/MRSEVS.STEP',
+   '19891030000000',
+   ('Staff Member',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'unknown');
+ FILE_DESCRIPTION('This file describes three MRSEVs');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = CARTESIAN_POINT ( , -4.12496, -4.28625, 0.0);
+ @2  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @3  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @5  = AXIS2_PLACEMENT ( , #1, #2, #3);
+ @6  = HOLE (#5, 0.61976, nil , 0.39624);
+ @7  = MATERIAL_REMOVAL_VOLUME ('HOLE1', (#6), );
+/* one of the small holes */
+
+ @11  = CARTESIAN_POINT ( , -4.12496, -3.03084, -3.03084);
+ @15  = AXIS2_PLACEMENT ( , #11, #2, #3);
+ @16  = HOLE (#15, 0.61976, nil, 0.39624);
+ @17  = MATERIAL_REMOVAL_VOLUME ('HOLE2', (#16), );
+/* another small hole */
+
+ @21  = CARTESIAN_POINT ( , -3.17246, 0.0, 0.0);
+ @25  = AXIS2_PLACEMENT ( , #21, #2, #3);
+ @26  = HOLE (#25, 3.17246, #4, 0.95631);
+ @27  = MATERIAL_REMOVAL_VOLUME ('HOLE3', (#26), );
+/* large hole on axis */
+
+ENDSEC;
+
+ENDSTEP;

@@ -1,0 +1,1 @@
+display_silhouette_edges yes

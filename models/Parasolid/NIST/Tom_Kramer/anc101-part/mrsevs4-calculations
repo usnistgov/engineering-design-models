@@ -1,0 +1,45 @@
+
+for funny pocket, need to calculate corners so that left side can be
+rounded 0.0625 for finish and 0.126 for rough.
+
+0.073 rounding
+***************
+  (setq r 0.073)
+tangent point
+  (setq x (-(* 0.5 (/ (- 0.375 r) (- 0.5 r))))) => -0.35362997658079626
+  (setq y (sqrt (- (expt 0.5 2) (expt x 2))))   =>  0.35347678801226184
+
+endpoints of line at (x1 y1) and (x2 y2) where (x y) is on line and
+slope is -x/y
+  (setq k 10)
+  (setq x1 (+ x (* k y))) => 3.181137903541822
+  (setq y1 (+ y (* k (- x)))) => 3.8897765538202242
+  (setq x2 (- x (* k y))) => -3.8883978567034148
+  (setq y2 (- y (* k (- x)))) => -3.1828229777957007
+
+intersections at
+ (inter-line-line x1 y1 x2 y2 0.5 2 0.5 -2) = (0.5 1.2074767078498865)
+ (inter-line-line x1 y1 x2 y2 -0.375 2 -0.375 -2) = (-0.375 0.3320975033249689)
+
+direction given by
+ (normalize (list y (- x))) => (0.7069535760245237 0.7072599531615925)
+
+0.126 rounding
+**************
+  (setq r 0.126)
+tangent point
+  (setq x (-(* 0.5 (/ (- 0.375 r) (- 0.5 r))))) => -0.33288770053475936
+  (setq y (sqrt (- (expt 0.5 2) (expt x 2))))  => 0.3730761032720809
+
+endpoints of line at
+  (setq x1 (+ x (* k y))) => 3.3978733321860495
+  (setq y1 (+ y (* k (- x)))) => 3.7019531086196746
+  (setq x2 (- x (* k y))) => -4.063648733255568
+  (setq y2 (- y (* k (- x)))) => -2.955800902075513
+
+intersections at
+ (inter-line-line x1 y1 x2 y2 0.5 2 0.5 -2) = (0.5 1.1162437009900659)
+ (inter-line-line x1 y1 x2 y2 -0.375 2 -0.375 -2)= (-0.375 0.33550021349982284)
+
+direction given by
+ (normalize (list y (- x))) => (0.7461522065441618 0.6657754010695187)

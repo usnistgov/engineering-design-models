@@ -1,0 +1,100 @@
+generic Bendix( Part );
+{
+	A PADL-2 version of the standard Bendix part for feature recognition
+	and to experiment with constraints.
+	The part has been highly parameterized to allow rapid creation of
+	a whole family of similar parts.
+
+	Written by Tim Whalen
+	Production Automation Laboratory
+	University of Southern California
+	June 6, 1988
+}
+length = 6.00;
+width  = 4.00;
+height = 2.00;
+
+step_height = 1.00;
+step_length = 1.50;
+
+thru_hole_diam  = 0.25
+thru_hole_inset = 0.25;
+
+bolt_hole_diam  = 0.50;
+cbore_diam  = 0.75;
+cbore_depth = 0.50;
+bolt_inset = 0.75;
+
+pocket_d  = 1.00;
+pocket_l = 3.00;
+pocket_w  = 3.00;
+pocket_cr = 0.50;
+pocket_to_step  = 0.50;
+
+notch_d  = 0.50;
+notch_l = 0.75;
+notch_w  = 1.00;
+notch_cr = 0.25;
+
+blank = blo(x = width, y = height,  z = length - step_length) UN \
+        blo(x = width, y = height - step_height, z = length);
+
+thru_hole = cyl(h = height + 1.00, d = thru_hole_diam) AT \
+               (degx = -90.0, movx = thru_hole_inset, movy = -0.50, \
+                movz = thru_hole_inset);
+
+thru_hole2 = thru_hole UN \
+             (thru_hole AT (movz = length - step_length - 2 * thru_hole_inset));
+
+thru_holes = thru_hole2 UN (thru_hole2 AT (movx = width - 2 * thru_hole_inset));
+
+bolt_hole = (cyl(h = height - step_height + 1.00, d = bolt_hole_diam) AT \
+                (movz = -0.50) UN \
+             cyl(h = cbore_depth + 0.50, d = cbore_diam) AT \
+                (movz =  height - step_height - cbore_depth)) AT \
+            (degx = -90.0, movx = bolt_inset, movz = length - bolt_inset);
+
+bolt_holes = bolt_hole UN bolt_hole AT (movx = width - 2.00 * bolt_inset);
+
+pocket_corner = cyl(h = pocket_d + 0.50, r = pocket_cr) AT (degx = -90.0);
+
+pocket = (blo(x = pocket_w - 2 * pocket_cr, y = pocket_d + 0.50, z = pocket_l) \
+          AT (movx = pocket_cr) UN \
+          blo(x = pocket_w, y = pocket_d + 0.50, z = pocket_l - 2 * pocket_cr) \
+          AT (movz = pocket_cr) UN \
+          pocket_corner \
+          AT (movx = pocket_cr, movz = pocket_cr) UN \
+          pocket_corner \
+          AT (movx = pocket_w - pocket_cr, movz = pocket_cr) UN \
+          pocket_corner \
+          AT (movx = pocket_cr, movz = pocket_l - pocket_cr) UN \
+          pocket_corner \
+          AT (movx = pocket_w - pocket_cr, movz = pocket_l - pocket_cr)) AT \
+         (movx = (width - pocket_w) / 2.00, \
+          movy = height - pocket_d, \
+          movz = length - step_length - pocket_to_step - pocket_l);
+
+notch_corner = cyl(h = notch_d + 0.50, r = notch_cr) AT (degx = -90.0);
+
+notch = (blo(x = notch_w - 2 * notch_cr, y = notch_d + 0.5, z = notch_l + 0.5) \
+         AT (movx = notch_cr) UN \
+         blo(x = notch_w, y = notch_d + 0.50, z = notch_l) \
+         AT (movz = notch_cr) UN \
+         notch_corner \
+         AT (movx = notch_cr, movz = notch_cr) UN \
+         notch_corner \
+         AT (movx = notch_w - notch_cr, movz = notch_cr)) AT \
+        (movx = (width - notch_w) / 2.00, \
+         movy = height - notch_d, \
+         movz = length - step_length - pocket_to_step - pocket_l - notch_l);
+
+bendix = blank dif thru_holes dif bolt_holes dif pocket dif notch;
+
+{ Names needed for Feature Finder }
+
+part = bendix;
+stock = blo(x = width + 0.25, y = height + 0.25, z = length + 0.25) \
+        AT (movx = -0.125, movy = -0.125, movz = -0.125);
+delta = stock dif bendix;
+
+

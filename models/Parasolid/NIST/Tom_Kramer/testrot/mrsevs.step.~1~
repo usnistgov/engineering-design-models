@@ -1,0 +1,36 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'TESTROT/MRSEVS.STEP',
+   '19900817000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'Computervision CADDS');
+ FILE_DESCRIPTION('This file describes one MRSEV');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = CARTESIAN_POINT ( , 2.63, 2.495, 1.0);
+ @2  = DIRECTION ( , 0.0, 0.0, 1.0);
+ @3  = DIRECTION ( , 0.766044443118978, 0.6427876096865393, 0.0);
+ @4  = AXIS2_PLACEMENT ( , #1, #2, #3);
+ @5  = LINEAR_FEATURE_SWEEP_PATH (0.5);
+ @6  = IMPLICIT_EDGE_ROUND (0.7);
+ @7  = RECTANGULAR_FEATURE_SWEEP_PROFILE (#6, 3.0, 2.0);
+ @8  = RECTANGULAR_POCKET (#4, #5, #7, );
+ @9  = MATERIAL_REMOVAL_VOLUME ('ROUGH_POCKET', (#8), );
+
+/* the x-axis of the pocket is rotated 40 degrees counterclockwise */
+
+ENDSEC;
+
+ENDSTEP;

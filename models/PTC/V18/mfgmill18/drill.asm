@@ -1,0 +1,1985 @@
+#UGC:2 ASSEMBLY 886 360 0 1 1 15 1600 9546 \
+#- VERS 0 0                                                          \
+#- HOST                                                              \
+#- LINK                                                              \
+#- DBID                                                              \
+#- REVS 0,                                                           \
+#- RELL 0,                                                           \
+#- UOBJ_ID 0 0 0                                                     \
+#-END_OF_UGC_HEADER
+#P_OBJECT 6
+@P_object 1 0
+0 1 ->
+@depend 2 0
+1 2 [5]
+2 2 
+@model_name 3 10
+3 3 DRILL_SHAFT
+@model_type 4 1
+3 4 2
+@revnum 5 1
+3 5 1358
+@bom_count 6 1
+3 6 1
+@dep_type 7 1
+3 7 8
+@stamp 8 0
+3 8 
+@major_vers 9 0
+4 9 
+@vers 10 1
+5 10 0
+@alias_name 11 10
+5 11 
+@minor_vers 12 0
+4 12 
+@vers 13 1
+5 13 0
+@reason 14 10
+3 14 
+2 2 
+3 3 HOUSING
+3 4 2
+3 5 26866
+3 6 1
+3 7 10
+3 8 
+4 9 
+5 10 0
+5 11 
+4 12 
+5 13 0
+3 14 
+2 2 
+3 3 SHAFT_SLEEVE
+3 4 2
+3 5 5892
+3 6 1
+3 7 8
+3 8 
+4 9 
+5 10 0
+5 11 
+4 12 
+5 13 0
+3 14 
+2 2 
+3 3 DRILL_SHAFT
+3 4 1
+3 5 35
+3 6 1
+3 7 2
+3 8 
+4 9 
+5 10 0
+5 11 
+4 12 
+5 13 0
+3 14 
+2 2 
+3 3 HOUSING_MIRROR
+3 4 2
+3 5 1188
+3 6 1
+3 7 2
+3 8 
+4 9 
+5 10 0
+5 11 
+4 12 
+5 13 0
+3 14 
+@dep_db 15 0
+1 15 ->
+@dep_db 16 0
+2 16 [7]
+3 16 ->
+@to_model_id 17 1
+4 17 0
+@dep_type 18 1
+4 18 2
+@obj_id 19 1
+4 19 3
+@obj_type 20 1
+4 20 3
+3 16 ->
+4 17 1
+4 18 2
+4 19 4
+4 20 3
+3 16 ->
+4 17 -3
+4 18 4
+4 19 0
+4 20 242
+3 16 ->
+4 17 2
+4 18 2
+4 19 11
+4 20 3
+3 16 ->
+4 17 3
+4 18 4
+4 19 1
+4 20 242
+3 16 ->
+4 17 1
+4 18 4
+4 19 2
+4 20 242
+3 16 ->
+4 17 4
+4 18 4
+4 19 3
+4 20 242
+@model_db 21 0
+2 21 [5]
+3 21 ->
+@model_t_type 22 1
+4 22 1
+@model_name 23 10
+4 23 DRILL_SHAFT
+@generic_name 24 10
+4 24 
+@stamp 25 0
+4 25 
+3 21 ->
+4 22 2
+4 23 HOUSING
+4 24 
+4 25 
+3 21 ->
+4 22 2
+4 23 HOUSING_MIRROR
+4 24 
+4 25 
+3 21 ->
+4 22 2
+4 23 DRILL_SHAFT
+4 24 
+4 25 
+3 21 ->
+4 22 2
+4 23 SHAFT_SLEEVE
+4 24 
+4 25 
+@usr_rev 26 0
+1 26 [1]
+2 26 
+@name 27 10
+3 27 DESIMONE
+@mod_time 28 0
+3 28 
+@tm_sec 29 1
+4 29 9
+@tm_min 30 1
+4 30 49
+@tm_hour 31 1
+4 31 14
+@tm_mday 32 1
+4 32 28
+@tm_mon 33 1
+4 33 10
+@tm_year 34 1
+4 34 95
+@action 35 1
+3 35 1000
+@comment 36 10
+3 36 Hostname: 'manhatta'
+@rel_level 37 10
+3 37 
+@rev_string 38 10
+3 38 
+@revnum_std 39 1
+1 39 92
+@flag 40 1
+1 40 0
+@name 41 10
+1 41 NULL
+@inst_hidden 42 1
+1 42 0
+@old_name 43 10
+1 43 NULL
+@appl_data 44 0
+1 44 ->
+@bounding_box 45 2
+2 45 [2][3]
+$BFF9FD2F1810B097,BFF9A61836049E7D,C00B8210CEBCEE5E
+$3FF9FD2F1810B097,40184F8456FF3215,40141C0B4F815793
+@uobj_id 46 0
+1 46 NULL
+#END_OF_P_OBJECT
+#Pro/ENGINEER  TM  Version G-01-13  (c) 1988-95 by Parametric Technology Corporation  All Rights Reserved. 9546
+@Solid 47 0
+0 47 ->
+@tab_key 48 1
+1 48 0
+@tab_key_struct 49 0
+1 49 ->
+@tab_key_ptr 50 0
+2 50 [15]
+@cmprs_tabkey 51 0
+2 51 NULL
+@type 52 1
+1 52 1
+@revnum_ptr 53 0
+1 53 ->
+@geom_revnum 54 1
+2 54 83
+@cosm_revnum 55 1
+2 55 11
+@first_member_ptr 56 0
+1 56 NULL
+@alumni_members 57 0
+1 57 NULL
+@frst_geom_ptr 58 1
+1 58 0
+@first_feat_ptr 59 0
+1 59 ->
+@id 60 1
+2 60 1
+@indep_attributes 61 1
+2 61 1
+@feat_type_ptr 62 0
+2 62 ->
+@table_id 63 1
+3 63 -1
+@type 64 1
+3 64 979
+@feattype_key 65 10
+3 65 NULL
+@form 66 1
+3 66 0
+@attributes 67 1
+3 67 [3]
+$3*0
+@placement 68 1
+3 68 0
+@intersection 69 1
+3 69 -1
+@internal_udf_type 70 1
+3 70 -1
+@param_choice_ptr 71 0
+3 71 ->
+@blend_choice 72 1
+4 72 0
+@depth_choice 73 1
+4 73 0
+@angle_choice 74 1
+4 74 -1
+@pat_choice 75 1
+4 75 -1
+@round_choice 76 1
+4 76 -1
+@subsec_choice 77 1
+4 77 -1
+@sweep_choice 78 1
+4 78 0
+@dome_choice 79 1
+4 79 0
+@draft_choice 80 1
+4 80 0
+@misc_choice 81 1
+4 81 128
+@assoc_type 82 1
+3 82 0
+@symbol_key 83 1
+2 83 -1
+@sect_name 84 10
+2 84 no_name
+@model_type 85 1
+2 85 1
+@entity(coord_sys) 86 0
+2 86 ->
+@type 87 1
+3 87 18
+@id 88 1
+3 88 2
+@gen_info 89 0
+3 89 
+@color 90 1
+4 90 1
+@sys_type 91 1
+3 91 -1
+@pnt_type 92 1
+3 92 -1
+@radius 93 2
+3 93 0
+@local_sys 94 2
+3 94 [4][3]
+$3FF,2*0
+$0,3FF,0
+$2*0,3FF
+$3*0
+@feat_id 95 1
+3 95 1
+@entity(text) 96 0
+2 96 ->
+@text_type 97 1
+3 97 34
+@text_value 98 10
+3 98 ACS0
+@txt_attrib 99 1
+3 99 1
+@coord 100 2
+3 100 [3]
+$40800DB5B4B230A,40813621557A48A,4052212B58EAD9E3
+@owner_id 101 1
+3 101 2
+@part_id 102 1
+3 102 2
+@height 103 2
+3 103 BFF
+@width_factor 104 2
+3 104 BFF
+@format_info 105 0
+3 105 
+@thickness 106 2
+3 106 BFF
+@idtab_ptr 107 0
+2 107 ->
+@misc_id_tab 108 0
+3 108 [1]
+4 108 
+@misc_hist 109 1
+5 109 [5]
+$2,534,0,-1,500
+@save_geoms 110 0
+3 110 NULL
+@cr_flags_xar 111 1
+3 111 [18]
+$3*-1,-2049,2*-1,-16777217,3*-1,-536870913,-1,-1126176897,-2,-2097185,
+$-2097665,-1,13
+@cvt_feat_dat 112 0
+3 112 NULL
+@feat_dates_ptr 113 0
+3 113 ->
+@creat_date 114 1
+4 114 160010
+@regen_date 115 1
+4 115 160010
+@geometry 116 0
+2 116 
+@group_info_ptr 117 0
+2 117 NULL
+@intrs_pairs_ptr 118 0
+2 118 ->
+@place_rec_ptr 119 0
+2 119 ->
+@local_sys 120 2
+3 120 [4][3]
+$3FF,2*0
+$0,3FF,0
+$2*0,3FF
+$3*0
+@own_ref_id 121 1
+3 121 -1
+@orient 122 1
+3 122 0
+@trf_arr 123 0
+3 123 [1]
+4 123 
+@type 124 1
+5 124 10
+@idx 125 1
+5 125 0
+@transf 126 2
+5 126 [4][3]
+$3FF,2*0
+$0,3FF,0
+$2*0,3FF
+$3*0
+@next_prop 127 0
+2 127 NULL
+@first_geom_id 128 1
+2 128 -1
+@cond_tbl_idx 129 1
+2 129 -1
+@comment 130 10
+2 130 NULL
+@merge_info_ptr 131 0
+2 131 NULL
+@topology_increment 132 0
+2 132 ->
+@first_geom 133 1
+3 133 0
+@first_quilt 134 1
+3 134 0
+@outline 135 2
+3 135 [2][3]
+$3*0
+$3*0
+@max_part_size 136 2
+3 136 0
+@xform_increment 137 0
+3 137 NULL
+@roll_back_id 138 1
+3 138 -1
+@state_ind 139 1
+2 139 -1
+@alumni_info 140 0
+2 140 NULL
+@revnum 141 1
+2 141 0
+@rev_rec 142 0
+2 142 ->
+@num_plins 143 1
+3 143 0
+@next_feat_ptr 144 0
+1 144 ->
+2 60 3
+2 61 1
+2 62 ->
+3 63 -1
+3 64 1000
+3 65 NULL
+3 66 0
+3 67 [3]
+$3*0
+3 68 0
+3 69 -1
+3 70 -1
+3 71 ->
+4 72 0
+4 73 0
+4 74 -1
+4 75 -1
+4 76 -1
+4 77 -1
+4 78 0
+4 79 0
+4 80 0
+4 81 0
+3 82 0
+2 83 -1
+2 84 no_name
+2 85 1
+2 107 ->
+3 110 NULL
+3 111 [18]
+$3*-1,-2049,2*-1,-16777217,3*-1,-536870913,-1,-1126176897,-2,-2097185,
+$-2097665,-1,13
+3 112 NULL
+3 113 ->
+4 114 160010
+4 115 160010
+2 116 
+2 117 NULL
+2 118 ->
+2 119 ->
+3 120 [4][3]
+$3FF,2*0
+$0,3FF,0
+$2*0,3FF
+$3*0
+3 121 0
+3 122 0
+2 127 NULL
+2 128 -1
+2 129 -1
+2 130 NULL
+2 131 NULL
+@dat_ptr(comp_data) 145 0
+2 145 ->
+@type 146 1
+3 146 123
+@model_ptr 147 0
+3 147 
+@object_type 148 1
+4 148 1
+@name 149 10
+4 149 DRILL_SHAFT
+@simpl_rep 150 0
+4 150 NULL
+@placed_flag 151 1
+3 151 1
+@subst_asm_ref_id 152 1
+3 152 -1
+@instance 153 3
+3 153 NULL
+@stamp 154 0
+3 154 
+@major_vers 155 0
+4 155 
+@vers 156 1
+5 156 0
+@alias_name 157 10
+5 157 
+@minor_vers 158 0
+4 158 
+@vers 159 1
+5 159 0
+@dep_id 160 1
+3 160 0
+2 132 ->
+3 133 0
+3 134 0
+3 135 [2][3]
+$3*0
+$3*0
+3 136 0
+3 137 NULL
+3 138 -1
+2 139 -1
+2 140 NULL
+2 141 0
+2 142 ->
+@revnums 161 0
+3 161 [1]
+4 161 ->
+@owner_type 162 1
+5 162 3
+@owner_ind 163 1
+5 163 -1
+@ref_id 164 1
+5 164 -1
+@ref_revnum 165 1
+5 165 -1
+3 143 0
+1 144 ->
+2 60 4
+2 61 1
+2 62 ->
+3 63 -1
+3 64 1000
+3 65 NULL
+3 66 0
+3 67 [3]
+$3*0
+3 68 0
+3 69 -1
+3 70 -1
+3 71 ->
+4 72 0
+4 73 0
+4 74 -1
+4 75 -1
+4 76 -1
+4 77 -1
+4 78 0
+4 79 0
+4 80 0
+4 81 0
+3 82 0
+2 83 -1
+2 84 no_name
+2 85 1
+2 107 ->
+3 110 NULL
+3 111 [18]
+$3*-1,-2049,2*-1,-16777217,3*-1,-536870913,-1,-1126176897,-2,-2097185,
+$-2097665,-1,13
+3 112 NULL
+3 113 ->
+4 114 160010
+4 115 160013
+2 116 
+2 117 NULL
+2 118 ->
+2 119 ->
+3 120 [4][3]
+$0,3FF,0
+$2*0,3FF
+$3FF,2*0
+$0,40159R,40029R
+@place_instruction_ptrs 166 0
+3 166 [2]
+4 166 ->
+@type 167 1
+5 167 7
+@offset 168 2
+5 168 0
+@dim_id 169 1
+5 169 0
+@ref_id 170 1
+5 170 0
+@geometry1_id 171 1
+5 171 289
+@geometry2_id 172 1
+5 172 8565
+@memb_num1 173 1
+5 173 2
+@memb_num2 174 1
+5 174 1
+@memb_id_tab1 175 1
+5 175 [2]
+$3,1
+@memb_id_tab2 176 1
+5 176 [1]
+6 176 4
+@attr 177 1
+5 177 512
+@plin_info_arr 178 0
+5 178 [2]
+6 178 ->
+@type 179 1
+7 179 1
+@data(plin_info_ref) 180 0
+7 180 ->
+@id_type1 181 1
+8 181 5
+@id_type2 182 1
+8 182 5
+@offset2 183 2
+8 183 0
+6 178 ->
+7 179 6
+@data(plin_info_ui_step) 184 0
+7 184 ->
+@step_ids 185 1
+8 185 [1]
+9 185 -100
+4 166 ->
+5 167 5
+5 168 0
+5 169 1
+5 170 1
+5 171 61
+5 172 2402
+5 173 2
+5 174 1
+5 175 [2]
+$3,1
+5 176 [1]
+6 176 4
+5 177 512
+5 178 [2]
+6 178 ->
+7 179 1
+7 180 ->
+8 181 5
+8 182 5
+8 183 0
+6 178 ->
+7 179 6
+7 184 ->
+8 185 [1]
+9 185 -100
+3 121 0
+3 122 0
+2 127 NULL
+2 128 -1
+2 129 -1
+2 130 NULL
+2 131 NULL
+2 145 ->
+3 146 123
+3 147 
+4 148 2
+4 149 HOUSING
+4 150 NULL
+3 151 1
+3 152 -1
+3 153 NULL
+3 154 
+4 155 
+5 156 0
+5 157 
+4 158 
+5 159 0
+3 160 1
+@parent_table 186 1
+2 186 [1]
+3 186 3
+2 132 ->
+3 133 0
+3 134 0
+3 135 [2][3]
+$BFE80BE376F3C731,BFE80BE376F3C732,C00B0A3D70A3D70A
+$3FE80BE376F3C73,3FE80BE376F3C732,0
+3 136 0
+3 137 NULL
+3 138 -1
+2 139 -1
+2 140 NULL
+2 141 4
+2 142 ->
+3 161 [5]
+4 161 ->
+5 162 3
+5 163 -1
+5 164 -1
+5 165 -1
+4 161 ->
+5 162 1
+5 163 -1
+5 164 0
+5 165 39
+@memb_tab_revnums 187 1
+5 187 [2]
+$2*0
+4 161 ->
+5 162 2
+5 163 -1
+5 164 0
+5 165 34
+5 187 [1]
+6 187 4
+4 161 ->
+5 162 1
+5 163 -1
+5 164 1
+5 165 26
+5 187 [2]
+$2*0
+4 161 ->
+5 162 2
+5 163 -1
+5 164 1
+5 165 84
+5 187 [1]
+6 187 4
+3 143 2
+1 144 ->
+2 60 9
+2 61 1
+2 62 ->
+3 63 -1
+3 64 923
+3 65 NULL
+3 66 0
+3 67 [3]
+$3*0
+3 68 0
+3 69 -1
+3 70 -1
+3 71 ->
+4 72 0
+4 73 0
+4 74 -1
+4 75 970
+4 76 -1
+4 77 -1
+4 78 0
+4 79 0
+4 80 0
+4 81 0
+3 82 0
+2 83 -1
+2 84 ADTM1
+2 85 1
+2 107 ->
+@srf_id_arr 188 1
+3 188 [1][4]
+$10,3*0
+3 110 NULL
+3 111 [18]
+$3*-1,-2049,2*-1,-16777217,3*-1,-536870913,-1,-1126176897,-2,-2097185,
+$-2097665,-1,13
+3 112 NULL
+3 113 ->
+4 114 160010
+4 115 160013
+2 116 
+@srf_array 189 0
+3 189 [1]
+4 189 ->
+@geom_type 190 1
+5 190 34
+@geom_id 191 1
+5 191 10
+@feat_id 192 1
+5 192 9
+@boundary_type 193 1
+5 193 1
+@envlp 194 2
+5 194 [2][2]
+$BFF9A61836049E7D,C00B8210CEBCEE5E
+$40184F8456FF3215,40141C0B4F815793
+@srf_prim_ptr(plane) 195 0
+5 195 ->
+@local_sys 196 2
+6 196 [4][3]
+$2*0,3FF
+$3FF,2*0
+$0,3FF,0
+$3*0
+@frst_cntr_ptr 197 0
+5 197 NULL
+@next_geom_ptr 198 1
+5 198 0
+@orient 199 1
+5 199 1
+@outline 200 2
+5 200 [2][3]
+$0,BFF9A61836049E7D,C00B8210CEBCEE5E
+$0,40184F8456FF3215,40141C0B4F815793
+2 117 NULL
+2 118 ->
+2 119 ->
+3 120 [4][3]
+$2*0,3FF
+$3FF,2*0
+$0,3FF,0
+$3*0
+3 166 [1]
+4 166 ->
+5 167 524
+5 168 0
+5 169 0
+5 170 -1
+5 171 2
+5 172 10
+5 173 0
+5 174 0
+5 177 32768
+5 178 [2]
+6 178 ->
+7 179 1
+7 180 ->
+8 181 -4
+8 182 5
+8 183 0
+6 178 ->
+7 179 6
+7 184 ->
+8 185 [1]
+9 185 -100
+3 121 -1
+3 122 1
+3 123 [1]
+4 123 
+5 124 11
+5 125 0
+5 126 [4][3]
+$2*0,3FF
+$3FF,2*0
+$0,3FF,0
+$3*0
+2 127 NULL
+2 128 10
+2 129 -1
+2 130 NULL
+2 131 NULL
+2 186 [1]
+3 186 1
+2 132 ->
+3 133 0
+3 134 0
+3 135 [2][3]
+$BFE80BE376F3C731,BFF73EB94A094F98,C00B0A3D70A3D70A
+$3FF951EB851EB852,4018139AA7F2A66B,4013B7B6872F5F3C
+3 136 0
+3 137 NULL
+3 138 -1
+2 139 -1
+2 140 NULL
+2 141 0
+2 142 ->
+3 143 1
+1 144 ->
+2 60 11
+2 61 1
+2 62 ->
+3 63 -1
+3 64 1000
+3 65 NULL
+3 66 0
+3 67 [3]
+$3*0
+3 68 0
+3 69 -1
+3 70 -1
+3 71 ->
+4 72 0
+4 73 0
+4 74 -1
+4 75 -1
+4 76 -1
+4 77 -1
+4 78 0
+4 79 0
+4 80 0
+4 81 0
+3 82 0
+2 83 -1
+2 84 no_name
+2 85 1
+2 107 ->
+3 110 NULL
+3 111 [18]
+$3*-1,-2049,2*-1,-16777217,3*-1,-536870913,-1,-1126176897,-2,-2097185,
+$-2097665,-1,13
+3 112 NULL
+3 113 ->
+4 114 160010
+4 115 160013
+2 116 
+2 117 NULL
+2 118 ->
+2 119 ->
+3 120 [4][3]
+$0,3FF,0
+$2*0,3FF
+$3FF,2*0
+$0,40159R,40029R
+3 166 [1]
+4 166 ->
+5 167 110
+5 168 0
+5 169 -1
+5 170 0
+5 171 4
+5 172 -1
+5 173 0
+5 174 0
+5 177 512
+5 178 [1]
+6 178 ->
+7 179 6
+7 184 ->
+8 185 [1]
+9 185 -100
+3 121 0
+3 122 0
+2 127 NULL
+2 128 -1
+2 129 -1
+2 130 NULL
+2 131 NULL
+2 145 ->
+3 146 123
+3 147 
+4 148 2
+4 149 HOUSING_MIRROR
+4 150 NULL
+3 151 1
+3 152 -1
+3 153 NULL
+3 154 
+4 155 
+5 156 0
+5 157 
+4 158 
+5 159 0
+3 160 3
+2 132 ->
+3 133 0
+3 134 0
+3 135 [2][3]
+$BFE80BE376F3C731,BFF73EB94A094F98,C00B0A3D70A3D70A
+$3FF951EB851EB852,4018139AA7F2A66B,4013B7B6872F5F3C
+3 136 0
+3 137 NULL
+3 138 -1
+2 139 -1
+2 140 NULL
+2 141 4
+2 142 NULL
+1 144 NULL
+@assem_mass_prop_ptr 201 0
+1 201 NULL
+@mass_prop_ptr 202 0
+1 202 ->
+@type 203 1
+2 203 0
+@density 204 2
+2 204 0
+@init_dens 205 5
+2 205 0
+@rel_density 206 2
+2 206 0
+@init_rel_dens 207 5
+2 207 0
+@aver_density 208 2
+2 208 0
+@vrevnum 209 1
+2 209 -1
+@volume 210 2
+2 210 0
+@cg 211 2
+2 211 [3]
+$3*0
+@inertia 212 2
+2 212 [3][3]
+$3*0
+$3*0
+$3*0
+@eps 213 2
+2 213 0
+@surfarea 214 2
+2 214 0
+@assign_mp_ptr 215 0
+1 215 NULL
+@tol_default_ptr 216 0
+1 216 ->
+@type 217 1
+2 217 10
+@value 218 2
+2 218 [7]
+$0,3FB9R,3F847AE147AE147B,3F50624DD2F1A9FC,3F1A36E2EB1C432D,
+$3EE4F8B588E368F1,3EB0C6F7A0B5ED8E
+@ang_value 219 2
+2 219 [7]
+$0,6*3FE
+@standard 220 1
+2 220 0
+@iso_tol_tbls_ptr 221 0
+2 221 NULL
+@ref_part_table 222 0
+1 222 [4]
+2 222 ->
+@name 223 10
+3 223 DRILL
+@id 224 1
+3 224 2
+@type 225 1
+3 225 1
+@revnum 226 1
+3 226 -1
+@dep_id 227 1
+3 227 2
+@attributes 228 1
+3 228 0
+@simpl_rep 229 0
+3 229 NULL
+2 222 ->
+3 223 DRILL_SHAFT
+3 224 1
+3 225 2
+3 226 1241
+3 227 4
+3 228 0
+3 229 NULL
+2 222 ->
+3 223 HOUSING
+3 224 0
+3 225 2
+3 226 25082
+3 227 5
+3 228 0
+3 229 NULL
+2 222 ->
+3 223 SHAFT_SLEEVE
+3 224 3
+3 225 2
+3 226 5754
+3 227 6
+3 228 0
+3 229 NULL
+@first_xsec_ptr 230 0
+1 230 NULL
+@datum_count 231 1
+1 231 0
+@axis_count 232 1
+1 232 0
+@insert_layer_id 233 1
+1 233 -1
+@layer_count 234 1
+1 234 1
+@layer_list 235 0
+1 235 [5]
+2 235 
+@feat_id 236 1
+3 236 1
+@layer_id 237 1
+3 237 0
+@back_layer_id 238 1
+3 238 0
+2 235 
+3 236 3
+3 237 0
+3 238 0
+2 235 
+3 236 4
+3 237 0
+3 238 0
+2 235 
+3 236 9
+3 237 0
+3 238 0
+2 235 
+3 236 11
+3 237 0
+3 238 0
+@lang_ptr 239 0
+1 239 ->
+@new_input 240 0
+2 240 [1]
+3 240 
+@name 241 10
+4 241 MOTOR_TYPE
+@prompt 242 10
+4 242 ENTER THE DESIRED MODEL (1 FOR HOME, 2 FOR COMMERCIAL).
+@type 243 1
+4 243 50
+@cond_idx 244 1
+4 244 -1
+@interact_on 245 1
+2 245 -1
+@first_csys_ptr 246 0
+1 246 NULL
+@offset 247 2
+1 247 [2]
+$2*401395C84A27909E
+@color_prop_ptr 248 0
+1 248 NULL
+@fem_data 249 0
+1 249 NULL
+@rel_part_eps 250 2
+1 250 3F53A92A30553261
+@names_table 251 0
+1 251 [2]
+2 251 ->
+@id 252 1
+3 252 10
+@type 253 1
+3 253 5
+@name 254 10
+3 254 ADTM1
+2 251 ->
+3 252 2
+3 253 25
+3 254 ACS0
+@drv_tbl_ptr 255 0
+1 255 NULL
+@assembled_count 256 1
+1 256 0
+@part_type 257 1
+1 257 2
+@mat_name_ptr 258 10
+1 258 NULL
+@first_ent_id 259 1
+1 259 514884
+@first_view_id 260 1
+1 260 0
+@outline 261 2
+1 261 [2][3]
+$BFF951EB851EB852,BFF8B67179D26FD4,C00B0A3D70A3D70A
+$3FF951EB851EB852,4018139AA7F2A66B,4013E021A074CBE9
+@dim_num 262 1
+1 262 1
+@dim_array 263 0
+1 263 [1]
+2 263 ->
+@type 264 1
+3 264 8
+@dim_type 265 1
+3 265 204
+@feat_id 266 1
+3 266 9
+@attributes 267 1
+3 267 257
+@dim_dat_ptr 268 0
+3 268 ->
+@value 269 2
+4 269 0
+@bck_value 270 2
+4 270 0
+@tol_ptr 271 0
+4 271 ->
+@type 272 1
+5 272 9
+@tol_type 273 1
+5 273 3
+@dual_digits_diff 274 1
+5 274 999
+@value 275 2
+5 275 [2]
+$2*3F50624DD2F1A9FC
+@nominal_value 276 2
+4 276 0
+@bound 277 1
+4 277 20
+@bck_bound 278 1
+4 278 -1
+@bck_tol_ptr 279 0
+4 279 ->
+@value 280 2
+5 280 [2]
+$2*3F50624DD2F1A9FC
+@datum_def_id 281 1
+4 281 -1
+@places_denom 282 1
+4 282 3
+@bck_places_denom 283 1
+4 283 3
+@dim_data_attrib 284 1
+4 284 0
+@dim_cosm_ptr 285 0
+3 285 ->
+@d0 286 2
+4 286 0
+@d1 287 2
+4 287 0
+@d2 288 2
+4 288 0
+@d3 289 2
+4 289 0
+@ord_info 290 0
+4 290 NULL
+@attach_ptr 291 0
+3 291 NULL
+@dim_text_ptr 292 0
+3 292 ->
+@symbol 293 10
+4 293 d0
+@parent_dim_id 294 1
+3 294 -1
+@ipar_num 295 1
+1 295 0
+@relpar_sets 296 0
+1 296 [1]
+2 296 
+@id 297 1
+3 297 -1
+@type 298 1
+3 298 1
+@ext_ref_id 299 1
+3 299 -1
+@param 300 0
+3 300 [3]
+4 300 
+@sym 301 10
+5 301 
+@value 302 0
+5 302 
+@type 303 1
+6 303 50
+@value(d_val) 304 2
+6 304 0
+@bak_value 305 0
+5 305 
+6 303 50
+6 304 0
+4 300 
+5 301 SHAFT_LENGTH
+5 302 
+6 303 50
+6 304 400B0A3D70A3D70A
+5 305 
+6 303 50
+6 304 400B0A3D70A3D70A
+4 300 
+5 301 MOTOR_TYPE
+5 302 
+6 303 50
+6 304 3FF
+5 305 
+6 303 50
+6 304 3FF
+@relatnum 306 1
+3 306 26
+@relation 307 10
+3 307 [26]
+4 307 /* THIS SETS THE MODEL TYPE, FROM THE INPUT VALUE (1 OR 2)
+4 307 IF MOTOR_TYPE == 1
+4 307 d4:1 = 3.38
+4 307 ENDIF
+4 307 
+4 307 IF MOTOR_TYPE == 2
+4 307 d4:1 = 4.88
+4 307 ENDIF
+4 307 
+4 307 /* THIS SETS THE PARAMETER BARREL_DIAM IN PART "HOUSING"
+4 307 /*    CHANGE ACCORDING TO THE LENGTH DIMENSION IN PART "DRILL_SHAFT"
+4 307 /*    AND ALSO THE DIAMETER DIMENSION IN PART "DRILL_SHAFT"
+4 307 /*    AND ALSO THE INNER DIAMETER WHERE THE BITS GO 
+4 307 /*    AND ALSO THE OUTER DIAMETER OF THE SHAFT_SLEEVE PART 
+4 307 IF d4:1 == 4.88
+4 307 BARREL_DIAM:2 = 2.5
+4 307 d10:1 = .65
+4 307 d60:1 = .5
+4 307 d4:3 = 1.75
+4 307 ELSE
+4 307 BARREL_DIAM:2 = 2.326
+4 307 d10:1 = .475
+4 307 d60:1 = .375
+4 307 d4:3 = 1.35
+4 307 ENDIF
+4 307 
+@bak_relation 308 10
+3 308 [26]
+4 308 /* THIS SETS THE MODEL TYPE, FROM THE INPUT VALUE (1 OR 2)
+4 308 IF MOTOR_TYPE == 1
+4 308 d4:1 = 3.38
+4 308 ENDIF
+4 308 
+4 308 IF MOTOR_TYPE == 2
+4 308 d4:1 = 4.88
+4 308 ENDIF
+4 308 
+4 308 /* THIS SETS THE PARAMETER BARREL_DIAM IN PART "HOUSING"
+4 308 /*    CHANGE ACCORDING TO THE LENGTH DIMENSION IN PART "DRILL_SHAFT"
+4 308 /*    AND ALSO THE DIAMETER DIMENSION IN PART "DRILL_SHAFT"
+4 308 /*    AND ALSO THE INNER DIAMETER WHERE THE BITS GO 
+4 308 /*    AND ALSO THE OUTER DIAMETER OF THE SHAFT_SLEEVE PART 
+4 308 IF d4:1 == 4.88
+4 308 BARREL_DIAM:2 = 2.5
+4 308 d10:1 = .65
+4 308 d60:1 = .5
+4 308 d4:3 = 1.75
+4 308 ELSE
+4 308 BARREL_DIAM:2 = 2.326
+4 308 d10:1 = .475
+4 308 d60:1 = .375
+4 308 d4:3 = 1.35
+4 308 ENDIF
+4 308 
+@unit_arr 309 0
+1 309 [2]
+2 309 
+@type 310 1
+3 310 1
+@factor 311 2
+3 311 3FF
+@name 312 10
+3 312 INCH
+@unit_type 313 1
+3 313 0
+2 309 
+3 310 2
+3 311 3FF
+3 312 POUND
+3 313 1
+@geom_lib_ptr 314 0
+1 314 NULL
+@first_quilt_ptr 315 1
+1 315 0
+@attrib_array 316 1
+1 316 [2]
+$536870920,0
+@smt_info_ptr 317 0
+1 317 NULL
+@cable_info_ptr 318 0
+1 318 ->
+@id 319 1
+2 319 -1
+@type 320 1
+2 320 94
+@ref_harness_id 321 1
+2 321 -1
+@cable_assem_id 322 1
+2 322 -1
+@work_subharn_id 323 1
+2 323 -3253
+@parent_ext_ref_id 324 1
+2 324 -1
+@p_frbn_info 325 0
+2 325 NULL
+@comp_info_ptr 326 0
+1 326 NULL
+@max_part_size 327 2
+1 327 0
+@prt_misc_ptr 328 0
+1 328 ->
+@shrink_data_ptr 329 0
+2 329 NULL
+@layer_array 330 0
+1 330 [2]
+2 330 ->
+@id 331 1
+3 331 12
+@type 332 1
+3 332 117
+@user_id 333 1
+3 333 0
+@weird_wline_ptr 334 0
+3 334 ->
+@weird_wline 335 10
+4 335 PLANE
+@layer_objects 336 0
+3 336 [1]
+4 336 
+@type 337 1
+5 337 3
+@ids 338 1
+5 338 [2]
+$1,9
+@saved_operation 339 1
+3 339 3
+2 330 ->
+3 331 14
+3 332 117
+3 333 0
+3 334 ->
+4 335 MIRROR_PART
+3 336 [1]
+4 336 
+5 337 34
+5 338 [1]
+6 338 11
+3 339 1
+@expld_mv_info 340 0
+1 340 NULL
+@state_info_ptr 341 0
+1 341 NULL
+@alumni_feats 342 0
+1 342 NULL
+@model_name 343 10
+1 343 DRILL
+@p_mdl_grid 344 0
+1 344 NULL
+@mdl_status_ptr 345 0
+1 345 NULL
+@cfg_states 346 0
+1 346 NULL
+@disp_outl_info 347 0
+1 347 
+@disp_outline 348 2
+2 348 [2][3]
+$BFF9FD2F1810B097,BFF9A61836049E7D,C00B8210CEBCEE5E
+$3FF9FD2F1810B097,40184F8456FF3215,40141C0B4F815793
+@ribbon_info_ptr 349 0
+1 349 NULL
+@p_xref_data 350 0
+1 350 ->
+@View 351 0
+0 351 ->
+@id 352 1
+1 352 0
+@viewattr 353 0
+1 353 
+@attr_arr 354 1
+2 354 [4]
+$1,3*0
+@mpoint 355 0
+1 355 
+@id 356 1
+2 356 0
+@coord 357 2
+2 357 [3]
+$0,4001E5FE497E0A76,3FE96C0BA08B819
+@first_instr_ptr 358 0
+2 358 NULL
+@attach_ptr 359 0
+2 359 NULL
+@vpoint 360 0
+1 360 
+2 356 0
+2 357 [3]
+$407F4,407A5E,0
+2 358 NULL
+2 359 NULL
+@orient 361 2
+1 361 [4][4]
+$3FD329C7A4045501,BFDFB471597DCFB4,3FEA180C2706374,0
+$BFD57B02B1FB3768,BFEB59CA27723056,BFD95826B0FDFBF8,0
+$3FEC9495C181AE94,BFC3DABF2D2802E4,BFDB052B0603A97A,0
+$3*0,3FF
+@local_sys 362 2
+1 362 [4][4]
+$4031B84782C1E7F5,C03D511DF2BE864B,404820E8FF8A6274,0
+$C033DCD406C1D796,C0494A6B3D794F34,C0376F77A37661A8,0
+$404A6D8107BF311A,C0225BEACF6FF6D8,C038FC2BC397E6E6,0
+$407F672BB25DBF7F,4080F2AAD1913DAC,405211FF0FBBCBER,3FF
+@first_instr_ptr 363 0
+1 363 ->
+@type 364 1
+2 364 100
+@geom_id 365 1
+2 365 -1
+@view_id 366 1
+2 366 -1
+@memb_num 367 1
+2 367 0
+@offset 368 2
+2 368 0
+@matrix 369 0
+2 369 NULL
+@next_instr_ptr 370 0
+1 370 ->
+2 364 301
+2 365 -1
+2 366 -1
+2 367 0
+2 368 404D96FBB8ABF8AR
+2 369 NULL
+1 370 ->
+2 364 125
+2 365 -1
+2 366 -1
+2 367 0
+2 368 0
+2 369 ->
+@matrix 371 2
+3 371 [4][4]
+$3FC4BB81A932EB9B,BFC439C289940AF4,3FEF2B8449C4D29D,0
+$BFED1065D5344465,BFDA3A09D07A36A3,3FB5A537C398B6BC,0
+$3FD8B0FE9F406518,BFECBF99966A2E1C,BFCADDAF5327B45A,0
+$3*0,3FF
+1 370 NULL
+@outer_xsec_index 372 1
+1 372 -1
+@next_view_id 373 1
+1 373 5
+@simp_rep_id 374 1
+1 374 0
+@name 375 10
+1 375 no name
+@matrix 376 2
+1 376 [4][4]
+$3FF,3*0
+$0,3FF,2*0
+$2*0,3FF,0
+$3*0,3FF
+@fit_outline 377 2
+1 377 [2][3]
+$4059,405518,C07122530084868A
+$408C2,4087BB,407122530084868R
+@det_info_ptr 378 0
+1 378 NULL
+@named_view_pzmatr 379 0
+1 379 NULL
+@page_id 380 1
+1 380 0
+@model_name 381 10
+1 381 NULL
+@unrep_model_name 382 10
+1 382 NULL
+@View 383 0
+0 383 ->
+@id 384 1
+1 384 5
+@viewattr 385 0
+1 385 
+@attr_arr 386 1
+2 386 [4]
+$1,3*0
+@mpoint 387 0
+1 387 
+@id 388 1
+2 388 0
+@coord 389 2
+2 389 [3]
+$0,40023E94F5DABC65,BFE8FDD0127C863A
+@first_instr_ptr 390 0
+2 390 NULL
+@attach_ptr 391 0
+2 391 NULL
+@vpoint 392 0
+1 392 
+2 388 0
+2 389 [3]
+$407F4,407A5E,0
+2 390 NULL
+2 391 NULL
+@orient 393 2
+1 393 [4][4]
+$2*0,3FF,0
+$0,BFF,2*0
+$3FF,3*0
+$3*0,3FF
+@local_sys 394 2
+1 394 [4][4]
+$2*0,404E0C7E1B3B4AB2,0
+$0,C04E0C7E1B3B4AB2,2*0
+$404E0C7E1B3B4AB2,3*0
+$4081177B4BC036B3,40817772C1129997,0,3FF
+@first_instr_ptr 395 0
+1 395 ->
+@type 396 1
+2 396 100
+@geom_id 397 1
+2 397 -1
+@view_id 398 1
+2 398 -1
+@memb_num 399 1
+2 399 0
+@offset 400 2
+2 400 0
+@matrix 401 0
+2 401 NULL
+@next_instr_ptr 402 0
+1 402 ->
+2 396 301
+2 397 -1
+2 398 -1
+2 399 0
+2 400 404E0C7E1B3B4AB2
+2 401 NULL
+1 402 ->
+2 396 201
+2 397 21
+2 398 -1
+2 399 1
+@memb_id_tab 403 1
+2 403 [1]
+3 403 4
+2 400 0
+2 401 NULL
+1 402 ->
+2 396 217
+2 397 2393
+2 398 -1
+2 399 1
+2 403 [1]
+3 403 4
+2 400 0
+2 401 NULL
+1 402 NULL
+@outer_xsec_index 404 1
+1 404 -1
+@next_view_id 405 1
+1 405 6
+@simp_rep_id 406 1
+1 406 0
+@name 407 10
+1 407 SIDE
+@matrix 408 2
+1 408 [4][4]
+$3FF,3*0
+$0,3FF,2*0
+$2*0,3FF,0
+$3*0,3FF
+@fit_outline 409 2
+1 409 [2][3]
+$4059,405518,C05866291D16616F
+$408C2,4087BB,405866291D16616F
+@det_info_ptr 410 0
+1 410 NULL
+@named_view_pzmatr 411 0
+1 411 ->
+@matrix 412 2
+2 412 [4][4]
+$3FFB2C9C1CF23AF5,3*0
+$0,3FFB2C9C1CF23AF5,2*0
+$2*0,3FFB2C9C1CF23AF5,0
+$C0766B9B552924F2,C072355774D8A41C,0,3FF
+@page_id 413 1
+1 413 0
+@model_name 414 10
+1 414 NULL
+@unrep_model_name 415 10
+1 415 NULL
+@View 416 0
+0 416 ->
+@id 417 1
+1 417 6
+@viewattr 418 0
+1 418 
+@attr_arr 419 1
+2 419 [4]
+$1,3*0
+@mpoint 420 0
+1 420 
+@id 421 1
+2 421 0
+@coord 422 2
+2 422 [3]
+$3FABB542011B322,400235A6A9E509B8,3FE7803F877E8B04
+@first_instr_ptr 423 0
+2 423 NULL
+@attach_ptr 424 0
+2 424 NULL
+@vpoint 425 0
+1 425 
+2 421 0
+2 422 [3]
+$407F4,407A5E,0
+2 423 NULL
+2 424 NULL
+@orient 426 2
+1 426 [4][4]
+$0,3FF,2*0
+$2*0,3FF,0
+$3FF,3*0
+$3*0,3FF
+@local_sys 427 2
+1 427 [4][4]
+$0,404E2A3078113192,2*0
+$2*0,404E2A3078113192,0
+$404E2A3078113192,3*0
+$407C7B1910A155B2,407A29C31480F6E2,C0612A4E3ED2AE4R,3FF
+@first_instr_ptr 428 0
+1 428 ->
+@type 429 1
+2 429 100
+@geom_id 430 1
+2 430 -1
+@view_id 431 1
+2 431 -1
+@memb_num 432 1
+2 432 0
+@offset 433 2
+2 433 0
+@matrix 434 0
+2 434 NULL
+@next_instr_ptr 435 0
+1 435 ->
+2 429 301
+2 430 -1
+2 431 -1
+2 432 0
+2 433 404E2A3078113192
+2 434 NULL
+1 435 ->
+2 429 202
+2 430 21
+2 431 -1
+2 432 1
+@memb_id_tab 436 1
+2 436 [1]
+3 436 4
+2 433 0
+2 434 NULL
+1 435 ->
+2 429 217
+2 430 2393
+2 431 -1
+2 432 1
+2 436 [1]
+3 436 4
+2 433 0
+2 434 NULL
+1 435 NULL
+@outer_xsec_index 437 1
+1 437 -1
+@next_view_id 438 1
+1 438 7
+@simp_rep_id 439 1
+1 439 0
+@name 440 10
+1 440 BOTTOM
+@matrix 441 2
+1 441 [4][4]
+$3FF,3*0
+$0,3FF,2*0
+$2*0,3FF,0
+$3*0,3FF
+@fit_outline 442 2
+1 442 [2][3]
+$4059,405518,C06C987D9C67D978
+$408C2,4087BB,406C987D9C67D976
+@det_info_ptr 443 0
+1 443 NULL
+@named_view_pzmatr 444 0
+1 444 ->
+@matrix 445 2
+2 445 [4][4]
+$3FFB2C9C1CF23AF5,3*0
+$0,3FFB2C9C1CF23AF5,2*0
+$2*0,3FFB2C9C1CF23AF5,0
+$C0766B9B552924F2,C072355774D8A41C,0,3FF
+@page_id 446 1
+1 446 0
+@model_name 447 10
+1 447 NULL
+@unrep_model_name 448 10
+1 448 NULL
+@View 449 0
+0 449 ->
+@id 450 1
+1 450 7
+@viewattr 451 0
+1 451 
+@attr_arr 452 1
+2 452 [4]
+$1,3*0
+@mpoint 453 0
+1 453 
+@id 454 1
+2 454 0
+@coord 455 2
+2 455 [3]
+$3FABB542011B322,400235A6A9E509B8,3FE7803F877E8B04
+@first_instr_ptr 456 0
+2 456 NULL
+@attach_ptr 457 0
+2 457 NULL
+@vpoint 458 0
+1 458 
+2 454 0
+2 455 [3]
+$407F4,407A5E,0
+2 456 NULL
+2 457 NULL
+@orient 459 2
+1 459 [4][4]
+$3FF,3*0
+$0,BFF,2*0
+$2*0,BFF,0
+$3*0,3FF
+@local_sys 460 2
+1 460 [4][4]
+$404E2A3078113192,3*0
+$0,C04E2A3078113192,2*0
+$2*0,C04E2A3078113192,0
+$407F0BC31480F6E2,408179938FB4AB91,404627377AF5526D,3FF
+@first_instr_ptr 461 0
+1 461 ->
+@type 462 1
+2 462 100
+@geom_id 463 1
+2 463 -1
+@view_id 464 1
+2 464 -1
+@memb_num 465 1
+2 465 0
+@offset 466 2
+2 466 0
+@matrix 467 0
+2 467 NULL
+@next_instr_ptr 468 0
+1 468 ->
+2 462 301
+2 463 -1
+2 464 -1
+2 465 0
+2 466 404E2A3078113192
+2 467 NULL
+1 468 ->
+2 462 206
+2 463 2393
+2 464 -1
+2 465 1
+@memb_id_tab 469 1
+2 469 [1]
+3 469 4
+2 466 0
+2 467 NULL
+1 468 ->
+2 462 217
+2 463 21
+2 464 -1
+2 465 1
+2 469 [1]
+3 469 4
+2 466 0
+2 467 NULL
+1 468 NULL
+@outer_xsec_index 470 1
+1 470 -1
+@next_view_id 471 1
+1 471 13
+@simp_rep_id 472 1
+1 472 0
+@name 473 10
+1 473 FRONT
+@matrix 474 2
+1 474 [4][4]
+$3FF,3*0
+$0,3FF,2*0
+$2*0,3FF,0
+$3*0,3FF
+@fit_outline 475 2
+1 475 [2][3]
+$4059,405518,C06F2A29D033770B
+$408C2,4087BB,406F2A29D033770A
+@det_info_ptr 476 0
+1 476 NULL
+@named_view_pzmatr 477 0
+1 477 ->
+@matrix 478 2
+2 478 [4][4]
+$3FFB2C9C1CF23AF5,3*0
+$0,3FFB2C9C1CF23AF5,2*0
+$2*0,3FFB2C9C1CF23AF5,0
+$C0766B9B552924F2,C072355774D8A41C,0,3FF
+@page_id 479 1
+1 479 0
+@model_name 480 10
+1 480 NULL
+@unrep_model_name 481 10
+1 481 NULL
+@View 482 0
+0 482 ->
+@id 483 1
+1 483 13
+@viewattr 484 0
+1 484 
+@attr_arr 485 1
+2 485 [4]
+$1,3*0
+@mpoint 486 0
+1 486 
+@id 487 1
+2 487 0
+@coord 488 2
+2 488 [3]
+$0,4001E5FE497E0A76,3FE96C0BA08B819
+@first_instr_ptr 489 0
+2 489 NULL
+@attach_ptr 490 0
+2 490 NULL
+@vpoint 491 0
+1 491 
+2 487 0
+2 488 [3]
+$407F4,407A5E,0
+2 489 NULL
+2 490 NULL
+@orient 492 2
+1 492 [4][4]
+$3FD329C7A4045501,BFDFB471597DCFB4,3FEA180C2706374,0
+$BFD57B02B1FB3768,BFEB59CA27723056,BFD95826B0FDFBF8,0
+$3FEC9495C181AE94,BFC3DABF2D2802E4,BFDB052B0603A97A,0
+$3*0,3FF
+@local_sys 493 2
+1 493 [4][4]
+$4031B84782C1E7F5,C03D511DF2BE864B,404820E8FF8A6274,0
+$C033DCD406C1D796,C0494A6B3D794F34,C0376F77A37661A8,0
+$404A6D8107BF311A,C0225BEACF6FF6D8,C038FC2BC397E6E6,0
+$407F672BB25DBF7F,4080F2AAD1913DAC,405211FF0FBBCBER,3FF
+@first_instr_ptr 494 0
+1 494 ->
+@type 495 1
+2 495 100
+@geom_id 496 1
+2 496 -1
+@view_id 497 1
+2 497 -1
+@memb_num 498 1
+2 498 0
+@offset 499 2
+2 499 0
+@matrix 500 0
+2 500 NULL
+@next_instr_ptr 501 0
+1 501 ->
+2 495 301
+2 496 -1
+2 497 -1
+2 498 0
+2 499 404D96FBB8ABF8AR
+2 500 NULL
+1 501 ->
+2 495 125
+2 496 -1
+2 497 -1
+2 498 0
+2 499 0
+2 500 ->
+@matrix 502 2
+3 502 [4][4]
+$3FC4BB81A932EB9B,BFC439C289940AF4,3FEF2B8449C4D29D,0
+$BFED1065D5344465,BFDA3A09D07A36A3,3FB5A537C398B6BC,0
+$3FD8B0FE9F406518,BFECBF99966A2E1C,BFCADDAF5327B45A,0
+$3*0,3FF
+1 501 NULL
+@outer_xsec_index 503 1
+1 503 -1
+@next_view_id 504 1
+1 504 -2
+@simp_rep_id 505 1
+1 505 0
+@name 506 10
+1 506 ISO
+@matrix 507 2
+1 507 [4][4]
+$3FF,3*0
+$0,3FF,2*0
+$2*0,3FF,0
+$3*0,3FF
+@fit_outline 508 2
+1 508 [2][3]
+$4059,405518,C07122530084868A
+$408C2,4087BB,407122530084868R
+@det_info_ptr 509 0
+1 509 NULL
+@named_view_pzmatr 510 0
+1 510 ->
+2 502 [4][4]
+$3FF95EA03C385194,3*0
+$0,3FF95EA03C385194,2*0
+$2*0,3FF95EA03C385194,0
+$C0724CD0F59DFF56,C06EE1A09E7A9EF4,0,3FF
+@page_id 511 1
+1 511 0
+@model_name 512 10
+1 512 NULL
+@unrep_model_name 513 10
+1 513 NULL
+@assem_merge_parts 514 0
+0 514 ->
+#END_OF_UGC

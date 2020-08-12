@@ -1,0 +1,409 @@
+<HEAD>
+
+<TITLE>PTC - "CUSTOMIZING TOOL MOTIONS"</TITLE>
+
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+
+<SCRIPT language = "JavaScript">
+
+
+
+//  This function shows the use of model retrieve, named view, and NC Check  //
+
+
+function example() 
+
+{
+
+        quit_wind();
+
+	retrieve_model('cast_mill.mfg','models/cast_mill/');
+
+        ViewSet('cast_mill.asm', 'mill_flats');
+
+        NC_Check('1x1','B45FACE.ncl');
+
+}
+
+
+
+// This function shows the syntax to play a menu sequence //
+
+
+function not_optimized()
+
+{
+
+
+	no_1="#MACHINING;#OPTIMIZE;#RULES/ORDER;#ORDER SEQS;#YES;#DONE/RETURN;"
+
+no_2="~ Activate `main_dlg_cur` `ProCmdViewRepaint.view`"
+
+no_3="#DONE/RETURN;#PLAY PATH;#DONE CL;"
+
+ret = document.wm.pwlMacroLoad(no_1);
+
+ret = document.wm.pwlMacroLoad(no_2);
+
+
+// Provide a hint as to what to talk about //
+
+msg = "\nWith no optimization,  the toolpath will be";
+
+msg = msg + "\noutput in the order that it was programmed.";
+
+msg = msg + "\nEach part will be completed before moving on to the next.\n";
+
+if (confirm(msg)) {
+    }
+
+
+ret = document.wm.pwlMacroLoad(no_3);
+
+}
+
+
+
+quit_wind();
+
+retrieve_model('tool_motions.mfg','models/tool_motions/');
+
+ViewSet('tool_motions.asm', 'mfg');
+
+set_display("shade");
+
+component_display('VIS0001');
+
+function leadin_out()
+
+{
+
+	layer_blank ('tool_motions.asm','helical_notes');
+
+	layer_blank ('tool_motions.asm','norm_tang_notes');
+
+	layer_blank ('tool_motions.asm','goto_notes');
+
+	layer_normal ('tool_motions.asm','leadin_notes');
+
+	Play_Path('2','profile milling','op010','.025');
+
+	View_Repaint();
+
+}
+
+
+
+function tangent_normal()
+
+{
+
+	ViewSet('tool_motions.asm', 'mfg_norm');
+
+	layer_blank ('tool_motions.asm','helical_notes');
+
+	layer_blank ('tool_motions.asm','leadin_notes');
+
+	layer_blank ('tool_motions.asm','goto_notes');
+
+	layer_normal ('tool_motions.asm','norm_tang_notes');
+
+	Play_Path('4','profile milling','op010','.025');
+
+	View_Repaint();
+
+}
+
+
+
+function helical()
+
+{
+
+	ViewSet('tool_motions.asm', 'mfg_heli');
+
+	layer_blank ('tool_motions.asm','norm_tang_notes');
+
+	layer_blank ('tool_motions.asm','leadin_notes');
+
+	layer_blank ('tool_motions.asm','goto_notes');
+
+	layer_normal ('tool_motions.asm','helical_notes');
+
+	Play_Path('5','profile milling','op010','.025');
+
+	View_Repaint();
+
+
+}
+
+function interactive()
+
+{
+
+	ViewSet('tool_motions.asm', 'mfg_goto');
+
+	layer_blank ('tool_motions.asm','norm_tang_notes');
+
+	layer_blank ('tool_motions.asm','leadin_notes');
+
+	layer_blank ('tool_motions.asm','helical_notes');
+
+	layer_normal ('tool_motions.asm','goto_notes');
+
+	Play_Path('3','profile milling','op010','.025');
+
+	View_Repaint();
+
+}
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF">
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+<CENTER>
+<FONT SIZE=5 COLOR="#000080" face="arial,helvetica"><B>
+
+
+<!-- title goes here -->
+
+	Customizing Toolpaths</FONT SIZE></B></CENTER></FONT>
+
+
+
+<form NAME="ui">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+<font face="arial,Helvetica" size=3>
+<br>
+<font face="arial,Helvetica" size=3>
+
+
+
+Pro/MFG provides the user with interactive low level control of the tool
+
+for steering clear of fixtures and clamps.  This functionality is available in a simple and powerful user 
+interface to quickly create the desired output.<ul>
+
+
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#leadin_out">Approach and Exit Motions</A>
+<br>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#interactive">Interactive Motions</A>
+<br>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#UI">User Interface</A>
+</ul>
+
+
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<// ************************************  ENTRY / EXIT  *********************************//>
+
+<A NAME="leadin_out">
+</A>
+<br>
+<B>
+<FONT SIZE=4 COLOR="#000080">
+
+Approach and Exit Motions</FONT SIZE></B>
+<br>
+
+<font face="arial,Helvetica" size=3>
+
+
+
+Many times, special entry and exit conditions have to be met when machining a part in order
+
+to avoid fixtures or to get rid of burrs.  This can be preset by 
+
+specifying parameters in the parameter file or  by creating the desired motions under 
+
+the 'Customize' menu.  
+<br>
+
+<br>
+
+<IMG SRC="../tool_motions/images/leadin.gif" width="410">
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="Lead In / Lead Out Example" onclick="leadin_out()">
+
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="Tangent / Normal Example" onclick="tangent_normal()">
+
+<BR>
+<IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="Helical Example" onclick="helical()">
+
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<// ************************************  Interactive Control 
+****************************************//>
+
+
+<A NAME="interactive"></A>
+<br>
+<B>
+<FONT SIZE=4 COLOR="#000080">
+
+Interactive Motions</FONT SIZE></B>
+<br></font>
+<font face="arial,Helvetica" size=3>
+
+
+
+Besides Approach and Exit Motions, the programmer also has control of where the tool needs to go
+
+during the cut. Pro/MFG allows the user to GoTo a point, Go Delta from the current tool
+
+position, Go Home, Plunge, Retract, or Sketch a tool path.  
+<br>
+
+<br>
+
+<IMG SRC="../tool_motions/images/GoTo_Point.gif">
+<br>
+
+<!input type=button value="Corner Conditions Example" onclick="corners()">
+
+
+<IMG SRC="../template/images/bullet.gif" >
+
+<input type=button value="Interactive Control Example" onclick="interactive()">
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+<// ************************************  Go DELTA   *****************************//>
+<br>
+<B>
+
+<FONT SIZE=4 COLOR="#000080">Go Delta</FONT SIZE></B>
+<br>
+
+
+Go Delta gives you the option to move the tool from its current position an
+
+incremental amount in any combination of X, Y or Z.
+<br>
+<br>
+
+<IMG SRC="../tool_motions/images/godlta.gif">
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+
+
+<// ************************************  User Interface   *****************************//>
+
+
+<A NAME="UI"></A>
+<B>
+<FONT SIZE=4 COLOR="#000080">"Customize" User Interface</FONT SIZE></B>
+<br></font>
+<font face="arial,Helvetica" size=3>
+
+
+
+A new user interface has been added to easily control the customized motions described
+
+above.  The Pro/MFG user has the ability to cut and paste common customized tool 
+
+motions as well as copy, redefine, delete and modify parameters for each motion.  When a 
+
+tool motion is selected in the dialogue box, the corresponding tool path will  highlight 
+
+on the main viewing window.  It makes it very easy to see what each tool motion is doing
+
+and in what order.
+
+<br>
+<br>
+
+<IMG SRC="../tool_motions/images/customize.gif">
+
+<!input type=button value="As Programmed" onclick="not_optimized()">
+
+<!input type=button value="Optimized" onclick="optimized()">
+<br><br>
+
+<IMG SRC="../tool_motions/images/goto1.gif" WIDTH=280>
+<br>
+<IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+
+
+<!--   #######################    end of document content    #######################   -->
+
+</form>
+
+<!-- START OF MENUBAR -->
+<center>
+
+<!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+        
+<a href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Four Axis Milling'; return true"
+        >
+<img src="../template/images/back.gif" width=75 height=40 border=0></a>
+<a href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to the Manufacturing Index'; return true"
+        >
+<img src="../template/images/index.gif" width=128 height=40 border=0></a>
+<a
+        href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Manufacturing Summary'; return true"
+        >
+<img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+
+<!-- END OF MENUBAR -->
+
+
+
+</BODY>
+
+</HTML>

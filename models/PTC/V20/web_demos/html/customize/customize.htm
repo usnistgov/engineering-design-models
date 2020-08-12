@@ -1,0 +1,399 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   
+<META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+   
+<TITLE>PTC - "TOOLPATH CUSTOMIZATION"</TITLE>
+</HEAD>
+
+<BODY>
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language="JavaScript">
+
+
+
+quit_wind();
+retrieve_model('electrode.mfg','models/customize/');
+set_display('shade');
+
+function repaint()
+
+{
+	
+	cust1= "#DONE/RETURN;#MACHINING;#NC SEQUENCE; "
+	
+	cust2= "#1: DEFAULT_PATH, Operation: OP010;#QUIT SEQ;#CONFIRM; "
+	
+	ret = document.wm.pwlMacroLoad(cust1);
+	
+	ret = document.wm.pwlMacroLoad(cust2);
+
+}
+
+
+function m1() 
+{
+	
+	Play_Path('1','DEFAULT_PATH','OP010','.05');
+
+	View_Repaint();
+}
+
+
+
+function m2() 
+{
+	
+	Play_Path('2','NEW_START_POINT','OP010','.05');
+
+	View_Repaint();
+}
+
+
+
+function m3() 
+{
+	
+	Play_Path('3','STRETCH_ENDS','OP010','.05');
+
+	View_Repaint();
+}
+
+
+
+function m4() 
+{
+	
+	Play_Path('4','LEAD_IN__LEAD_OUT','OP010','.05');
+
+	View_Repaint();
+}
+
+
+
+function m5() 
+{
+	
+	Play_Path('5','STEP_DEPTH','OP010','.05');
+
+	View_Repaint();
+}
+
+
+
+function m6() 
+{
+	
+	quit_wind();
+	set_display('wireframe');
+	
+	retrieve_model('body3_cope.mfg','models/customize/');
+	
+
+	ViewSet('body3_cope.asm', 'nc_check')
+	
+	View_Repaint();
+	
+	NC_Check('1X1','default_volume.ncl');
+
+}
+
+
+
+function m7() 
+{
+	
+	quit_wind();
+	
+	retrieve_model('body3_cope.mfg','models/customize/');
+	
+
+	ViewSet('body3_cope.asm', 'nc_check')
+	
+	NC_Check('1X1','start_hole_volume.ncl');
+
+}
+
+
+
+function m8() 
+{
+	
+	quit_wind();
+	
+	set_display('wireframe');
+	
+	retrieve_model('body3_cope.mfg','models/customize/');
+	
+
+	ViewSet('body3_cope.asm', 'show_helix')
+	
+	Play_Path_CL('4', 'helical_volume', 'OP010', '.05');
+
+	View_Repaint();
+}
+
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF">
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B>
+<FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>
+
+Tool
+Path Customization - Entry/Exit
+
+</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+
+<BR><IMG SRC="../template/images/divider.gif" >
+
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Often the creation of a tool
+path to profile a feature or cut a surface is only the beginning for the
+
+NC Programmer. Next he must customize the tool path, capturing precisely
+
+</FONT></FONT>
+<UL>
+<LI>
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+how and where the tool should
+approach the material,
+
+</FONT></FONT></LI>
+
+<LI>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+how it should exit,
+
+</FONT></FONT></LI>
+
+<LI>
+
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+how many times it should go
+over the material and
+
+</FONT></FONT></LI>
+
+<LI>
+
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+how much material should be
+removed with each pass,
+
+</FONT></FONT></LI>
+</UL>
+
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+and any number of other options.
+Pro/MFG provides these and many more <B>tools for customizing
+
+a tool path</B>, for both <B>optimum cutting motion</B> and for <B>minimizing
+
+machining time
+
+</B>.</FONT></FONT>
+
+<BR><BR>
+<IMG SRC="images/traj.gif" width=275><BR><BR><br> <FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+In
+the following examples, a bull nose cutter profiles an electrode for a
+
+finish cut. The programmer has selected&nbsp; the edges around the part
+
+and let the system determine the start and end point.
+
+</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Machine Profile" onclick="m1()"><br>
+<IMG SRC="../template/images/divider.gif" width=280><br> 
+
+<P>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+As you can see, the tool
+enters in the center of the lower cutaway. For our first customization,
+
+let's simply <B>change the start and end point to be on the side</B>. We
+
+can put the start point anywhere along the path.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="New Start Point" onclick="m2()"><BR>
+<IMG SRC="../template/images/divider.gif" width=280><BR>
+
+<P>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+This is better, with the
+start and end point being at the start of the right flat. Still, we probably
+
+don't want the tool plunging against the part. What we might want to do
+
+is to <B>extend the start and end points off of the part</B>.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Extend Ends" onclick="m3()"><BR>
+<IMG SRC="../template/images/divider.gif" width=280><BR>
+
+<P>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Alternatively, maybe we want
+to have the tool use a <B>normal move</B> straight into part or it can
+
+be an <B>arc lead in and lead out</B>.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Lead In - Lead Out" onclick="m4()"><BR>
+<IMG SRC="../template/images/divider.gif" width=280><BR>
+
+<BR><FONT FACE="arial,Helvetica">
+
+<FONT SIZE=+0>
+
+Now, maybe there is too
+much material left for this cut to be machined in one pass. The programmer
+
+has the option of <B>adding cuts in the Z direction or in the profile direction,
+or both</B>.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Multiple Passes" onclick="m5()">
+<BR>
+
+<P>
+<IMG SRC="images/volume.gif" width=275>
+
+<P><FONT FACE="arial,Helvetica">
+
+<FONT SIZE=+0>
+
+Next we'll look at some of
+the customization available with cavity roughing operations. In this example,
+
+we have a forging die cutout that is rough machined using a 3/8" flat end
+
+mill. At first, with no entry selection, the system begins its spiral cutting
+
+motions by plunging at roughly the center of each level.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Default Path" onclick="m6()"><BR>
+<IMG SRC="../template/images/divider.gif" width=280><BR>
+
+<P>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Many NC Programmers would
+prefer to <B>first drill a hole, then approach along that hole axis 
+to each appropriate z depth,</B> machine out that depth, return to the
+
+hole, plunge again, and repeat the process. We can do this by first adding
+
+a drilling sequence and then simply telling Pro/MFG to use the
+
+same axis as its start and end point.</FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Drill Start Hole" onclick="m7()"><br>
+<IMG SRC="../template/images/divider.gif" width=280><BR>
+
+<BR>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Alternatively, a <B>helical
+approach</B> could be used. Here the programmer inputs a desired <B>diameter
+
+</B>and <B>ramp angle</B>. Instead of plunging, the system will now move
+
+the in a helical path when entering each Z-level.</FONT></FONT>
+
+
+<BR>
+<IMG SRC="../template/images/bullet.gif" >&nbsp;
+<INPUT type=button value="Helical Approach" onclick="m8()"><br>
+<IMG SRC="../template/images/divider.gif" width= 280><BR>
+
+<P>
+
+<!--   #######################    end of document content    #######################   -->
+</FORM>
+<!-- START OF MENUBAR --><!-- the link for the back button goes below -->
+
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+
+<!-- mouseover text goes below for the next button (optional) -->
+
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+
+<center><IMG SRC="../template/images/back.gif" NOSAVE BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></center>
+
+<!-- END OF MENUBAR -->
+
+
+</BODY>
+
+</HTML>

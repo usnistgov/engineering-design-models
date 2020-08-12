@@ -1,0 +1,611 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+
+   <TITLE>VOLUMES - CAVITY FOR HOUSING</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+
+quit_wind()
+
+retrieve_model('cavity_mach.mfg','models/vol_scan_type/');
+Blank_Layers();
+
+View_Repaint();
+
+ViewSet('cavity_mach.asm', 'initial');
+
+//  This function blanks all the layers within the model //
+
+function Blank_Layers()
+
+{
+
+	layer_blank('cavity_mach.asm','note');
+
+	layer_blank('cavity_mach.asm','note_1');
+
+	layer_blank('cavity_mach.asm','note_2');
+
+	layer_blank('cavity_mach.asm','note_spiral');
+
+}
+
+
+function initial_view()
+
+{
+
+	Blank_Layers();
+
+	View_Repaint();
+
+	ViewSet('cavity_mach.asm', 'initial');
+
+}
+
+
+function seq_1()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'initial');
+
+	Blank_Layers();
+
+        layer_normal ('cavity_mach.asm','note_1');
+
+	Play_Path('8','top_volume','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function cutangle_90()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', '90_degree');
+
+	Blank_Layers();
+
+        layer_normal ('cavity_mach.asm','note_2');
+
+	Play_Path('11','top_vol_90','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function one_direction()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'one_dir');
+	Blank_Layers();
+
+        layer_normal ('cavity_mach.asm','note');
+
+	Play_Path('12','top_vol_one_dir','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function spiral()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'spiral');
+
+	Blank_Layers();
+
+        layer_normal ('cavity_mach.asm','note_spiral');
+
+	Play_Path('9','spiral_top','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function island_boss()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'main_type1');
+
+	Blank_Layers();
+
+        NC_Check('1x1','island_avoid.ncl');
+	View_Repaint();
+}
+
+
+function helical()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'helical_close');
+
+	Blank_Layers();
+
+	Play_Path('5','helical','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function cutline_closed()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'fillet_cutline');
+
+	Blank_Layers();
+
+	Play_Path('10','fillet_cutline','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function profile_step()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'profile');
+
+	Blank_Layers();
+
+	Play_Path('6','profile_step_depth','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+function full_depth()
+
+{
+
+        set_display('wireframe');
+
+	ViewSet('cavity_mach.asm', 'profile');
+
+	Blank_Layers();
+
+	Play_Path('7','profile_at_depth','op_top_vol','50');
+
+	View_Repaint();
+}
+
+
+</SCRIPT>
+
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+
+<CENTER><!-- title goes here --><B><FONT FACE="arial,helvetica">
+<FONT COLOR="#000080">
+<FONT SIZE=+2>
+
+VOLUMES
+- Ways to Cut a&nbsp; Cavity</FONT></FONT></FONT></B></CENTER>
+
+
+<FORM NAME="ui">
+<BR><IMG SRC="../template/images/divider.gif" >
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+This set of toolpaths machine
+a simple casting cavity. It is intended to illustrate the use of different&nbsp;
+
+<B>tool control</B> values for getting the most suitable <B>automatic tool
+
+path </B>and the behavior seen in relation to internal bosses upstands
+
+or islands within a<B> pocket cavity.</B></FONT></FONT>
+
+<P>
+
+<IMG SRC="../template/images/divider.gif" ><BR>
+<BR><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+The component also illustrates
+the use of <B>ramp angle </B>and <B>helical </B>movement between <B>step
+
+depths</B> for high speed material removal.</FONT></FONT>
+<UL>
+
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#straight_lace">Zig-Zag
+milling</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#cut_angle">Modifying
+the Cut angle</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#one_dir">Cut in
+one direction only</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#spiral">Spiral
+Cutting</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#bosses">Automatic
+Island Avoidance</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#helical">High
+Speed Helical Plunge Entry</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#profile">Profile
+Side Surfaces</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#step_depth">Cut
+one pass at Full depth</A>
+<BR>
+<IMG SRC="../template/images/bullet.gif" > 
+<A HREF="#cutline">Multi
+Surface Cutting</A></UL>
+
+
+<IMG SRC="../template/images/divider.gif" >
+
+<br><br>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+In addition it is possible
+to make a change to the component to add an additional internal boss in
+
+order to show how tool paths can automatically update because they are
+
+associatively linked to the model geometry.</FONT></FONT>
+<br><br>
+
+
+<IMG SRC="images/vol_parms.gif" >
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+In this component it is required
+to machine to the flange depth before clearing the material from the remaining
+
+lower area of the cavity. This is achieved easily by defining each roughing 
+
+region. By separating the milling pockets, it is very straight forward to let
+
+Pro/MFG-MILL know which areas of the component we are cutting.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" >
+
+
+
+<// ************************************  straight lacing *********************************//>
+
+<A NAME="straight_lace"></A>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+The first machining sequence
+cleans down to the flange height. The shape of the part here will demand
+
+control of the way that the tool will lace across the work piece. Initially
+
+we will see the default tool path with the tool moving in straight lines.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Straight Lace, Zig-Zag" onclick="seq_1()">
+<br>
+<IMG SRC="../template/images/divider.gif" >
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0></FONT></FONT>
+<BR>
+
+
+
+<// ************************************ start cut angle 90 *********************************//>
+
+<A NAME="cut_angle"></A>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+To change the way a tool
+cuts it is only necessary to alter a couple of the toolpath settings.
+
+</FONT></FONT>
+
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0></FONT></FONT>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+For example the component
+is longer in one direction than the other so modifying the cut angle will
+
+give us more continuous cutting.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Cut angle 90 DEG" onclick="cutangle_90()">
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+<// ************************************ end cut angle 90 *********************************//>
+
+
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+
+
+<// ************************************ start one direction *********************************//>
+
+<A NAME="one_dir"></A>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+If a part requires a special
+finish or the machine has poor positioning you may set the toolpath to
+
+only cut feed in one direction.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Cut in 1 Direction" onclick="one_direction()">
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+<// ************************************ end one direction *********************************//>
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" >
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0></FONT></FONT>
+<BR>
+
+<// ************************************ start spiral *********************************//>
+
+<A NAME="spiral"></A>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+For this type of pocket with
+a somewhat circular profile it is much more effective to utilize a spiral
+
+motion.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Spiral Cut" onclick="spiral()">
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0></FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+<// ************************************ end spiral *********************************//>
+
+<// ************************************ start bosses *********************************//>
+
+<A NAME="bosses"></A>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+<B>MAIN VOLUME</B></FONT></FONT>
+<BR><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Within the main cavity are
+internal bosses or islands which must be avoided. Pro/MFG will
+
+develop the tool path automatically allowing for island avoidence by setting
+
+the area scan type value.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Island Avoidance" onclick="island_boss()">
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0></FONT></FONT>
+
+
+
+<// ************************************ start helical  *********************************//>
+
+<A NAME="helical"></A>
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0></FONT></FONT>
+
+<P>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+When cutting hard materials,
+such as tool steel, a straight plunge into the material is not desirable
+
+because of possible tool breakage or excessve tool wear.</FONT></FONT>
+
+<P>
+
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Pro/MFG can easily
+control the way a tool plunges by introducing a ramp angle and/or a helix
+
+diameter which will provide a spiral downward plunge movement.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Helical Entry" onclick="helical()"><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0></FONT></FONT>
+<BR>
+<IMG SRC="../template/images/divider.gif" >
+
+
+
+
+<// ************************************ start profiling *********************************//>
+
+<A NAME="profile"></A>
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<P>
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0><B>PROFILING</B></FONT></FONT>
+<BR>
+<FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+Another requirement for
+this type of geometry is to clean up the walls which have both draft and
+
+fillets associated with them. This is achieved using an automatic profiling
+
+sequence using an angled radiused cutter.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Profile Sides" onclick="profile_step()"><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+<// ************************************ end profiling *********************************//>
+<BR>
+
+<// ************************************ start step depth info *********************************//>
+
+<A NAME="step_depth"></A>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+It is probably ok to run
+a single at depth profiling pass here, again this is achieved by changing
+
+the tool path setting. The step depth is simply set to a value greater
+than the profile surface height.
+
+</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="One Pass" onclick="full_depth()"><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0></FONT></FONT>
+<BR>
+<IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+<// ************************************ end step depth info *********************************//>
+<BR>
+
+<// ************************************ start cutline *********************************//>
+
+<A NAME="cutline"></A>
+
+<P><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0><B>CUTLINE</B></FONT></FONT>
+<BR><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0>
+
+To clean up the radius at
+the top of the side wall, we can follow the contours of the multiple surface
+
+fillet with one continuous tool path using a ball endmill.</FONT></FONT>
+
+<br>
+
+<IMG SRC="../template/images/bullet.gif" >
+<INPUT type=button value="Surface Cut Radius" onclick="cutline_closed()"><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0></FONT></FONT>
+<BR>
+
+<IMG SRC="../template/images/divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+
+<// ************************************ end cutline *********************************//>
+<BR>
+
+<!--   #######################    end of document content    #######################   --></FORM>
+<!-- START OF MENUBAR -->
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the --><!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: --><!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Four Axis Milling'; return true">
+<IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Manufacturing Summary'; return true">
+<IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A><FONT FACE="arial,Helvetica">
+<FONT SIZE=+0></FONT></FONT></CENTER>
+
+<!-- END OF MENUBAR -->
+
+
+</BODY>
+
+</HTML>

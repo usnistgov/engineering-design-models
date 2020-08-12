@@ -1,0 +1,63 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION
+   ('MRSEV1.MRSEV.STEP',
+    '19890823000000',
+    ('Tom Kramer',
+     'Room A-127, Bldg. 220',
+     'NIST',
+     'Gaithersburg, MD 20899'),
+    ('Factory Automation Systems Division',
+     'NIST',
+     'Gaithersburg, MD 20899'),
+    'STEP Version 1.0',
+    'No preprocessor - handwritten',
+    'AMRF VWS2 and Computervision CADDS');
+ FILE_DESCRIPTION
+   ('This file describes three MRSEVs');
+ IMP_LEVEL
+   ('1.0');
+ENDSEC;
+
+DATA;
+@1 = CARTESIAN_POINT (, 0.0, 0.0, );
+@2 = CARTESIAN_POINT (, 0.0, 2.5, );
+@3 = CARTESIAN_POINT (, 0.5, 0.25, 0.435);
+@4 = CARTESIAN_POINT (, 2.5, 0.0, );
+@5 = CARTESIAN_POINT (, 3.0, 2.25, 0.28522);
+@6 = CARTESIAN_POINT (, 5.0, 1.5, 0.535);
+@7 = DIRECTION (, -0.70711, 0.70711, );
+@8 = DIRECTION (, 0.0, -1.0, );
+@9 = DIRECTION (, 0.0, 0.0, 1.0);
+@10 = DIRECTION (, 1.0, 0.0, 0.0);
+@11 = DIRECTION (, 1.0, 0.0, );
+@12 = AXIS2_PLACEMENT (, #3, #9, #10);
+@13 = AXIS2_PLACEMENT (, #5, #9, #10);
+@14 = AXIS2_PLACEMENT (, #6, #9, #10);
+@15 = LINE (, #1, #11);
+@16 = LINE (, #2, #8);
+@17 = LINE (, #4, #7);
+@18 = TRIMMED_CURVE (, #15, , , #1, #4, .T.);
+@19 = TRIMMED_CURVE (, #16, , , #2, #1, .T.);
+@20 = TRIMMED_CURVE (, #17, , , #4, #2, .T.);
+@21 = IMPLICIT_EDGE_ROUND (0.35);
+@22 = IMPLICIT_EDGE_ROUND (0.4);
+@23 = LINEAR_FEATURE_SWEEP_PATH (0.2);
+@24 = LINEAR_FEATURE_SWEEP_PATH (0.3);
+@25 = AXISYMMETRIC_FEATURE_SWEEP_CONICAL_END (, 118.0, );
+@26 = PROFILE_PAIR (#18, #20, #21);
+@27 = PROFILE_PAIR (#19, #18, #21);
+@28 = PROFILE_PAIR (#20, #19, #21);
+@29 = RECTANGULAR_FEATURE_SWEEP_PROFILE (#22, 1.5, 2.0);
+@30 = CLOSED_GENERAL_PROFILE (#18, (#26, #28, #27));
+@31 = OTHER_CLOSED_FEATURE_SWEEP_PROFILE (#30);
+@32 = HOLE (#13, 0.44978, #25, 0.25);
+@33 = OTHER_POCKET (#12, #24, #35, );
+@34 = RECTANGULAR_POCKET (#14, #23, #29, );
+@35 = MATERIAL_REMOVAL_VOLUME ('OTHER_POCKET1', (#33), );
+@36 = MATERIAL_REMOVAL_VOLUME ('RECTANGULAR_POCKET1', (#34), );
+@37 = MATERIAL_REMOVAL_VOLUME ('HOLE1', (#32), );
+ENDSEC;
+
+ENDSTEP;

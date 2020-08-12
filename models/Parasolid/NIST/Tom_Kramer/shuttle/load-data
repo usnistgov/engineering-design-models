@@ -1,0 +1,64 @@
+; LOAD PROCESS PLANS
+(load "../../parts/shuttle/plan1.olps")
+(load "../../parts/shuttle/plan2.olps")
+
+; LOAD BLOCK BREP
+;(load "../../parts/block-5.26-4.99-1.5/brep-design.clisp-comp")
+;(clisp-to-plist-data (fetch 'step-in 'data)
+;                     (fetch 'step-tables 'entity-attribute))
+;(put-data 'workpieces 'block3 (cons 'data (fetch 'step-in 'data)))
+(put-data 'workpieces 'block3
+  (fetch (step-to-plist '../../parts/block-5.26-4.99-1.5/brep-design.step-comp
+			'(block))
+	 'data))
+
+; LOAD DESIGN BREP
+;(load "../../parts/shuttle/brep-design.clisp-comp")
+;(clisp-to-plist-data (fetch 'step-in 'data)
+;                     (fetch 'step-tables 'entity-attribute))
+;(put-data 'designs 'shuttle-design (cons 'data (fetch 'step-in 'data)))
+(put-data 'designs 'shuttle-design
+  (fetch (step-to-plist '../../parts/shuttle/brep-design.step-comp '(design))
+	 'data))
+
+; LOAD MRSEVS1
+;(load "../../parts/shuttle/mrsevs1.clisp")
+;(clisp-to-plist-data (fetch 'step-in 'data)
+;                     (fetch 'step-tables 'entity-attribute))
+;(put-data 'mrsevs 'shuttle-mrsevs1 (cons 'data (fetch 'step-in 'data)))
+(put-data 'mrsevs 'shuttle-mrsevs1
+  (fetch (step-to-plist '../../parts/shuttle/mrsevs1.step  '(mrsevs)) 'data))
+
+; LOAD MRSEVS2
+;(load "../../parts/shuttle/mrsevs2.clisp")
+;(clisp-to-plist-data (fetch 'step-in 'data)
+;                     (fetch 'step-tables 'entity-attribute))
+;(put-data 'mrsevs 'shuttle-mrsevs2 (cons 'data (fetch 'step-in 'data)))
+(put-data 'mrsevs 'shuttle-mrsevs2
+  (fetch (step-to-plist '../../parts/shuttle/mrsevs2.step  '(mrsevs)) 'data))
+
+; LOAD SETUP1
+;(load "../../parts/shuttle/setup1.clisp")
+;(clisp-to-plist-data (fetch 'step-in 'data)
+;                     (fetch 'step-tables 'entity-attribute))
+;(link-data (fetch 'step-in 'data))
+;(put-data 'setups 'shuttle-setup1 (cons 'data (fetch 'step-in 'data)))
+(step-to-plist '../../parts/shuttle/setup1.step 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'shuttle-setup1 (fetch 'step-in 'data))
+
+; LOAD SETUP2
+;(load "../../parts/shuttle/setup2.clisp")
+;(clisp-to-plist-data (fetch 'step-in 'data)
+;                     (fetch 'step-tables 'entity-attribute))
+;(link-data (fetch 'step-in 'data))
+;(put-data 'setups 'shuttle-setup2 (cons 'data (fetch 'step-in 'data)))
+(step-to-plist '../../parts/shuttle/setup2.step 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'shuttle-setup2 (fetch 'step-in 'data))
+
+(setf (symbol-plist 'step-in) nil)
+
+; Brep data are not linked during loading because they must be transformed
+; before linking.  The linking is done during initialization of writing
+; a program.

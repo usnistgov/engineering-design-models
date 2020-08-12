@@ -1,0 +1,87 @@
+!* The file structure of this STEP file is based on the
+   Document 284 of ISO TC184/SC4/WG1 - Oct. 27, 1988, and
+   Document Title:ISO STEP Baseline Requirements Document (IPIM). 
+   This STEP file has been presented in a line-oriented or 
+   record-oriented manner in order to aid readability.
+   Unnecessary spaces have also been added to aid readability. 
+   Note that an ordinary STEP file is not aligned in this
+   manner, but is instead a continuous stream of characters.
+*!
+
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+ 'XTRACTPMTEST',
+ '19890903.175339',
+ 'Tina Lee & Sandy Ressler, (301)-975-3550 or 3549',
+ 'National Bureau of Standards, Factory Automation Systems Division',
+ 'STEP VERSION 1.0',
+ 'AMRF Part Model to Step File Translator, Version 1.0',
+ 'AMRF PART MODEL');
+ FILE_DESCRIPTION('THIS FILE IS TRANSLATED FROM AN AMRF PART MODEL FILE');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1 = CARTESIAN_POINT( , 1.000000, 0.000000, 0.000000);
+@2 = CARTESIAN_POINT( , 1.000000, 0.000000, 1.000000);
+@3 = CARTESIAN_POINT( , 0.000000, 0.000000, 0.000000);
+@4 = CARTESIAN_POINT( , 0.000000, 0.000000, 1.000000);
+!* Done Points *!
+
+@5 = DIRECTION( , 0.000000, 0.000000, 1.000000);
+!* Done UnitVectors *!
+
+@6 = CIRCLE( , 1.000000, AXIS2_PLACEMENT( , #3, #5, 
+       DIRECTION( , 1.000000, 0.000000, 0.000000)));
+@7 = CIRCLE( , 1.000000, AXIS2_PLACEMENT( , #4, #5, 
+       DIRECTION( , 1.000000, 0.000000, 0.000000)));
+!* Done Curves *!
+
+@8 = PLANE( , AXIS2_PLACEMENT( , 
+       CARTESIAN_POINT( , 0.000000, 0.000000, 0.000000), #5, ));
+@9 = CYLINDRICAL_SURFACE( ,  1.000000, AXIS2_PLACEMENT( , #3, #5, ));
+@10 = PLANE( , AXIS2_PLACEMENT( , 
+       CARTESIAN_POINT( , 0.000000, 0.000000, 1.000000), #5, ));
+!* Done Surfaces *!
+
+@11 = VERTEX(  #1);
+@12 = VERTEX(  #2);
+!* Done Vertices *!
+
+@13 = EDGE( #11, #11, CURVE_LOGICAL_STRUCTURE(#6, .T.));
+@14 = EDGE( #12, #12, CURVE_LOGICAL_STRUCTURE(#7, .T.));
+!* Done Edges *!
+
+@15 = EDGE_LOOP( (
+       EDGE_LOGICAL_STRUCTURE(#13, .F.) ));
+@16 = EDGE_LOOP( (
+       EDGE_LOGICAL_STRUCTURE(#13, .T.) ));
+@17 = EDGE_LOOP( (
+       EDGE_LOGICAL_STRUCTURE(#14, .T.) ));
+@18 = EDGE_LOOP( (
+       EDGE_LOGICAL_STRUCTURE(#14, .F.) ));
+!* Done Loops *!
+
+@19 = FACE( , (
+       LOOP_LOGICAL_STRUCTURE(#15, .T.)  ),
+       SURFACE_LOGICAL_STRUCTURE(#8, .T.));
+@20 = FACE( , (
+       LOOP_LOGICAL_STRUCTURE(#16, .T.),
+       LOOP_LOGICAL_STRUCTURE(#18, .T.)  ),
+       SURFACE_LOGICAL_STRUCTURE(#9, .T.));
+@21 = FACE( , (
+       LOOP_LOGICAL_STRUCTURE(#17, .T.)  ),
+       SURFACE_LOGICAL_STRUCTURE(#10, .T.));
+!* Done Faces *!
+
+@22 = CLOSED_SHELL( (
+        FACE_LOGICAL_STRUCTURE(#19,.T.),
+        FACE_LOGICAL_STRUCTURE(#20,.T.),
+        FACE_LOGICAL_STRUCTURE(#21,.T.)   ));
+!* Done Shells *!
+
+ENDSEC;
+
+ENDSTEP;

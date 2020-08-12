@@ -1,0 +1,28 @@
+; LOAD PROCESS PLAN
+(put-data 'pplans 'bird_plane_fish-plan
+    (step-to-plist "../../parts/bird_plane_fish/plan.step" '(bird_plane_fish-plan)))
+
+; LOAD BLOCK BREP
+(put-data 'workpieces 'block1
+ (fetch (step-to-plist '../../parts/block-6.25-2.975-0.735/brep-design.step-comp
+			'(block))
+	 'data))
+
+; LOAD DESIGN BREP
+(put-data 'designs 'bird_plane_fish-design
+ (fetch (step-to-plist '../../parts/bird_plane_fish/bird_plane_fish.step '(design)) 'data))
+
+; LOAD MRSEVS
+(put-data 'mrsevs 'bird_plane_fish-mrsevs
+  (fetch (step-to-plist '../../parts/bird_plane_fish/mrsevs.step  '(mrsevs)) 'data))
+
+; LOAD SETUP
+(step-to-plist '../../parts/bird_plane_fish/setup.step 'step-in)
+(link-data (fetch 'step-in 'data))
+(put-data 'setups 'bird_plane_fish-setup (fetch 'step-in 'data))
+
+(setf (symbol-plist 'step-in) nil)
+
+; Brep data are not linked during loading because they must be transformed
+; before linking.  The linking is done during initialization of writing
+; a program.

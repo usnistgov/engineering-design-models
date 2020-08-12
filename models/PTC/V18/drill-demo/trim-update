@@ -1,0 +1,54 @@
+Query Executed: 
+	select substr(bug_id,1,6) "SPR#",substr(bug_type,1,1) "T", substr(bug_severity,1,1) "S", substr(bug_status,1,8) "Status", substr(ptc_function_area,1,10) "Area", substr(short_desc,1,120) "UPDATES: Summary"
+	 from bugs,results_tmp_view
+	where bugs.bug_id = results_tmp_view.docid and results_tmp_view.doctype = 'B'
+	order by ptc_function_area, bug_type, bug_id desc
+
+Number of rows in view: 43
+
+SPR#    T  S  Status    Area        UPDATES: Summary                                                                                                          
+---------------------------------------------------------------------------------------
+
+512566  A  0  Assigned  Trims       TRIMMED FOREIGN (PROE) SURFACE DISAPPEARS WHEN TRIMMED AGAIN                                                              
+512436  A  0  Assigned  Trims       CAN NOT TRIM FRONT GRILL AREA                                                                                             
+518792  B  2  Active    Trims       BAD TRIM FROM INTERSECT ALL                                                                                               
+518789  B  2  Active    Trims       SURFACE WON'T TRIM FROM INTERSECT WITH ALL COS                                                                            
+515786  B  3  Active    Trims       LOOSE A TRIM SURFACE WHEN DELETE POINT FROM COS                                                                           
+512759  B  0  Assigned  Trims       THE TRIM IS ON THE WRONG SIDE.                                                                                            
+512427  B  0  Assigned  Trims       SURFACE WILL NOT TRIM WITH ORIGINAL COS BUT DOES WITH COS BY POINTS                                                       
+512426  B  0  Assigned  Trims       SECTION/DROP/AUTO TRIMMING DOES NOT WORK ON THIS MODEL                                                                    
+512273  B  0  Active    Trims       CREATE "COS" WITH TRIMMING ON AND IT DOES NOT TRIM                                                                        
+512125  B  0  Assigned  Trims       OUT OF DATE TRIMS CAN CAUSE BREAKS.                                                                                       
+512188  C  0  Assigned  Trims       I WANT TO BE ABLE TO TRIM ONE COS NOT BOTH OF THE HIGHLIGHTED FEATURE CURVES                                              
+512130  C  0  Assigned  Trims       MATCHED CURVES, WHEN DROPPED, DO NOT TRIM SURFACE                                                                         
+512102  C  3  Active    Trims       TRIM AFTER FILLET UPDATE CHANGES ACTIVE REGION.                                                                           
+511930  C  0  Assigned  Trims       SECTION WILL NOT TRIM                                                                                                     
+510518  E  4  Active    Trims       SYSTEM DELETES WRONG TRIMS WHEN USING REGION.                                                                             
+509946  E  3  Active    Trims       WANT TO HIDE CURVES ON TRIMMED SURFACE EDGES.                                                                             
+509609  E  3  Assigned  Trims       TRIM AND REMOVE TRIM INFORMATION ON MULTIPLE SURFACES AT ONCE USING COSS.                                                 
+530190  A  2  Assigned  Updates     UNABLE TO UPDATE ALL.  LOAD, UPDATE ALL, UPDATE ACTIVE (THE FRONT DOOR)M UPDATE ALL AND ERROR (CONT/MORE).                
+517800  A  3  Active    Updates     PUT MODEL TO PRO/E CRASHES TO LISP DEBUGGER UNLESS MODEL IS FIRST UPDATED TWICE.                                          
+515147  A  2  Assigned  Updates     UPDATING A COS MAKES CURVES MATCHED TO IT MOVE ALONG WITH EACH UPDATE.                                                    
+514170  A  3  Active    Updates     UPDATE OF SSI COS CRASHES WHEN CREATE-AS-C-O-S IS OFF IN SECTIONING MENU                                                  
+513959  A  3  Active    Updates     CRASH WHILE UPDATING MODEL AFTER DELETING CURVES (CF-UPDATE-ERROR-WINDOW)                                                 
+512956  A  0  Assigned  Updates     CURVE DOESN'T GO THRU ENDPOINT, THEN SURFACE FAILS TO UPDATE                                                              
+512819  A  0  Active    Updates     TILING BREAKS TO DEBUGGER                                                                                                 
+512490  A  0  Assigned  Updates     CRASHED WHILE COMPUTING UV'S ON CAP GROUP                                                                                 
+523488  B  2  Active    Updates     UPDATES OR FILLETS CAUSES A MODEL TO CHANGE AND LOSE TRIMS .                                                              
+521226  B  2  Assigned  Updates     DOING AN UPDATE ACTIVE ON A GROUP THAT CONTAINS SCAFOLDS GETS AN ERROR (CONT/MORE).                                       
+519125  B  2  Assigned  Updates     SWITCHING FILLET FROM FEATURE TO SURFACE TO FILLET THEN UPDATE..PROBLEMS                                                  
+517799  B  2  Assigned  Updates     MODELS REQUIRE MULTIPLE UPDATES.                                                                                          
+517131  B  3  Active    Updates     UPDATE SWEEP FAILS TO PROPERLY UPDATE ATTACHED GEOMETRY.                                                                  
+514385  B  2  Assigned  Updates     THIS MODEL LOSES ITS TRIMS/DELETED SURFACES FROM TRIMS EVERY TIME TO TILE.                                                
+512901  B  0  Assigned  Updates     WON'T UPDATE TRIMMED SURFACE AS ALL.                                                                                      
+512732  B  0  Assigned  Updates     PROBLEM UPDATING TRIMS AND INTERSECTIONS.                                                                                 
+512351  B  0  Assigned  Updates     UPDATE OF DROP-CURVE PRODUCES WILDLY INCORRECT FILLET                                                                     
+512347  B  3  Assigned  Updates     TRIMMED SURFACE LEAVES GROUP WHEN UPDATED                                                                                 
+511948  B  0  Assigned  Updates     SURFACES WOULD NOT UPDATE AND RESPECT THE ACTUAL CURVE BOUNDARIES                                                         
+511920  B  0  Assigned  Updates     CHANGING PARENT CURVES OF DROP LOSES TRIMMING.                                                                            
+512676  C  0  Active    Updates     BOUNDARY TANGENT IS NOT UPDATING THE NORMALS WHEN ADJUSTING THE NEW TANGENTS                                              
+512607  C  0  Assigned  Updates     TANGENT PLANE FAILS TO UPDATE WHEN MODEL IS LOADED                                                                        
+512603  C  0  Assigned  Updates     COS FAILS TO UPDATE, REASON NIL.                                                                                          
+511424  C  0  Active    Updates     INCORRECT UPDATE OF SLAVE SURFACE                                                                                         
+526767  X  2  Active    Updates     TRIMMED SURFACES BECOME UNTRIMMED AND GEOMETRY IS LOST WHEN TILING                                                        
+516137  X  2  Assigned  Updates     CRASH WHILE DOING UPDATE ALL                                                                                              

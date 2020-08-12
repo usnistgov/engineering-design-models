@@ -1,0 +1,275 @@
+
+         Pro/NC-SHEETMETAL AUTOMATION (AutoNesting)
+
+
+
+
+INTRODUCTION
+
+
+Pro/NC-SHEETMETAL AUTOMATION (AutoNesting) is an advanced part
+of Pro/NC-SHEETMETAL module which gives the user the ability to 
+create the information necessary to machine sheet metal parts automatically.
+In this section you will learn how to create manufacturings automatically 
+using defined earlier manufacturings with their NC sequences. You will also
+learn the commands associated with Sheet Metal manufacturing which will help
+you become efficient in using the module.
+
+
+
+
+THE MANUFACTURING PROCESS FOR AUTOMATION
+
+
+    -WP automatic creation (setup or retrieve);
+          .Width, Length;
+          .Thickness;
+          .Grain direction;
+    -Workcell (set or retrieve):
+          .Type & Parameters;
+          .Machine Zones & Clamps;
+          .Turret - tool definition.
+    -Defaults set (set or retrieve):
+          .Quantity & Offset;
+          .Grain, Flip & Rotation of the parts.
+    -Order list:
+          .part without NC sequences;
+          .part from MFG - with or w/o NC sequences;
+          .Cell of Parts - with NC or w/o sequences;
+          .DXF file.
+
+
+
+EXERCISE   1
+
+
+1. Change directory to exercise_1.
+
+2. Create a sheetmetal manufactiring named exer_1 and enter AUTOMATION.
+
+3. Change WP size to 36 X 31 with the thickness 0.200; set borders 
+   left, top, bottom to 2, right border will be 1; set grain direction to 
+   'Unused'.
+
+4. Choose 'DEFAULTS' tab and set the defaults as following:
+
+   Quantity 8    Offset 0.200
+   Rotation Angle  Any
+   Grain Restriction  Yes
+   Flip    Yes
+   Select VIEW; FRONT .
+
+5. Now choose 'ORDER' tab; LOAD, PART W/O NC SEQS and select the following parts:
+   part_flip_1.prt  part_flip_2.prt ;
+   PLACE; OPTIONS; CLUSTER CONTROLS and select 'Yes' option;
+   PLACE the parts again; /parts were flipped over/;
+   now choose 'SETUP' for the first part in the order list, and system will invoke
+   'ELEMENT SETUP' dialog box; switch 'FLIP' to 'no' and switch OFFSET value to 
+   'User value' entering 0.000  and do the same operation
+   for the NEXT part; OK; and PLACE the parts - you can see that system can not place 
+   these parts in closely packed rectangles.
+   Now REMOVE  All Parts.
+
+6. Now change default Quantity to 5, and switch off Flip option;
+   in the WP size tab change Grain Direction to 'Unused'
+   and then LOAD the following parts:
+   part_grain_11.prt   part_grain_22.prt
+   PLACE these parts;
+   in the WP Size tab now change GRAIN DIR to 'X AXIS';PLACE;
+   in the WP Size tab now change GRAIN DIR to 'Y AXIS';PLACE;
+   now choose 'SETUP' for the first part in the order list, and system will invoke
+   'ELEMENT SETUP' dialog box; switch 'GRAIN' to 'no'; OK; PLACE;
+   you can see that in this case grain direction was used only for the 
+   second part from the 'order list'.
+   Now REMOVE  All Parts.
+
+7. Now change default Quantity to 1, and switch on Flip option;
+   enter default value for OFFSET 0.200;
+   now LOAD list of the parts using FILE, LOAD..., and select the list
+   LIST_FOR_EXERC_1; 
+   now switch 'CLUSTERING' in OPTIONS to 'no', OK, PLACE these parts;
+   you can see that almost all WP area was used to place these parts;
+   now switch 'CLUSTERING' in OPTIONS to 'yes', OK, PLACE these parts;
+   
+8. CLOSE this Window.
+
+
+
+ 
+
+   
+EXERCISE   2
+
+
+
+1. Change directory to exercise_2.
+ 
+2. Create a sheetmetal manufactiring named exer_2 and enter AUTOMATION.
+ 
+3. Change the WP SIZE to 40 X 30; thickness will be 0.200;
+   Choose OPTIONS, WARNING SELECTION, and switch all options on; OK;
+   in DEFAULTS tab set default QUANTITY to 4; set OFFSET to 0.120 .
+
+4. In the ORDER tab LOAD PARTS FROM MFG and select manufacturing
+   mfg_flip.mfg;
+   system shows this manufacturing in small separate window and asks to select
+   what parts from this manufacturing do you want to load - SELECT ALL; OK;
+   system warns us about absent tools; lets ADD this PART to the list and
+   let's ADD tools to the correspondent workcell turret; OK;
+   do the same operation ADD, ADD for the second part of this manufacturing.
+   PLACE these 2 parts; in OPTIONS, DISPLAY OPTIONS switch on 'ROUGH POLYGON'
+   option, OK; in magenta you will see part's offset.
+
+5. Now load CELL OF PARTS - and select manufacturing mfg_h_tr_2.mfg;OPEN;
+   ADD these 2 parts to the list and ADD absent tools to the TURRET;
+   go to the WORKCELL tab and select TURRET SHOW - system invokes the dialog box
+   'TURRET INFORMATION' and you can see that all tools used in in the loaded
+   manufacturing's NC sequences were added to the turret; choose EXIT from the 
+   TURRET;
+
+5. In the ORDER tab LOAD PARTS FROM MFG and select manufacturing 
+   mfg_multi_3.mfg;
+   system shows this manufacturing in small separate window and asks to select
+   what parts from this manufacturing do you want to load - SELECT ALL; OK;
+   system warns us about incompatible NC sequence type for current loading
+   part PART_MULTI_31 but let's try to load
+   this part without the incompatible NC sequences; select YES;
+   now system warns us about incompatible NC sequence type for current loading
+   part PART_MULTI_32; for this part select 'NO';
+   you can see that the part PART_MULTI_31 was added to the order list without
+   any offset value; also if you will go to the WORKCELL tab and select TURRET
+   and SHOW, you can see that there are no additional tools in the turret.
+
+7. Now PLACE the parts; in SETUP for each part from the order list you will see
+   that for the first 3 parts from mfg offset value is set 'by Tool' but for 
+   the last one it is 'by Default'.
+
+
+8. Now REMOVE ALL parts/cells from the ORDER LIST.
+   
+9. In the WORKCELL tab change the Type to Hybrid and TWO OPERATION option;
+   now choose TURRET, DEFINE and add your tool to the correspondent turret:
+   
+
+         fig_turret
+
+   SHOW this new created tool, then APPLY - and this tool will appear as a row
+   in the upper part of the TURRET SETUP dialog box; To save this tool on the disk 
+   choose FILE, SAVE TOOL..., and this tool will be saved on the disk. OK;
+   This will create a file called 'new_tool.tpm'. Another way to store tool data 
+   is to store the manufacturing model - this will store the tool data with the
+   seguence in the model, but keep in mind that this does not create a '.tpm' file
+   which would allow you to use this tool in another sequence.
+
+
+10. Choose DEFAULT tab and enter 8 for the part's default quantity.
+    Now if we will LOAD PARTS FROM MFG and select mfg_flip.mfg and mfg_multi_3.mfg
+    we can select ALL parts from these manufacturings and just ADD all needed 
+    tools to the correspondent turret. Place these parts; you will see that all
+    loaded parts are with their offset values 'by tool' - you can see it in 
+    the SETUP for each part.
+
+11. Now choose VIEW, FRONT.
+    In the WORKCELL tab DEFINE  the MACHINE ZONE; system will invoke 'MACHINE
+    ZONE' dialog box; CUSTOMIZE zone Width to 6.400; press enter;
+    now choose ENABLE button for Automatic Adjusting and select Next To Last option.
+    OK; choose one more time MACH. ZONE button and pressing CREATE CLAMP you will 
+    see 'MACHINE CLAMP' dialog box. Sketch small rectangle 0.4 X 0.4 as a section
+    for the clamp and after that enter 5.4 for the X-OFFSET and 30 for Y-OFFSET.
+    
+
+12. Now MAKE MFG  selecting SINGLE SHEET option;12. 
+
+        fig_mfg_ex_2
+
+
+    Choose CL DATA, OUTPUT, OPERATION, and DONE CL for these 2 operations first
+    for punching (first), and then for laser contouring (second operation).
+
+
+13. Close this window.
+
+
+
+   
+   
+
+
+
+ 
+EXERCISE  3
+
+
+1. Change directory to exercise_3.
+ 
+2. Create a sheetmetal manufactiring named exer_3 and enter AUTOMATION
+
+3. Choose FILE, EDITOR, and select the list list_exer_3; OK.
+   System invokes SMT MFG FABRICATION EDITOR; (this list you can see also 
+   outside PRO/E - WINDOWS, OPEN SYSTEM, and 'cat list_exer_3.dat' -it's the same
+   list that one can create outside PRO/E in any text editor; EXIT this window).
+
+4. In the first 'ORDER' tab of the EDITOR we have a possibility to edit any element
+   of our order list, copy elements (renaming them or not), delete elements, change
+   offset or quantity of the parts etc.
+   REMOVE part PART_MULTI_32 from the manufacturing MFG_MULTI_3; 
+   Double click on the part PART_MULTI_31 from the manufacturing MFG_MULTI_3 or 
+   press EDIT when this element is selected; system invokes ELEMENT EDIT dialog box;
+   Change OFFSET value to 'USER VALUE' and enter 0.330; change QUANTITY to 3.
+   Select 'NEXT' button and for this part (PART_1) change QUANTITY to 6; OK.
+
+5. Now choose 'USE' to load this list using all (4) items to load; OK.
+   PLACE the parts on the workpiece.
+
+
+              fig_exer_3
+
+   Choose SETUP for the PART_5 from the order list; you can see, that now offset
+   is set by default that is zero.
+   Now MAKE MFG using SINGLE SHEET option; OK.
+   Switch off CSYS display.
+ 
+6. Select MACHINING, DEFINE SEQUENCE, and you will start to define NIBBLE EDGE
+   NC sequence; In the TURRET dialog box choose the tool TOOL_NE_ADDED_2, APPLY, OK.
+   SHOW MASTER - system shows the first part of selected name that was placed;
+   on the master-part od PART_1 select it's external LOOP; DONE; OK.
+   DONE/RETURN.
+
+7. Now select FABRICATION and you will redefine this fabricated MFG;
+   PLACE the parts; you can see in SETUP for the part PART_1 (with added NC sequence)
+   that offset value was changed automatically to 'BY TOOL'; CANCEL from SETUP.
+   
+8. Close this window.
+
+
+
+EXERCISE  4
+ 
+   
+
+1. Change directory to exercise_4.
+ 
+2. Create a sheetmetal manufactiring named exer_4_tr and enter AUTOMATION
+ 
+3. Now LOAD list named LIST_EXER_4 using 3 'LOAD SETUP' options: WP Size, Controls
+   and Order List; MAKE this manufacturing using MULTIPLE SHEETS option.
+
+4. In the 'MULTIPLE SMT MFG LIST' you can see that 16 manufacturings were created
+   and there are 4 of the same for the first mfg, 4 of the same for the third, and
+   7 of the same for the fourth mfg.
+
+5. Choose CL Data, OPERATION, then operation's name, then DONE CL - all predefined
+   NC sequences were transfered to this manufacturing.
+
+6. Now select previous manufacturing from the list, choose CL Data, NC SEQUENCE,
+   and then select AREA NIBBLING NC sequence that was also transfered for this mfg.
+   DONE CL for this NC sequence.
+
+7. Choose now OUTPUT, OPERATION, then operation's name, then DONE CL - all predefined 
+   NC sequences were transfered to this manufacturing also.
+
+8.Close this window.
+
+
+
+

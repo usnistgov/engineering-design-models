@@ -1,0 +1,90 @@
+(setplist 'bertop_plan
+ '(header (header
+           plan_id   bertop_plan
+           design_id bertop
+           material  brass)
+   steps  (steps
+           1   (1   work_element    initialize_plan
+                    prog_name       "berman part top")
+           2   (2   work_element    set0_corner
+                    tool_type_id    probe_0.25
+                    corner          1
+                    x_offset        0.0
+                    y_offset        0.0
+                    near_x          17.175
+                    near_y          7.345000000000001
+                    precedent_steps (1))
+           3   (3   work_element    mill_pocket
+                    feature_id      1
+                    tool_type_id    end_mill_1.0_2_ab
+                    stepover        0.5
+                    feed_rate       9.16
+                    speed           1145
+                    pass_depth      0.5
+                    precedent_steps (2))
+           4   (4   work_element    mill_contour_groove
+                    feature_id      7
+                    tool_type_id    end_mill_0.125_2_ab
+                    feed_rate       6.0
+                    speed           5200
+                    pass_depth      0.0625
+                    precedent_steps (3))
+           5   (5   work_element    mill_contour_groove
+                    feature_id      8
+                    tool_type_id    end_mill_0.125_2_ab
+                    feed_rate       6.0
+                    speed           5200
+                    pass_depth      0.0625
+                    precedent_steps (4))
+           6   (6   work_element    mill_groove
+                    feature_id      6
+                    tool_type_id    ball_nosed_end_mill_0.25_4_bs
+                    feed_rate       5.5
+                    speed           2750
+                    pass_depth      0.125
+                    precedent_steps (5))
+           7   (7   work_element    mill_text
+                    feature_id      9
+                    tool_type_id    engraver_0.1
+                    feed_rate       8
+                    speed           5000
+                    precedent_steps (6))
+           8   (8   work_element    mill_text
+                    feature_id      2
+                    tool_type_id    engraver_0.1
+                    feed_rate       8
+                    speed           5000
+                    precedent_steps (7))
+           9   (9   work_element    mill_text
+                    feature_id      5
+                    tool_type_id    engraver_0.1
+                    feed_rate       8
+                    speed           5000
+                    precedent_steps (8))
+           10  (10  work_element    mill_text
+                    feature_id      4
+                    tool_type_id    engraver_0.1
+                    feed_rate       8
+                    speed           5000
+                    precedent_steps (9))
+           11  (11  work_element    mill_text
+                    feature_id      3
+                    tool_type_id    engraver_0.1
+                    feed_rate       8
+                    speed           5000
+                    precedent_steps (10))
+           12  (12  work_element    machine_chamfer_out
+                    feature_id      6
+                    tool_type_id    chamfer_0.375_3_abs
+                    feed_rate       10.31
+                    speed           4583
+                    precedent_steps (11))
+           13  (13  work_element    close_plan
+                    precedent_steps (12)))
+   tool_requirements (
+           probe_0.25
+           end_mill_1.0_2_ab
+           end_mill_0.125_2_ab
+           ball_nosed_end_mill_0.25_4_bs
+           engraver_0.1
+           chamfer_0.375_3_abs)))

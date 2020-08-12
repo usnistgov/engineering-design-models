@@ -1,0 +1,404 @@
+ROBOT_18 
+Picks and Script
+Originally Contributed by: Dominique Anderson
+
+There is a setup file named “setup_scr” which will create and place you in a clean effector_demo directory, type:  
+source setup_scr
+
+This demo is short and simple, yet flows very well and makes perfect sense while showing off the basic 
+functionality of Fully Integrated Pro/MECHANICA.
+EASE of USE is the KEY Phrase in this demo, say it often...
+
+Motion will be used to determine the reaction forces on one of the effector arms (in green).  The robot arm will 
+simulate the motion performed when a payload is picked-up and moved to another location.  The focus will be on 
+the green effector arm.  What are the loads acting on this effector? Pro/Mechanica Motion will provide accurate 
+dynamic results quickly and easily.  Then, Pro/Mechanica Structure will be used to determine if these loads exceed 
+any design requirements, and how to improve the design.
+
+Start up Pro/E…
+
+#ASSEMBLY / #SEARCH-RETRIEVE / robot.asm
+
+MOTION
+
+Turn off the datum axis and coordinate system
+
+#ENVIRONMENT / #DISP CSYS / #DISP AXES / #DONE-RETURN
+
+Shade and spin the model, forcer is top orange part, upper arm is magenta part, forearm is blue part, rectangular 
+connection (light gray) to effectors is the ‘palm’ of the robot ‘hand’, effector of interest is in green, and payload is 
+dark gray.
+
+#VIEW / #COSMETIC / #SHADE / #DISPLAY / #DONE-RETURN
+CTRL_MOUSE_Middle button spin
+
+Return model to original position.
+#VIEW / #NAMES / #MOTION_ISO / #REPAINT / #DONE-RETURN
+
+Go into Pro/Mechanica Motion to show how easy it is to setup motion and get results.
+#APPLICATIONS / #MECHANICA / #MOTION
+
+Create Simulation Model
+
+First, working our way down the menu, I will define the model environment:  Materials, Joints, Forces, etc...  Then 
+setup the SIMULATION, and review the results.
+#MODEL / #PROPERTY / #MATERIAL / #ASSIGN / #PART
+Select the following parts from the Model Tree: 
+	PALM 
+	EFFECTOR
+	EFFECTOR2
+	UPPER_ARM 
+	FORCER 
+	FOREARM
+#Done Sel
+
+Scroll through form showing basic material library integrated in Pro/Mechanica
+#AL6061_IPS / #ACCEPT / #ACCEPT
+
+#VIEW / #REPAINT / #DONE-RETURN
+#PART / Select part PAYLOAD / #Done Sel
+#SS_IPS / #ACCEPT / #ACCEPT
+
+#VIEW / #REPAINT / #DONE-RETURN
+
+Now show how easy it is to define the joints, point out the easy to understand joint form, READ out loud the names 
+of the joint types as they are created (Planar, Weld, Slider, Pin), this is a clean and simple form to understand.
+
+#CONNECTIONS / #JOINTS / #CREATE
+Select points ASM_GROUND and GSM_GOUND (they are coincident) : PLANAR joint / #ACCEPT
+Select point A twice : WELD joint  / #ACCEPT
+Select point B twice : SLIDER joint  / #ACCEPT
+Select point C twice : PIN joint  / #ACCEPT
+
+#EDIT / #AXIS
+Select SLIDER joint axis (at point B), (need to reposition so that the axis is pointing along the vector that the 
+Forearm is expected to extend and retract along).
+#PT TOWARDS
+Select point A 
+
+#VIEW / #REPAINT / #DONE-RETURN
+
+Now I will add to the model environment the effects due to Gravity.
+#LOADS / #CREATE / #GRAVITY  / #ACCEPT
+-386.4  in the Z direction (FYI, the form has been filled out in advance)
+
+Since I don’t know what forces are required to get the desired motion, I will apply drivers to force the motion I 
+expect.  In this way I can drive the mechanism and determine the forces required.
+#DRIVERS / #CREATE
+
+Query Select PLANAR joint axis pointing towards upper right corner screen (Global Y direction, should be reported 
+as joint_4.axis_2 when selected)
+Choose velocity, cosine, enter amplitude=10, period=1 / #ACCEPT
+
+Query Select PLANAR joint axis pointing towards lower right corner screen (Global X direction, should be reported 
+as joint_4.axis_1 when selected)
+Choose position, ramp, enter slope=3 / #ACCEPT
+
+Select SLIDER joint axis (at point B)
+Choose position, ramp, enter slope=3 / #ACCEPT
+
+Select PIN joint axis (at point C)
+Choose position, ramp, enter slope=3 / #ACCEPT
+
+#DONE/RETURN / #DONE/RETURN
+
+#ANALYSIS
+#REVIEW motion analysis form, time=0, duration=1, increment=.01 (providing 100 frames of motion simulation)
+leave defaults on everything else, let Pro/MECHANICA do the rest
+#ACCEPT / #DONE
+
+Run Simulation of Motion Model
+
+#RUN / #START
+Pro/MECHANICA MOTION will take a few seconds to compile the equations of motion for this mechanism and 
+run the simulation.
+
+Has everything made sense so far? Material Properties, Joints, Gravity, Drivers; rather simple (nod yes).
+
+Let’s look at some results; remember that this is all being done inside Pro/ENGINEER directly on the CAD model.
+
+#RESULTS / #ANIMATE / #START
+#VIEW / #COSMETIC / #SHADE / #DISPLAY / #DONE-RETURN
+Increase playback speed to approx. 80-90% max.
+PLAY, let it run for a few cycles, get excited ... 
+#STOP / MOVE slider to FRAME 0 / #CLOSE
+
+It’s great to see parts and assemblies moving on the screen, but how about some serious engineering data.  I will 
+query the system and create a graph of some detailed information about the 	forces acting on the effector (in 
+green).
+#GRAPH / #CONNECTION
+Select weld joint at GRIP point
+#FORCEMAG / #ACCEPT / MMB (middle mouse button)
+
+#SEG GRAPH
+Select the first graph segment point: pick towards left slope of first peak
+Select the second graph segment point: pick towards right slope of first peak
+#POINT QUERY
+Select a graph point: pick peak point
+Note max. load at 0.25 seconds
+#OK / MMB
+
+I will now prompt the system for some detailed information about the effector.
+#QUERY / #CONNECTION
+Select the weld joint at GRIP point
+change the TIME to 0.25 / click USE 
+Note component values for force and torque
+MAKE a note of these values, write them down if necessary, just as an engineer using the product 	would.  These 
+values will be applied to the effector in Pro/MECHANICA STRUCTURE.
+#DONE
+#DONE/RETURN@MEC MOTION
+#DONE/RETURN
+(‘Disconnecting from the Pro/MECHANICA MOTION engine’ should appear in command window)
+
+#DBMS / #SAVE
+Enter object to save [ROBOT.ASM]: {carriage return}
+(Saving ROBOT immediately when DBMS becomes UN-GRAYED OUT will permit you to return to the motion 
+results and display the animation if required later on without re-running the motion simulation).
+
+#DBMS / #ERASE / #ALL / #CONFIRM
+
+
+STRUCTURE 
+
+#PART / #SEARCH/RETR / effector.prt
+#VIEW / #COSMETIC / #SHADE / #DISPLAY / #DONE-RETURN
+CTRL_MOUSE_Middle button spin
+
+Return model to original position.
+#VIEW / #NAMES / #STRUCT_ISO / #REPAINT / #DONE-RETURN
+
+Here we have the effector part as we just had it in the assembly, the goal is to determine if the stresses or 
+displacements are unacceptable in the function of this effector.
+
+Create Structural Simulation Model
+
+#MECHANICA / #STRUCTURE / #MODEL
+
+NOTE: Point out how easy this model is to define.  Simply working our way down the menu.
+
+#MATERIALS / #ASSIGN / #PART / Select effector / #DONE SEL
+Select AL6061_IPS / #ACCEPT / #ACCEPT
+NOTE: point out that there is more material info required for a structural simulation (as opposed to MOTION), but 
+it is all captured on the dataform.  Also, we can easily edit the properties to suit our specifications and simply add it 
+to out own custom library so we don’t have to create it again. 
+#VIEW / #REPAINT / #DONE-RETURN
+
+#CONSTRAINTS / #CREATE / #FACE/SURFACE
+Select small square face adjacent to highlighted coordinate system (Y-Z plane backside)
+#Done Sel
+Note simple form to remove free body motion of part as it is loaded (this is a statics problem)
+#ACCEPT / #ACCEPT
+
+#LOADS / #CREATE / #FACE/SURFACE
+Note choices available for various loading conditions, Pressure, Bearing, Temperature, etc.  Select square face 
+farthest from coordinate system where effector contacts payload at GRIP point.
+#Done Sel
+Change load form distribution to Total Load Applied at Point
+	PICK...    GRIP point
+	FX   47.8                                   MX   -4.8                   
+	FY   5.7                                     MY   -13.2                    
+	FZ   5.3                                     MZ  57.8
+#DISPLAY - shows load distribution across surface
+#ACCEPT / #ACCEPT
+
+#VIEW / #REPAINT / #DONE-RETURN
+
+#ANALYSES (say SIMULATION)
+NAME=eff_stat / rest remains default   "THIS IS EASY”
+#ACCEPT / #DONE
+
+Run Model and View Results
+#RUN  / Select eff_stat / #START...
+Error Checking YES
+#SUMMARY... / Scroll through summary from start, did we ever say anything about elements while we were 
+defining the model environment? NO.  Pro/MECHANICA creates elements automatically for us.  GEOMETRIC 
+Adaptive Polynomial elements which map precisely to the geometry.  
+#DONE / #DONE
+#ANALYSES / #CREATE
+change Type to MODAL, point out range of SIMULATION, leave rest as default (looking for first 4 modes)
+Name=eff_modal, rest remains default   "EASY"
+#ACCEPT / #DONE
+
+#RUN  eff_modal  / #START...
+Error Checking NO
+#SUMMARY… / ...let it flow until ‘Run completed’... / #DONE / #DONE
+
+#RESULTS
+#LOAD… / Select res1 / #ACCEPT / Select:
+	"a_disp_anim" (1 of 2)
+	"a_vm_fringe" (2 of 2)
+#SHOW…
+#MISC / #down arrow / #DOUBLEBUFFER / Check Mark Double Buffer / #DONE-RETURN
+#CONTROLS
+Select Displacement animation result window to access its control menu:
+click in animation window
+#START animation / let it run a few seconds / #STOP animation 
+#DONE @ ANIM CTL
+
+CTRL_MOUSE_Middle button spin
+SPIN Von Mises Fringe model, point out stress concentration on inner radius
+
+#DONE/RETURN @ SHOW CTL
+SHOW results for modal simulation: Unselect a_* windows, select:
+	"b_mode1" (1 of 2) 
+	"b_mode2" (2 of 2)
+#SHOW…
+#MISC / #down arrow / #DOUBLEBUFFER / Check Mark Double Buffer / #DONE-RETURN 
+#CONTROLS
+Pick left Mode1 window to access its control menu: 
+START animation / let it run a few seconds / STOP animation 
+#DONE @ ANIM CTL
+#CONTROLS
+Pick right Mode2 window to access its control menu: 
+START animation / let it run a few seconds / STOP animation 
+#DONE @ ANIM CTL
+#DONE/RETURN @ SHOW CTL
+#DONE @ Result Window
+
+Done with initial simulation portion, now let’s explore developing a better design
+
+
+Global Sensitivity and Optimization Setup
+A Global Sensitivity (GS) Study is used to determine if a parameter is worth changing or not.
+A GS study will provide graphical information showing whether or not modifying a parameter has an IMPACT on a 
+quantity of interest (Displacements, Stress, Inertias...).
+Lets first see how easy it is to set up these parameters and then how easy it is to set up a GS study.  
+Remember that since this is INTEGRATED, all the parameters that make up this part are readily available for a 
+design study.
+
+#MODEL / #DSGN CONTROLS / #DESIGN PARAMS
+Select inner_rad / #REVIEW… / #CANCEL / #DONE
+
+	{For Your Information, the existing parameters used in Optimization are as follows:
+	   INNER_RAD 0.25>0.25>1.25  OUTER_RAD 1>1>2  WIDTH     0.5>1>1.5}
+
+#SHAPE ANIMATE / Number of intervals=5 / Select all three design parameters / #ANIMATE
+This allows us to review the range of change, perform a sanity check to be sure the range is acceptable to us and to 
+Pro/Engineer.
+#DONE SEL
+!Continue to step 2? (y/n) [y]:  <return>
+!Continue to step 3? (y/n) [y]:  <return>
+!Continue to step 4? (y/n) [y]:  <return>
+!Continue to step 5? (y/n) [y]:  <return>
+!Do you want to restore the model to its original state? #YES
+
+#DESIGNSTUDIES
+Now that dimension variables have been defined, define a GLOBAL SENSITIVITY study called gs_radius
+#NAME = gs_radius, #TYPE = global sensitivity
+#ANALYSES: 
+TURN OFF eff_modal(MODAL)
+TURN ON eff_stat(STATIC)
+activate inner_rad design parameter only
+change intervals to 3 or 4 depending on speed of your machine (4 taking only slightly more time, but as with all 
+things, more time providing better quality info)
+#ACCEPT
+
+Optional:
+IF you (AE) have enough time, run the Global Sensitivity LIVE (usually 2-4 minutes, try it out first), it’s great if 
+you have the time to run it live for a customer.  
+IF you don’t have enough time, simply set it up, pointing out how easy it is.  Then setup the design Optimization, 
+again showing how easy it is, then GO directly to the results and LOAD res2...
+
+Optional Optimization Setup:
+#DESIGN STUDIES / #CREATE…
+#NAME=optimize, #TYPE=optimization
+Leave goal on minimize total mass
+#CREATE… / Select max_stress_vm and modal_frequency / #ACCEPT
+Make limits: <3000 psi for stress, >500 Hz for frequency
+Turn on inner_rad, outer_rad, and width design parameters / #ACCEPT / #DONE
+DON'T RUN - opt takes more than an hour
+Show how simple it is to set up, time it takes is worth the best designed product
+
+End optional
+
+Results of Sensitivity and Optimization Studies
+#RESULTS
+If asked ‘Save the current model?’, say YES
+#LOAD… / res2 / #ACCEPT
+Select only "g_gs_rad_vm" (1 of 1) / #SHOW…
+#DONE/RETURN
+Show results windows for optimization; select:
+	"o_mass_hist" (1 of 4) ...
+	"o_vm_hist" (2 of 4) ...
+	"o_freq_hist" (3 of 4) ...
+	"v_vm_opt" (4 of 4) ...
+#SHOW…
+
+#DONE/RETURN
+#DONE from RESULTS WINDOW form
+#DONE/RETURN / #DONE/RETURN
+
+!!! THIS IS THE BIG FINALE:  ASSOCIATIVITY with OPTIMIZED MODEL !!!
+
+#MODE / #DRAWING / #SEARCH/RETR / effector.drw
+Show original part dims, note radii and width
+#CHANGEWINDOW / Select to <Part: EFFECTOR>
+#MECHANICA / #DSGN CONTROLS / #OPTIMIZE HIST / #SEARCH STUDY
+#effector_optimiz
+	Do you want to review the next shape? [y]:   <return>
+	.
+	.. (keep saying <y> at prompt)
+	...
+	....
+	Leave the model at the optimized shape? [y]: <return>
+
+#DONE/RETURN
+#CHANGEWINDOW
+	Select to <Drawing: EFFECTOR>
+============================================================================
+END DEMO
+
+#### EXPULSE BENIFITS OF ASSOCIATIVITY / Pro/ENGINEER / PRO/MECHANICA
+Make sure you and your customers understand the following:
+
+PTC’s Vision Addresses the FORM, FIT, and FUNCTION of Mechanical Design
+
+Pro/Engineer applies to the FORM and FIT of components
+Pro/MECHANICA applies to FUNCTION
+
+Pro/MECHANICA provides engineering INSIGHT enabling product IMPROVEMENTS through easy and 
+complete SIMULATION of the functional performance of a product design.
+
+Pro/MECHANICA is...
+a family of software products ...
+available both within and without Pro/Engineer ...
+for use by design engineers ...
+providing functional simulation and insight ...
+into the structural, thermal, and kinematic behavior of a product design ...
+at ALL stages of the product development cycle ...
+enabling product optimization and cost reduction.
+
+Pro/MECHANICA as a Design Tool returns the most value when used early and often throughout the design cycle.  
+Pro/Mechanica is most effectively used by those creating the design, DESIGN ENGINEERS ( or better Mechanical 
+ENGRs).
+
+
+
+Useful settings:
+
+CONFIG.PRO
+datum_point_symbol DOT   ...changes the datum point display to a clean dot in Pro/E
+
+when working in Pro/MECHANICA, hidden line mode works great, it allows you to show and explain the 
+Mechanica icons (in motion, axis directions; in structure, constraints and loads)
+
+shade and spin the model frequently as you define the model environment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

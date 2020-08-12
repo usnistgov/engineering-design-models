@@ -1,0 +1,424 @@
+PLIERS_18
+Picks and Script
+Originally Contributed by: Brian Shepherd
+Modified by Slavko Simic, Chris Belthoff
+
+	
+This is a Pro/MECHANICA demo.   After practice, it will take about 45 minutes to give.  It can be shortened somewhat after you are familiar with the flow.
+
+It requires Pro/ENGINEER 18 (9711 or later) and Pro/MECHANICA 18 (9715 or later).
+
+There is a "web" presentation available that drives home the highlights of the demo.  Use the first "slide" of that web presentation  (a shaded, animated image) as an introduction to show your audience what you will be working on.  Please leave time to run through the rest of the "slides" at the end to reinforce what you showed during the demo.
+
+Note:  Before you begin, if you can configure your workstation so that icons are visible while Pro/ENG is active (i.e. bottom right of your screen), its a good idea for this demo.
+
+This demo is unlikely to work without modifications on WindowsNT machines.
+
+If your screen blanks completely, hold down the control key and the middle mouse button and move the mouse just a bit.  This small rotation repaints the screen.
+
+Make yourself a fresh copy of the pliers directory, because running this demo will "contaminate" the initial files.  I create a tar file of the entire "start" directory.
+
+If you run out of time in the Motion portion of this demonstration, you can skip to the Structure portion and read in the file "jawbot_struct" which has all of the Mechanica entities included. 
+
+Change directory into your fresh directory  (start) and start an integrated session of Pro/ENGINEER and Pro/MECHANICA
+
+In the "mechpres" directory, start a web browser as follows:  
+	netscape -geometry 575x775 pm_start.htm 
+Substitute the name of your web browser command for "netscape" in the above command.  You may want to "expire" all of your links and turn off the display of the menu, location , buttons, etc.  Click on "Highlights" to get to the first screen again.
+
+
+The purpose of today's demonstration is to illustrate how Pro/MECHANICA provides insight into the functional performance of a design and improvement in the final product.  We are going to design a simple set of handtool pliers.  We will start with the conceptual design of the pliers and ensure the design will meet the requirements.  Then we will move on to the detailed design phase and use Pro/MECHANICA to ensure the design will work as intended and then to improve the design.  Some key points to look for in this demonstration:
+* Ease of Use
+* Accuracy for Engineers
+* Integration with Pro/ENGINEER
+
+ASSEMBLY / SEARCH/RETR  / pliers.asm
+
+Let's start by bringing together our conceptual part designs into an assembly.  At this point in the design, we will not use the standard Pro/ENGINEER assembly methods of mate and align.  Instead we will just put these parts loosely in place and let Pro/MECHANICA determine how they fit together.
+
+Note to AE:  Don't change from front view.  Repaint using "rr" often.  When indicating points on the screen, pick so that there is some offset between the points (a: so that you can see the point tags and b: so that the assembly is more impressive).  The assembly starts with one part (PTC0), you are going to package the rest, in order, PTC1-4.
+
+
+
+COMPONENT / PACKAGE / ADD / SEARCH/RETR /ptc1_jawtop.prt / Select just under point E2W / DONE
+
+ADD / SEARCH/RETR / ptc2_jawbot.prt / Select just under point A1P / DONE
+
+ADD / SEARCH/RETR / ptc3_handbot.prt / Select just under point B2P / DONE
+
+ADD / SEARCH/RETR / ptc4_link.prt / Select just under point C1C / ROTATE /  Select ptc4_link.prt / Move mouse so that link.prt rotates around so that the free end is near point D1BE, then click / DONE / DONE/RETURN / DONE/RETURN
+
+OK.  Now that we have our conceptual assembly, lets go into Pro/MECHANICA to define how the parts can move.
+
+APPLICATIONS / MECHANICA / MOTION / MODEL
+
+Note how the menu structure leads the user through the task -- from top to bottom, it provides a laundry list of things to do.  First, on any assembly, we need to define material properties...
+
+PROPERTY / MATERIAL / ASSIGN / PART / Pick all 5 parts from the Model Tree
+
+Note that we can use the Model Tree to ease selection of the components.  The use of the model tree along with the familiar menu style and dynamic view controls  shows the first level of Pro/ENGINEER integration, allowing the Pro/ENGINEER user to immediately feel comfortable using Pro/MECHANICA.
+
+MMB
+
+Here we see the standard list of material properties that come with Pro/MECHANICA.  You can add your own as well.  We'll make all of these parts steel.
+
+STEEL_mmNS / MMB
+
+The only material property of significance for motion is mass density.
+
+MMB / mapkey rr
+
+And now let's define the parts that cannot move, using the easy to use 'bodies' feature
+
+BODIES / Select Ground / REVIEW... / SELECT/REVIEW PARTS... / Select ptc1_jawtop.prt / 
+MMB / ACCEPT / DONE
+
+Notes for AEs: The order in which you pick the points for a joint is important.  The results are expressed in the coordinate system of the SECOND part.  The points have been named to help you remember this section correctly.  There are 5 joints, A through E.  For each joint there are 2 points.  Each point is described first by its joint name (A through E), then with the pick order for that joint (either first or second), then with a designator for the type of joint (p for pin, c for cylindrical, be for bearing, w for weld). We use the cylindrical and bearing joints instead of four pin joints to eliminate redundant constraints in the mechanism.  With redundant constraints, the reaction load at joints may not be accurate.
+
+Now we will create the joints between our parts that define how the parts can move with respect to one another.
+
+CONNECTIONS / JOINTS / CREATE / Pick A1P / Pick A2P
+
+Note the easy to understand types of joints (pin, ball, etc).  The language used in Pro/MECHANICA is familiar to engineers and reduces the levels of abstraction that a user must deal with.
+
+Name it A / PIN / MMB
+
+I'll quickly create the remaining joints in this assembly.
+
+Pick B1P / Pick  B2P / PIN / Name it B / MMB
+Pick C1C / Pick C2C / CYLINDRICAL / Name it C / MMB
+Pick D1BE / Pick D2BE / Name it D / BEARING / MMB
+Pick E1W / Pick E2W / Name it E / WELD / MMB
+
+The icons that represent the joints also describe how the parts can move.  Two of the default joint orientations are not correct for our mechanism, the rotation is in the wrong axis,  so we will quickly edit those joints.
+
+EDIT / AXIS / Pick on the point C1C, you should see the message "Axis 2" / TYPED VECTOR / 0 0 1 /
+Pick just to the right of point D1BE, you should see the message "Axis 2" / TYPED VECTOR / 0 0 1 / DONE/RETURN
+
+OK.  We have defined the material and the joints.  Lets put the mechanism together.
+
+RUN / ASSEMBLY / START
+
+What Pro/MECHANICA is doing now is taking into account not just the geometry of the parts but also how those parts can move with respect to each other and determining how to put those parts together.  This takes just a few seconds.
+
+YES (to assembly successful, reposition?)
+
+Note that now our parts are lined up precisely.  Pro/MECHANICA worried about how to make the everything assemble together while meeting all of our constraints.
+
+Now let's move the bottom handle and  study how the jaws open and close.
+
+MODEL / CONNECTIONS / JOINTS / CREATE / Pick HANDTOP_DRVR / Pick HANDBOT_0 / Name it DRVR / 6DOF / MMB
+
+DRIVERS / CREATE / QUERY SEL / Pick the axis pointing "up" on the DRVR  / "next" until you see drvr.axis2 in the message window / ACCEPT
+
+Pro/MECHANICA allows you to define motion in several ways.  We will use a simple cosine motion.  If your mechanisms require more complicated motions, you can use the "table driver" choice that allows you to simply enter a table of values of position, velocity, or acceleration at each time step.
+
+AE NOTE:  You have to memorize the following driver data.  If you get this wrong, the motion analysis may not work.
+
+POSITION / COSINE / Amplitude 50 / Period 1 / Phase 3.14 / Offset -75 / ACCEPT / 
+
+Since we are interested in how the jaws behave with respect to the handles lets create some "measures" that work like instruments that  track the separation of the jaws.
+
+
+CONNECTIONS / JOINTS / CREATE / Pick TOPJAW_1 / Pick BOTJAW_3 / Name it MEAS / 6DOF / MMB
+
+EDIT / AXIS / QUERY SEL / Pick the axis pointing "up" on the MEAS joint you just created / "next" until you see meas.axis2 in the message window / ACCEPT / PT TO PT / Pick TOPJAW_1 / Pick BOTJAW_3
+
+MEASURES / CREATE / JOINT AXIS / QUERY SEL / On the MEAS joint you just edited, pick the axis pointing  from topjaw to botjaw / "next" until you see meas.axis2 in the message window / ACCEPT / Name it JawGap_Min / Evaluation Method = Minimum / MMB
+
+The first measure we will create will track the closest the jaws come together.
+
+QUERY SEL / again pick the axis pointing  from topjaw to botjaw  and "next" until you see meas.axis2 in the message window / ACCEPT / Name it JawGap_Max / Evaluation Method = Maximum / MMB
+
+This time lets track the maximum separation of the jaws.
+
+QUERY SEL / once again pick the axis pointing  from topjaw to botjaw  and "next" until you see meas.axis2 in the message window / ACCEPT / Name it JawGap_ETS / Evaluation Method = Each Time Step / MMB / DONE/RETURN
+
+This time we will capture the separation at each time step.
+
+Let's now run a motion simulation.
+
+ANALYSIS / MOTION / REVIEW 
+
+We will move the handles for one second and take data every 20th of a second.
+
+Start Time 0 / Duration 1 / Increment .05 / MMB / MMB
+RUN / MOTION / START (note takes about 20 seconds to complete)
+
+While Pro/MECHANICA is determining how the mechanism will move as the handles are forced, let's review what we've done so far:
+* started with "conceptual" parts that are really just space envelopes and control points
+* quickly packaged them in an assembly
+* defined the immovable parts, the part materials, and the joints connecting the parts
+* assembled them together
+* defined and ran a simulation of the movement of the mechanism
+Now lets look at the movement of our conceptual design...
+
+RESULTS / ANIMATE / START / Slide the speed control to about half / >(PLAY) 
+
+Pro/MECHANICA provides an easy to use, VCR-style panel for controlling the animation.  In addition, Pro/MECHANICA will provide more detailed engineering information in graphical form.  Let's look at the measures we used to track the jaw positions...
+
+GRAPH / MEASURE / Hilight the 3 JawGap Measures / GRAPH / OK / OK / OK
+
+First look at the "each time step" measure and note how at every instance it reports the separation of the jaws.  Now look a the "maximum", it only tracks the maximum opening of the jaws (which in this case happened at the very first step).  Similarly, the minimum measure captures the smallest value obtained during the simulation.
+
+Pro/MECHANICA provides powerful graphing tools allowing you to zoom in on a portion of the graph and to get detailed information about any of the points on a graph.
+
+SEG GRAPH / Pick 2 points at about y=20 / POINT QUERY / Pick any point on the graph / OK / MMB /FULL GRAPH
+
+However, looking at the full graph, we see a problem with our initial design. We see the minimum jaw opening never gets below about 13mm.  We need a design that will close down to zero but also close on a 45mm object.  We will have to make the position of the link in the top handle variable in order to achieve this.  But how do we find out what the necessary range of "user adjustment" is required?  Pro/MECHANICA will answer that question for us...
+
+DONE/RETURN / DONE 
+
+Let's first tell Pro/MECHANICA what we are willing to change about our design.  I'm going to select the point defining the link location in the upper handle.  I could just as easily choose any other Pro/ENGINEER dimension to vary.
+
+MODEL / DSGN CONTROLS / DESIGN PARAMS / CREATE... / SELECT... / QUERY SEL / Pick on point D1BE (under point D2BE) / "NEXT" until you are looking at the D1BE point (feature 7 (DATUM POINT) in part PTC0_HANDTOP)/ ACCEPT / Pick on the -80.00 dimension
+
+Let's allow Pro/MECHANICA to change this dimension 20mm.
+
+Change the minimum to -85 and the Maximum to -65 / ACCEPT
+
+Now we can "preview" how Pro/MECHANICA will change our Pro/ENGINEER dimension.
+
+SHAPE ANIMATE / Number of intervals = 5 / ANIMATE / ENTER 4 times / YES to restore model to original shape
+
+That looks like a reasonable range, let's run a study that shows the jaw opening measures as a function of the link position.
+
+DESIGN STUDY / Name= movelink / Type = Global Sensitivity / MMB / MMB / RUN / movelink / START (takes about 35 seconds)
+
+In about 30 seconds, Pro/MECHANICA will vary our design dimension through its full range and determine the mechanism motion at each of the states.  When it finishes, we will take a look at our measures of the jaw opening.  Essentially we will see a simple to understand graph showing the sensitivity of the designs jaw opening to the location of the link.  This is a simple graph, but it provides very powerful insight.  With this information, you begin to understand the relationships between parts of your design.  This allows you to assess the impact of a design change quickly and accurately. Again, let me just re-emphasize we are using Pro/MECHANICA very early in the design process.  We are getting "functional performance information" early enough to make "optimum design decisions".  
+
+Hilight JawGap_Min and JawGap_Max / GRAPH 
+
+Note that in order to have a minimum gap of about zero, we need to have the link about 72mm from the main pivot.  And to handle a 45mm object we need to have the link located 84mm from the main pivot.  We now have the information we need to do some detailed design work.
+
+DONE-RETURN / DONE / DONE/RETURN under MECHANICA menu
+
+Mapkey des (do detail design) 
+
+Since this is a Pro/MECHAINCA demo and not a Pro/ENGINEER demo, and in order to keep the demonstration moving along, I've got a macro that simulates the Pro/ENGINEER feature creation part of detailed design.  Essentially, we are now filling out our original conceptual parts (really just datum points and space envelopes) with detailed geometry.  So while this is ongoing, let's consider what we have just accomplished.  Using Pro/MECHAINCA at the conceptual design phase, we determined that our mechanism would work, and more importantly, we determined the best values for a Pro/ENGINEER dimension to meet our design requirements.   
+
+Note: don't worry if the parts have unaligned - they will snap-to in a moment
+
+APPLICATIONS / MECHANICA / MOTION / RUN / MOTION / START
+
+Note that we did not have to duplicate any work in setting up the functional simulation.  All of the effort we invested during conceptual design is now paying off during detailed design as well.  This demonstrates how well Pro/MECHANICA can adapt to the change that is a natural part of your design process without requiring a lot of error-prone duplicated effort.
+
+RESULTS / ANIMATE / START / mapkey sd / Set speed control about 80% / > (play) / CONTROL + MOUSE ZOOM and ROTATE 
+
+So this motion still looks good.  But we better make sure by checking for interferences...
+
+INTERFERENCE / EXACT RESULT / GLOBAL / DONE-RETURN / START (takes about 45 seconds)
+
+Pro/MECHANICA is now checking for interference between all of the parts at each time step during the motion.  While this takes less than one minute, imagine how finding an interference now, rather than when you put together the first prototype, would improve your development process.  We asked Pro/MECHANICA to stop the animation if it finds an interference
+
+Point out the interference between the link and the bottom handle.
+
+mapkey rr / > (PLAY) / VIEW / NAMES / FRONT / Note that max interference occurs around frame 10 / Note: hit play several times to "plow through" the interference and show it breaking free again.
+
+Let's quickly modify our Pro/ENGINEER dimension to fix that interference problem.
+
+DONE/RETURN on APPLICATION menu
+
+MODIFY / pick on ptc4_link.prt / Select 12 dimension / enter 10 / DONE/RETURN / REGENERATE / AUTOMATIC
+
+Let's quickly update our motion simulation with the new slimmer link design.  Again, notice that Pro/MECHANICA has absorbed this design change with no user intervention required.
+
+APPLICATIONS / MECHANICA / MOTION / RUN / MOTION / START / RESULTS / ANIMATE / INTERFERENCE / TWO PARTS / pick ptc4_link.prt and ptc3_handbot.prt / START
+
+Now that we know where the interference was, this time we will only check for interference between the two problem parts which will go a bit faster.
+
+Set speed control about 80% / > (play) / mapkey shd / CONTROL + MOUSE ZOOM and ROTATE
+
+Okay, the geometry of our design now looks good.  We know we have the range of motion we want and we have found and eliminated any interferences that occurred in this design.  Now let's find out how our design will behave when we simulate squeezing and torquing a nut...
+
+First let's "close" the jaws to represent the typical state of the pliers when they are being used.
+
+DONE/RETURN on Results Menu / ANALYSIS / ASSEMBLY / REVIEW / current time =.3 / MMB / DONE / RUN / ASSEMBLY / SETTINGS / CURRENT TIME = .3 / MMB / START / YES
+
+We'll delete the joints we used to "drive the motion" and measure the jaw opening...
+
+MODEL / CONNECTIONS / JOINTS / DELETE / Pick on HANDTOP_DRVR and TOPJAW_1 (delete both the 6DOF joints)/ MMB / DONE/RETURN on "action" menu 
+
+Let's use the powerful geometry measuring tools in Pro/ENGINEER to figure out how far apart the jaws are right now...
+
+INFO / MEASURE / DISTANCE / FROM POINT / select TOPJAW_1 / select BOTJAW_3 /  Note the value (about 15.8mm) / DONE/RETURN
+
+Great, the jaws are about 15.8mm apart, lets create a really stiff spring, representing a nut,  between the jaws.  This will keep the jaws from moving when we apply a squeezing force on the handles.
+
+LOADS / CREATE / PT TO PT / select TOPJAW_1 / select BOTJAW_3 / SPRING / K = 1e5 / Upos = 15.8 (value from above measurement) / MMB
+
+Now lets put a load on the top handle simulating someone putting his whole weight (1000 N) onto the handle...
+
+FOLLOWER FOR / select HANDTOP_LOAD / TYPED VECTOR / 0 -1 0 / D=1000 / MMB
+
+Also, we'll put a 100N squeezing load onto the bottom handle... 
+
+Select HANDBOT_0 / TYPED VECTOR / 0 1 0 / D=100 / MMB / DONE/RETURN on "motn model" menu
+
+Now we can run a "static" simulation that will show how the loads are distributed through the mechanism.
+
+RUN / STATIC / START / OK
+
+That was quick!  Let's first find out how our design is multiplying the 100N squeeze load...
+
+RESULTS / QUERY / LOAD / Select the load between the jaws
+
+Wow!  A 100N squeeze generates over a 1000N grip.  Not bad.  But now lets look at our connections between the parts.
+
+Make sure to practice the following "snapshot" technique before using it in a demo.  It requires timing.  If you don't use it, you will need to memorize or write down the values when they appear.
+
+MMB / CONNECTION / mapkey ss / Select joint A / When cursor changes from arrow to cross hairs, click in the dataform window showing the joint results to make a snapshot of that window.  It will immediately appear and you should immediately iconify that new window (we'll use that later).
+
+Here you see Pro/MECHANICA is giving you the load at this joint caused by the simultaneous torquing and squeezing.  Let's check the other joint...
+
+MMB / mapkey ss / Select joint B / When cursor changes from arrow to cross hairs, click in the dataform window showing the joint results to make a snapshot of that window.  It will immediately appear and you should immediately iconify that window (we'll use that later). / MMB
+
+Well, we've taken a quick tour through Pro/MECHANICA MOTION.  Let's move into Pro/MECHANICA STRUCTURE, to see if our lower jaw design can handle these loads.
+
+DONE/RETURN under APPLICATIONS menu / DBMS / SAVE / ENTER
+
+MODE / PART / SEARCH/RETR / ptc2_jawbot.prt / drag the lower left corner of the new window to resize it to be just about as big as the original window / ENVIRONMENT / DISP POINTS (OFF) (optional) / DISP TAGS (OFF) (optional) / SHADING / DONE/RETURN / CONTROL + MMB to spin it around
+
+This is our Pro/ENGINEER model of the lower jaw.  Let's go into Structure and see how easy it is to find out whether this design will work and how to improve it.
+
+Note:  Try to not hilight the fact that the material property must be assigned again.  If a member of the audience brings it up - just say that integration with the Pro/ENGINEER material definition is coming in the next release (19).
+
+MECHANICA / STRUCTURE / MODEL / MATERIALS / ASSIGN / PART / Select part / MMB / STEEL_mmNS / MMB / MMB / rr mapkey
+
+Notice here that the material properties required for structural simulations are shown...
+
+CONSTRAINTS / CREATE / FACE/SURFACE / Select region by selecting towards the front of the wide surface of the jaw / MMB / MMB (to accept all as fixed) / MMB
+
+Now lets add the loads we determined in MOTION...
+
+Note you can uniconify the snapshots you took during the MOTION simulation to see these values.  Note also that an empty field is equivalent to zero so you don't have to type in the zeros shown below.
+
+LOADS / CREATE / BEARING / Pick inside hole at point A2P / MMB / Vector Start Point = 0 0 0 / Vector End Point =  -920  1678  0 / Magnitude = 1914 / DISPLAY 
+
+When we hit the display button, Pro/MECHANICA shows the load we are applying.  Note how the complex cosine distribution of the load, typical of a pin joint, is automatically created for us.  Let's add the load at the other joint location too.
+
+MMB / MMB / BEARING / Pick inside hole at point B2P / MMB / Vector Start Point = 0 0 0 / Vector End Point =  1595  -876  0 / Magnitude = 1820 / MMB
+
+OK.  We have defined the material, the constraints, and the loads.  Let's run a simulation and study the stress distribution in our part...
+
+ANALYSES / (leave defaults) / MMB / MMB
+
+RUN / START / YES
+
+What we have done is pretty straight forward.  But equally important is what we have not done.  We have not "exported" any geometry.  Our geometry is still the Pro/ENGINEER geometry.  We did not "simplify" our model by removing geometry.  It is important to note that we can easily remove geometry using Pro/ENGINEER's simplified rep functionality, but, since this is our first simulation, we left all of the detail in order to find out which features are important to the results.
+
+We have not created any finite elements or worried about elements in any way. Pro/MECHANICA uses adaptive refinement technology so that we don't have to worry about the initial state of the mesh.   We have used the geometry to locate our loads and constraints.  We used intuitive loading scenarios, "bearing" in this case, to mirror the real world behavior.  So as you can see, Pro/MECHANICA is very easy to use.
+
+This model takes about 7 minutes or so to complete.  But we are free to go on working while the solution is in progress.  For instance we could create a drawing of our part.  
+
+But in the interest of time, let's press on and look at some results of our simulation.  We will look at the displacement of the jaw as an animation, and stress levels as a fringe plot
+
+MMB / RESULTS / LOAD / select 'results' / MMB
+
+Select a_disp_anim and b_V_MISES windows
+
+Now we can look at our results...
+
+SHOW / MISC / V / DOUBLEBUFFER / Click on DOUBLEBUFFER / DONE-RETURN / DONE-RETURN
+
+CONTROLS / Click on the non-shaded window / START / STOP / STEP (multiple times) / DONE
+
+See how our animation helps us visualize the behavior of the part in its environment.  Again, this is adding to our understanding of our design.
+
+CONTROLS / Click on the shaded window / SHADE / Use the CTRL+MOUSE to pan, zoom, and rotate.   
+
+Note the elongation of the hole (exaggerated for clarity).  Also note the maximum stress of 300 MPa. 
+
+DONE / DONE/RETURN / DONE / DONE/RETURN / DONE/RETURN
+
+Remember we said that Pro/MECHANICA is designed to be used early in your design process.  But things change fast in the early parts of a design process.  Can Pro/MECHANICA keep up?  Let's say someone has mandated a big hole in our part.
+
+FEATURE / CREATE / HOLE / DONE / DONE / Click on the side surface of the body of the part about midway between points BJ and B2P / SELECT BY MENU / DATUM / NAME / DTM1 / ENTER (accept the default value) 
+SEL BY MENU / DATUM / NAME / DTM2 / ENTER (accept the default value) / DONE / THRU ALL / DONE / 10 / OK (in the feature dialog box) / DONE
+
+OK.  Now we have a big hole in our part.  What work do we have to repeat in Pro/MECHANICA?
+
+MECHANICA / STRUCTURE
+
+The answer is simple.  Nothing.  We don't have to change our loads, our constraints, or anything else.  We are just a few clicks from looking at results for our changed model.  This ability to keep up with the pace of change of your design process is a hallmark of Pro/MECHANICA and is absolutely critical to your success in using a functional simulation tool.
+
+RUN / DONE (don't click start)
+
+Let's get rid of the hole...
+
+DONE/RETURN / DONE/RETURN / FEATURE / DELETE / Select the big hole you just created / DONE / DONE
+
+But Pro/MECHANICA doesn't just react to change.  It can be the catalyst for change.
+
+MECHANICA / STRUCTURE / MODEL 
+
+For instance, by driving Pro/ENGINEER parameters to new values we can study the effects of shape changes on functional performance.  For instance, we can vary the diameter of this hole from 2 to 4 mm.
+
+DSGN CONTROLS / DESIGN PARAMS / Select top_hole_dia / REVIEW / CANCEL / MMB
+
+Pro/MECHANICA provides powerful and easy to use sensitivity studies that show the relationship between a parameter's value and results for the model.  For instance, let's study the relationship between the top hole diameter and maximum stress in the model.
+
+DESIGN STUDIES / Type = Global Sensitivity / highlight the top_hole_dia only / MMB / MMB  
+
+RUN / DONE (Don't Click start)
+
+In the interest of time, we will look at some stored results. 
+
+Note:  If anyone asks, this took about 45 minutes to solve.  If they act like that is a long time, point out that no manual intervention was required during that time.  (I did it while I was at lunch!)
+
+RESULTS / (YES to save)
+
+Let's look at a graph of the top hole diameter versus the maximum stress.
+
+Select only the c_gl_top_hole window, deselect all others
+
+Before I show the graph, ask yourself:  "will the stress go up or down as I make the hole diameter smaller and larger"?  It's not a trivial question is it?
+
+
+SHOW
+
+Well here is your answer.  There is a "sweet spot" in the diameter of the hole about one third of the way through the 2 to 4 range (or 2.8mm).  If the hole is too small, the stress goes up because there is not much perimeter material.  If the hole gets too big, there is not enough "web" material left.  Pro/MECHANICA gives you the understanding of your design to make the best design decisions.  
+
+DONE/RETURN / DONE
+
+In addition, to sensitivity studies, Pro/MECHANICA can optimize the values of our Pro/ENGINEER parameters to meet a specific design goal.  For instance, what values of these parameters will give me the lowest stress possible.  First, we can define a few Pro/ENGINEER dimensions to vary and preview the design space Pro/MECHANICA will work in... 
+
+MODEL / DSGN CONTROLS / SHAPE ANIMATE / click on all parameters, # of intervals=3 / ANIMATE / ENTER / ENTER / YES to restore model
+
+Now we can create an optimization design study...
+
+DESIGN STUDIES / CREATE / Type: Optimization
+
+We want to find the lightest design we can by varying all the design parameters.  On this optimization we will set a stress limit of 300 Mpa.
+
+Goal: Minimize Mass / Limit: max_stress_vm <300 / Turn on all Parameters / MMB / DONE
+
+
+Now with one button click we are ready to find the best set of parameters to minimize stress...
+
+RUN (Do not start)  /  DONE
+
+
+Again, in the interest of time we will look at stored results...
+
+Note:  If anyone asks, this took about 5 hours to solve.  If they act like that is a long time, point out that no manual intervention was required during that time - you could do it in the evening.  As well, Pro/MECHANICA ran 39(!) solutions during that time to find the best design.   (How long would it take to build and break 39 prototypes?)
+
+
+RESULTS / No to save (actually yes is OK too) 
+
+Let's show the stress as a fringe plot on the optimized design, as well as the original design's stress levels, and another window showing the optimization progress
+
+Hilight ONLY the b, d, and e windows / SHOW
+
+VIEW / ISO / DONE / CONTROLS / select the optimized stress fringe plot / SHADE / TIE / select the original stress fringe plot / VIEW / ROTATE +Y (multiple times until you can see red in the top hole of the original design but not the new design / WINDOW / Drag a small window around the top hole area of the part / DONE.
+
+
+Notice that the mass of the design has been reduced by about 30%, while stress levels have remained acceptable!!  We can see by the Optimization history that Pro/MECHANICA  quickly converged on a good design and then tried a few times to improve it still.  So we see that Pro/MECHANICA has found a better design than we had time to manually.
+
+In addition, thanks to the associativity of Pro/MECHANICA and Pro/ENGINEER, this optimum shape, if I so choose, will be automatically reflected in all assemblies, drawings, and other design deliverables.
+
+
+Let's complete this demonstration by just reviewing a few of the Pro/MECHANICA highlights...
+
+
+Note: Uniconify the Netscape presentation.  In the left-hand frame, click on the highlight topics to show a "slide" on that topic.  Make sure you are tying these key points back into what they just saw. Step through each of the highlights  and finish with the summary slide that points out that all of these great product features are really designed to help them achieve their new product development objectives.

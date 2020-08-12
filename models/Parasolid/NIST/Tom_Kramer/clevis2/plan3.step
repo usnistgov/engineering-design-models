@@ -1,0 +1,63 @@
+STEP;
+HEADER;
+ FILE_IDENTIFICATION(
+   'CLEVIS2_PLAN3',
+   '19910117000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'No system');
+ FILE_DESCRIPTION('This is a machining process plan for clevis2 third cut');
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+@1  = START_PLAN ('CLEVIS2 THIRD CUT', '1', 'START_PLAN', '1', (),
+          );
+@2  = INITIALIZE_PROGRAM ('SET UP PROGRAM', '2', 'INITIALIZE_PROGRAM', '1', (),
+          #1, ,
+          'INITIALIZE_PROGRAM', (), '10', , , , ,
+          'CL29NC', 'CLEVIS2-DESIGN', 'CLEVIS2-MRSEVS3', 'CLEVIS2-SETUP3',
+              'BLOCK2', 'ALUMINUM', 'VISE', 17.1, 8.82, ); 
+@3  = SET0_CORNER ('LOCATE THE PART', '3', 'SET0_CORNER', '1', (),
+          #2, ,
+          'SET0_CORNER', (), '10', , , , ,
+          'PROBE-0.25', 3.85, 0.49, -3.85, -0.49, 1); 
+@4  = PARAMETERIZED ('SPLIT', '4', 'PARAMETERIZED', '1', (),
+          #3,
+           , 'PARALLEL', 'ALL',
+          ());
+@5  = ROUGH_MILL ('ROUGH POCKET 25', '5', 'ROUGH_MILL', '1', (),
+          #4, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET25', 2500, 8.0, 0.5, 0.5);
+@6  = ROUGH_MILL ('ROUGH POCKET 23', '6', 'ROUGH_MILL', '1', (),
+          #4, ,
+          'ROUGH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET27', 2500, 8.0, 0.5, 0.5);
+@7  = FINISH_MILL ('FINISH POCKET 26', '7', 'FINISH_MILL', '1', (),
+          #5, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET26', 2500, 10.0, 0.5);
+@8  = FINISH_MILL ('FINISH POCKET 28', '8', 'FINISH_MILL', '1', (),
+          #6, ,
+          'FINISH_MILL', (), '10', , , , ,
+          'END-MILL-1.0-2', 'RECTANGULAR_POCKET28', 2500, 10.0, 0.5);
+@9  = JOIN ('JOIN', '9', 'JOIN', '1', (),
+           ,
+          (#7, #8));
+@10 = END_PROGRAM ('END PROGRAM', '10', 'END_PROGRAM', '1', (),
+          #9, ,
+          'END_PROGRAM', (), '10', , , , );
+@11 = END_PLAN ('END SECOND CUT', '11', 'END_PLAN', '1', (), 
+          #10);
+@12 = PLAN ('EQUIPMENT', 'OLPS', 'CLEVIS2_PLAN3', '1', (),
+          (#1, #2, #3, #4, #5, #6, #7, #8, #9, #10, #11));
+ENDSEC;
+ENDSTEP;

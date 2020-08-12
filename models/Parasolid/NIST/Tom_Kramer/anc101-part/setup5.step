@@ -1,0 +1,55 @@
+STEP;
+
+HEADER;
+ FILE_IDENTIFICATION(
+   'ANC101/SETUP5.STEP',
+   '19900920000000',
+   ('Tom Kramer',
+    'Room A-127, Bldg. 220',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   ('Factory Automation Systems Division',
+    'NIST',
+    'Gaithersburg, MD 20899'),
+   'STEP Version 1.0',
+   'No preprocessor - handwritten',
+   'no system');
+ FILE_DESCRIPTION('This file describes the setup for plan 5 for anc101') ;
+ IMP_LEVEL('1.0');
+ENDSEC;
+
+DATA;
+ @1  = CARTESIAN_POINT ( , 0.0, 5.0, 0.0);
+ @2  = DIRECTION ( , 0.0, -1.0, 0.0);
+ @3  = DIRECTION ( , 1.0, 0.0, 0.0);
+ @5  = AXIS2_PLACEMENT ( , #1, #2, #3);
+ @6  = HOLE (#5, 1.0,  , 1.0);
+ @7  = MATERIAL_REMOVAL_VOLUME ('DESIGN-LOCATION', (#6), );
+
+ @17 = MATERIAL_REMOVAL_VOLUME ('WORKPIECE-LOCATION', (#6), );
+
+ @21 = CARTESIAN_POINT ( , 0.0, 0.0, 5.0);
+ @22 = DIRECTION ( , 0.0, 0.0, 1.0);
+ @25 = AXIS2_PLACEMENT ( , #21, #22, #3);
+ @26 = HOLE (#25, 1.0,  , 1.0);
+ @27 = MATERIAL_REMOVAL_VOLUME ('MRSEV-LOCATION', (#26), );
+
+ @31 = CARTESIAN_POINT ( , 0.0, 0.0, 0.0);
+ @32 = DIRECTION ( , 10.75, 5.0, 5.0);
+ @35 = AXIS2_PLACEMENT ( , #31, #32, #3);
+ @36 = HOLE (#35, 1.0,  , 1.0);
+ @37 = MATERIAL_REMOVAL_VOLUME ('BOUNDING-BOX', (#36), );
+
+ @46 = HOLE ( , 1.0,  , 1.0);
+ @47 = MATERIAL_REMOVAL_VOLUME ('FIXTURE-LOCATION', (#46), );
+
+/* The holes in this file are dummies which are defined only so that
+it is possible to make a material removal volume with a name.
+The use of a null location for a hole indicates a null location for
+the named item (such as "fixture") being located.  This is a kludgy way
+to represent locations, but the alternative, which probably should be
+done in the long run, is to define locations in some PDES schema. */
+
+ENDSEC;
+
+ENDSTEP;

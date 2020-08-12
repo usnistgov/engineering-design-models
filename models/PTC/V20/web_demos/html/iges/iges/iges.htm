@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (X11; I; SunOS 5.5 sun4u) [Netscape]">
+   <TITLE>PTC - "MACHINING IGES DATA"</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED><APPLET CODE=WebModeler.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET><SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language="JavaScript">
+
+function m1() 
+{
+quit_wind();
+retrieve_model('hood.prt','models/iges/');
+}
+
+function m2() {
+quit_wind();
+retrieve_model('hood.mfg','models/iges/');
+NC_Check('1x1','mill_od_profile.ncl');
+}
+
+function m3() {
+quit_wind();
+retrieve_model('hood.mfg','models/iges/');
+NC_Check('1x1','rough_mill_surface.ncl');
+}
+
+function m4() {
+quit_wind();
+retrieve_model('hood.mfg','models/iges/');
+NC_Check('1x1','finish_mill_surface.ncl');
+}
+
+</SCRIPT>
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+<CENTER><!-- title goes here --><B><FONT FACE="arial,helvetica"><FONT COLOR="#000080"><FONT SIZE=+2>Machining
+of IGES Data</FONT></FONT></FONT></B></CENTER>
+<FORM NAME="ui">
+<BR><IMG SRC="../template/images/divider.gif" >
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>In todays manufacturing environment,
+it is not uncommon for comapnies to utilize many different CAD/CAM tools.
+IGES data is a common translation format from a design company to a manufacturing
+job shop. In order to be competitive, a CAM system must be able to import
+and machine IGES data to address the needs of the manufacturing community.</FONT></FONT>
+<BR><IMG SRC="../template/images/divider.gif" >
+<BR><// ************************************ IMPORTING  *********************************//>
+<BR><IMG SRC="images/iges_in.gif" >
+<BR><A NAME="import"></A>
+<UL><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Importing
+of IGES surfaces</FONT></FONT></FONT></B></UL>
+
+<FONT FACE="arial,Helvetica"><FONT SIZE=+0>The first step in machining
+an iges file is importing the data into Pro/Engineer. Pro/Enginner not
+only provides excellent&nbsp; import capablities, which adhere to the lastest
+standards, but functionality to tweak and fix&nbsp; imported geometry.&nbsp;
+Once the geometry is imported into Pro/Engineer it may then be brought
+into Pro/Manufacturing and toolpaths applied.</FONT></FONT>
+<DD>
+<IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;<INPUT type=button value="Import Example" onclick="m1()"></FONT></FONT></DD>
+
+<BR><IMG SRC="../template/images/divider.gif" >
+<BR><// ************************************  ROUGH PROFILE OD  *********************************//><A NAME="rough_profile"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Rough
+Machine IGES Profile</FONT></FONT></FONT></B>
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>The first toolpath will machine
+around the outside profile of&nbsp; the iges model. This pass will define
+the outside contour of the part and also provide clearance for the the
+surface passes which follow. The iges part is imbedded in a solid block
+giving us the advantage of
+using NC Check with imported geometry. We pick the edges we want to machine
+directly off the iges model . These edges do nothave
+to lie in the same plane. A seperate pick for height will determine the
+depth of the cutting tool. The edges merely define the outside shape as
+if we were looking at a 2D profile.</FONT></FONT>
+<BR>
+<DD><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;<INPUT type=button value="Rough Profile OD" onclick="m2()"></FONT></FONT></DD>
+
+<BR><IMG SRC="../template/images/divider.gif" >
+<BR><// ************************************  ROUGHING  *********************************//>
+<BR><IMG SRC="images/mach_surf.gif" >
+<BR><A NAME="rough"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Rough
+Machining of IGES surfaces</FONT></FONT></FONT></B>
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>Our second toolpath will
+rough machine the entire top of the part. A bull nose end mill is used
+machining at different step depths. The surfaces to
+be machinined are selected and stock allowance added from the parameter
+file. The roughing passes are automatically calculated based on
+ the size of the stock, step
+depth,stock allowance and the surfaces picked to be machined.</FONT></FONT>
+<BR>
+
+<DD><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;<INPUT type=button value="Rough Machine IGES Surfaces" onclick="m3()"></FONT></FONT></DD>
+
+<BR><IMG SRC="../template/images/divider.gif" >
+<BR><// ************************************  Finishing ****************************************//><A NAME="finish"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Finish
+Machining of IGES surfaces</FONT></FONT></FONT></B>
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>The last toolpath finish
+machines the iges surfaces using a ball endmill.&nbsp; Pro/Manufacturing
+allows you to have all the surfaces selected during the
+roughing sequence carried over to the finish tool. There is no need to
+re-select surfaces. By using a new tool and a few new parameter settings a finish toolpath can be quickly
+and easily generated.</FONT></FONT>
+<BR>
+
+<DD><IMG SRC="../template/images/bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;<INPUT type=button value="Finish Machine IGES Surfaces" onclick="m4()"></FONT></FONT></DD>
+
+<BR><IMG SRC="../template/images/divider.gif" >
+<BR><!--   #######################    end of document content    #######################   --></FORM><!-- START OF MENUBAR -->
+<CENTER><!-- the link for the back button goes below --><!-- mouseover text goes below for the back button (optional) --><!-- followed by the --><!-- the link for the main index goes below --><!-- mouseover text goes below for the index button (optional) --><!-- last is the: --><!-- the link for the next button goes below --><!-- mouseover text goes below for the next button (optional) --><A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true"><IMG SRC="../template/images/back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A><A HREF="../intro/NC_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true"><IMG SRC="../template/images/index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A><A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true"><IMG SRC="../template/images/next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

@@ -1,0 +1,89 @@
+Sheetmetal
+	Sheetmetal - Design
+	NC-Sheetmetal
+		Automation
+			Auto-nesting
+				MultiSheet Nesting
+					In demand flow technology (dynamic nesting) the basic inputs
+					are usually derived from a scheduling list.  This list can
+					include information about the parts such as material thickness
+					and type,  the number of parts required,  and orientation
+					requrements if any.  Many shops utilize standard sheet or coil
+					sizes to nest the parts to eliminate a shear to size step.
+					Once a sheet size in input into NC-Sheetmetal,  the optimum
+					placement of the parts on the sheet can be determined.  If 
+					more than one sheet is required to fit all of the ordered parts,
+					NC-Sheetmetal will prompt the user to either save the remainder
+					file to be processed later, or NC-Sheetmetal will continue to
+					create new sheets until the order has been filled.
+				Clustering (True Shape Nesting)
+					Automated nesting can be executed in two basic ways, by
+					approximating the shape of the part with the largest rectangle
+					the part wil fit in, and true shape nesting.  It is often
+					desirable to nest the true shape of the part in order to
+					maximize the sheet utilization.  NC-Sheetmetal allow the user
+					to "cluster" the parts by simply selecting the "Clustering"
+					check box in the (FITB) dialog box.
+				Grain Orientation
+					Some designs have an asthetic requirement that requires a
+					specific "texture" be applied to the finished product.  This
+					"texture" might give the part the look of brushed steel.  The
+					orientation of the "texture" is often called the grain of the
+					material. NC-Sheetmetal allows the user to orient all parts of
+					a given grain in the same direction by simply checking the 
+					"Grain Alignment" box in the part setup dialog box.
+				Part Flipping
+					If the parts to be nested can be punched from either side 
+					(ie. no form features or surface quality issues) this 
+					functionality can be used to increase the efficiency of the
+					nest by allowing the user to not only rotate the parts at any
+					angle,  but also to turn them "upside down". This 
+					is accomplished by turning on the "Flip Allowance" check box
+					in the part setup dialog box.
+				Part in Part Nesting
+					To increase sheet utilization,  parts that have large voids or
+					cutouts can have these areas filled up by smaller parts.  Some
+					shops will use this approach to run the larger parts as ordered
+					and create runs of the smaller parts that can be put into stock.
+					This technique can balance the part demand load for a shop. This
+					option is accessed in the Clustering Tab by checking the box for
+					"Use Holes".
+		
+		Manual Programming
+			Rough and Profile
+				For manufacturing parts that have large internal voids, Pro/NC-SHEETMETAL
+				can "destroy" the area by filling the boundary of the void with hits. This
+				sequence type is called "Nibble Area".  To improve edge quality in these
+				areas and reduce machining time, it is often desirable to punch out the 
+				area using 2 different tools. By setting the sequence parameter "Scan-Type" to "Rough and Profile", and
+				defining the "second tool" option, Pro/NC-SHEETMETAL will rough the area
+				with the first tool and then profile the edges of the boundary with the 
+				second tool. Area roughing can also be done with a tool loaded at an angle.
+			Contouring
+				Corner Conditions
+					For lasers and plasma tables, an important consideration is how the
+					corners	of the part are treated.  Many times it is desirable to cut
+					past a corner, loop around and engage the next edge. Pro/NC-SHEETMETAL
+					does this by giving the user full control over what kind of corner
+					condition to automatically apply to the toolpath. Sizes and types
+					of the moves can be preset in parameter	files or specified "on the fly"
+					in dialog boxes.
+				Approach and Exit Moves
+					Pro/NC-SHEETMETAL can automatically place a variety of approach and exit
+					moves.  These moves can be linear such as approching from an angle
+					at a distance, or radial tangent arc lead in. 
+					Optionally the user can decide to start at the beginning 
+					or in the middle of an edge. Sizes of the moves can be preset in
+					parameter files or specified "on the fly" in dialog boxes.
+			Optimization
+		
+		Workcell Management
+			Machine Parameters
+				From Statement Control
+			Turret Loading
+				New Dialog Box
+			Machine Zones/Automatic Repositioning
+				Machining Zones
+
+				Automatic Clamp Avoidance
+					

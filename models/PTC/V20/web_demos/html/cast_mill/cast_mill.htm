@@ -1,0 +1,271 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (WinNT; U) [Netscape]">
+   <TITLE>Milling of Casting and Forgings</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2></EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2></APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+<SCRIPT language = "JavaScript">
+
+quit_wind();
+retrieve_model('housing.mfg','models/cast_mill/');
+ViewSet('housing.asm', 'view_all_mill');
+set_display('hiddenvis');
+
+function show_components()
+{
+	ViewSet('housing.asm', 'view_all_mill');
+	set_display('shade');
+	component_display('CAST');
+}
+
+function show_finished()
+{
+	ViewSet('housing.asm', 'view_all_mill');
+	set_display('shade');
+	component_display('FINISHED');
+}
+
+function facing()
+{
+	component_display('ALL');
+	set_display('hiddeninvis');
+	ViewSet('housing.asm', 'mill_flats');
+	NC_Check('1x1','casting_b0face.ncl');
+}
+
+function rotate_45()
+{
+	component_display('ALL');
+//	activate_window();
+	ViewSet('housing.asm', 'FLATS_45');
+	NC_Check('1x1','casting_b45face.ncl');
+}
+
+function single_pass()
+{
+	component_display('ALL');
+	ViewSet('housing.asm', 'b90');
+	NC_Check('1x1','casting_b90face_sing.ncl');
+}
+
+function multi_pass()
+{
+	component_display('ALL');
+	ViewSet('housing.asm', 'b90');
+	NC_Check('1x1','casting_b90face_multi.ncl');
+}
+
+function facing_oper()
+{
+	component_display('ALL');
+	ViewSet('housing.asm', 'view_all_mill');
+	NC_Check('1x1','casting_mill_seqs.ncl');
+}
+
+function center_drill()
+{
+	component_display('ALL');
+	ViewSet('housing.asm', 'b270_drilling');
+	NC_Check('1x1','casting_b270ctrdrl.ncl');
+}
+
+function b270_drill()
+{
+	component_display('ALL');
+	ViewSet('housing.asm', 'b270_drilling');
+	NC_Check('1x1','casting_drill_tap.ncl');
+}
+
+function optimize()
+{
+	component_display('ALL');
+	ViewSet('housing.asm', 'whole_op');
+	NC_Check('1x1','casting_whole_op.ncl');
+}
+
+</SCRIPT>
+<IMG SRC="logo.gif" HEIGHT=32 WIDTH=287>
+
+<P>&nbsp;
+<CENTER><!-- title goes here --><B><FONT FACE="arial,helvetica"><FONT COLOR="#000080"><FONT SIZE=+2>Milling
+of Casting and Forgings</FONT></FONT></FONT></B></CENTER>
+<FORM NAME="ui">
+<BR><IMG SRC="divider.gif" >
+<BR><IMG SRC="housing.gif" NOSAVE HEIGHT=350 WIDTH=362>
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>Once a casting or forging
+returns from the foundry, a manufacturer will typically need to machine
+details such as flats and holes that could not be included in the cast
+or forged design. This type of machining usually does not involve surfacing
+or extensive cavity milling, and most 4 and 5 axis work is positioning,
+not contouring. Another consideration is a possible variation of stock
+size. Instead of starting from some exact stock piece that was milled flat,
+a casting or forging can have a fairly large variation. This could mean
+that a facing operation might need to start some amount above the finish
+surface to account for extra material.</FONT></FONT>
+
+<P><IMG SRC="divider.gif" >
+<BR><// ************************************  SHOW COMPONENTS  *********************************//>
+<A NAME="roughing"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Rough
+and Finished Casting</FONT></FONT></FONT></B>
+
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>In this example, a large
+industrial valve is mounted vertically on a rotary table, and&nbsp; a horizontal
+machining center will be used to finish machine the part. First let's notice
+that we have both the cast version and the finished version. These two
+parts will be assembled in manufacturing superimposed on top of each other.</FONT></FONT>
+
+<br>
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Cast Version" onclick="show_components()">
+<BR>
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Finished Version" onclick="show_finished()">
+
+<BR><IMG SRC="divider.gif" >
+<BR><// ************************************  FACING ****************************************//>
+<A NAME="contouring"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Precise
+Facing Toolpaths</FONT></FONT></FONT></B>
+<BR><B><FONT FACE="arial,Helvetica"><FONT SIZE=+0>Facing Flats</FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+This functionality allows
+us to program looking at either version. For this example, the cast version
+was created using the Family Table functionality. First, we will use a
+2 inch shell mill to face of the various flats, starting with the vertical
+boss at B0. We will sketch a path right on the part surface, requesting
+a plunge move into the material, cutting down, and then retracting. Working
+in 3 dimensions, the system automatically knows we are programming&nbsp;
+at the B0 index position.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Facing Toolpath" onclick="facing()">
+
+<BR><IMG SRC="divider.gif" >
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>Next, we move to the 2 square
+shaped flats at B45. Using the same process, we sketch the desired paths,
+in this case two of them, walking onto and then around the first flat,
+pulling out 2 inches to clear the bulge in the middle of the part, and
+then re-engaging the part to mill the bottom flat. We have a full range
+of customization tools that will allow for any sort of incremental or absolute
+moves, retracts and plunges, and others.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Rotate 45 and Mill" onclick="rotate_45()">
+
+<BR><IMG SRC="divider.gif" >
+<BR><// ************************************  TOOLPATH  *****************************//>
+<A NAME="optimizing"></A>
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Moving on to B90, let's assume
+that more than one pass is necessary to face this side. This could be due
+to either designed excess or maybe we're simply getting substantial variation
+among the castings, and we need to program in a couple of rough passes
+before the finish pass. First, we define our motion as before.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Single Pass" onclick="single_pass()">
+
+<BR><BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Now I will modify my machining
+parameters to specify a step depth of 0.050" and 4 passes. As we replay
+the path, you can see that now I have multiple passes.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Multiple Passes" onclick="multi_pass()">
+
+<BR><IMG SRC="divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+
+<// ************************************  Workcell  *********************************//></FONT></FONT>
+<BR><A NAME="workcell"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Workcell
+Management</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+From there, we go around
+the part, milling off all of the flats. We can view the toolpaths individually
+as we have seen, or we can view them all as one operation.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Entire Operation" onclick="facing_oper()">
+
+<BR><IMG SRC="divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+
+<// ************************************  DRILLING TOOLPATHS  *********************************//></FONT></FONT>
+<BR><A NAME="All Flats"></A>
+<BR><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Center
+Drilling</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Now it's time to start drilling.
+I'll start with a center drill and work at B270, where we left off with
+the milling. My drill start height is set by picking on the milled flat,
+and for center drill work I specify a&nbsp; countersink diameter.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show Centerdrill" onclick="center_drill()">
+
+<BR><IMG SRC="divider.gif" >
+
+<P><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Drill
+and Tap</FONT></FONT></FONT></B>
+<BR><FONT FACE="arial,Helvetica"><FONT SIZE=+0>
+
+Staying in this orientation,
+next I'll pick a pilot drill and then a tap for the large bolt circle.
+Pro/MFG understands the full suite of drilling and tapping cycles,
+including peck drilling, tapping, boring, countersinking, and others. Now
+I'll play all the drilling cycles at B270.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Show B270 Holemaking" onclick="b270_drill()">
+
+<BR><IMG SRC="divider.gif" >
+
+<P><B><FONT FACE="arial,Helvetica"><FONT COLOR="#000080"><FONT SIZE=+1>Toolpath
+Optimization</FONT></FONT></FONT></B>
+<BR><IMG SRC="order.gif" >
+
+<P><FONT FACE="arial,Helvetica"><FONT SIZE=+0>Continuing on, I'll create
+the drilling sequences on the rest of the part. Notice what we have done:
+at first, we programmed with one tool all the way around the part. But
+now I have created drill sequences based on table rotation. At B270, we
+center drilled, drilled, and tapped, then we repeated that process at B0.
+This was the easy way to do the programming, but we want the program to
+do complete all operations at all rotation angles with each tool, minimizing
+tool changes. With Pro/MFG, this is also simply a programmer
+selection. As you will see, I will tell the system to minimize tool changes
+and what order to put them in. When we play the entire operation, you will
+see that it does just that.</FONT></FONT><BR>
+
+<IMG SRC="bullet.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;</FONT></FONT>
+<INPUT type=button value="Optimize Tool Changes" onclick="optimize()">
+
+<BR><IMG SRC="divider.gif" ><FONT FACE="arial,Helvetica"><FONT SIZE=+0>&nbsp;
+
+<!--   #######################    end of document content    #######################   --></FORM><!-- START OF MENUBAR --></FONT></FONT>
+<CENTER><!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the --><!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) --><!-- last is the: -->
+<!-- the link for the next button goes below --><!-- mouseover text goes below for the next button (optional) -->
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="back.gif" BORDER=0 HEIGHT=40 WIDTH=75></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to the Manufacturing Index'; return true">
+<IMG SRC="index.gif" BORDER=0 HEIGHT=40 WIDTH=128></A>
+<A HREF="../intro/mill_intro.htm" OnMouseOver="window.status='Return to Milling Index'; return true">
+<IMG SRC="next.gif" BORDER=0 HEIGHT=40 WIDTH=75></A></CENTER>
+<!-- END OF MENUBAR -->
+</BODY>
+</HTML>

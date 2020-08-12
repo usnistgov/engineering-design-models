@@ -1,0 +1,347 @@
+<HEAD>
+<TITLE>Pro/NC-SHEETMETAL Manual Programming</TITLE>
+
+<EMBED type=application/x-proconnect name="mypwc" WIDTH=2 HEIGHT=2>
+</EMBED>
+<APPLET CODE=WebLink.class NAME="wm" WIDTH=2 HEIGHT=2>
+</APPLET>
+<SCRIPT SRC="../intro/mfg_standard_func.js">
+</SCRIPT>
+
+<SCRIPT language = "JavaScript">
+
+//  *****  Setup functions to start demo  **** //
+quit_wind();
+
+retrieve_model("mfg_rough_profile.mfg","models/shtmtl_manual")
+
+ViewSet('mfg_rough_profile.asm','FRONT');
+
+set_display('wireframe');
+
+//  ***** End of setup  *****//
+// *****  ORIGINAL SCRIPT FROM OLD NC_SHEETMETAL_MANUAL **** //
+
+function nibble_area()
+{
+// This function shows two tool nibble area functionality //
+
+Play_Path('3','Area Nibbling','OP010','.75');
+
+// Provide a hint as to what to talk about //
+msg = "\nWith one manufacturing feature, Pro/NC-SHEETMETAL.";
+msg = msg + "\ncan automatically rough and area with one tool and.";
+msg = msg + "\nprofile it with a second tool.\n";
+if (confirm(msg)) {
+    }
+}
+
+function app_moves()
+{
+// This function  shows approach and exit moves //
+
+retrieve_model('mfg_contour.mfg','models/NCSHT_weblink/manual');
+
+adb_1="#MACHINING;#REDEFINE SEQ;#1: Flame Contouring, Operation: OP010;"
+adb_2="~ Select `Odui_Dlg_01` `odui_steps` 1  `Adjust Path `"
+adb_3="~ Activate `Odui_Dlg_01` `redefine`"
+adb_4="~ Select `smtsaw_adj` `AdjPathOptionList` 1  `enter_exit`"
+adb_5="~ Activate `smtsaw_adj` `DefinePush`"
+adb_6="~ Select `smtsaw_exit` `LeadInTypeRadio` 1  `LeadInMiddle`"
+adb_7="~ Select `smtsaw_exit` `ApprMotionRadio` 1  `appr_line`"
+adb_8="~ Activate `smtsaw_exit` `ApprLineAngleInput` `45`"
+adb_9="~ FocusOut `smtsaw_exit` `ApprLineAngleInput`"
+adb_10="~ Select `smtsaw_exit` `ExitMotionRadio` 1  `exit_line`"
+adb_11="~ Activate `smtsaw_exit` `ExitLineAngleInput` `45`"
+adb_12="~ FocusOut `smtsaw_exit` `ExitLineAngleInput`"
+app_1="~ Activate `smtsaw_exit` `PreviewPush`"
+ret = document.wm.pwlMacroLoad(adb_1);
+ret = document.wm.pwlMacroLoad(adb_2);
+ret = document.wm.pwlMacroLoad(adb_3);
+ret = document.wm.pwlMacroLoad(adb_4);
+ret = document.wm.pwlMacroLoad(adb_5);
+ViewSet('mfg_contour.asm','zoom_in');
+ret = document.wm.pwlMacroLoad(adb_6);
+ret = document.wm.pwlMacroLoad(adb_7);
+ret = document.wm.pwlMacroLoad(adb_8);
+ret = document.wm.pwlMacroLoad(adb_9);
+ret = document.wm.pwlMacroLoad(adb_10);
+ret = document.wm.pwlMacroLoad(adb_11);
+ret = document.wm.pwlMacroLoad(adb_12);
+ret = document.wm.pwlMacroLoad(app_1);
+// Provide a hint as to what to talk about //
+msg = "\nNotice the automatically generated approach and exit moves.";
+msg = msg + "\nChange the approach motion to an arc by clicking the arc button.";
+msg = msg + "\nEnter .15 for radius and 90 for angle, then hit Preview.\n";
+if (confirm(msg)) {
+    }
+}
+
+function corners()
+{
+// This function shows corner conditions for contouring //
+
+quit_wind();
+retrieve_model('mfg_contour.mfg','models/shtmtl_manual');
+
+cdb_1="#MACHINING;#REDEFINE SEQ;#2: Flame Contouring, Operation: OP010;"
+cdb_2="~ Select `Odui_Dlg_01` `odui_steps` 1  `ADJUST PATH `"
+cdb_3="~ Activate `Odui_Dlg_01` `redefine'"
+cdb_4="~ Select `smtsaw_adj` `AdjPathOptionList` 1  `corners`"
+cdb_5="~ Activate `smtsaw_adj` `DefinePush`"
+cdb_6="~ Activate `smtsaw_corners` `InCornerRadCheck` 1"
+cdb_7="~ Activate `smtsaw_corners` `InCornerNoneCheck` 1"
+cdb_8="~ Activate `smtsaw_corners` `SMTSAW_CornPreviwPush`"
+ret = document.wm.pwlMacroLoad(cdb_1);
+ret = document.wm.pwlMacroLoad(cdb_2);
+ret = document.wm.pwlMacroLoad(cdb_3);
+ret = document.wm.pwlMacroLoad(cdb_4);
+ViewSet('mfg_contour.asm','corners');
+ret = document.wm.pwlMacroLoad(cdb_5);
+ret = document.wm.pwlMacroLoad(cdb_6);
+ret = document.wm.pwlMacroLoad(cdb_7);
+ret = document.wm.pwlMacroLoad(cdb_8);
+
+// Provide a hint as to what to talk about //
+msg = "\nNotice the automatically generated corner conditions.";
+msg = msg + "\nChange the concave corner type to fillet.";
+msg = msg + "\nby clicking the fillet button.";
+msg = msg + "\nEnter .10 for radius, then hit Preview.\n";
+if (confirm(msg)) {
+    }
+}
+
+function not_optimized()
+{
+// This function displays an un-optimized tool path //
+done_return();
+
+quit_wind();
+retrieve_model('mfg_optimize.mfg','models/shtmtl_manual');
+
+no_1="#MACHINING;#OPTIMIZE;#RULES/ORDER;#ORDER SEQS;#YES;#DONE/RETURN;"
+no_2="~ Activate `main_dlg_cur` `ProCmdViewRepaint.view`"
+no_3="#DONE/RETURN;#PLAY PATH;#DONE;"
+ret = document.wm.pwlMacroLoad(no_1);
+ret = document.wm.pwlMacroLoad(no_2);
+
+// Provide a hint as to what to talk about //
+msg = "\nWith no optimization,  the toolpath will be";
+msg = msg + "\noutput in the order that it was programmed.";
+msg = msg + "\nEach part will be completed before moving on to the next.\n";
+if (confirm(msg)) {
+    }
+
+ret = document.wm.pwlMacroLoad(no_3);
+}
+
+function optimized()
+{
+// This function optimizes and plays the previous tool path //
+done_return();
+
+retrieve_model('mfg','mfg_optimize','../../models/NCSHT_weblink/manual/');
+
+opt_1="#MACHINING;#OPTIMIZE;#RULES/ORDER;#RULES;#TOOL CHANGES;#TOOL TRAVEL;"
+opt_1a="#BY CHAINS;#ROTATELOAD;#DONE/RETURN;"
+opt_2="~ Activate `main_dlg_cur` `ProCmdViewRepaint.view`"
+opt_3="#DONE/RETURN;#PLAY PATH;#DONE;"
+ret = document.wm.pwlMacroLoad(opt_1);
+ret = document.wm.pwlMacroLoad(opt_1a);
+ret = document.wm.pwlMacroLoad(opt_2);
+
+// Provide a hint as to what to talk about //
+msg = "\nPro/NC-SHEETMETAL can automatically optimize the";
+msg = msg + "\ntoolpath according to user defined rules including";
+msg = msg + "\nminimizing tool changes and tool travel.\n";
+if (confirm(msg)) {
+    }
+
+ret = document.wm.pwlMacroLoad(opt_3);
+}
+
+function turret()
+{
+// This function accesses the Turret Setup Dialog Box //
+
+quit_wind();
+retrieve_model('mfg_workcell.mfg','models/shtmtl_manual');
+
+tur_1="#MACHINING;#MFG SETUP;#WORKCELL;#MODIFY;#MACH0101;#TURRET;"
+tur_2="#DONE;#DONE/RETURN;#DONE/RETURN;#DONE/RETURN;"
+ret = document.wm.pwlMacroLoad(tur_1);
+
+//  Provide a hint as to what to talk about //
+msg = "\nNotice the columns denoting In Use or Indexability.";
+msg = msg + "\nClick on a tool to see its definition.\n";
+if (confirm(msg)){
+    }
+}
+
+function done_return()
+{
+// This function hits done and done-return a bunch of times //
+dret_1="#QUIT;#DONE;#DONE/RETURN;#DONE/RETURN;#DONE;#DONE-RETURN;#DONE/RETURN;#DONE;#DONE/RETURN;"
+ret = document.wm.pwlMacroLoad(dret_1);
+}
+
+
+// *****  END ORIGINAL SCRIPT ********** //
+
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=white>
+<IMG SRC="../template/images/logo.gif" HEIGHT=32 WIDTH=287><p>
+<CENTER><FONT SIZE=5 COLOR="#000080" face="arial,helvetica"><B>
+
+<!-- title goes here -->
+	Pro/NC-SHEETMETAL Manual Programming</FONT SIZE></B></CENTER></FONT>
+
+<form NAME="ui">
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+<br>
+<font face="arial,Helvetica" size=3>
+Several new enhancements have been added to the manual side of NC programming.
+Automated roughing and profiling for punching,  new dialog boxes to futher 
+increase the efficiency of customizing contouring tool paths, new toolpath 
+optimization tools, and new workcell management tools are available.
+<ul>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#roughing">Rough & Profile Punching</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#contouring">Laser/Flame Contouring</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#optimizing">Toolpath Optimization</A>
+<br><IMG SRC="../template/images/bullet.gif" ><A HREF="#workcell">Workcell Management</A>
+</ul>
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  ROUGH AND PROFILE  *********************************//>
+<A NAME="roughing"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Rough and Profile Punching</FONT SIZE></B>
+<br><font face="arial,Helvetica" size=3>
+
+For manufacturing parts that have large internal voids, Pro/NC-SHEETMETAL
+can "destroy" the area by filling the boundary of the void with hits. This
+sequence type is called "Nibble Area".  To improve edge quality in these
+areas and reduce machining time, it is often desirable to punch out the
+area using 2 different tools. By setting the sequence parameter "Scan-Type"
+to "Rough and Profile", and defining the "second tool" option, Pro/NC-SHEETMETAL
+will rough the area with the first tool and then profile the edges of the
+boundary with the second tool. Area roughing can also be done with a tool
+loaded at an angle.
+<br>
+
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="2 Tool Nibble Area Example" onclick="nibble_area()">
+
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  CONTOURING ****************************************//>
+<A NAME="contouring"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Laser-Flame Contouring</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+<B>Corner Conditions</B>
+<br>
+For lasers and plasma tables, an important consideration is how the
+corners of the part are treated.  Many times it is desirable to cut
+past a corner, loop around and engage the next edge. Pro/NC-SHEETMETAL
+does this by giving the user full control over what kind of corner
+condition to automatically apply to the toolpath. Sizes and types
+of the moves can be preset in parameter files or specified "on the fly"
+in dialog boxes.
+<br>
+
+<dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Corner Conditions Example" onclick="corners()">
+<br>
+<B>Approach and Exit Moves</B>
+<br>
+Pro/NC-SHEETMETAL can automatically place a variety of approach and exit
+moves.  These moves can be linear such as approching from an angle
+at a distance, or radial tangent arc lead in.
+Optionally the user can decide to start at the beginning
+or in the middle of an edge. Sizes of the moves can be preset in
+parameter files or specified "on the fly" in dialog boxes.
+
+<br><dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Approach-Exit Moves Example" onclick="app_moves()">
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  TOOLPATH OPTIMIZATION *****************************//>
+<A NAME="optimizing"></A>
+<br>
+<B><FONT SIZE=4 COLOR="#000080">Toolpath Optimization</FONT SIZE></B>
+<br></font><font face="arial,Helvetica" size=3>
+
+To reduce machine run times and produce the most efficient tool motions
+Pro/NC-Sheetmetal provides the user complete control on ordering the
+tool usage, minimizing tool changes, and creating "shortest path"
+programs.  Notice in the example, the "as programmed" tool path is
+constantly changing tools and completes one part before moving to the
+next. The "optimized" tool path is much more efficient,  completely
+using one tool before moving to the next and produces a tool path that
+takes less time to execute.
+
+
+<br><dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="As Programmed" onclick="not_optimized()">
+<br><dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Optimized" onclick="optimized()">
+
+<br><IMG SRC="../template/images/divider.gif" WIDTH=280><br>
+
+<// ************************************  WORKCELL MANAGEMENT *********************************//>
+<P><A NAME="workcell"></A>
+<P>
+<B><FONT SIZE=+1 COLOR="#000080">Workcell Management</FONT SIZE></B>
+<P>
+To streamline the workflow of the NC programmer, a new Turret Management Dialog Box
+has been added. This allows the user to create and manage the tool library,  get a
+quick glimpse of which tools are actually in use for the program, check holder sizes
+and indexable stations. Tools can be retrieved from the library or created on the fly.
+
+<P>
+
+<br><dd><IMG SRC="../template/images/bullet.gif" >
+<input type=button value="Workcell Management Tools" onclick="turret()">
+<P>
+<P><IMG SRC="../template/images/divider.gif" WIDTH=280></P>
+
+
+
+
+
+
+<!--   #######################    end of document content    #######################   -->
+</form>
+
+<!-- START OF MENUBAR -->
+<center>
+<!-- the link for the back button goes below -->
+<!-- mouseover text goes below for the back button (optional) -->
+<!-- followed by the -->
+<!-- the link for the main index goes below -->
+<!-- mouseover text goes below for the index button (optional) -->
+<!-- last is the: -->
+<!-- the link for the next button goes below -->
+<!-- mouseover text goes below for the next button (optional) -->
+
+        <a href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to Milling Index'; return true"
+        ><img src="../template/images/back.gif" width=75 height=40 border=0></a><a
+        href=" ../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to the Manufacturing Index'; return true"
+        ><img src="../template/images/index.gif" width=128 height=40 border=0></a><a
+        href="../intro/mill_intro.htm"
+        OnMouseOver="window.status='Return to Milling Index'; return true"
+        ><img src="../template/images/next.gif" width=75 height=40 border=0></a>
+
+</center>
+<!-- END OF MENUBAR -->
+
+</BODY>
+</HTML>

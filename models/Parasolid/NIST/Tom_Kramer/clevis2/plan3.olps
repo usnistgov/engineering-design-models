@@ -1,0 +1,62 @@
+(put-data 'pplans 'clevis2-plan3 '(clevis2-plan3
+ header (header
+         plan-id            clevis2-plan3
+	 design-id          clevis2-design
+	 workpiece-id       block2
+         material           aluminum
+	 fixture-id         vise
+	 vise-width         1.48
+	 mrsevs             clevis2-mrsevs3
+         setup-id           clevis2-setup3)
+    
+ data   (data
+           1   (1   work-element    initialize-plan
+                    program-x-zero  17.1
+                    program-y-zero  8.82
+                    program-name    cl29nc)
+           2   (2   work-element    rough-mill
+                    mrsev           "rectangular_pocket25"
+                    tool-type-id    end-mill-1.0-2
+                    stepover        0.5
+                    speed           2500
+                    feed-rate       8
+                    pass-depth      0.5
+                    precedent-steps (6))
+           3   (3   work-element    rough-mill
+                    mrsev           "rectangular_pocket27"
+                    tool-type-id    end-mill-1.0-2
+                    stepover        0.5
+                    speed           2500
+                    feed-rate       8
+                    pass-depth      0.5
+                    precedent-steps (6))
+           4   (4   work-element    finish-mill
+                    mrsev           "rectangular_pocket26"
+                    tool-type-id    end-mill-1.0-2
+                    speed           2500
+                    feed-rate       10
+                    stepover        0.5
+                    precedent-steps (2))
+           5   (5   work-element    finish-mill
+                    mrsev           "rectangular_pocket28"
+                    tool-type-id    end-mill-1.0-2
+                    speed           2500
+                    feed-rate       10
+                    stepover        0.5
+                    precedent-steps (3))
+           6   (6   work-element    set0-corner
+                    tool-type-id    probe-0.25
+                    near-x          3.85
+                    near-y          0.49
+                    x-offset        -3.85
+                    y-offset        -0.49
+                    corner-type     1
+                    precedent-steps (1))
+           7   (7   work-element    close-plan
+                    precedent-steps (4 5)))
+   tool-requirements (
+           probe-0.25
+           end-mill-1.0-2)))
+
+; This is an AMRF format process plan and has been supplanted by an ALPS
+; format plan. See plan3.step.
