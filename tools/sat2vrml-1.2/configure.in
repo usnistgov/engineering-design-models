@@ -1,0 +1,30 @@
+AC_INIT()
+
+AC_CHECK_PROG(CXX,CC,CC)
+AC_PROG_CC
+if test -z "${CXX}"; then
+	AC_PROG_CXX
+	AC_PROG_CPP
+fi;
+
+AC_PATH_X
+AC_PATH_XTRA
+
+LINK_FLAGS="-w -g"
+AC_SUBST(LINK_FLAGS)
+
+ACIS_DLL="-labl_husk -lbaseutil -lblend -lboolean -lbr_husk -lclear -lconstrct -lcover -lct_husk -ldshusk -leuler -lfaceter -lga_husk -lgihusk -lhealhusk -ligeshusk -lihl_husk -lintersct -lkernel -llawutil -llop_husk -llopt_husk -loffset -loperator -lpart -lphl_husk -lpid_husk -lrbi_husk -lrem_husk -lrnd_husk -lsbool -lscmapp -lshl_husk -lskin -lspline -lstephusk -lsweep -ltransutl -lvdahusk -lwarphusk"
+
+ACIS_STATIC="-labl_scm -labl_tb -lblnd_scm -lblnd_tb -lbool_scm -lbool_tb -lcaselib -lclr_tb -lcovr_scm -lcovr_tb -lcstr_scm -lcstr_tb -lct_scm -lct_tb -ldfct_scm -lds_scm -leulr_scm -leulr_tb -lfct_scm -lfct_tb -lga_scm -lga_tb -lgi_scm -lheal_scm -lheal_tb -liges_scm -lihl_scm -lintr_scm -lintr_tb -lkern_scm -lkern_tb -llop_scm -llop_tb -lofst_scm -lofst_tb -loper_scm -loper_tb -lphl_scm -lphl_tb -lpid_tb -lpmhusk -lppm_tb -lrbi_scm -lrbi_tb -lrem_scm -lrem_tb -lrender -lrnd_scm -lsbool_scm -lscheme -lscmext -lshl_scm -lshl_tb -lskin_scm -lskin_tb -lsmoke_scm -lstep_scm -lswp_scm -lswp_tb -ltestext -lvda_scm -lwarp_scm"
+
+ACIS_OTHER="-lmain -ltestbed -lwindrive"
+
+ACIS_LIBS="-L${A3DT}/lib/${ARCH} ${ACIS_STATIC} ${ACIS_DLL}"
+
+AC_SUBST(ACIS_LIBS)
+
+ACIS_INCLUDES="-I${A3DT}/abl -I${A3DT}/ag -I${A3DT}/amfc -I${A3DT}/base -I${A3DT}/bldcfg -I${A3DT}/blnd -I${A3DT}/bool -I${A3DT}/br -I${A3DT}/clr -I${A3DT}/covr -I${A3DT}/cstr -I${A3DT}/ct -I${A3DT}/ds -I${A3DT}/eulr -I${A3DT}/fct -I${A3DT}/ga -I${A3DT}/gi -I${A3DT}/gl -I${A3DT}/heal -I${A3DT}/iges -I${A3DT}/igl -I${A3DT}/ihl -I${A3DT}/intr -I${A3DT}/kern -I${A3DT}/kern/kernel -I${A3DT}/law -I${A3DT}/lop -I${A3DT}/lopt -I${A3DT}/ofst -I${A3DT}/oper -I${A3DT}/part -I${A3DT}/phl -I${A3DT}/pid -I${A3DT}/rbase -I${A3DT}/rbi -I${A3DT}/rem -I${A3DT}/sbool -I${A3DT}/scm -I${A3DT}/shl -I${A3DT}/skin -I${A3DT}/step -I${A3DT}/swp -I${A3DT}/trans -I${A3DT}/vda -I${A3DT}/vm -I${A3DT}/warp -I${A3DT}/part/part -I${A3DT}"
+
+AC_SUBST(ACIS_INCLUDES)
+
+AC_OUTPUT(Makefile)

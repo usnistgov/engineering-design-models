@@ -1,0 +1,40 @@
+# Makefile for Sat2Vrml
+
+ACIS_INCLUDES = @ACIS_INCLUDES@
+
+ACIS_LIBS = @ACIS_LIBS@
+
+
+# -c compile but don't link
+# -o specify different output object file name
+# -v Print command executed to run stages of compilation
+# -w inhibit all warning messages
+# -g produce debugging info
+
+LINK_FLAGS = @LINK_FLAGS@
+COMP_FLAGS = $(LINK_FLAGS) -c
+COMP_CC = @CXX@
+LINK_CC = $(COMP_CC)
+
+INCLUDE = -I. $(ACIS_INCLUDES)
+LIBS = -L. -lm @X_LIBS@ @X_PRE_LIBS@ -lXt -lXext -lX11 @X_EXTRA_LIBS@
+
+EXE_NAME = Sat2Vrml
+
+all:	$(EXE_NAME)
+
+$(EXE_NAME):	VrmlMM$(EXT).o Sat2Vrml$(EXT).o
+	$(LINK_CC) $(LIBS) $(ACIS_LIBS) -o $(EXE_NAME) \
+	$(LINK_FLAGS) VrmlMM$(EXT).o  Sat2Vrml$(EXT).o \
+	$(LIBS) $(ACIS_LIBS)
+
+%$(EXT).o: %.cxx
+	$(COMP_CC) -c $(COMP_FLAGS) $(INCLUDE) \
+		-o $@ $<
+
+%$(EXT).o: %.cpp
+	$(COMP_CC) -c $(COMP_FLAGS) $(INCLUDE) \
+		-o $@ $<
+
+clean:
+	rm -f *$(EXT).o *~

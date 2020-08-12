@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Vorlon 1.5 Instructions</title>
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1">
+<meta name="Author" content="Michael St. Hippolyte">
+<meta name="GENERATOR" content=
+"Mozilla/3.01Gold (WinNT; I) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#BDE2EC" link="#0000EE" vlink= 
+"#551A8B" alink="#FF0000">
+<h1 align="CENTER">Vorlon 1.55, 12 January 2000<br>
+<b><font size="+1">VRML97 Validator by Trapezium</font></b></h1>
+
+<center>
+<p><b>[ <a href="http://www.trapezium.com/DownloadVorlon.htm">
+Download Vorlon</a> | <a href= 
+"http://www.trapezium.com/vorlon.html">Vorlon Home</a> ]</b></p>
+</center>
+
+<p>Vorlon is a pure Java console application. It is invoked from
+the command prompt and sends all output to the console. (For a
+more user-friendly front end, you can perform Vorlon validation
+with <a href="http://www.trapezium.com/Chiselpage.htm">
+Chisel</a>, a VRML optimizer and compression tool also developed
+by Trapezium).</p>
+
+<h3>Contents</h3>
+
+<blockquote>
+<blockquote>
+<h3><a href="#Instructions">Instructions</a></h3>
+
+<ul>
+<li><b><a href="#Running">Running Vorlon</a></b></li>
+
+<li><b><a href="#Options">File parameter options</a></b></li>
+
+<li><b><a href="#Switches">Command line switches</a></b></li>
+</ul>
+
+<h3><a href="release.html">Release Notes for Version 1.5</a></h3>
+
+<h3><a href="#Support">Support</a></h3>
+
+<h3><a href="license.html">License</a></h3>
+
+<h3><a href="http://www.trapezium.com/vorlon.html">Vorlon
+Home</a></h3>
+
+<h3><a href="http://www.trapezium.com/index.htm">Trapezium
+Home</a></h3>
+</blockquote>
+</blockquote>
+
+<hr width="100%">
+<h2><a name="Instructions"></a>Instructions</h2>
+
+<h3><a name="Running"></a>Running Vorlon</h3>
+
+<p>You can run Vorlon on any platform that supports Java by
+invoking the Java interpreter for that platform. On a Windows
+system you also have the option of running vorlon.exe
+directly.</p>
+
+<p>Each method is described below. <b>Setup</b> refers to changes
+you may have to make in your configuration to use that method,
+and <b>Command</b> refers to what you enter at the command prompt
+(for example, the C: prompt in an MS-DOS window on a Windows
+system).:</p>
+
+<ul>
+<li><b>To run Vorlon by invoking Java (any platform):</b></li>
+
+<li>
+<p><b>Setup</b></p>
+
+<blockquote>
+<p>Add vorlon.jar to the classpath</p>
+</blockquote>
+
+<p><b>Command</b></p>
+
+<blockquote>
+<p><b><tt>java trapezium.vorlon <i>file.wrl</i></tt></b></p>
+
+<p>where <i>file.wrl</i> is either the name of a local file or a
+full URL.</p>
+</blockquote>
+</li>
+
+<li><b>To run the Vorlon executable (Windows only):</b></li>
+
+<li>
+<p><b>Setup</b></p>
+
+<blockquote>
+<p>Add the directory containing vorlon.jar and vorlon.exe to the
+path (the system path, not the classpath).</p>
+</blockquote>
+
+<p><b>Command</b></p>
+
+<blockquote>
+<p><b><tt>vorlon <i>file.wrl</i></tt></b></p>
+
+<p>where <i>file.wrl</i> is either the name of a local file or a
+full URL.</p>
+</blockquote>
+</li>
+</ul>
+
+<h3><a name="Options"></a>File Parameter Options</h3>
+
+<ol>
+<li><b>To check multiple files:</b>
+<blockquote>
+<p><b><tt>java trapezium.vorlon <i>file1.wrl file2.wrl
+...</i></tt></b></p>
+</blockquote>
+</li>
+
+<li>
+<p>or (Windows only):</p>
+
+<blockquote>
+<p><b><tt>vorlon <i>file1.wrl file2.wrl ...</i></tt></b></p>
+</blockquote>
+</li>
+
+<li><b>To check multiple files using wildcards:</b>
+<blockquote>
+<p><b><tt>java trapezium.vorlon <i>*.wrl</i></tt></b></p>
+</blockquote>
+</li>
+
+<li>
+<p>or (Windows only):</p>
+
+<blockquote>
+<p><b><tt>vorlon <i>*.wrl</i></tt></b></p>
+</blockquote>
+</li>
+
+<li><b>To check a list of files:</b>
+<blockquote>
+<p><b><tt>java trapezium.vorlon list=<i>filelist</i></tt></b></p>
+</blockquote>
+</li>
+
+<li>
+<p>or (Windows only):</p>
+
+<blockquote>
+<p><b><tt>vorlon list=<i>filelist</i></tt></b><tt> </tt></p>
+</blockquote>
+
+<p>In either case <i>filelist</i> is the name of a text file
+containing one URL per line.</p>
+
+<p><br>
+</p>
+</li>
+</ol>
+
+<h3><a name="Switches"></a>Command Line Switches </h3>
+
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-url</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>recursively check every VRML file specified in the url field
+of an Anchor, Inline or EXTERNPROTO</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-fetch</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>make a local copy of <i>wrl</i> without checking</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-humanoid</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>verify conformance to the h-anim working group specification
+for humanoids, version 1.1</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-humanoid10</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>verify conformance to the h-anim working group specification
+for humanoids, version 1.0</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-nowarning</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>suppress warning messages</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-noDEFwarning</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>suppress unused DEF warning messages</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-conformance</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>limit checking to base profile conformance, Table 7-1 of VRML
+97 specification</p>
+</blockquote>
+</td>
+</tr>
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-graph</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>output the scene graph in text form</p>
+</blockquote>
+</td>
+</tr>
+<tr>
+<td>
+<blockquote>
+<p><b><tt>-nurbs</tt></b></p>
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>accept blaxxun nurbs syntax as valid</p>
+</blockquote>
+</td>
+</tr>
+</table>
+
+<h2><a name="Support"></a>Support</h2>
+
+<p>Vorlon is freeware, but email support is available.
+Send questions and comments to <a href= 
+"mailto:vorlon@trapezium.com">vorlon@trapezium.com</a>. </p>
+
+<address>
+<hr width="100%">
+</address>
+
+<address>Copyright &copy; 1997-2000 by Trapezium Development LLC.
+All rights reserved.</address>
+</body>
+</html>
+

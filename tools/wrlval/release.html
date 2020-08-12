@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Vorlon release notes</title>
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1">
+<meta name="Author" content="Johannes N. Johannsen">
+<meta name="GENERATOR" content=
+"Mozilla/3.01Gold (WinNT; I) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#BDE2EC" link="#0000EE" vlink= 
+"#551A8B" alink="#FF0000">
+<h2><b>Vorlon 1.5 Release Notes</b></h2>
+
+<ul>
+<li><a href="#New">What's new in this release</a></li>
+
+<li><a href="#Implemented">Checks performed by Vorlon</a></li>
+
+<li><a href="#ErrorsWarnings">Errors vs. warnings</a></li>
+
+<li><a href="#Typechecks">Node level type checks</a></li>
+
+<li><a href="#Knownbugs">Known bugs</a></li>
+
+<li><a href="#FixedBugs">Bugs fixed</a></li>
+
+<li><a href="#Testingnotes">Testing notes</a></li>
+</ul>
+
+<hr width="100%">
+<h3><a name="New"></a>What's new in this release</h3>
+
+Bug fixes and performance enhancements. Bugs are now recorded as
+Chisel bugs, since Chisel includes Vorlon. These bugs are not
+tracked separately. See <a href= 
+"http://www.trapezium.com/fixedlist.html">Chisel bug fix list</a>
+for details. 
+
+<h4>New in Version 1.5</h4>
+
+A new flag: <b>-graph</b> to show scene graph. A new flag: <b>
+-nurbs</b> allows Vorlon to support blaxxun nurbs proposal. Added
+h-anim specification version 1.1 support. Fixed PROTO nesting
+non-conformance bug, which detected nesting by PROTO
+instantiation rather than PROTO definition. Fixed self-reference
+node bug, which reported the common case of scripts contained in
+grouping nodes referring to their parent as an error. 
+
+<h4>New in Version 1.2</h4>
+
+<p>A new error category, flagged with keyword "Nonconformance",
+warns against base profile nonconformance, as specified in the
+VRML 97 specification Table 7-1. Vorlon performs a large number
+of conformance tests, listed <a href="conformance.html">
+here</a>.</p>
+
+<p>More complete checks for IndexedFaceSets, IndexedLineSets,
+ElevationGrids, Extrusions</p>
+
+<p>In addition, some specific problems with the previous release
+were fixed (see <a href="#FixedBugs">Bugs fixed</a> for full
+list).</p>
+
+<hr width="100%">
+<h3><a name="Implemented"></a>Checks performed by Vorlon</h3>
+
+<table>
+<tr>
+<td><b>Data type checks</b>  
+
+<table width="90%">
+<tr>
+<td>ROUTEs</td>
+<td>verifies source and destination types are same</td>
+</tr>
+
+<tr>
+<td>PROTOs</td>
+<td>verifies IS types are same</td>
+</tr>
+
+<tr>
+<td>Node fields</td>
+<td>verifies node fields contain correct type of node or
+PROTO</td>
+</tr>
+</table>
+
+<p> </p>
+</td>
+</tr>
+
+<tr>
+<td><b>Node specific checks</b>  
+
+<table width="90%">
+<tr valign="TOP">
+<td>Interpolators</td>
+<td>verifies increasing key values, verifies ratio of key to
+keyValue entries</td>
+</tr>
+
+<tr valign="TOP">
+<td>IndexedFaceSet</td>
+<td>verifies faces have at least 3 edges, verifies correct
+relationship between coord/coordIndex, texCoord/texCoordIndex,
+colorPerVertex/color/colorIndex,
+normalPerVertex/normal/normalIndex.  Warning if extra values are
+present that are ignored, error if not enough values present. 
+Warning if there are no faces, warning for each unused
+coordinate, texture coordinate, color, normal  Nonconformance if
+there are more than 10 sides to a face.</td>
+</tr>
+
+<tr valign="TOP">
+<td>ElevationGrid</td>
+<td>verifies at least xDimension, zDimension at least 2</td>
+</tr>
+
+<tr valign="TOP">
+<td>Extrusion</td>
+<td>verifies base profile conformance, crossSection*spine &lt;
+2500</td>
+</tr>
+
+<tr valign="TOP">
+<td>Background</td>
+<td>verifies at least 2 colors, at least 1 angle, and 1 more
+color than angle for skyColor and groundColor</td>
+</tr>
+
+<tr valign="TOP">
+<td>LOD</td>
+<td>verifies range values increasing, at least two nodes in LOD,
+1 more node than range value</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<hr width="100%">
+<h3><a name="ErrorsWarnings"></a>Errors, Warnings,
+Nonconformances</h3>
+
+<p>The following table lists the messages reported by Vorlon.
+There are three categories of messages: Nonconformance, Warning
+or Error. The category name is always the first word in the
+message.</p>
+
+<ul>
+<li>An Error is an illegal VRML statement.</li>
+
+<li>A Warning is a legal but dangerous or unnecessary VRML
+statement.</li>
+
+<li>A Nonconformance is a value that is outside the range
+recommended by Table 7-1 of the VRML 97 specification. The
+conformance tests performed by Vorlon are listed <a href= 
+"conformance.html">here</a>.</li>
+</ul>
+
+<h4>Vorlon Output</h4>
+
+<table cellpadding="4" bgcolor="#CCCCCC">
+<tr>
+<td><b>Checks this information</b></td>
+<th><b>If incorrect reports</b><sup>(<a href=
+"#nowarnings">2.</a>)</sup></th>
+</tr>
+
+<tr>
+<td>Table 7-1 base profile conformance<sup>(<a href=
+"#table71">1.</a>)</sup></td>
+<td>Nonconformance</td>
+</tr>
+
+<tr>
+<td>Node &amp; PROTO type checks<sup>(<a href=
+"#typechecks">4.</a>)</sup></td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>Node &amp; field name spelling<sup>(<a href= 
+"#fieldnamespelling">5.</a>)</sup></td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>VRML header</td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>ROUTE nodes/fields</td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>Field values<sup>(<a href=
+"#fieldvaluechecks">6.</a>)</sup></td>
+<td>Error, Warning</td>
+</tr>
+
+<tr>
+<td>IS &lt;field&gt; spelling<sup>(<a href=
+"#isfieldspelling">7.</a>)</sup></td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>IS/ROUTE type checks<sup>(<a href="#istypechecks">8.</a>,<a
+href="#routetypechecks">8.</a>)</sup></td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>Interpolator key/keyValue<sup>(<a href=
+"#interpolatorchecks">10.</a>)</sup></td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>IndexedFaceSet numerous checks<sup>(<a href=
+"#ifschecks">11.</a>)</sup></td>
+<td>Error</td>
+</tr>
+
+<tr>
+<td>Duplicate DEFs</td>
+<td>Warning</td>
+</tr>
+
+<tr>
+<td>Duplicate PROTOs</td>
+<td>Warning</td>
+</tr>
+
+<tr>
+<td>Default field values used</td>
+<td>Warning</td>
+</tr>
+</table>
+
+<h3>  Notes</h3>
+
+<ol>
+<li><a name="conformance"></a><b>Table 7-1 conformance:</b> You
+can check specifically for base profile conformance with the <b>
+-conformance</b> command line flag. All base profile messages are
+flagged with the keyword "Nonconformance".</li>
+
+<li><a name="nowarnings"></a><b>Limiting output:</b> You can
+disable warnings with the <b>-nowarning</b> command line flag.
+You can disable both warnings and errors with the <b>
+-conformance</b> command line flag.</li>
+
+<li><a name="nestedurls"></a><b>Checking nested url
+references:</b> You can add nested url checking with the <b>
+-url</b> command line flag. Whenever a field or statement refers
+to a URL, Vorlon will automatically check for the existence of
+these files, both locally and remotely.  If the URL is a local
+reference (i.e. just the file name or path name as opposed to a
+complete URL) to another VRML file (as opposed to a texture map,
+script, etc.), Vorlon will add this file to the queue of files to
+be processed. Files may be nested to any level.</li>
+
+<li><a name="typechecks"></a><b>Node and PROTO type checks:</b>
+Some SFNode fields are limited to nodes of specific types.  For
+example, the "geometry" field of a Shape node is limited to
+geometry nodes like Box, Cone, etc.  Vorlon is aware of 12 basic
+node data types:  appearance, color, coordinate, fontstyle,
+geometry, material, normal, sound source, texture, texture
+coordinate, texture transform, and grouping nodes.  PROTOs are
+also type checked using these node types, with the first node in
+the PROTO determining its node data type.  These checks only
+occur on fields that require a specific node data type.</li>
+
+<li><a name="fieldnamespelling"></a><b>Field name spelling:</b>
+Both built in nodes and PROTOs have a set of field names.  When
+these are used, the names are validated against the actual set
+allowed.</li>
+
+<li><a name="fieldvaluechecks"></a><b>field value checks:</b>
+Vorlon verifies that int, color, boolean, and float fields are
+valid. Repeated field declarations are flagged with a
+warning.</li>
+
+<li><a name="isfieldspelling"></a><b>IS field spelling:</b>
+Fields passed into PROTOs can be mapped into other fields within
+the PROTO using <b>IS. </b> The name of the PROTO field (on the
+right of IS) is checked against the PROTO parameter fields.</li>
+
+<li><a name="istypechecks"></a><b>IS type checks:</b> PROTO
+fields are referenced within the PROTO with the "IS"
+statement. Vorlon checks that the fields on both sides of the
+"IS" are of the same type.  PROTO fields that are not referenced
+by the "IS" statement are flagged with a warning.</li>
+
+<li><a name="routetypechecks"></a><b>ROUTE type checks:</b>
+Vorlon verifies that the source and destination fields of a ROUTE
+are of the same type.</li>
+
+<li><a name="interpolatorchecks"></a><b>Interpolator checks:</b>
+verifies key fields are non-decreasing, verifies there are the
+correct number of keyValue fields</li>
+
+<li><a name="ifschecks"></a><b>IndexedFaceSet checks:</b> reports
+warnings for unused coordinates, texture coordinates, normals,
+colors. Reports warning for no faces, extra texCoordIndex,
+normalIndex, colorIndex values. Reports errors for not enough
+texCoord/texCoordIndex, normal/normalIndex, color/colorIndex
+values. Reports errors for texCoordIndex/normalIndex/colorIndex
+out of synch with coordIndex, reports exact location of out of
+synch condition. Validates coordIndex values.</li>
+
+<li><b>right bracket/brace:</b> notes location of missing right
+brackets/braces</li>
+</ol>
+
+<hr width="100%">
+<h3><a name="Typechecks"></a><b>Node Level Type Checks</b></h3>
+
+<p>The following tabele lists all the Node level type checks
+performed by Vorlon.  In the VRML 2.0 specification, some fields
+must be of a particular type.  The following is a complete list
+of these types, and what fields only accept each type.</p>
+
+<p>In addition to nodes listed in the "Nodes of this type"
+column, PROTO's in which that type is the first node also pass
+the type check.</p>
+
+<table cellpadding="4" width="100%" bgcolor="#CCCCCC" cols="3">
+<tr>
+<td><b>Node Type</b></td>
+<td><b>Nodes of this type</b></td>
+<td><b>Fields accepting this type</b></td>
+</tr>
+
+<tr>
+<td>Appearance</td>
+<td>Appearance</td>
+<td>Shape.appearance</td>
+</tr>
+
+<tr>
+<td>Color</td>
+<td>Color</td>
+<td>ElevationGrid.color, IndexedFaceSet.color,
+IndexedLineSet.color, PointSet.color</td>
+</tr>
+
+<tr>
+<td>Coordinate</td>
+<td>Coordinate</td>
+<td>IndexedFaceSet.coord, IndexedLineSet.coord,
+PointSet.coord</td>
+</tr>
+
+<tr>
+<td>FontStyle</td>
+<td>FontStyle</td>
+<td>Text.fontStyle</td>
+</tr>
+
+<tr>
+<td>Geometry</td>
+<td>Box, Cone, Cylinder, ElevationGrid, Extrusion,
+IndexedFaceSet, IndexedLineSet, PointSet, Sphere, Text</td>
+<td>Shape.geometry</td>
+</tr>
+
+<tr>
+<td>Material</td>
+<td>Material</td>
+<td>Appearance.material</td>
+</tr>
+
+<tr>
+<td>Normal</td>
+<td>Normal</td>
+<td>ElevationGrid.normal, IndexedFaceSet.normal</td>
+</tr>
+
+<tr>
+<td>SoundSource</td>
+<td>AudioClip, MovieTexture</td>
+<td>Sound.source</td>
+</tr>
+
+<tr>
+<td>Texture</td>
+<td>ImageTexture, MovieTexture, PixelTexture</td>
+<td>Appearance.texture</td>
+</tr>
+
+<tr>
+<td>TextureCoordinate</td>
+<td>TextureCoordinate</td>
+<td>ElevationGrid.texCoord, IndexedFaceSet.texCoord</td>
+</tr>
+
+<tr>
+<td>TextureTransform</td>
+<td>TextureTransform</td>
+<td>Appearance.textureTransform</td>
+</tr>
+
+<tr>
+<td>Grouping</td>
+<td>Anchor, Billboard, Collision, Group, Transform</td>
+<td>Collision.proxy</td>
+</tr>
+</table>
+
+<hr width="100%">
+<h3><a name="Knownbugs"></a>Known Bugs in Version 1.12</h3>
+
+<ol>
+<li>url with a forward reference to a Viewpoint is flagged as
+unknown DEF.</li>
+
+<li>Empty interpolators should be reported as a warning rather
+than an error</li>
+
+<li>Polygon count wrong in some cases where polygons contained in
+PROTOS.</li>
+
+<li>"set_xxxxxx" eventIn flagged as errors when used in PROTOs,
+e.g. "set_rotation IS set_rotation" used in a Transform inside a
+PROTO that declares a set_rotation eventIn, reported as an error
+that Transform has no field named "set_rotation".</li>
+
+<li>ROUTEing an eventOut to a Field is not reported as an
+error.</li>
+
+<li>Cannot handle file names with space characters.</li>
+
+<li>PROTO declaration (not instance) in "children" field not
+reported as an error, instead PROTO not available in Vorlon
+checks (i.e. not included in PROTOs available to the scene)</li>
+
+<li>urls that are passed as parameters to PROTO are not checked
+when "-url" flag is used.</li>
+
+<li>Quotes around DEF names not reported as an error</li>
+</ol>
+
+<hr width="100%">
+<h3><a name="FixedBugs"></a></h3>
+
+See the <a href="http://www.trapezium.com/chisel/buglist.html">
+chisel buglist</a>. 
+
+<h4>Version 1.1 Bugs Fixed in Version 1.12</h4>
+
+<ol>
+<li>Flag not handled correctly if specified before filename</li>
+
+<li>IndexedFaceSet point field with default value in PROTO
+interface not handled correctly.</li>
+
+<li>Exceptions occur and Vorlon stops processing when running
+Java 1.0.2 and using "-url" flag and a GZIP file is
+encountered.</li>
+
+<li>Mistaken check for a file "javascript" when:  url [
+"javascript: ..." ]  used in an Script node contained in an
+Inlined file, bug doesn't occur if the [] characters are not part
+of the url field.</li>
+
+<li>Only first default field of each type marked with "Field
+value is default" warning, i.e. first: "repeatS TRUE" of a
+texture node marked this way, a later "repeatS TRUE" not flagged
+with the warning.</li>
+
+<li>USEing a texCoord that doesn't have enough coordinates is not
+flagged as an error.  General form of this problem with
+IndexedFaceSet texCoord/normal/color &amp;
+texCoordIndex/colorPerVertex/colorIndex/normalPerVertex/normalIndex
+also fixed -- warnings generated if too many values (browser
+getting values that are ignored) -- errors generated if not
+enough values or index fields get out of synch with
+coordIndex.</li>
+
+<li>PixelTexture handling inefficient, get OutOfMemory exception
+easily, numeric values of texture not checked.</li>
+
+<li>Flag errors with "Error,..." similar to warning
+indications.</li>
+
+<li>negative and 0 scale values not reported as errors</li>
+
+<li>Non-digits in coordIndex[] not reported as errors.</li>
+
+<li>PROTO with no implementation not reported as an error.</li>
+
+<li>WorldInfo (and other nodes) with an SFString continued on
+another line reports error on continuation line.</li>
+
+<li>Color values using exponent like 6.3e-05 are reported as
+errors, detected as not being in range 0 to 1.</li>
+
+<li>IndexedFaceSet point field with default value in PROTO
+interface not handled correctly.</li>
+</ol>
+
+<hr width="100%">
+<h3><a name="Testingnotes"></a>How Vorlon was Tested</h3>
+
+<ol>
+<li><b>Book CD tests.</b> Vorlon was run on all the "wrl" files
+included in four notable VRML 2.0 books: <i>The Annotated VRML
+2.0 Reference Manual</i>, <i>VRML 2.0 Sourcebook</i>, <i>Late
+Night VRML 2.0</i>, and <i>Teach Yourself VRML 2.0 in 21
+days</i>.</li>
+
+<li><b>Table 7-1 Base Profile tests.</b> These tests verify the
+Table 7-1 checks, flagged by the keyword "Nonconformance". More
+information on the test files is available <a href= 
+"conformance.html">here</a>.</li>
+
+<li><b>Feature tests.</b> These tests verify that each of the
+features in the "implemented" table actually work as
+expected.</li>
+
+<li><b>Generated tests.</b> It is very tedious to come up with
+all possible type checking tests, so "wrl" files were generated
+with every possible legal and illegal node type field assignment,
+as well as identical tests using PROTOs.</li>
+
+<li><b>Bug Report tests.</b> Thanks to everyone who has reported
+bugs, and sent a ".wrl" file! This is a diverse collection of
+VRML files with syntax previous versions of Vorlon did not handle
+correctly.</li>
+
+<li><b>Miscellaneous tests.</b> These are various files we have
+collected from a variety of sources.</li>
+</ol>
+
+<hr width="100%">
+<p><a href="index.html">Back.</a></p>
+
+<address>Copyright &copy; 1997, 1998 by Trapezium Development
+LLC. All rights reserved.</address>
+</body>
+</html>
+
