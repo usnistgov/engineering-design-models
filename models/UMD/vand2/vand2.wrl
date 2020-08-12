@@ -1,0 +1,1221 @@
+#VRML V2.0 utf8
+WorldInfo  { info [
+"This file was created by I-DEAS Master Series.",
+"I-DEAS Master Series is a trademark of SDRC. MR"] }
+NavigationInfo { type  "EXAMINE"  headlight  TRUE  avatarSize [ 0.25, 1.6, 0.75 ] }
+Viewpoint { description "IsometricView" position 0.274544 0.366094 0.457170 orientation -0.73 0.65 0.2 0.8 fieldOfView 0.261799 }
+Viewpoint { description "FrontView" position 0.000371 0.000099 0.646634 fieldOfView 0.261799 }
+Viewpoint { description "RightView" position 0.647005 0.000099 0.000000 orientation 0 1 0 1.5708 fieldOfView 0.261799 }
+Viewpoint { description "BackView" position 0.000371 0.000099 -0.646634 orientation 0 1 0 3.14159 fieldOfView 0.261799 }
+Viewpoint { description "LeftView" position -0.646264 0.000099 0.000000 orientation 0 1 0 -1.5708 fieldOfView 0.261799 }
+Viewpoint { description "TopView" position 0.000371 0.646733 0.000000 orientation 1 0 0 -1.5708 fieldOfView 0.261799 }
+Viewpoint { description "BottomView" position 0.000371 -0.646535 0.000000 orientation 1 0 0 1.5708 fieldOfView 0.261799 }
+Group { children [ DEF HudGroup Collision { collide FALSE
+children [ DEF HudProx ProximitySensor {
+center 0.000371 0.000099 0.000000 size 500 100 500 }
+DEF HudXform Transform { children [  
+DEF SW12 Switch { choice [ 
+DEF LOC_geom Transform { translation -0.025 -.0155 -0.125  rotation 1 0 0 1.5708
+children [ DEF LOC_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF LOC_MAT Material 
+{ diffuseColor 0 1 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF LOC_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ DEF LOC_SENT TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+DEF LOC_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance DEF TEXT_APPEARANCE Appearance 
+               {material Material { diffuseColor 1 1 1 } } 
+             geometry Text { 
+               fontStyle DEF ENGLISH_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "en"} 
+               string "English..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF FRENCH_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "fr"} 
+               string "French..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF GERMAN_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "de"} 
+               string "German..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF ITALIAN_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "it"} 
+               string "Italian..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF JAPANESE_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "ja"} 
+               string "日本語..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF KOREAN_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "ko"} 
+               string "Korean..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF SPANISH_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "es"} 
+               string "Spanish..."} } 
+          ] 
+} 
+ ] } ] } ] }
+DEF SW5 Switch { choice [ 
+DEF NTS_geom Transform { translation -0.025 -0.01175 -0.125  rotation 1 0 0 1.5708
+children [ DEF NOTES_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF NOTES_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF NTS_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ DEF NOTES_SENT TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+DEF NTS_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance  Appearance{ material DEF NOTES_TXT Material
+             { diffuseColor 1 1 1 } }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Notes..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "URLNotes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "RegNotes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Notes..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Notes URL(aucune)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Notes Ord(aucune)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Anmerkung..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "URL Anmerkung(keine)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Reg Anmerkung(keine)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Note..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Note URL(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Note Nor(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "注記..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "URLノート(なし)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "ノート(なし)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Notes..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "URL Notes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "RegNotes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Notas..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Anotaciones URL(ninguna)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Anotaciones Reg(ninguna)..."} } 
+          ] 
+} ] } ] } ] }
+DEF SW6 Switch { choice [ 
+DEF CLN_geom Transform { translation -0.025 -0.01425 -0.125  rotation 1 0 0 1.5708
+children [ DEF CLIN_SENS TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF CLIN_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF CLN_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ 
+DEF CLN_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance Appearance{ material DEF CLIN_TXT Material
+             { diffuseColor 1 1 1 } }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Centerlines"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Lignes d'Axe"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Mittellinien"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Assi"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "中心線"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Lineas De Centros"} } 
+          ] 
+} ] } ] } ] }
+DEF SW7 Switch { choice [ 
+DEF DIM_geom Transform { translation -0.025 -0.0105 -0.125  rotation 1 0 0 1.5708
+children [ DEF DIME_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF DIME_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF DIM_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ DEF DIME_SENT TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+DEF DIM_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance Appearance{ material DEF DIME_TXT Material {
+             diffuseColor 1 1 1 } }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Dimensions..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "RefDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "KeyDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Cotes..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Cotes Réf(aucune)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Cotes Clé(aucune)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Maße..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Ref Maße(keine)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Key Maße(keine)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Dimensioni..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Dim Rif(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Dim Chiave(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "寸法..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "参照寸法(なし)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "キー寸法(なし)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Dimensions..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "RefDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "KeyDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Cotas..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Cotas De Referencia(ninguna)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Cotas Conductoras(ninguna)..."} } 
+          ] 
+} ] } ] } ] }
+DEF SW8 Switch { choice [ 
+DEF WFR_geom Transform { translation -0.025 -0.013 -0.125  rotation 1 0 0 1.5708
+children [ DEF WIRE_SENS TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF WIRE_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF WFR_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ 
+DEF WFR_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance Appearance { material 
+               DEF WIRE_TXT Material { diffuseColor 1 1 1 } } 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Wireframe"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Filaire"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Drahtgeometrie"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Wireframe"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "ワイヤフレー�"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Alambre"} } 
+          ] 
+} ] } ] } ] }
+DEF SW9 Switch { choice [ 
+DEF TRP_geom Transform { translation 0.00675 -0.014 -0.125  rotation 0 0 1 1.5708
+children [ DEF TRAN_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF TRAN_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cylinder { 
+radius 0.000500 height 0.006500 } }
+DEF TR1_geom Transform { translation 0.0 0.00385 0.0  rotation 0 0 1 1.5708
+children [ DEF TRP1_SENS TouchSensor { } 
+      Transform { translation -0.0045 0.0015 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .009 0.0013 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF TRP1_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cone { 
+bottomRadius 0.000500 height 0.001000 } }
+DEF TRP_text Transform { translation 0.0 0.002 0 rotation 0 0 1 -3.14159
+children [ 
+DEF TRP_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Translucency"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Transparence"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Tranzparenz"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Traslucidita'"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "透明度"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Transapencia"} } 
+          ] 
+} ] } ] } ] } ] }
+DEF SW10 Switch { choice [ 
+DEF TXS_geom Transform { translation -0.0092 -0.014 -0.125  rotation 0 0 1 1.5708
+children [ DEF TXTS_SENS TouchSensor { } 
+DEF TXS_geoc Transform { children  Shape { appearance Appearance { material DEF TXTS_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cylinder { 
+radius 0.000500 height 0.006500 } } }
+DEF TS1_geom Transform { translation 0.0 -0.00385 0.0  rotation 0 0 1 1.5708
+children [ DEF TXS1_SENS TouchSensor { } 
+      Transform { translation 0.002 0.0015 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .01 0.0013 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF TXS1_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cone { 
+bottomRadius 0.000500 height 0.001000 } }
+DEF TXS_text Transform { translation 0.007 0.002 0 rotation 0 0 1 -3.14159
+children [ 
+DEF TXS_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Text Scaling"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Echelle Texte"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Textskalierung"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Scalare Testo"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "テキストスケール"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Escala De Texto"} } 
+          ] 
+} ] } ] } ] } ] }
+Transform { translation 0.0 -0.014 -0.125  rotation 1 0 0 3.0
+children [ DEF PANEL_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF PANEL_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Sphere { 
+radius 0.001000 } }
+DEF PXForm Transform { translation -0.0018 0.002 0 rotation 1 0 0 -3.0
+children [ DEF PANEL_SENT TouchSensor { } 
+DEF PANEL_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance DEF PANEL_APPEARANCE Appearance {
+               material DEF PANEL_TXT Material { diffuseColor 1 1 1 }}
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Menü" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "メニュー" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Menu" } } 
+          ] 
+} ] } ] }
+DEF SW11 Switch { choice [ 
+DEF SDRC_text Transform { translation 0.014 0.0155 -0.125  children [ DEF SDRC_SENS TouchSensor { } 
+Shape { appearance Appearance { 
+material DEF SDRC_TXT Material { diffuseColor 1 1 0 } } 
+geometry Text {  fontStyle FontStyle { size 0.000750 family "SANS" style "BOLD" } string "SDRC Inc.(c) 1998" } } ] } ] }
+DEF UNITS_text Transform { translation -0.022 0.0155 -0.125  children [ DEF UNITS_SENS TouchSensor { } 
+DEF UNITS_SWITCH Switch { 
+   whichChoice -1 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Units: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Unités: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Einheiten: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Unita': " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "単位: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Units: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Unidades: " } } 
+          ] 
+} ] }
+DEF UNITC_text Transform { translation -0.022 0.0155 -0.125  children [ DEF UNITC_SENS TouchSensor { } 
+DEF UNITC_SWITCH Switch { 
+   whichChoice -1 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Units: "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Unités: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Einheiten: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Unita': "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "単位: "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Units: "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Unidades: "} } 
+          ] 
+} ] }
+] } ]
+ROUTE HudProx.orientation_changed  TO HudXform.rotation 
+ROUTE HudProx.position_changed  TO HudXform.translation } ] }
+Collision {
+ collide TRUE
+ children [
+Transform { scale 0.000001 0.000001 0.000001 children [ Shape {
+  appearance Appearance {
+   material    Material { diffuseColor 1.000000 0.000000 0.000000    }
+  }
+geometry DEF aPart1_19 IndexedFaceSet {
+ coord DEF aPart1_19_C Coordinate { #VRML V1.0 ascii
+Coordinate3{ point [
+1.667884	-9.859927	5.000000,
+-0.658107	-9.978321	5.000000,
+-2.948400	-9.555466	5.000000,
+3.903405	-9.206706	5.000000,
+-5.078765	-8.614299	5.000000,
+-25.000000	25.000000	-5.000000,
+25.000000	25.000000	-5.000000,
+25.000000	-25.000000	1.500000,
+19.696699	-25.000000	1.500000,
+25.000000	23.232233	-1.500000,
+25.000000	23.232233	0.000000,
+-25.000000	25.000000	1.500000,
+5.078765	8.614299	0.000000,
+6.131724	7.899491	0.000000,
+-9.206706	3.903405	1.500000,
+-25.000000	19.696699	1.500000,
+7.899491	6.131724	0.000000,
+8.614299	5.078765	0.000000,
+-5.078765	-8.614299	0.000000,
+-6.131724	-7.899491	0.000000,
+25.000000	-19.696699	5.000000,
+25.000000	-19.696699	1.500000,
+-23.232233	-25.000000	0.000000,
+-23.232233	-25.000000	-1.500000,
+-19.696699	25.000000	1.500000,
+-3.903405	9.206706	1.500000,
+23.232233	25.000000	0.000000,
+23.232233	25.000000	-1.500000,
+7.916656	-6.109546	1.500000,
+6.109546	-7.916656	1.500000,
+9.206706	-3.903405	1.500000,
+3.903405	-9.206706	1.500000,
+-25.000000	-25.000000	-1.500000,
+-25.000000	-21.464466	5.000000,
+-8.614299	-5.078765	5.000000,
+25.000000	-25.000000	-5.000000,
+-25.000000	-25.000000	-5.000000,
+-25.000000	-21.464466	0.000000,
+-8.614299	-5.078765	0.000000,
+25.000000	21.464466	5.000000,
+8.614299	5.078765	5.000000,
+-25.000000	-23.232233	0.000000,
+-7.899491	-6.131724	0.000000,
+-6.131724	-7.899491	-1.000000,
+-9.206706	3.903405	5.000000,
+-25.000000	19.696699	5.000000,
+21.464466	25.000000	0.000000,
+-19.696699	25.000000	5.000000,
+-3.903405	9.206706	5.000000,
+25.000000	21.464466	0.000000,
+25.000000	25.000000	-1.500000,
+19.696699	-25.000000	5.000000,
+6.131724	7.899491	-1.000000,
+-7.899491	-6.131724	-1.000000,
+-25.000000	-23.232233	-1.500000,
+9.206706	-3.903405	5.000000,
+9.694362	-2.453436	-1.000000,
+8.796131	-4.756899	-1.000000,
+7.360213	-6.769584	-1.000000,
+5.474383	-8.368460	-1.000000,
+3.253917	-9.455793	-1.000000,
+0.834547	-9.965116	-1.000000,
+-1.635837	-9.865295	-1.000000,
+-4.006226	-9.162432	-1.000000,
+10.000000	0.000000	-1.000000,
+5.078765	8.614299	5.000000,
+21.464466	25.000000	5.000000,
+-9.555466	-2.948400	5.000000,
+-9.978321	-0.658107	5.000000,
+-9.859927	1.667884	5.000000,
+7.899491	6.131724	-1.000000,
+-1.667884	9.859927	5.000000,
+0.658107	9.978321	5.000000,
+2.948400	9.555466	5.000000,
+-7.916656	6.109546	1.500000,
+-6.109546	7.916656	1.500000,
+-21.464466	-25.000000	0.000000,
+-21.464466	-25.000000	5.000000,
+-9.134316	-4.069923	-1.000000,
+-9.841559	-1.773051	-1.000000,
+-9.980373	0.626229	-1.000000,
+-9.542738	2.989340	-1.000000,
+-8.553933	5.179791	-1.000000,
+-7.071068	7.071068	-1.000000,
+-5.179791	8.553933	-1.000000,
+-2.989340	9.542738	-1.000000,
+-0.626229	9.980373	-1.000000,
+1.773051	9.841559	-1.000000,
+4.069923	9.134316	-1.000000,
+9.047317	4.259819	-1.000000,
+9.758923	2.182525	-1.000000,
+9.555466	2.948400	5.000000,
+9.978321	0.658107	5.000000,
+9.859927	-1.667884	5.000000,
+]} IndexedFaceSet{ coordIndex[
+16, 70, 17, -1,
+17, 70, 89, -1,
+40, 89, 91, -1,
+40, 17, 89, -1,
+89, 90, 91, -1,
+91, 90, 92, -1,
+92, 90, 64, -1,
+93, 64, 56, -1,
+55, 56, 30, -1,
+55, 93, 56, -1,
+56, 57, 30, -1,
+30, 57, 28, -1,
+28, 57, 58, -1,
+29, 58, 59, -1,
+31, 59, 60, -1,
+3, 60, 0, -1,
+3, 31, 60, -1,
+60, 61, 0, -1,
+0, 61, 1, -1,
+1, 61, 62, -1,
+2, 62, 63, -1,
+4, 63, 18, -1,
+4, 2, 63, -1,
+63, 43, 18, -1,
+18, 43, 19, -1,
+2, 1, 62, -1,
+31, 29, 59, -1,
+29, 28, 58, -1,
+93, 92, 64, -1,
+43, 89, 70, -1,
+43, 90, 89, -1,
+43, 64, 90, -1,
+43, 56, 64, -1,
+43, 57, 56, -1,
+43, 58, 57, -1,
+43, 59, 58, -1,
+43, 63, 59, -1,
+59, 63, 60, -1,
+60, 63, 62, -1,
+61, 60, 62, -1,
+88, 53, 52, -1,
+88, 87, 53, -1,
+53, 87, 86, -1,
+85, 53, 86, -1,
+85, 84, 53, -1,
+53, 84, 83, -1,
+82, 53, 83, -1,
+82, 81, 53, -1,
+53, 81, 80, -1,
+78, 80, 79, -1,
+78, 53, 80, -1,
+52, 13, 12, -1,
+88, 12, 65, -1,
+73, 88, 65, -1,
+73, 87, 88, -1,
+73, 72, 87, -1,
+87, 72, 86, -1,
+86, 72, 71, -1,
+85, 71, 48, -1,
+25, 85, 48, -1,
+25, 84, 85, -1,
+25, 75, 84, -1,
+84, 75, 83, -1,
+83, 75, 74, -1,
+82, 74, 14, -1,
+81, 14, 44, -1,
+69, 81, 44, -1,
+69, 80, 81, -1,
+69, 68, 80, -1,
+80, 68, 79, -1,
+79, 68, 67, -1,
+78, 67, 34, -1,
+38, 78, 34, -1,
+38, 53, 78, -1,
+38, 42, 53, -1,
+78, 79, 67, -1,
+81, 82, 14, -1,
+82, 83, 74, -1,
+85, 86, 71, -1,
+88, 52, 12, -1,
+17, 49, 16, -1,
+16, 49, 10, -1,
+70, 16, 10, -1,
+9, 70, 10, -1,
+9, 23, 70, -1,
+70, 23, 43, -1,
+43, 23, 22, -1,
+19, 43, 22, -1,
+17, 40, 49, -1,
+49, 40, 39, -1,
+76, 18, 19, -1,
+22, 76, 19, -1,
+40, 91, 39, -1,
+39, 91, 92, -1,
+20, 92, 93, -1,
+55, 20, 93, -1,
+20, 39, 92, -1,
+4, 18, 77, -1,
+77, 18, 76, -1,
+55, 30, 20, -1,
+20, 30, 21, -1,
+3, 0, 51, -1,
+51, 0, 1, -1,
+77, 1, 2, -1,
+4, 77, 2, -1,
+77, 51, 1, -1,
+30, 28, 21, -1,
+21, 28, 8, -1,
+7, 21, 8, -1,
+29, 8, 28, -1,
+29, 31, 8, -1,
+31, 3, 8, -1,
+8, 3, 51, -1,
+46, 12, 13, -1,
+26, 46, 13, -1,
+13, 52, 26, -1,
+26, 52, 27, -1,
+27, 52, 53, -1,
+54, 53, 41, -1,
+54, 27, 53, -1,
+53, 42, 41, -1,
+38, 37, 42, -1,
+42, 37, 41, -1,
+65, 12, 66, -1,
+66, 12, 46, -1,
+38, 34, 37, -1,
+37, 34, 33, -1,
+48, 71, 47, -1,
+47, 71, 72, -1,
+66, 72, 73, -1,
+65, 66, 73, -1,
+66, 47, 72, -1,
+34, 67, 33, -1,
+33, 67, 68, -1,
+45, 68, 69, -1,
+44, 45, 69, -1,
+45, 33, 68, -1,
+25, 48, 24, -1,
+24, 48, 47, -1,
+44, 14, 45, -1,
+45, 14, 15, -1,
+74, 15, 14, -1,
+74, 75, 15, -1,
+15, 75, 24, -1,
+11, 15, 24, -1,
+75, 25, 24, -1,
+54, 32, 23, -1,
+27, 23, 9, -1,
+50, 27, 9, -1,
+23, 27, 54, -1,
+32, 54, 36, -1,
+36, 54, 5, -1,
+5, 54, 15, -1,
+11, 5, 15, -1,
+54, 41, 37, -1,
+15, 37, 33, -1,
+45, 15, 33, -1,
+54, 37, 15, -1,
+23, 32, 36, -1,
+35, 23, 36, -1,
+35, 8, 23, -1,
+35, 7, 8, -1,
+8, 51, 77, -1,
+76, 8, 77, -1,
+76, 23, 8, -1,
+76, 22, 23, -1,
+26, 27, 46, -1,
+46, 27, 24, -1,
+66, 24, 47, -1,
+66, 46, 24, -1,
+27, 50, 6, -1,
+5, 27, 6, -1,
+5, 24, 27, -1,
+5, 11, 24, -1,
+9, 10, 49, -1,
+21, 49, 39, -1,
+20, 21, 39, -1,
+21, 7, 35, -1,
+9, 35, 6, -1,
+50, 9, 6, -1,
+21, 35, 9, -1,
+49, 21, 9, -1,
+6, 35, 36, -1,
+5, 6, 36, -1,
+]}
+
+}
+ solid       FALSE
+ creaseAngle 0.5
+} }
+Shape { appearance Appearance {
+   material    Material { diffuseColor 1 1 1 } }
+geometry DEF aPart1_19_W IndexedLineSet {
+coord USE aPart1_19_C
+  } }
+Shape { appearance Appearance {
+   material    Material { diffuseColor 1 1 1 } }
+geometry DEF aPart1_19_CL IndexedLineSet {
+coord USE aPart1_19_C
+ coordIndex [ 108,109,-1 ] } }
+ ] }
+  ] }
+Anchor { url "#aPart1_19"
+ description "Part 'Part1:100c;0;'"
+ parameter [ "target=vrmlinfo" ]
+ children [ DEF aPart1_19_SENS TouchSensor { }
+DEF aPart1_19_TRAN Transform { children [
+   Shape { appearance Appearance { material
+DEF aPart1_19_WMAT Material { emissiveColor 0.8 0.8 0.8 diffuseColor 0.8 0.8 0.8 transparency 1.0} } 
+ geometry USE aPart1_19_W }
+   Shape { appearance Appearance { material
+DEF aPart1_19_CMAT Material { emissiveColor 1.000000 0.660000 1.000000 diffuseColor 0.8 0.8 0.8 transparency 1.0} } 
+ geometry USE aPart1_19_CL }
+   Shape { appearance Appearance { material
+DEF aPart1_19_MAT Material {  diffuseColor 1.000000 0.000000 0.000000 } } geometry USE aPart1_19 } ] } ]
+}
+DEF PANEL_SCRIPT Script { 
+  eventIn SFTime setcolor
+  eventOut SFColor trcolor
+  eventOut SFInt32 whichChoice
+  field    SFFloat transv 1
+  field MFColor swcolor [1 0 0, 0 1 0]
+  field SFInt32 maxval 1
+  field SFInt32 val    0
+  eventIn SFBool settrans
+  eventOut SFFloat transp
+  eventOut SFFloat trNoVal
+  field SFFloat fTran 0
+url "vrmlscript:
+function setcolor() { 
+val++; if(val>maxval){val=0;}
+if(val){trcolor=swcolor[1]; whichChoice=0; trNoVal=0.7;}
+else{trcolor=swcolor[0]; whichChoice=-1;}}
+function settrans(value) { 
+if (value==TRUE) { fTran=fTran+.9;
+if (fTran>1.0)  { fTran=0; } transp=fTran;}}
+" }
+ROUTE PANEL_SENS.touchTime TO PANEL_SCRIPT.setcolor
+ROUTE PANEL_SENT.isActive TO PANEL_SCRIPT.settrans
+ROUTE PANEL_SCRIPT.trcolor TO PANEL_MAT.set_diffuseColor
+ROUTE PANEL_SCRIPT.transp TO PANEL_MAT.set_transparency
+ROUTE PANEL_SCRIPT.transp TO PANEL_TXT.set_transparency
+ROUTE PANEL_SCRIPT.whichChoice TO SW5.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW6.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW7.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW8.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW9.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW10.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW11.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW12.whichChoice
+ROUTE PANEL_SCRIPT.trNoVal TO DIME_MAT.set_transparency
+ROUTE PANEL_SCRIPT.trNoVal TO DIME_TXT.set_transparency
+ROUTE PANEL_SCRIPT.trNoVal TO NOTES_MAT.set_transparency
+ROUTE PANEL_SCRIPT.trNoVal TO NOTES_TXT.set_transparency
+DEF TRAN_SCRIPT Script { 
+  eventIn SFBool settran
+  eventIn SFBool settxts
+  eventOut SFFloat tranval
+  field SFFloat fTrans 0
+  field MFColor cncolor [1 1 1, 1 1 0]
+  eventOut SFColor ccolor
+  eventOut SFVec3f SC_valx
+  field SFFloat fTxtS 1.0
+  field MFColor bncolor [1 1 1, 1 1 0]
+  eventOut SFColor bcolor
+ eventIn SFBool aPart1_19_get
+ eventOut SFFloat aPart1_19_ret
+ eventIn SFBool aPart1_19_get1
+ eventOut SFVec3f aPart1_19_ret1
+url "vrmlscript:
+function settran(value) { 
+if (value==TRUE) { fTrans=fTrans+.25;
+if (fTrans>1.0)  { fTrans=0; } tranval=fTrans; if (tranval > .95) tranval=.95;}
+if(fTrans>0){ccolor=cncolor[1];}
+else{ccolor=cncolor[0];}}
+function settxts(value) { 
+if (value==TRUE) { fTxtS=fTxtS+.25;
+if (fTxtS>2.0)  { fTxtS=1.0; }}
+SC_valx[0]=fTxtS; SC_valx[1]=1.0; SC_valx[2]=1.0;
+if(fTxtS>1.0){bcolor=bncolor[1];}
+else{bcolor=bncolor[0];}}
+function aPart1_19_get() {
+ aPart1_19_ret = fTrans;
+}
+function aPart1_19_get1() {
+ aPart1_19_ret1[0] = fTxtS;
+ aPart1_19_ret1[1] = fTxtS;
+ aPart1_19_ret1[2] = 1.0;
+}
+" }
+ROUTE TRAN_SENS.isActive TO TRAN_SCRIPT.settran
+ROUTE TRP1_SENS.isActive TO TRAN_SCRIPT.settran
+ROUTE TRAN_SCRIPT.tranval TO TRAN_MAT.set_transparency
+ROUTE TRAN_SCRIPT.ccolor TO TRP1_MAT.set_diffuseColor
+ROUTE TXTS_SENS.isActive TO TRAN_SCRIPT.settxts
+ROUTE TXS1_SENS.isActive TO TRAN_SCRIPT.settxts
+ROUTE TRAN_SCRIPT.SC_valx TO TXS_geoc.set_scale
+ROUTE TRAN_SCRIPT.bcolor TO TXS1_MAT.set_diffuseColor
+ROUTE aPart1_19_SENS.isActive TO TRAN_SCRIPT.aPart1_19_get
+ROUTE TRAN_SCRIPT.aPart1_19_ret TO aPart1_19_MAT.set_transparency
+ROUTE aPart1_19_SENS.isActive TO TRAN_SCRIPT.aPart1_19_get1
+DEF SWITCH_SCRIPT Script { 
+  eventIn SFTime setcolor1
+  eventIn SFTime setcolor2
+  eventIn SFTime setcolor3
+  eventIn SFTime setcolor4
+  eventIn SFTime setcolor7
+  eventIn SFTime toggleUnits
+  eventIn SFTime setdimtyp
+  eventIn SFTime setntstyp
+  eventIn SFTime setloctyp
+  eventOut SFColor trcolor1
+  eventOut SFColor trcolor2
+  eventOut SFColor trcolor3
+  eventOut SFColor trcolor4
+  eventOut SFColor trcolor7
+  eventOut SFFloat nTran1
+  eventOut SFFloat nTran2
+  eventOut SFFloat nTran3
+  eventOut SFFloat nTran4
+  eventOut SFFloat nTrank
+  eventOut SFFloat nTranr
+  eventOut SFFloat nTrand
+  eventOut SFFloat nTranrn
+  eventOut SFFloat nTranun
+  eventOut SFVec3f SC_valk
+  eventOut SFVec3f SC_valr
+  eventOut SFVec3f SC_valn
+  eventOut SFVec3f SC_vntr
+  eventOut SFVec3f SC_vntu
+  eventOut SFInt32 DimTyp_switch
+  eventOut SFInt32 NtsTyp_switch
+  eventOut SFInt32 SC_val
+  eventOut SFInt32 panel_switch
+  eventOut SFInt32 ClnTyp_switch
+  eventOut SFInt32 WfrTyp_switch
+  eventOut SFInt32 TrpTyp_switch
+  eventOut SFInt32 TxsTyp_switch
+  eventOut SFInt32 UnitsTyp_switch
+  eventOut SFInt32 UnitcTyp_switch
+  eventOut SFInt32 LocTyp_switch
+  eventOut SFInt32 NorTyp_switch
+  eventOut SFInt32 HidTyp_switch
+  eventOut SFInt32 Sh1Typ_switch
+  eventOut SFInt32 ShoTyp_switch
+  field    SFFloat transv 1
+  field    SFFloat transu 1
+  field    SFFloat transk 1
+  field    SFFloat transr 1
+  field    SFFloat trannr 1
+  field    SFFloat trannu 1
+  field MFColor swcolor [1 0 0, 0 1 0]
+  field SFInt32 maxval  1
+  field SFInt32 maxval1 2
+  field SFInt32 maxval8 7
+  field SFInt32 val1    0
+  field SFInt32 val2    0
+  field SFInt32 val3    0
+  field SFInt32 val4    0
+  field SFInt32 val5    0
+  field SFInt32 val6    0
+  field SFInt32 val7    1
+  field SFInt32 val8    0
+  field SFInt32 valu    0
+url "vrmlscript:
+function setcolor1() { 
+val1++; if(val1>maxval){val1=0;}
+if(val1){trcolor1=swcolor[1]; transv=0.0;}
+else{trcolor1=swcolor[0]; transv=1.0;} nTran1=transv;}
+function showUnits() { 
+  if (valu) {UnitsTyp_switch = -1; UnitcTyp_switch = val8;} 
+  else{UnitsTyp_switch = val8; UnitcTyp_switch = -1;}} 
+function hideUnits() { 
+  UnitsTyp_switch = -1; 
+  UnitcTyp_switch = -1;} 
+function toggleUnits() { 
+  valu++; if(valu>maxval){valu=0;} 
+  showUnits();} 
+function setcolor2() { 
+val2++; if(val2>maxval){val2=0;} 
+  if(val2) 
+  { 
+    if(val5==1)
+    { 
+      SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001;
+      SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+      transk=1.0; transr=0.0; nTrand=0.5; trcolor2=swcolor[1];
+    } 
+    if(val5==2) 
+    { 
+      SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+      SC_valr[0]=0.000001; 
+      SC_valr[1]=0.000001; SC_valr[2]=0.000001; 
+      transk=0.0; transr=1.0; nTrand=0.5; trcolor2=swcolor[1];
+    } 
+    if(val5==0) 
+    { 
+      SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+      SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+      transk=0.0; transr=0.0; nTrand=0.0; trcolor2=swcolor[1];
+    } 
+    trcolor2=swcolor[1]; 
+    showUnits(); 
+  } 
+  else 
+  { 
+    trcolor2=swcolor[0]; 
+    SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001; 
+     SC_valr[0]=0.000001; SC_valr[1]=0.000001; SC_valr[2]=0.000001; 
+     hideUnits(); 
+     transk=1.0; transr=1.0; 
+  } 
+  nTrank=transk; nTranr=transr; nTrand=0.0; 
+} 
+function setdimtyp() {   val5++; if(val5>maxval1){val5=0;}  if(val5==1)
+  { 
+    SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001;
+    SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+    transk=1.0; transr=0.0; nTrand=0.5; trcolor2=swcolor[1];
+  } 
+  if(val5==2) 
+  { 
+    SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+    SC_valr[0]=0.000001; 
+    SC_valr[1]=0.000001; SC_valr[2]=0.000001; 
+    transk=0.0; transr=1.0; nTrand=0.5; trcolor2=swcolor[1];
+  } 
+  if(val5==0) 
+  { 
+    SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+    SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+    transk=0.0; transr=0.0; nTrand=0.0; trcolor2=swcolor[1];
+  } 
+  showUnits(); 
+  nTrank=transk; nTranr=transr; 
+  DimTyp_switch=val8*(maxval1+1) + val5; 
+} 
+function setcolor4() { 
+val4++; if(val4>maxval){val4=0;} 
+if(val4)
+{   trcolor4=swcolor[1]; 
+   if(val6==1) 
+   { 
+      SC_vntr[0]=0.000001; SC_vntr[1]=0.000001; SC_vntr[2]=0.000001; 
+      SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; 
+      trannr=1.0; trannu=0.0; 
+   } 
+   if(val6==2) 
+   { 
+      SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; 
+      SC_vntu[0]=0.000001; SC_vntu[1]=0.000001; SC_vntu[2]=0.000001; 
+      trannr=0.0; trannu=1.0; 
+   } 
+   if(val6==0) 
+   { 
+      SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; 
+      SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; 
+      trannr=0.0; trannu=0.0; 
+   } 
+ } 
+ else 
+ { 
+    trcolor4=swcolor[0]; 
+    SC_vntu[0]=0.000001; SC_vntu[1]=0.000001; SC_vntu[2]=0.000001; 
+    SC_vntr[0]=0.000001; SC_vntr[1]=0.000001; SC_vntr[2]=0.000001; 
+    trannr=1.0; trannu=1.0; 
+ }  
+ nTranrn=trannr; nTranun=trannu; 
+ } 
+function setcolor7() { 
+  val7++; if(val7>maxval){val7=0;}
+  if (val7) { trcolor7=swcolor[1]; } 
+  else { trcolor7 = swcolor[0]; } } 
+function setcolor3() { 
+val3++; if(val3>maxval){val3=0;}
+if(val3){trcolor3=swcolor[1]; transv=0.0;}
+else{trcolor3=swcolor[0]; transv=1.0;} nTran3=transv;}
+function setdimtyp() { 
+val5++; if(val5>maxval1){val5=0;}
+if(val5==1){ SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001; SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; transk=1.0; transr=0.0; nTrand=0.5; trcolor2=swcolor[1];}
+if(val5==2){ SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; SC_valr[0]=0.000001;
+ SC_valr[1]=0.000001; SC_valr[2]=0.000001; transk=0.0; transr=1.0; nTrand=0.5; trcolor2=swcolor[1];}
+if(val5==0) { SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+transk=0.0; transr=0.0; nTrand=0.0; trcolor2=swcolor[1];} 
+showUnits(); 
+nTrank=transk; nTranr=transr; DimTyp_switch=val8*(maxval1+1) + val5;}
+function setntstyp() { 
+val6++; if(val6>maxval1){val6=0;}
+if(val6==1){ SC_vntr[0]=0.000001; SC_vntr[1]=0.000001; SC_vntr[2]=0.000001; SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; trannr=1.0; trannu=0.0; trcolor4=swcolor[1];}
+if(val6==2){ SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; SC_vntu[0]=0.000001;
+ SC_vntu[1]=0.000001; SC_vntu[2]=0.000001; trannr=0.0; trannu=1.0; trcolor4=swcolor[1];}
+if(val6==0) { SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; trannr=0.0; trannu=0.0; trcolor4=swcolor[1];} nTranrn=trannr; nTranun=trannu; NtsTyp_switch=val8*(maxval1+1) + val6;}
+function setloctyp() {
+  val8++; if (val8 >= maxval8) {val8=0;}
+  if (val8 == 5) {val8 = 6;}
+  LocTyp_switch = val8; 
+  NorTyp_switch = val8; 
+  HidTyp_switch = val8; 
+  Sh1Typ_switch = val8; 
+  ShoTyp_switch = val8; 
+  panel_switch = val8; 
+  if(val2) 
+    showUnits(); 
+  ClnTyp_switch = val8; 
+  WfrTyp_switch = val8; 
+  TrpTyp_switch = val8; 
+  TxsTyp_switch = val8; 
+  DimTyp_switch=val8*(maxval1+1) + val5; 
+  NtsTyp_switch=val8*(maxval1+1) + val6; 
+ }" }
+ROUTE CLIN_SENS.touchTime TO SWITCH_SCRIPT.setcolor1
+ROUTE SWITCH_SCRIPT.trcolor1 TO CLIN_MAT.set_diffuseColor
+ROUTE SWITCH_SCRIPT.DimTyp_switch TO DIM_SWITCH.whichChoice
+ROUTE WIRE_SENS.touchTime TO SWITCH_SCRIPT.setcolor3
+ROUTE SWITCH_SCRIPT.trcolor3 TO WIRE_MAT.set_diffuseColor
+ROUTE SWITCH_SCRIPT.NtsTyp_switch TO NTS_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.trcolor7 TO LOC_MAT.set_diffuseColor
+ROUTE LOC_SENT.touchTime TO SWITCH_SCRIPT.setloctyp
+ROUTE SWITCH_SCRIPT.LocTyp_switch TO LOC_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.panel_switch TO PANEL_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.ClnTyp_switch TO CLN_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.WfrTyp_switch TO WFR_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.TrpTyp_switch TO TRP_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.TxsTyp_switch TO TXS_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.nTran1 TO aPart1_19_CMAT.set_transparency
+ROUTE SWITCH_SCRIPT.nTran3 TO aPart1_19_WMAT.set_transparency

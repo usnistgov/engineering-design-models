@@ -1,0 +1,3282 @@
+#VRML V2.0 utf8
+WorldInfo  { info [
+"This file was created, in part, by SDRC I-DEAS Master Series as Part of the National Design Repository effort at Drexel University: http://repos.mcs.drexel.edu",
+"I-DEAS Master Series is a trademark of SDRC."] }
+NavigationInfo { type  "EXAMINE"  headlight  TRUE  avatarSize [ 0.25, 1.6, 0.75 ] }
+Viewpoint { description "IsometricView" position 0.274544 0.366094 0.457170 orientation -0.73 0.65 0.2 0.8 fieldOfView 0.261799 }
+Viewpoint { description "FrontView" position 0.000371 0.000099 0.646634 fieldOfView 0.261799 }
+Viewpoint { description "RightView" position 0.647005 0.000099 0.000000 orientation 0 1 0 1.5708 fieldOfView 0.261799 }
+Viewpoint { description "BackView" position 0.000371 0.000099 -0.646634 orientation 0 1 0 3.14159 fieldOfView 0.261799 }
+Viewpoint { description "LeftView" position -0.646264 0.000099 0.000000 orientation 0 1 0 -1.5708 fieldOfView 0.261799 }
+Viewpoint { description "TopView" position 0.000371 0.646733 0.000000 orientation 1 0 0 -1.5708 fieldOfView 0.261799 }
+Viewpoint { description "BottomView" position 0.000371 -0.646535 0.000000 orientation 1 0 0 1.5708 fieldOfView 0.261799 }
+Group { children [ DEF HudGroup Collision { collide FALSE
+children [ DEF HudProx ProximitySensor {
+center 0.000371 0.000099 0.000000 size 500 100 500 }
+DEF HudXform Transform { children [  
+DEF SW12 Switch { choice [ 
+DEF LOC_geom Transform { translation -0.025 -.0155 -0.125  rotation 1 0 0 1.5708
+children [ DEF LOC_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF LOC_MAT Material 
+{ diffuseColor 0 1 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF LOC_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ DEF LOC_SENT TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+DEF LOC_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance DEF TEXT_APPEARANCE Appearance 
+               {material Material { diffuseColor 1 1 1 } } 
+             geometry Text { 
+               fontStyle DEF ENGLISH_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "en"} 
+               string "English..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF FRENCH_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "fr"} 
+               string "French..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF GERMAN_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "de"} 
+               string "German..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF ITALIAN_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "it"} 
+               string "Italian..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF JAPANESE_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "ja"} 
+               string "日本語..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF KOREAN_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "ko"} 
+               string "Korean..."} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle DEF SPANISH_STYLE FontStyle { 
+                 size 0.001250 family "SANS" style "BOLD" language "es"} 
+               string "Spanish..."} } 
+          ] 
+} 
+ ] } ] } ] }
+DEF SW5 Switch { choice [ 
+DEF NTS_geom Transform { translation -0.025 -0.01175 -0.125  rotation 1 0 0 1.5708
+children [ DEF NOTES_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF NOTES_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF NTS_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ DEF NOTES_SENT TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+DEF NTS_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance  Appearance{ material DEF NOTES_TXT Material
+             { diffuseColor 1 1 1 } }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Notes..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "URLNotes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "RegNotes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Notes..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Notes URL(aucune)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Notes Ord(aucune)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Anmerkung..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "URL Anmerkung(keine)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Reg Anmerkung(keine)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Note..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Note URL(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Note Nor(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "注記..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "URLノート(なし)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "ノート(なし)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Notes..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "URL Notes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "RegNotes(none)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Notas..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Anotaciones URL(ninguna)..."} } 
+     Shape { appearance Appearance{ material USE NOTES_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Anotaciones Reg(ninguna)..."} } 
+          ] 
+} ] } ] } ] }
+DEF SW6 Switch { choice [ 
+DEF CLN_geom Transform { translation -0.025 -0.01425 -0.125  rotation 1 0 0 1.5708
+children [ DEF CLIN_SENS TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF CLIN_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF CLN_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ 
+DEF CLN_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance Appearance{ material DEF CLIN_TXT Material
+             { diffuseColor 1 1 1 } }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Centerlines"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Lignes d'Axe"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Mittellinien"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Assi"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "中心線"} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance Appearance{ material USE CLIN_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Lineas De Centros"} } 
+          ] 
+} ] } ] } ] }
+DEF SW7 Switch { choice [ 
+DEF DIM_geom Transform { translation -0.025 -0.0105 -0.125  rotation 1 0 0 1.5708
+children [ DEF DIME_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF DIME_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF DIM_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ DEF DIME_SENT TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+DEF DIM_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance Appearance{ material DEF DIME_TXT Material {
+             diffuseColor 1 1 1 } }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Dimensions..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "RefDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "KeyDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Cotes..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Cotes Réf(aucune)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Cotes Clé(aucune)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Maße..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Ref Maße(keine)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Key Maße(keine)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Dimensioni..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Dim Rif(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Dim Chiave(nessuna)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "寸法..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "参照寸法(なし)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "キー寸法(なし)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Dimensions..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "RefDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "KeyDims(none)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Cotas..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT }
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Cotas De Referencia(ninguna)..."} } 
+     Shape { appearance Appearance{ material USE DIME_TXT } 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Cotas Conductoras(ninguna)..."} } 
+          ] 
+} ] } ] } ] }
+DEF SW8 Switch { choice [ 
+DEF WFR_geom Transform { translation -0.025 -0.013 -0.125  rotation 1 0 0 1.5708
+children [ DEF WIRE_SENS TouchSensor { } 
+      Transform { translation 0.0057 0.00047 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .011 0.001 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF WIRE_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Box { 
+size 0.001250 0.000750 0.000750 } }
+DEF WFR_text Transform { translation 0.0012 0.003 0 rotation 1 0 0 -1.5708
+children [ 
+DEF WFR_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance Appearance { material 
+               DEF WIRE_TXT Material { diffuseColor 1 1 1 } } 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Wireframe"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Filaire"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Drahtgeometrie"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Wireframe"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "ワイヤフレー�"} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance Appearance { material USE WIRE_TXT } 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Alambre"} } 
+          ] 
+} ] } ] } ] }
+DEF SW9 Switch { choice [ 
+DEF TRP_geom Transform { translation 0.00675 -0.014 -0.125  rotation 0 0 1 1.5708
+children [ DEF TRAN_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF TRAN_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cylinder { 
+radius 0.000500 height 0.006500 } }
+DEF TR1_geom Transform { translation 0.0 0.00385 0.0  rotation 0 0 1 1.5708
+children [ DEF TRP1_SENS TouchSensor { } 
+      Transform { translation -0.0045 0.0015 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .009 0.0013 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF TRP1_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cone { 
+bottomRadius 0.000500 height 0.001000 } }
+DEF TRP_text Transform { translation 0.0 0.002 0 rotation 0 0 1 -3.14159
+children [ 
+DEF TRP_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Translucency"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Transparence"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Tranzparenz"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Traslucidita'"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "透明度"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Transapencia"} } 
+          ] 
+} ] } ] } ] } ] }
+DEF SW10 Switch { choice [ 
+DEF TXS_geom Transform { translation -0.0092 -0.014 -0.125  rotation 0 0 1 1.5708
+children [ DEF TXTS_SENS TouchSensor { } 
+DEF TXS_geoc Transform { children  Shape { appearance Appearance { material DEF TXTS_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cylinder { 
+radius 0.000500 height 0.006500 } } }
+DEF TS1_geom Transform { translation 0.0 -0.00385 0.0  rotation 0 0 1 1.5708
+children [ DEF TXS1_SENS TouchSensor { } 
+      Transform { translation 0.002 0.0015 0 
+        children [ 
+         Shape { appearance Appearance { 
+           material Material {transparency 1} } 
+           geometry Box { size .01 0.0013 0.00075 } } ] }  
+Shape { appearance Appearance { material DEF TXS1_MAT Material 
+{ diffuseColor 1 1 1 } } geometry Cone { 
+bottomRadius 0.000500 height 0.001000 } }
+DEF TXS_text Transform { translation 0.007 0.002 0 rotation 0 0 1 -3.14159
+children [ 
+DEF TXS_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Text Scaling"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Echelle Texte"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Textskalierung"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Scalare Testo"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "テキストスケール"} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string ""} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Escala De Texto"} } 
+          ] 
+} ] } ] } ] } ] }
+Transform { translation 0.0 -0.014 -0.125  rotation 1 0 0 3.0
+children [ DEF PANEL_SENS TouchSensor { } 
+Shape { appearance Appearance { material DEF PANEL_MAT Material 
+{ diffuseColor 1 0 0 } } geometry Sphere { 
+radius 0.001000 } }
+DEF PXForm Transform { translation -0.0018 0.002 0 rotation 1 0 0 -3.0
+children [ DEF PANEL_SENT TouchSensor { } 
+DEF PANEL_SWITCH Switch { 
+   whichChoice 0 
+   choice [ 
+     Shape { appearance DEF PANEL_APPEARANCE Appearance {
+               material DEF PANEL_TXT Material { diffuseColor 1 1 1 }}
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Menü" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "メニュー" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Menu" } } 
+     Shape { appearance USE PANEL_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Menu" } } 
+          ] 
+} ] } ] }
+DEF SW11 Switch { choice [ 
+DEF SDRC_text Transform { translation 0.014 0.0155 -0.125  children [ DEF SDRC_SENS TouchSensor { } 
+Shape { appearance Appearance { 
+material DEF SDRC_TXT Material { diffuseColor 1 1 0 } } 
+geometry Text {  fontStyle FontStyle { size 0.000750 family "SANS" style "BOLD" } string "Drexel Design Repository" } } ] } ] }
+DEF UNITS_text Transform { translation -0.022 0.0155 -0.125  children [ DEF UNITS_SENS TouchSensor { } 
+DEF UNITS_SWITCH Switch { 
+   whichChoice -1 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Units: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Unités: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Einheiten: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Unita': " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "単位: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Units: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Unidades: " } } 
+          ] 
+} ] }
+DEF UNITC_text Transform { translation -0.022 0.0155 -0.125  children [ DEF UNITC_SENS TouchSensor { } 
+DEF UNITC_SWITCH Switch { 
+   whichChoice -1 
+   choice [ 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ENGLISH_STYLE 
+               string "Units: "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE FRENCH_STYLE 
+               string "Unités: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE GERMAN_STYLE 
+               string "Einheiten: " } } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE ITALIAN_STYLE 
+               string "Unita': "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE JAPANESE_STYLE 
+               string "単位: "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE KOREAN_STYLE 
+               string "Units: "} } 
+     Shape { appearance USE TEXT_APPEARANCE 
+             geometry Text { 
+               fontStyle USE SPANISH_STYLE 
+               string "Unidades: "} } 
+          ] 
+} ] }
+] } ]
+ROUTE HudProx.orientation_changed  TO HudXform.rotation 
+ROUTE HudProx.position_changed  TO HudXform.translation } ] }
+Collision {
+ collide TRUE
+ children [
+Transform { scale 0.000001 0.000001 0.000001 children [ Shape {
+  appearance Appearance {
+   material    Material { diffuseColor 1.000000 0.000000 0.000000    }
+  }
+geometry DEF aPart1_19 IndexedFaceSet {
+ coord DEF aPart1_19_C Coordinate { point [
+0.042455 0.020000 -0.000414,
+0.042614 0.020000 -0.000800,
+0.042869 0.020000 -0.001131,
+0.043200 0.020000 -0.001386,
+0.043586 0.020000 -0.001545,
+0.044000 0.020000 -0.001600,
+0.044414 0.020000 -0.001545,
+0.044800 0.020000 -0.001386,
+0.045131 0.020000 -0.001131,
+0.045386 0.020000 -0.000800,
+0.045545 0.020000 -0.000414,
+0.042400 0.020000 0.000000,
+0.045600 0.020000 0.000000,
+-0.033600 0.000000 0.000000,
+-0.033600 0.020000 0.000000,
+-0.022000 -0.008000 0.010000,
+-0.022000 -0.020000 0.010000,
+-0.001545 -0.010000 0.000414,
+-0.001386 -0.010000 0.000800,
+-0.001131 -0.010000 0.001131,
+-0.000800 -0.010000 0.001386,
+-0.000414 -0.010000 0.001545,
+-0.000000 -0.010000 0.001600,
+0.000414 -0.010000 0.001545,
+0.000800 -0.010000 0.001386,
+0.001131 -0.010000 0.001131,
+0.001386 -0.010000 0.000800,
+0.001545 -0.010000 0.000414,
+0.001600 -0.010000 -0.000000,
+0.001545 -0.010000 -0.000414,
+0.001386 -0.010000 -0.000800,
+0.001131 -0.010000 -0.001131,
+0.000800 -0.010000 -0.001386,
+0.000414 -0.010000 -0.001545,
+0.000000 -0.010000 -0.001600,
+-0.000414 -0.010000 -0.001545,
+-0.000800 -0.010000 -0.001386,
+-0.001131 -0.010000 -0.001131,
+-0.001386 -0.010000 -0.000800,
+-0.001545 -0.010000 -0.000414,
+-0.001600 -0.010000 -0.000000,
+0.016000 -0.014000 -0.004000,
+0.016000 -0.020000 -0.004000,
+0.010000 0.008000 -0.010000,
+0.010000 0.020000 -0.010000,
+0.006000 0.008000 0.010000,
+0.006000 0.008000 -0.010000,
+0.022273 -0.005929 0.010000,
+0.023072 -0.004000 0.010000,
+0.024343 -0.002343 0.010000,
+0.026000 -0.001072 0.010000,
+0.027929 -0.000273 0.010000,
+0.022000 -0.008000 0.010000,
+0.030000 0.000000 0.010000,
+-0.044000 0.000000 0.001600,
+-0.044000 0.020000 0.001600,
+0.014518 0.001932 0.006000,
+0.015000 0.001732 0.006000,
+0.015414 0.001414 0.006000,
+0.015732 0.001000 0.006000,
+0.015932 0.000518 0.006000,
+0.014000 0.002000 0.006000,
+0.016000 0.000000 0.006000,
+0.014000 -0.002000 0.010000,
+0.003464 -0.002000 0.010000,
+0.006000 0.010000 0.010000,
+-0.010000 0.020000 0.010000,
+-0.010000 0.020000 -0.010000,
+-0.006000 0.008000 -0.010000,
+-0.006000 0.010000 -0.010000,
+-0.030455 0.020000 0.000414,
+-0.030614 0.020000 0.000800,
+-0.030869 0.020000 0.001131,
+-0.031200 0.020000 0.001386,
+-0.031586 0.020000 0.001545,
+-0.030400 0.020000 0.000000,
+-0.032000 0.020000 0.001600,
+-0.010000 0.008000 -0.010000,
+-0.006000 0.010000 0.010000,
+0.016000 -0.014000 0.010000,
+0.032000 0.020000 0.010000,
+0.010000 0.020000 0.010000,
+0.044000 0.020000 0.010000,
+0.044000 0.000000 0.010000,
+0.015932 -0.000518 0.006000,
+0.015732 -0.001000 0.006000,
+0.015414 -0.001414 0.006000,
+0.015000 -0.001732 0.006000,
+0.014518 -0.001932 0.006000,
+0.014000 -0.002000 0.006000,
+0.003864 -0.001035 0.006000,
+0.004000 0.000000 0.006000,
+0.003864 0.001035 0.006000,
+0.003464 -0.002000 0.006000,
+0.003464 0.002000 0.006000,
+0.003464 0.002000 0.010000,
+-0.014000 0.002000 0.006000,
+-0.014000 0.002000 0.010000,
+-0.014518 -0.001932 0.006000,
+-0.015000 -0.001732 0.006000,
+-0.015414 -0.001414 0.006000,
+-0.015732 -0.001000 0.006000,
+-0.015932 -0.000518 0.006000,
+-0.016000 -0.000000 0.006000,
+-0.015932 0.000518 0.006000,
+-0.015732 0.001000 0.006000,
+-0.015414 0.001414 0.006000,
+-0.015000 0.001732 0.006000,
+-0.014518 0.001932 0.006000,
+-0.014000 -0.002000 0.006000,
+0.015864 -0.012965 -0.004000,
+0.015464 -0.012000 -0.004000,
+0.014828 -0.011172 -0.004000,
+0.014000 -0.010536 -0.004000,
+0.013035 -0.010136 -0.004000,
+0.012000 -0.010000 -0.004000,
+0.027929 -0.000273 -0.010000,
+0.026000 -0.001072 -0.010000,
+0.024343 -0.002343 -0.010000,
+0.023072 -0.004000 -0.010000,
+0.022273 -0.005929 -0.010000,
+0.030000 0.000000 -0.010000,
+0.022000 -0.008000 -0.010000,
+-0.032000 0.000000 0.001600,
+-0.032000 0.000000 0.010000,
+0.044000 0.000000 0.001600,
+-0.050000 0.020000 0.010000,
+-0.050000 0.020000 -0.010000,
+-0.003464 0.002000 0.006000,
+0.044000 0.020000 0.001600,
+-0.003464 -0.002000 0.010000,
+-0.014000 -0.002000 0.010000,
+-0.016000 -0.020000 -0.004000,
+-0.022000 -0.020000 -0.010000,
+-0.016000 -0.014000 -0.004000,
+0.006000 0.010000 -0.010000,
+-0.010000 0.008000 0.010000,
+0.033545 0.000000 -0.000414,
+0.033386 0.000000 -0.000800,
+0.033131 0.000000 -0.001131,
+0.032800 0.000000 -0.001386,
+0.032414 0.000000 -0.001545,
+0.032000 0.000000 -0.001600,
+0.031586 0.000000 -0.001545,
+0.031200 0.000000 -0.001386,
+0.030869 0.000000 -0.001131,
+0.030614 0.000000 -0.000800,
+0.030455 0.000000 -0.000414,
+0.030400 0.000000 -0.000000,
+0.030455 0.000000 0.000414,
+0.030614 0.000000 0.000800,
+0.030869 0.000000 0.001131,
+0.031200 0.000000 0.001386,
+0.031586 0.000000 0.001545,
+0.033600 0.000000 0.000000,
+0.032000 0.000000 0.001600,
+0.031586 0.020000 0.001545,
+0.031200 0.020000 0.001386,
+0.030869 0.020000 0.001131,
+0.030614 0.020000 0.000800,
+0.030455 0.020000 0.000414,
+0.030400 0.020000 0.000000,
+0.030455 0.020000 -0.000414,
+0.030614 0.020000 -0.000800,
+0.030869 0.020000 -0.001131,
+0.031200 0.020000 -0.001386,
+0.031586 0.020000 -0.001545,
+0.032000 0.020000 -0.001600,
+0.032414 0.020000 -0.001545,
+0.032800 0.020000 -0.001386,
+0.033131 0.020000 -0.001131,
+0.033386 0.020000 -0.000800,
+0.033545 0.020000 -0.000414,
+0.032000 0.020000 0.001600,
+0.033600 0.020000 0.000000,
+-0.014518 -0.001932 0.010000,
+-0.015000 -0.001732 0.010000,
+-0.015414 -0.001414 0.010000,
+-0.015732 -0.001000 0.010000,
+-0.015932 -0.000518 0.010000,
+-0.016000 -0.000000 0.010000,
+-0.015932 0.000518 0.010000,
+-0.015732 0.001000 0.010000,
+-0.015414 0.001414 0.010000,
+-0.015000 0.001732 0.010000,
+-0.014518 0.001932 0.010000,
+-0.030000 0.000000 -0.010000,
+-0.050000 0.000000 -0.010000,
+0.014000 0.002000 0.010000,
+-0.001545 0.010000 -0.000414,
+-0.001386 0.010000 -0.000800,
+-0.001131 0.010000 -0.001131,
+-0.000800 0.010000 -0.001386,
+-0.000414 0.010000 -0.001545,
+-0.000000 0.010000 -0.001600,
+0.000414 0.010000 -0.001545,
+0.000800 0.010000 -0.001386,
+0.001131 0.010000 -0.001131,
+0.001386 0.010000 -0.000800,
+0.001545 0.010000 -0.000414,
+0.001600 0.010000 0.000000,
+0.001545 0.010000 0.000414,
+0.001386 0.010000 0.000800,
+0.001131 0.010000 0.001131,
+0.000800 0.010000 0.001386,
+0.000414 0.010000 0.001545,
+0.000000 0.010000 0.001600,
+-0.000414 0.010000 0.001545,
+-0.000800 0.010000 0.001386,
+-0.001131 0.010000 0.001131,
+-0.001386 0.010000 0.000800,
+-0.001545 0.010000 0.000414,
+-0.001600 0.010000 0.000000,
+0.045545 0.020000 0.000414,
+0.045386 0.020000 0.000800,
+0.045131 0.020000 0.001131,
+0.044800 0.020000 0.001386,
+0.044414 0.020000 0.001545,
+0.010000 0.008000 0.010000,
+0.042400 0.000000 0.000000,
+-0.003464 -0.002000 0.006000,
+-0.016000 -0.014000 0.010000,
+0.013035 -0.010136 0.010000,
+0.014000 -0.010536 0.010000,
+0.014828 -0.011172 0.010000,
+0.015464 -0.012000 0.010000,
+0.015864 -0.012965 0.010000,
+0.012000 -0.010000 0.010000,
+-0.044000 0.020000 0.010000,
+-0.006000 0.008000 0.010000,
+0.032000 0.000000 0.010000,
+-0.050000 0.000000 0.010000,
+-0.032000 0.020000 0.010000,
+-0.022000 -0.008000 -0.010000,
+-0.044414 0.020000 0.001545,
+-0.044800 0.020000 0.001386,
+-0.045131 0.020000 0.001131,
+-0.045386 0.020000 0.000800,
+-0.045545 0.020000 0.000414,
+-0.045600 0.020000 0.000000,
+-0.045545 0.020000 -0.000414,
+-0.045386 0.020000 -0.000800,
+-0.045131 0.020000 -0.001131,
+-0.044800 0.020000 -0.001386,
+-0.044414 0.020000 -0.001545,
+-0.044000 0.020000 -0.001600,
+-0.043586 0.020000 -0.001545,
+-0.043200 0.020000 -0.001386,
+-0.042869 0.020000 -0.001131,
+-0.042614 0.020000 -0.000800,
+-0.042455 0.020000 -0.000414,
+-0.042400 0.020000 0.000000,
+0.022000 -0.020000 0.010000,
+-0.016000 -0.020000 0.010000,
+0.050000 0.020000 -0.010000,
+0.050000 0.000000 -0.010000,
+0.014518 0.001932 0.010000,
+0.015000 0.001732 0.010000,
+0.015414 0.001414 0.010000,
+0.015732 0.001000 0.010000,
+0.015932 0.000518 0.010000,
+0.016000 0.000000 0.010000,
+0.002828 -0.002828 0.010000,
+0.002000 -0.003464 0.010000,
+0.001035 -0.003864 0.010000,
+0.000000 -0.004000 0.010000,
+-0.001035 -0.003864 0.010000,
+-0.002000 -0.003464 0.010000,
+-0.002828 -0.002828 0.010000,
+-0.003864 0.001035 0.006000,
+-0.004000 0.000000 0.006000,
+-0.003864 -0.001035 0.006000,
+0.044414 0.000000 0.001545,
+0.044800 0.000000 0.001386,
+0.045131 0.000000 0.001131,
+0.045386 0.000000 0.000800,
+0.045545 0.000000 0.000414,
+0.045600 0.000000 0.000000,
+0.045545 0.000000 -0.000414,
+0.045386 0.000000 -0.000800,
+0.045131 0.000000 -0.001131,
+0.044800 0.000000 -0.001386,
+0.044414 0.000000 -0.001545,
+0.044000 0.000000 -0.001600,
+0.043586 0.000000 -0.001545,
+0.043200 0.000000 -0.001386,
+0.042869 0.000000 -0.001131,
+0.042614 0.000000 -0.000800,
+0.042455 0.000000 -0.000414,
+-0.044000 0.000000 0.010000,
+-0.013035 -0.010136 -0.004000,
+-0.014000 -0.010536 -0.004000,
+-0.014828 -0.011172 -0.004000,
+-0.015464 -0.012000 -0.004000,
+-0.015864 -0.012965 -0.004000,
+-0.012000 -0.010000 -0.004000,
+-0.027929 -0.000273 0.010000,
+-0.026000 -0.001072 0.010000,
+-0.024343 -0.002343 0.010000,
+-0.023072 -0.004000 0.010000,
+-0.022273 -0.005929 0.010000,
+-0.030000 0.000000 0.010000,
+0.001570 -0.003679 -0.000310,
+0.001477 -0.003717 -0.000615,
+0.001327 -0.003774 -0.000894,
+0.001132 -0.003837 -0.001131,
+0.000895 -0.003899 -0.001326,
+0.000616 -0.003952 -0.001477,
+0.000310 -0.003988 -0.001570,
+-0.000000 -0.004000 -0.001600,
+-0.000310 -0.003988 -0.001570,
+-0.000616 -0.003952 -0.001477,
+-0.000895 -0.003899 -0.001326,
+-0.001132 -0.003837 -0.001131,
+-0.001327 -0.003774 -0.000894,
+-0.001477 -0.003717 -0.000615,
+-0.001570 -0.003679 -0.000310,
+-0.001600 -0.003666 0.000000,
+-0.001570 -0.003679 0.000310,
+-0.001477 -0.003717 0.000615,
+-0.001327 -0.003774 0.000894,
+-0.001132 -0.003837 0.001131,
+-0.000895 -0.003899 0.001326,
+-0.000616 -0.003952 0.001477,
+-0.000310 -0.003988 0.001570,
+0.000000 -0.004000 0.001600,
+0.000310 -0.003988 0.001570,
+0.000616 -0.003952 0.001477,
+0.000895 -0.003899 0.001326,
+0.001132 -0.003837 0.001131,
+0.001327 -0.003774 0.000894,
+0.001477 -0.003717 0.000615,
+0.001570 -0.003679 0.000310,
+0.001600 -0.003666 -0.000000,
+-0.015864 -0.012965 0.010000,
+-0.015464 -0.012000 0.010000,
+-0.014828 -0.011172 0.010000,
+-0.014000 -0.010536 0.010000,
+-0.013035 -0.010136 0.010000,
+-0.012000 -0.010000 0.010000,
+0.016000 -0.020000 0.010000,
+0.015932 -0.000518 0.010000,
+0.015732 -0.001000 0.010000,
+0.015414 -0.001414 0.010000,
+0.015000 -0.001732 0.010000,
+0.014518 -0.001932 0.010000,
+-0.003464 0.002000 0.010000,
+-0.022273 -0.005929 -0.010000,
+-0.023072 -0.004000 -0.010000,
+-0.024343 -0.002343 -0.010000,
+-0.026000 -0.001072 -0.010000,
+-0.027929 -0.000273 -0.010000,
+0.003864 0.001035 -0.010000,
+0.003464 0.002000 -0.010000,
+0.002828 0.002828 -0.010000,
+0.002000 0.003464 -0.010000,
+0.001035 0.003864 -0.010000,
+0.000000 0.004000 -0.010000,
+-0.001035 0.003864 -0.010000,
+-0.002000 0.003464 -0.010000,
+-0.002828 0.002828 -0.010000,
+-0.003464 0.002000 -0.010000,
+-0.003864 0.001035 -0.010000,
+-0.004000 0.000000 -0.010000,
+-0.003864 -0.001035 -0.010000,
+-0.003464 -0.002000 -0.010000,
+-0.002828 -0.002828 -0.010000,
+-0.002000 -0.003464 -0.010000,
+-0.001035 -0.003864 -0.010000,
+-0.000000 -0.004000 -0.010000,
+0.001035 -0.003864 -0.010000,
+0.002000 -0.003464 -0.010000,
+0.002828 -0.002828 -0.010000,
+0.003464 -0.002000 -0.010000,
+0.003864 -0.001035 -0.010000,
+0.004000 0.000000 -0.010000,
+0.050000 0.000000 0.010000,
+0.050000 0.020000 0.010000,
+-0.002828 0.002828 0.010000,
+-0.002000 0.003464 0.010000,
+-0.001035 0.003864 0.010000,
+0.000000 0.004000 0.010000,
+0.001035 0.003864 0.010000,
+0.002000 0.003464 0.010000,
+0.002828 0.002828 0.010000,
+0.022000 -0.020000 -0.010000,
+-0.042400 0.000000 0.000000,
+0.001570 0.003679 0.000310,
+0.001477 0.003717 0.000615,
+0.001327 0.003774 0.000894,
+0.001132 0.003837 0.001131,
+0.000895 0.003899 0.001326,
+0.000616 0.003952 0.001477,
+0.000310 0.003988 0.001570,
+-0.000000 0.004000 0.001600,
+-0.000310 0.003988 0.001570,
+-0.000616 0.003952 0.001477,
+-0.000895 0.003899 0.001326,
+-0.001132 0.003837 0.001131,
+-0.001327 0.003774 0.000894,
+-0.001477 0.003717 0.000615,
+-0.001570 0.003679 0.000310,
+-0.001600 0.003666 -0.000000,
+-0.001570 0.003679 -0.000310,
+-0.001477 0.003717 -0.000615,
+-0.001327 0.003774 -0.000894,
+-0.001132 0.003837 -0.001131,
+-0.000895 0.003899 -0.001326,
+-0.000616 0.003952 -0.001477,
+-0.000310 0.003988 -0.001570,
+0.000000 0.004000 -0.001600,
+0.000310 0.003988 -0.001570,
+0.000616 0.003952 -0.001477,
+0.000895 0.003899 -0.001326,
+0.001132 0.003837 -0.001131,
+0.001327 0.003774 -0.000894,
+0.001477 0.003717 -0.000615,
+0.001570 0.003679 -0.000310,
+0.001600 0.003666 0.000000,
+-0.033545 0.020000 -0.000414,
+-0.033386 0.020000 -0.000800,
+-0.033131 0.020000 -0.001131,
+-0.032800 0.020000 -0.001386,
+-0.032414 0.020000 -0.001545,
+-0.032000 0.020000 -0.001600,
+-0.031586 0.020000 -0.001545,
+-0.031200 0.020000 -0.001386,
+-0.030869 0.020000 -0.001131,
+-0.030614 0.020000 -0.000800,
+-0.030455 0.020000 -0.000414,
+-0.042455 0.000000 -0.000414,
+-0.042614 0.000000 -0.000800,
+-0.042869 0.000000 -0.001131,
+-0.043200 0.000000 -0.001386,
+-0.043586 0.000000 -0.001545,
+-0.044000 0.000000 -0.001600,
+-0.044414 0.000000 -0.001545,
+-0.044800 0.000000 -0.001386,
+-0.045131 0.000000 -0.001131,
+-0.045386 0.000000 -0.000800,
+-0.045545 0.000000 -0.000414,
+-0.045600 0.000000 -0.000000,
+-0.045545 0.000000 0.000414,
+-0.045386 0.000000 0.000800,
+-0.045131 0.000000 0.001131,
+-0.044800 0.000000 0.001386,
+-0.044414 0.000000 0.001545,
+-0.031586 0.000000 0.001545,
+-0.031200 0.000000 0.001386,
+-0.030869 0.000000 0.001131,
+-0.030614 0.000000 0.000800,
+-0.030455 0.000000 0.000414,
+-0.030400 0.000000 0.000000,
+-0.030455 0.000000 -0.000414,
+-0.030614 0.000000 -0.000800,
+-0.030869 0.000000 -0.001131,
+-0.031200 0.000000 -0.001386,
+-0.031586 0.000000 -0.001545,
+-0.032000 0.000000 -0.001600,
+-0.032414 0.000000 -0.001545,
+-0.032800 0.000000 -0.001386,
+-0.033131 0.000000 -0.001131,
+-0.033386 0.000000 -0.000800,
+-0.033545 0.000000 -0.000414,
+]
+}
+ solid       FALSE
+ creaseAngle 0.5
+coordIndex[
+131, 109, 175, -1,
+175, 109, 98, -1,
+176, 98, 99, -1,
+177, 99, 100, -1,
+178, 100, 101, -1,
+179, 101, 102, -1,
+180, 102, 103, -1,
+181, 103, 104, -1,
+182, 104, 105, -1,
+183, 105, 106, -1,
+184, 106, 107, -1,
+185, 107, 108, -1,
+97, 108, 96, -1,
+97, 185, 108, -1,
+185, 184, 107, -1,
+184, 183, 106, -1,
+183, 182, 105, -1,
+182, 181, 104, -1,
+181, 180, 103, -1,
+180, 179, 102, -1,
+179, 178, 101, -1,
+178, 177, 100, -1,
+177, 176, 99, -1,
+176, 175, 98, -1,
+188, 61, 256, -1,
+256, 61, 56, -1,
+257, 56, 57, -1,
+258, 57, 58, -1,
+259, 58, 59, -1,
+260, 59, 60, -1,
+261, 60, 62, -1,
+341, 62, 84, -1,
+342, 84, 85, -1,
+343, 85, 86, -1,
+344, 86, 87, -1,
+345, 87, 88, -1,
+63, 88, 89, -1,
+63, 345, 88, -1,
+345, 344, 87, -1,
+344, 343, 86, -1,
+343, 342, 85, -1,
+342, 341, 84, -1,
+341, 261, 62, -1,
+261, 260, 60, -1,
+260, 259, 59, -1,
+259, 258, 58, -1,
+258, 257, 57, -1,
+257, 256, 56, -1,
+175, 300, 131, -1,
+175, 176, 300, -1,
+300, 176, 299, -1,
+299, 176, 177, -1,
+178, 299, 177, -1,
+178, 298, 299, -1,
+178, 179, 298, -1,
+298, 179, 180, -1,
+297, 180, 181, -1,
+182, 297, 181, -1,
+182, 183, 297, -1,
+297, 183, 296, -1,
+296, 183, 184, -1,
+232, 184, 136, -1,
+66, 232, 136, -1,
+185, 136, 184, -1,
+185, 97, 136, -1,
+136, 97, 378, -1,
+229, 378, 379, -1,
+380, 229, 379, -1,
+380, 381, 229, -1,
+229, 381, 45, -1,
+78, 45, 65, -1,
+78, 229, 45, -1,
+97, 346, 378, -1,
+381, 382, 45, -1,
+45, 382, 383, -1,
+384, 45, 383, -1,
+384, 218, 45, -1,
+384, 188, 218, -1,
+384, 95, 188, -1,
+256, 218, 188, -1,
+256, 257, 218, -1,
+218, 257, 80, -1,
+81, 218, 80, -1,
+258, 51, 257, -1,
+258, 50, 51, -1,
+258, 259, 50, -1,
+50, 259, 260, -1,
+261, 50, 260, -1,
+261, 49, 50, -1,
+261, 341, 49, -1,
+49, 341, 342, -1,
+48, 342, 343, -1,
+344, 48, 343, -1,
+344, 47, 48, -1,
+344, 345, 47, -1,
+47, 345, 63, -1,
+222, 63, 227, -1,
+222, 47, 63, -1,
+222, 52, 47, -1,
+222, 223, 52, -1,
+52, 223, 224, -1,
+225, 52, 224, -1,
+225, 226, 52, -1,
+52, 226, 79, -1,
+252, 79, 340, -1,
+252, 52, 79, -1,
+262, 63, 64, -1,
+262, 227, 63, -1,
+262, 263, 227, -1,
+227, 263, 264, -1,
+265, 227, 264, -1,
+265, 339, 227, -1,
+265, 266, 339, -1,
+339, 266, 267, -1,
+268, 339, 267, -1,
+268, 131, 339, -1,
+268, 130, 131, -1,
+229, 136, 378, -1,
+124, 301, 232, -1,
+232, 301, 296, -1,
+184, 232, 296, -1,
+297, 298, 180, -1,
+15, 338, 300, -1,
+15, 337, 338, -1,
+15, 336, 337, -1,
+15, 335, 336, -1,
+15, 334, 335, -1,
+15, 221, 334, -1,
+15, 16, 221, -1,
+221, 16, 253, -1,
+338, 339, 131, -1,
+300, 338, 131, -1,
+48, 49, 342, -1,
+51, 53, 80, -1,
+257, 51, 80, -1,
+53, 230, 80, -1,
+61, 94, 92, -1,
+58, 92, 59, -1,
+58, 61, 92, -1,
+58, 57, 61, -1,
+61, 57, 56, -1,
+91, 60, 92, -1,
+91, 62, 60, -1,
+91, 84, 62, -1,
+91, 90, 84, -1,
+84, 90, 85, -1,
+85, 90, 86, -1,
+86, 90, 89, -1,
+87, 89, 88, -1,
+87, 86, 89, -1,
+89, 90, 93, -1,
+60, 59, 92, -1,
+130, 220, 131, -1,
+131, 220, 109, -1,
+93, 64, 89, -1,
+89, 64, 63, -1,
+128, 346, 96, -1,
+96, 346, 97, -1,
+109, 220, 271, -1,
+100, 271, 101, -1,
+100, 109, 271, -1,
+100, 99, 109, -1,
+109, 99, 98, -1,
+271, 270, 102, -1,
+101, 271, 102, -1,
+270, 269, 104, -1,
+103, 270, 104, -1,
+103, 102, 270, -1,
+96, 269, 128, -1,
+96, 106, 269, -1,
+96, 107, 106, -1,
+96, 108, 107, -1,
+106, 105, 269, -1,
+269, 105, 104, -1,
+95, 94, 188, -1,
+188, 94, 61, -1,
+94, 95, 384, -1,
+354, 384, 355, -1,
+354, 94, 384, -1,
+354, 353, 94, -1,
+94, 353, 92, -1,
+92, 353, 352, -1,
+91, 352, 375, -1,
+90, 375, 374, -1,
+93, 374, 373, -1,
+372, 93, 373, -1,
+372, 262, 93, -1,
+372, 263, 262, -1,
+372, 371, 263, -1,
+263, 371, 333, -1,
+332, 263, 333, -1,
+332, 331, 263, -1,
+263, 331, 264, -1,
+264, 331, 330, -1,
+329, 264, 330, -1,
+329, 328, 264, -1,
+264, 328, 327, -1,
+265, 327, 326, -1,
+325, 265, 326, -1,
+325, 324, 265, -1,
+265, 324, 323, -1,
+266, 323, 322, -1,
+321, 266, 322, -1,
+321, 320, 266, -1,
+266, 320, 319, -1,
+267, 319, 318, -1,
+317, 267, 318, -1,
+317, 367, 267, -1,
+317, 316, 367, -1,
+367, 316, 315, -1,
+368, 315, 314, -1,
+313, 368, 314, -1,
+313, 312, 368, -1,
+368, 312, 311, -1,
+369, 311, 310, -1,
+309, 369, 310, -1,
+309, 308, 369, -1,
+369, 308, 307, -1,
+370, 307, 306, -1,
+305, 370, 306, -1,
+305, 304, 370, -1,
+370, 304, 303, -1,
+371, 303, 302, -1,
+333, 371, 302, -1,
+384, 383, 355, -1,
+355, 383, 418, -1,
+417, 355, 418, -1,
+417, 416, 355, -1,
+355, 416, 356, -1,
+356, 416, 415, -1,
+414, 356, 415, -1,
+414, 413, 356, -1,
+356, 413, 412, -1,
+357, 412, 411, -1,
+410, 357, 411, -1,
+410, 409, 357, -1,
+357, 409, 408, -1,
+358, 408, 407, -1,
+406, 358, 407, -1,
+406, 405, 358, -1,
+358, 405, 404, -1,
+359, 404, 403, -1,
+402, 359, 403, -1,
+402, 379, 359, -1,
+402, 401, 379, -1,
+379, 401, 400, -1,
+380, 400, 399, -1,
+398, 380, 399, -1,
+398, 397, 380, -1,
+380, 397, 396, -1,
+381, 396, 395, -1,
+394, 381, 395, -1,
+394, 393, 381, -1,
+381, 393, 392, -1,
+382, 392, 391, -1,
+390, 382, 391, -1,
+390, 389, 382, -1,
+382, 389, 388, -1,
+383, 388, 387, -1,
+418, 383, 387, -1,
+383, 382, 388, -1,
+382, 381, 392, -1,
+381, 380, 396, -1,
+380, 379, 400, -1,
+379, 378, 360, -1,
+359, 379, 360, -1,
+378, 346, 128, -1,
+360, 128, 361, -1,
+360, 378, 128, -1,
+128, 269, 361, -1,
+361, 269, 362, -1,
+362, 269, 270, -1,
+363, 270, 364, -1,
+363, 362, 270, -1,
+270, 271, 364, -1,
+364, 271, 365, -1,
+365, 271, 220, -1,
+366, 220, 268, -1,
+367, 268, 267, -1,
+367, 366, 268, -1,
+220, 130, 268, -1,
+267, 266, 319, -1,
+266, 265, 323, -1,
+265, 264, 327, -1,
+262, 64, 93, -1,
+93, 90, 374, -1,
+90, 91, 375, -1,
+91, 92, 352, -1,
+371, 370, 303, -1,
+370, 369, 307, -1,
+369, 368, 311, -1,
+368, 367, 315, -1,
+366, 365, 220, -1,
+359, 358, 404, -1,
+358, 357, 408, -1,
+357, 356, 412, -1,
+212, 211, 401, -1,
+402, 212, 401, -1,
+402, 403, 212, -1,
+212, 403, 189, -1,
+189, 403, 404, -1,
+190, 404, 405, -1,
+191, 405, 406, -1,
+407, 191, 406, -1,
+407, 192, 191, -1,
+407, 408, 192, -1,
+192, 408, 193, -1,
+193, 408, 409, -1,
+194, 409, 410, -1,
+411, 194, 410, -1,
+411, 195, 194, -1,
+411, 412, 195, -1,
+195, 412, 196, -1,
+196, 412, 413, -1,
+197, 413, 414, -1,
+415, 197, 414, -1,
+415, 198, 197, -1,
+415, 416, 198, -1,
+198, 416, 199, -1,
+199, 416, 417, -1,
+200, 417, 418, -1,
+387, 200, 418, -1,
+387, 201, 200, -1,
+387, 388, 201, -1,
+201, 388, 202, -1,
+202, 388, 389, -1,
+203, 389, 390, -1,
+391, 203, 390, -1,
+391, 204, 203, -1,
+391, 392, 204, -1,
+204, 392, 205, -1,
+205, 392, 393, -1,
+206, 393, 394, -1,
+395, 206, 394, -1,
+395, 207, 206, -1,
+395, 396, 207, -1,
+207, 396, 208, -1,
+208, 396, 397, -1,
+209, 397, 398, -1,
+399, 209, 398, -1,
+399, 210, 209, -1,
+399, 400, 210, -1,
+210, 400, 211, -1,
+211, 400, 401, -1,
+397, 209, 208, -1,
+206, 205, 393, -1,
+203, 202, 389, -1,
+199, 417, 200, -1,
+197, 196, 413, -1,
+193, 409, 194, -1,
+191, 190, 405, -1,
+190, 189, 404, -1,
+77, 136, 68, -1,
+68, 136, 229, -1,
+78, 69, 229, -1,
+229, 69, 68, -1,
+77, 67, 66, -1,
+136, 77, 66, -1,
+135, 65, 46, -1,
+46, 65, 45, -1,
+46, 45, 43, -1,
+43, 45, 218, -1,
+69, 78, 212, -1,
+189, 69, 212, -1,
+189, 190, 69, -1,
+69, 190, 191, -1,
+192, 69, 191, -1,
+192, 193, 69, -1,
+69, 193, 194, -1,
+135, 194, 195, -1,
+196, 135, 195, -1,
+196, 197, 135, -1,
+135, 197, 198, -1,
+199, 135, 198, -1,
+199, 200, 135, -1,
+135, 200, 65, -1,
+65, 200, 201, -1,
+202, 65, 201, -1,
+202, 203, 65, -1,
+65, 203, 204, -1,
+205, 65, 204, -1,
+205, 206, 65, -1,
+65, 206, 78, -1,
+78, 206, 207, -1,
+208, 78, 207, -1,
+208, 209, 78, -1,
+78, 209, 210, -1,
+211, 78, 210, -1,
+211, 212, 78, -1,
+135, 69, 194, -1,
+333, 302, 28, -1,
+332, 28, 27, -1,
+331, 27, 26, -1,
+330, 26, 25, -1,
+329, 25, 328, -1,
+329, 330, 25, -1,
+302, 303, 29, -1,
+28, 302, 29, -1,
+303, 304, 30, -1,
+29, 303, 30, -1,
+304, 305, 31, -1,
+30, 304, 31, -1,
+305, 306, 31, -1,
+31, 306, 32, -1,
+32, 306, 307, -1,
+33, 307, 308, -1,
+34, 308, 309, -1,
+310, 34, 309, -1,
+310, 35, 34, -1,
+310, 311, 35, -1,
+35, 311, 36, -1,
+36, 311, 312, -1,
+37, 312, 313, -1,
+314, 37, 313, -1,
+314, 38, 37, -1,
+314, 315, 38, -1,
+38, 315, 39, -1,
+39, 315, 316, -1,
+40, 316, 317, -1,
+318, 40, 317, -1,
+318, 17, 40, -1,
+318, 319, 17, -1,
+17, 319, 18, -1,
+18, 319, 320, -1,
+19, 320, 321, -1,
+322, 19, 321, -1,
+322, 20, 19, -1,
+322, 323, 20, -1,
+20, 323, 21, -1,
+21, 323, 324, -1,
+22, 324, 325, -1,
+326, 22, 325, -1,
+326, 23, 22, -1,
+326, 327, 23, -1,
+23, 327, 24, -1,
+24, 327, 328, -1,
+25, 24, 328, -1,
+330, 331, 26, -1,
+331, 332, 27, -1,
+332, 333, 28, -1,
+40, 39, 316, -1,
+312, 37, 36, -1,
+34, 33, 308, -1,
+32, 307, 33, -1,
+22, 21, 324, -1,
+19, 18, 320, -1,
+123, 76, 447, -1,
+447, 76, 74, -1,
+73, 447, 74, -1,
+73, 448, 447, -1,
+73, 72, 448, -1,
+448, 72, 449, -1,
+449, 72, 450, -1,
+450, 72, 71, -1,
+451, 71, 70, -1,
+452, 70, 75, -1,
+429, 452, 75, -1,
+429, 453, 452, -1,
+429, 428, 453, -1,
+453, 428, 454, -1,
+454, 428, 427, -1,
+455, 427, 426, -1,
+456, 426, 425, -1,
+457, 425, 424, -1,
+458, 424, 423, -1,
+459, 423, 422, -1,
+460, 422, 421, -1,
+461, 421, 420, -1,
+462, 420, 419, -1,
+463, 419, 14, -1,
+13, 463, 14, -1,
+462, 419, 463, -1,
+462, 461, 420, -1,
+461, 460, 421, -1,
+459, 422, 460, -1,
+459, 458, 423, -1,
+458, 457, 424, -1,
+457, 456, 425, -1,
+426, 456, 455, -1,
+455, 454, 427, -1,
+451, 70, 452, -1,
+451, 450, 71, -1,
+447, 124, 123, -1,
+447, 301, 124, -1,
+447, 448, 301, -1,
+301, 448, 449, -1,
+450, 301, 449, -1,
+450, 451, 301, -1,
+301, 451, 452, -1,
+186, 452, 453, -1,
+454, 186, 453, -1,
+454, 455, 186, -1,
+186, 455, 456, -1,
+457, 186, 456, -1,
+457, 458, 186, -1,
+186, 458, 459, -1,
+460, 186, 459, -1,
+460, 433, 186, -1,
+460, 461, 433, -1,
+433, 461, 432, -1,
+432, 461, 431, -1,
+431, 461, 462, -1,
+463, 431, 462, -1,
+463, 430, 431, -1,
+463, 386, 430, -1,
+463, 13, 386, -1,
+434, 186, 433, -1,
+434, 187, 186, -1,
+434, 435, 187, -1,
+187, 435, 436, -1,
+437, 187, 436, -1,
+437, 438, 187, -1,
+187, 438, 439, -1,
+440, 187, 439, -1,
+440, 441, 187, -1,
+187, 441, 231, -1,
+231, 441, 442, -1,
+443, 231, 442, -1,
+443, 444, 231, -1,
+231, 444, 445, -1,
+289, 445, 446, -1,
+54, 289, 446, -1,
+289, 231, 445, -1,
+186, 301, 452, -1,
+13, 14, 251, -1,
+386, 13, 251, -1,
+154, 174, 137, -1,
+137, 174, 172, -1,
+138, 172, 171, -1,
+139, 171, 170, -1,
+140, 170, 169, -1,
+141, 169, 168, -1,
+142, 168, 167, -1,
+143, 167, 166, -1,
+144, 166, 165, -1,
+145, 165, 164, -1,
+146, 164, 163, -1,
+147, 163, 162, -1,
+148, 162, 161, -1,
+149, 161, 160, -1,
+150, 160, 159, -1,
+151, 159, 158, -1,
+152, 158, 157, -1,
+153, 157, 156, -1,
+155, 156, 173, -1,
+155, 153, 156, -1,
+153, 152, 157, -1,
+152, 151, 158, -1,
+151, 150, 159, -1,
+150, 149, 160, -1,
+149, 148, 161, -1,
+148, 147, 162, -1,
+146, 163, 147, -1,
+146, 145, 164, -1,
+145, 144, 165, -1,
+144, 143, 166, -1,
+143, 142, 167, -1,
+142, 141, 168, -1,
+141, 140, 169, -1,
+170, 140, 139, -1,
+139, 138, 171, -1,
+138, 137, 172, -1,
+155, 173, 230, -1,
+230, 173, 80, -1,
+386, 251, 430, -1,
+430, 251, 250, -1,
+431, 250, 249, -1,
+432, 249, 248, -1,
+433, 248, 247, -1,
+434, 247, 246, -1,
+435, 246, 245, -1,
+436, 245, 244, -1,
+437, 244, 243, -1,
+438, 243, 242, -1,
+439, 242, 241, -1,
+440, 241, 240, -1,
+441, 240, 239, -1,
+442, 239, 238, -1,
+443, 238, 237, -1,
+444, 237, 236, -1,
+235, 444, 236, -1,
+235, 445, 444, -1,
+235, 446, 445, -1,
+235, 234, 446, -1,
+446, 234, 54, -1,
+54, 234, 55, -1,
+444, 443, 237, -1,
+443, 442, 238, -1,
+442, 441, 239, -1,
+441, 440, 240, -1,
+440, 439, 241, -1,
+439, 438, 242, -1,
+438, 437, 243, -1,
+437, 436, 244, -1,
+436, 435, 245, -1,
+435, 434, 246, -1,
+434, 433, 247, -1,
+248, 433, 432, -1,
+432, 431, 249, -1,
+431, 430, 250, -1,
+54, 55, 289, -1,
+289, 55, 228, -1,
+11, 219, 288, -1,
+0, 288, 287, -1,
+1, 287, 286, -1,
+2, 286, 285, -1,
+3, 285, 284, -1,
+4, 284, 283, -1,
+5, 283, 282, -1,
+6, 282, 281, -1,
+7, 281, 280, -1,
+8, 280, 279, -1,
+9, 279, 278, -1,
+10, 278, 277, -1,
+12, 277, 213, -1,
+12, 10, 277, -1,
+276, 213, 277, -1,
+276, 214, 213, -1,
+276, 275, 214, -1,
+214, 275, 215, -1,
+215, 275, 274, -1,
+216, 274, 273, -1,
+217, 273, 272, -1,
+129, 272, 125, -1,
+129, 217, 272, -1,
+217, 216, 273, -1,
+216, 215, 274, -1,
+10, 9, 278, -1,
+8, 279, 9, -1,
+8, 7, 280, -1,
+7, 6, 281, -1,
+6, 5, 282, -1,
+5, 4, 283, -1,
+4, 3, 284, -1,
+2, 285, 3, -1,
+2, 1, 286, -1,
+1, 0, 287, -1,
+0, 11, 288, -1,
+173, 156, 80, -1,
+80, 156, 81, -1,
+81, 156, 157, -1,
+158, 81, 157, -1,
+158, 159, 81, -1,
+81, 159, 160, -1,
+161, 81, 160, -1,
+161, 44, 81, -1,
+161, 162, 44, -1,
+44, 162, 163, -1,
+164, 44, 163, -1,
+164, 165, 44, -1,
+44, 165, 166, -1,
+167, 44, 166, -1,
+167, 254, 44, -1,
+167, 168, 254, -1,
+254, 168, 4, -1,
+5, 254, 4, -1,
+5, 6, 254, -1,
+254, 6, 7, -1,
+8, 254, 7, -1,
+8, 9, 254, -1,
+254, 9, 10, -1,
+12, 254, 10, -1,
+12, 377, 254, -1,
+12, 213, 377, -1,
+377, 213, 214, -1,
+215, 377, 214, -1,
+215, 216, 377, -1,
+377, 216, 217, -1,
+129, 377, 217, -1,
+129, 82, 377, -1,
+168, 169, 3, -1,
+4, 168, 3, -1,
+170, 2, 169, -1,
+170, 1, 2, -1,
+170, 171, 1, -1,
+1, 171, 0, -1,
+0, 171, 172, -1,
+174, 0, 172, -1,
+174, 11, 0, -1,
+2, 3, 169, -1,
+41, 79, 110, -1,
+110, 79, 226, -1,
+111, 226, 225, -1,
+112, 225, 224, -1,
+113, 224, 223, -1,
+114, 223, 222, -1,
+115, 222, 227, -1,
+115, 114, 222, -1,
+114, 113, 223, -1,
+113, 112, 224, -1,
+112, 111, 225, -1,
+111, 110, 226, -1,
+41, 110, 134, -1,
+42, 134, 132, -1,
+42, 41, 134, -1,
+293, 110, 111, -1,
+115, 111, 112, -1,
+113, 115, 112, -1,
+113, 114, 115, -1,
+115, 295, 293, -1,
+111, 115, 293, -1,
+295, 290, 291, -1,
+292, 295, 291, -1,
+292, 293, 295, -1,
+293, 294, 110, -1,
+110, 294, 134, -1,
+40, 17, 295, -1,
+39, 295, 38, -1,
+39, 40, 295, -1,
+17, 18, 295, -1,
+295, 18, 339, -1,
+339, 18, 19, -1,
+20, 339, 19, -1,
+20, 21, 339, -1,
+339, 21, 22, -1,
+227, 22, 23, -1,
+24, 227, 23, -1,
+24, 25, 227, -1,
+227, 25, 26, -1,
+115, 26, 27, -1,
+28, 115, 27, -1,
+28, 29, 115, -1,
+115, 29, 30, -1,
+31, 115, 30, -1,
+31, 32, 115, -1,
+115, 32, 33, -1,
+34, 115, 33, -1,
+34, 295, 115, -1,
+34, 35, 295, -1,
+295, 35, 36, -1,
+37, 295, 36, -1,
+37, 38, 295, -1,
+115, 227, 26, -1,
+227, 339, 22, -1,
+295, 339, 290, -1,
+290, 339, 338, -1,
+291, 338, 337, -1,
+292, 337, 336, -1,
+293, 336, 335, -1,
+294, 335, 334, -1,
+134, 334, 221, -1,
+134, 294, 334, -1,
+294, 293, 335, -1,
+293, 292, 336, -1,
+292, 291, 337, -1,
+291, 290, 338, -1,
+221, 132, 134, -1,
+221, 253, 132, -1,
+79, 41, 340, -1,
+340, 41, 42, -1,
+218, 81, 44, -1,
+43, 218, 44, -1,
+66, 75, 70, -1,
+71, 66, 70, -1,
+71, 72, 66, -1,
+66, 72, 73, -1,
+74, 66, 73, -1,
+74, 232, 66, -1,
+74, 76, 232, -1,
+66, 67, 75, -1,
+75, 67, 429, -1,
+429, 67, 428, -1,
+428, 67, 427, -1,
+427, 67, 426, -1,
+426, 67, 425, -1,
+425, 67, 424, -1,
+424, 67, 127, -1,
+423, 127, 246, -1,
+422, 246, 247, -1,
+421, 247, 248, -1,
+420, 248, 249, -1,
+419, 249, 250, -1,
+251, 419, 250, -1,
+251, 14, 419, -1,
+127, 126, 239, -1,
+240, 127, 239, -1,
+240, 241, 127, -1,
+127, 241, 242, -1,
+243, 127, 242, -1,
+243, 244, 127, -1,
+127, 244, 245, -1,
+246, 127, 245, -1,
+126, 228, 55, -1,
+234, 126, 55, -1,
+234, 235, 126, -1,
+126, 235, 236, -1,
+237, 126, 236, -1,
+237, 238, 126, -1,
+126, 238, 239, -1,
+420, 249, 419, -1,
+421, 248, 420, -1,
+421, 422, 247, -1,
+422, 423, 246, -1,
+424, 127, 423, -1,
+76, 123, 124, -1,
+232, 76, 124, -1,
+289, 228, 126, -1,
+231, 289, 126, -1,
+174, 154, 219, -1,
+11, 174, 219, -1,
+129, 125, 83, -1,
+82, 129, 83, -1,
+137, 288, 154, -1,
+137, 138, 288, -1,
+288, 138, 287, -1,
+287, 138, 139, -1,
+286, 139, 140, -1,
+285, 140, 121, -1,
+284, 121, 255, -1,
+283, 255, 282, -1,
+283, 284, 255, -1,
+140, 141, 121, -1,
+121, 141, 142, -1,
+143, 121, 142, -1,
+143, 144, 121, -1,
+121, 144, 145, -1,
+146, 121, 145, -1,
+146, 147, 121, -1,
+121, 147, 148, -1,
+53, 148, 149, -1,
+150, 53, 149, -1,
+150, 151, 53, -1,
+53, 151, 152, -1,
+153, 53, 152, -1,
+153, 230, 53, -1,
+153, 155, 230, -1,
+53, 121, 148, -1,
+255, 376, 277, -1,
+278, 255, 277, -1,
+278, 279, 255, -1,
+255, 279, 280, -1,
+281, 255, 280, -1,
+281, 282, 255, -1,
+376, 83, 273, -1,
+274, 376, 273, -1,
+274, 275, 376, -1,
+376, 275, 276, -1,
+277, 376, 276, -1,
+83, 125, 272, -1,
+273, 83, 272, -1,
+284, 285, 121, -1,
+285, 286, 140, -1,
+139, 286, 287, -1,
+288, 219, 154, -1,
+233, 15, 347, -1,
+347, 15, 300, -1,
+348, 300, 299, -1,
+349, 299, 298, -1,
+350, 298, 297, -1,
+351, 297, 296, -1,
+186, 296, 301, -1,
+186, 351, 296, -1,
+351, 350, 297, -1,
+350, 349, 298, -1,
+349, 348, 299, -1,
+348, 347, 300, -1,
+121, 53, 116, -1,
+116, 53, 51, -1,
+117, 51, 50, -1,
+118, 50, 49, -1,
+119, 49, 48, -1,
+120, 48, 47, -1,
+122, 47, 52, -1,
+122, 120, 47, -1,
+120, 119, 48, -1,
+119, 118, 49, -1,
+118, 117, 50, -1,
+117, 116, 51, -1,
+122, 52, 385, -1,
+385, 52, 252, -1,
+15, 233, 16, -1,
+16, 233, 133, -1,
+82, 83, 376, -1,
+377, 82, 376, -1,
+132, 253, 16, -1,
+133, 132, 16, -1,
+133, 42, 132, -1,
+133, 385, 42, -1,
+42, 385, 252, -1,
+340, 42, 252, -1,
+376, 255, 377, -1,
+377, 255, 254, -1,
+375, 352, 117, -1,
+118, 375, 117, -1,
+118, 374, 375, -1,
+118, 119, 374, -1,
+374, 119, 373, -1,
+373, 119, 372, -1,
+372, 119, 120, -1,
+371, 120, 122, -1,
+370, 122, 369, -1,
+370, 371, 122, -1,
+117, 352, 353, -1,
+116, 353, 43, -1,
+121, 43, 254, -1,
+255, 121, 254, -1,
+43, 353, 354, -1,
+355, 43, 354, -1,
+355, 46, 43, -1,
+355, 356, 46, -1,
+46, 356, 357, -1,
+68, 357, 358, -1,
+359, 68, 358, -1,
+359, 77, 68, -1,
+359, 360, 77, -1,
+77, 360, 361, -1,
+351, 361, 350, -1,
+351, 77, 361, -1,
+351, 186, 77, -1,
+77, 186, 127, -1,
+67, 77, 127, -1,
+362, 350, 361, -1,
+362, 363, 350, -1,
+350, 363, 349, -1,
+349, 363, 364, -1,
+348, 364, 365, -1,
+366, 348, 365, -1,
+366, 347, 348, -1,
+366, 367, 347, -1,
+347, 367, 233, -1,
+233, 367, 368, -1,
+369, 233, 368, -1,
+369, 133, 233, -1,
+369, 122, 133, -1,
+133, 122, 385, -1,
+372, 120, 371, -1,
+68, 69, 135, -1,
+46, 68, 135, -1,
+46, 357, 68, -1,
+43, 44, 254, -1,
+121, 116, 43, -1,
+116, 117, 353, -1,
+364, 348, 349, -1,
+186, 187, 127, -1,
+187, 231, 127, -1,
+127, 231, 126, -1,
+]
+
+} }
+Shape { appearance Appearance {
+   material    Material { diffuseColor 1 1 1 } }
+geometry DEF aPart1_19_W IndexedLineSet {
+coord USE aPart1_19_C
+coordIndex[
+131, 109, 175, -1,
+175, 109, 98, -1,
+176, 98, 99, -1,
+177, 99, 100, -1,
+178, 100, 101, -1,
+179, 101, 102, -1,
+180, 102, 103, -1,
+181, 103, 104, -1,
+182, 104, 105, -1,
+183, 105, 106, -1,
+184, 106, 107, -1,
+185, 107, 108, -1,
+97, 108, 96, -1,
+97, 185, 108, -1,
+185, 184, 107, -1,
+184, 183, 106, -1,
+183, 182, 105, -1,
+182, 181, 104, -1,
+181, 180, 103, -1,
+180, 179, 102, -1,
+179, 178, 101, -1,
+178, 177, 100, -1,
+177, 176, 99, -1,
+176, 175, 98, -1,
+188, 61, 256, -1,
+256, 61, 56, -1,
+257, 56, 57, -1,
+258, 57, 58, -1,
+259, 58, 59, -1,
+260, 59, 60, -1,
+261, 60, 62, -1,
+341, 62, 84, -1,
+342, 84, 85, -1,
+343, 85, 86, -1,
+344, 86, 87, -1,
+345, 87, 88, -1,
+63, 88, 89, -1,
+63, 345, 88, -1,
+345, 344, 87, -1,
+344, 343, 86, -1,
+343, 342, 85, -1,
+342, 341, 84, -1,
+341, 261, 62, -1,
+261, 260, 60, -1,
+260, 259, 59, -1,
+259, 258, 58, -1,
+258, 257, 57, -1,
+257, 256, 56, -1,
+175, 300, 131, -1,
+175, 176, 300, -1,
+300, 176, 299, -1,
+299, 176, 177, -1,
+178, 299, 177, -1,
+178, 298, 299, -1,
+178, 179, 298, -1,
+298, 179, 180, -1,
+297, 180, 181, -1,
+182, 297, 181, -1,
+182, 183, 297, -1,
+297, 183, 296, -1,
+296, 183, 184, -1,
+232, 184, 136, -1,
+66, 232, 136, -1,
+185, 136, 184, -1,
+185, 97, 136, -1,
+136, 97, 378, -1,
+229, 378, 379, -1,
+380, 229, 379, -1,
+380, 381, 229, -1,
+229, 381, 45, -1,
+78, 45, 65, -1,
+78, 229, 45, -1,
+97, 346, 378, -1,
+381, 382, 45, -1,
+45, 382, 383, -1,
+384, 45, 383, -1,
+384, 218, 45, -1,
+384, 188, 218, -1,
+384, 95, 188, -1,
+256, 218, 188, -1,
+256, 257, 218, -1,
+218, 257, 80, -1,
+81, 218, 80, -1,
+258, 51, 257, -1,
+258, 50, 51, -1,
+258, 259, 50, -1,
+50, 259, 260, -1,
+261, 50, 260, -1,
+261, 49, 50, -1,
+261, 341, 49, -1,
+49, 341, 342, -1,
+48, 342, 343, -1,
+344, 48, 343, -1,
+344, 47, 48, -1,
+344, 345, 47, -1,
+47, 345, 63, -1,
+222, 63, 227, -1,
+222, 47, 63, -1,
+222, 52, 47, -1,
+222, 223, 52, -1,
+52, 223, 224, -1,
+225, 52, 224, -1,
+225, 226, 52, -1,
+52, 226, 79, -1,
+252, 79, 340, -1,
+252, 52, 79, -1,
+262, 63, 64, -1,
+262, 227, 63, -1,
+262, 263, 227, -1,
+227, 263, 264, -1,
+265, 227, 264, -1,
+265, 339, 227, -1,
+265, 266, 339, -1,
+339, 266, 267, -1,
+268, 339, 267, -1,
+268, 131, 339, -1,
+268, 130, 131, -1,
+229, 136, 378, -1,
+124, 301, 232, -1,
+232, 301, 296, -1,
+184, 232, 296, -1,
+297, 298, 180, -1,
+15, 338, 300, -1,
+15, 337, 338, -1,
+15, 336, 337, -1,
+15, 335, 336, -1,
+15, 334, 335, -1,
+15, 221, 334, -1,
+15, 16, 221, -1,
+221, 16, 253, -1,
+338, 339, 131, -1,
+300, 338, 131, -1,
+48, 49, 342, -1,
+51, 53, 80, -1,
+257, 51, 80, -1,
+53, 230, 80, -1,
+61, 94, 92, -1,
+58, 92, 59, -1,
+58, 61, 92, -1,
+58, 57, 61, -1,
+61, 57, 56, -1,
+91, 60, 92, -1,
+91, 62, 60, -1,
+91, 84, 62, -1,
+91, 90, 84, -1,
+84, 90, 85, -1,
+85, 90, 86, -1,
+86, 90, 89, -1,
+87, 89, 88, -1,
+87, 86, 89, -1,
+89, 90, 93, -1,
+60, 59, 92, -1,
+130, 220, 131, -1,
+131, 220, 109, -1,
+93, 64, 89, -1,
+89, 64, 63, -1,
+128, 346, 96, -1,
+96, 346, 97, -1,
+109, 220, 271, -1,
+100, 271, 101, -1,
+100, 109, 271, -1,
+100, 99, 109, -1,
+109, 99, 98, -1,
+271, 270, 102, -1,
+101, 271, 102, -1,
+270, 269, 104, -1,
+103, 270, 104, -1,
+103, 102, 270, -1,
+96, 269, 128, -1,
+96, 106, 269, -1,
+96, 107, 106, -1,
+96, 108, 107, -1,
+106, 105, 269, -1,
+269, 105, 104, -1,
+95, 94, 188, -1,
+188, 94, 61, -1,
+94, 95, 384, -1,
+354, 384, 355, -1,
+354, 94, 384, -1,
+354, 353, 94, -1,
+94, 353, 92, -1,
+92, 353, 352, -1,
+91, 352, 375, -1,
+90, 375, 374, -1,
+93, 374, 373, -1,
+372, 93, 373, -1,
+372, 262, 93, -1,
+372, 263, 262, -1,
+372, 371, 263, -1,
+263, 371, 333, -1,
+332, 263, 333, -1,
+332, 331, 263, -1,
+263, 331, 264, -1,
+264, 331, 330, -1,
+329, 264, 330, -1,
+329, 328, 264, -1,
+264, 328, 327, -1,
+265, 327, 326, -1,
+325, 265, 326, -1,
+325, 324, 265, -1,
+265, 324, 323, -1,
+266, 323, 322, -1,
+321, 266, 322, -1,
+321, 320, 266, -1,
+266, 320, 319, -1,
+267, 319, 318, -1,
+317, 267, 318, -1,
+317, 367, 267, -1,
+317, 316, 367, -1,
+367, 316, 315, -1,
+368, 315, 314, -1,
+313, 368, 314, -1,
+313, 312, 368, -1,
+368, 312, 311, -1,
+369, 311, 310, -1,
+309, 369, 310, -1,
+309, 308, 369, -1,
+369, 308, 307, -1,
+370, 307, 306, -1,
+305, 370, 306, -1,
+305, 304, 370, -1,
+370, 304, 303, -1,
+371, 303, 302, -1,
+333, 371, 302, -1,
+384, 383, 355, -1,
+355, 383, 418, -1,
+417, 355, 418, -1,
+417, 416, 355, -1,
+355, 416, 356, -1,
+356, 416, 415, -1,
+414, 356, 415, -1,
+414, 413, 356, -1,
+356, 413, 412, -1,
+357, 412, 411, -1,
+410, 357, 411, -1,
+410, 409, 357, -1,
+357, 409, 408, -1,
+358, 408, 407, -1,
+406, 358, 407, -1,
+406, 405, 358, -1,
+358, 405, 404, -1,
+359, 404, 403, -1,
+402, 359, 403, -1,
+402, 379, 359, -1,
+402, 401, 379, -1,
+379, 401, 400, -1,
+380, 400, 399, -1,
+398, 380, 399, -1,
+398, 397, 380, -1,
+380, 397, 396, -1,
+381, 396, 395, -1,
+394, 381, 395, -1,
+394, 393, 381, -1,
+381, 393, 392, -1,
+382, 392, 391, -1,
+390, 382, 391, -1,
+390, 389, 382, -1,
+382, 389, 388, -1,
+383, 388, 387, -1,
+418, 383, 387, -1,
+383, 382, 388, -1,
+382, 381, 392, -1,
+381, 380, 396, -1,
+380, 379, 400, -1,
+379, 378, 360, -1,
+359, 379, 360, -1,
+378, 346, 128, -1,
+360, 128, 361, -1,
+360, 378, 128, -1,
+128, 269, 361, -1,
+361, 269, 362, -1,
+362, 269, 270, -1,
+363, 270, 364, -1,
+363, 362, 270, -1,
+270, 271, 364, -1,
+364, 271, 365, -1,
+365, 271, 220, -1,
+366, 220, 268, -1,
+367, 268, 267, -1,
+367, 366, 268, -1,
+220, 130, 268, -1,
+267, 266, 319, -1,
+266, 265, 323, -1,
+265, 264, 327, -1,
+262, 64, 93, -1,
+93, 90, 374, -1,
+90, 91, 375, -1,
+91, 92, 352, -1,
+371, 370, 303, -1,
+370, 369, 307, -1,
+369, 368, 311, -1,
+368, 367, 315, -1,
+366, 365, 220, -1,
+359, 358, 404, -1,
+358, 357, 408, -1,
+357, 356, 412, -1,
+212, 211, 401, -1,
+402, 212, 401, -1,
+402, 403, 212, -1,
+212, 403, 189, -1,
+189, 403, 404, -1,
+190, 404, 405, -1,
+191, 405, 406, -1,
+407, 191, 406, -1,
+407, 192, 191, -1,
+407, 408, 192, -1,
+192, 408, 193, -1,
+193, 408, 409, -1,
+194, 409, 410, -1,
+411, 194, 410, -1,
+411, 195, 194, -1,
+411, 412, 195, -1,
+195, 412, 196, -1,
+196, 412, 413, -1,
+197, 413, 414, -1,
+415, 197, 414, -1,
+415, 198, 197, -1,
+415, 416, 198, -1,
+198, 416, 199, -1,
+199, 416, 417, -1,
+200, 417, 418, -1,
+387, 200, 418, -1,
+387, 201, 200, -1,
+387, 388, 201, -1,
+201, 388, 202, -1,
+202, 388, 389, -1,
+203, 389, 390, -1,
+391, 203, 390, -1,
+391, 204, 203, -1,
+391, 392, 204, -1,
+204, 392, 205, -1,
+205, 392, 393, -1,
+206, 393, 394, -1,
+395, 206, 394, -1,
+395, 207, 206, -1,
+395, 396, 207, -1,
+207, 396, 208, -1,
+208, 396, 397, -1,
+209, 397, 398, -1,
+399, 209, 398, -1,
+399, 210, 209, -1,
+399, 400, 210, -1,
+210, 400, 211, -1,
+211, 400, 401, -1,
+397, 209, 208, -1,
+206, 205, 393, -1,
+203, 202, 389, -1,
+199, 417, 200, -1,
+197, 196, 413, -1,
+193, 409, 194, -1,
+191, 190, 405, -1,
+190, 189, 404, -1,
+77, 136, 68, -1,
+68, 136, 229, -1,
+78, 69, 229, -1,
+229, 69, 68, -1,
+77, 67, 66, -1,
+136, 77, 66, -1,
+135, 65, 46, -1,
+46, 65, 45, -1,
+46, 45, 43, -1,
+43, 45, 218, -1,
+69, 78, 212, -1,
+189, 69, 212, -1,
+189, 190, 69, -1,
+69, 190, 191, -1,
+192, 69, 191, -1,
+192, 193, 69, -1,
+69, 193, 194, -1,
+135, 194, 195, -1,
+196, 135, 195, -1,
+196, 197, 135, -1,
+135, 197, 198, -1,
+199, 135, 198, -1,
+199, 200, 135, -1,
+135, 200, 65, -1,
+65, 200, 201, -1,
+202, 65, 201, -1,
+202, 203, 65, -1,
+65, 203, 204, -1,
+205, 65, 204, -1,
+205, 206, 65, -1,
+65, 206, 78, -1,
+78, 206, 207, -1,
+208, 78, 207, -1,
+208, 209, 78, -1,
+78, 209, 210, -1,
+211, 78, 210, -1,
+211, 212, 78, -1,
+135, 69, 194, -1,
+333, 302, 28, -1,
+332, 28, 27, -1,
+331, 27, 26, -1,
+330, 26, 25, -1,
+329, 25, 328, -1,
+329, 330, 25, -1,
+302, 303, 29, -1,
+28, 302, 29, -1,
+303, 304, 30, -1,
+29, 303, 30, -1,
+304, 305, 31, -1,
+30, 304, 31, -1,
+305, 306, 31, -1,
+31, 306, 32, -1,
+32, 306, 307, -1,
+33, 307, 308, -1,
+34, 308, 309, -1,
+310, 34, 309, -1,
+310, 35, 34, -1,
+310, 311, 35, -1,
+35, 311, 36, -1,
+36, 311, 312, -1,
+37, 312, 313, -1,
+314, 37, 313, -1,
+314, 38, 37, -1,
+314, 315, 38, -1,
+38, 315, 39, -1,
+39, 315, 316, -1,
+40, 316, 317, -1,
+318, 40, 317, -1,
+318, 17, 40, -1,
+318, 319, 17, -1,
+17, 319, 18, -1,
+18, 319, 320, -1,
+19, 320, 321, -1,
+322, 19, 321, -1,
+322, 20, 19, -1,
+322, 323, 20, -1,
+20, 323, 21, -1,
+21, 323, 324, -1,
+22, 324, 325, -1,
+326, 22, 325, -1,
+326, 23, 22, -1,
+326, 327, 23, -1,
+23, 327, 24, -1,
+24, 327, 328, -1,
+25, 24, 328, -1,
+330, 331, 26, -1,
+331, 332, 27, -1,
+332, 333, 28, -1,
+40, 39, 316, -1,
+312, 37, 36, -1,
+34, 33, 308, -1,
+32, 307, 33, -1,
+22, 21, 324, -1,
+19, 18, 320, -1,
+123, 76, 447, -1,
+447, 76, 74, -1,
+73, 447, 74, -1,
+73, 448, 447, -1,
+73, 72, 448, -1,
+448, 72, 449, -1,
+449, 72, 450, -1,
+450, 72, 71, -1,
+451, 71, 70, -1,
+452, 70, 75, -1,
+429, 452, 75, -1,
+429, 453, 452, -1,
+429, 428, 453, -1,
+453, 428, 454, -1,
+454, 428, 427, -1,
+455, 427, 426, -1,
+456, 426, 425, -1,
+457, 425, 424, -1,
+458, 424, 423, -1,
+459, 423, 422, -1,
+460, 422, 421, -1,
+461, 421, 420, -1,
+462, 420, 419, -1,
+463, 419, 14, -1,
+13, 463, 14, -1,
+462, 419, 463, -1,
+462, 461, 420, -1,
+461, 460, 421, -1,
+459, 422, 460, -1,
+459, 458, 423, -1,
+458, 457, 424, -1,
+457, 456, 425, -1,
+426, 456, 455, -1,
+455, 454, 427, -1,
+451, 70, 452, -1,
+451, 450, 71, -1,
+447, 124, 123, -1,
+447, 301, 124, -1,
+447, 448, 301, -1,
+301, 448, 449, -1,
+450, 301, 449, -1,
+450, 451, 301, -1,
+301, 451, 452, -1,
+186, 452, 453, -1,
+454, 186, 453, -1,
+454, 455, 186, -1,
+186, 455, 456, -1,
+457, 186, 456, -1,
+457, 458, 186, -1,
+186, 458, 459, -1,
+460, 186, 459, -1,
+460, 433, 186, -1,
+460, 461, 433, -1,
+433, 461, 432, -1,
+432, 461, 431, -1,
+431, 461, 462, -1,
+463, 431, 462, -1,
+463, 430, 431, -1,
+463, 386, 430, -1,
+463, 13, 386, -1,
+434, 186, 433, -1,
+434, 187, 186, -1,
+434, 435, 187, -1,
+187, 435, 436, -1,
+437, 187, 436, -1,
+437, 438, 187, -1,
+187, 438, 439, -1,
+440, 187, 439, -1,
+440, 441, 187, -1,
+187, 441, 231, -1,
+231, 441, 442, -1,
+443, 231, 442, -1,
+443, 444, 231, -1,
+231, 444, 445, -1,
+289, 445, 446, -1,
+54, 289, 446, -1,
+289, 231, 445, -1,
+186, 301, 452, -1,
+13, 14, 251, -1,
+386, 13, 251, -1,
+154, 174, 137, -1,
+137, 174, 172, -1,
+138, 172, 171, -1,
+139, 171, 170, -1,
+140, 170, 169, -1,
+141, 169, 168, -1,
+142, 168, 167, -1,
+143, 167, 166, -1,
+144, 166, 165, -1,
+145, 165, 164, -1,
+146, 164, 163, -1,
+147, 163, 162, -1,
+148, 162, 161, -1,
+149, 161, 160, -1,
+150, 160, 159, -1,
+151, 159, 158, -1,
+152, 158, 157, -1,
+153, 157, 156, -1,
+155, 156, 173, -1,
+155, 153, 156, -1,
+153, 152, 157, -1,
+152, 151, 158, -1,
+151, 150, 159, -1,
+150, 149, 160, -1,
+149, 148, 161, -1,
+148, 147, 162, -1,
+146, 163, 147, -1,
+146, 145, 164, -1,
+145, 144, 165, -1,
+144, 143, 166, -1,
+143, 142, 167, -1,
+142, 141, 168, -1,
+141, 140, 169, -1,
+170, 140, 139, -1,
+139, 138, 171, -1,
+138, 137, 172, -1,
+155, 173, 230, -1,
+230, 173, 80, -1,
+386, 251, 430, -1,
+430, 251, 250, -1,
+431, 250, 249, -1,
+432, 249, 248, -1,
+433, 248, 247, -1,
+434, 247, 246, -1,
+435, 246, 245, -1,
+436, 245, 244, -1,
+437, 244, 243, -1,
+438, 243, 242, -1,
+439, 242, 241, -1,
+440, 241, 240, -1,
+441, 240, 239, -1,
+442, 239, 238, -1,
+443, 238, 237, -1,
+444, 237, 236, -1,
+235, 444, 236, -1,
+235, 445, 444, -1,
+235, 446, 445, -1,
+235, 234, 446, -1,
+446, 234, 54, -1,
+54, 234, 55, -1,
+444, 443, 237, -1,
+443, 442, 238, -1,
+442, 441, 239, -1,
+441, 440, 240, -1,
+440, 439, 241, -1,
+439, 438, 242, -1,
+438, 437, 243, -1,
+437, 436, 244, -1,
+436, 435, 245, -1,
+435, 434, 246, -1,
+434, 433, 247, -1,
+248, 433, 432, -1,
+432, 431, 249, -1,
+431, 430, 250, -1,
+54, 55, 289, -1,
+289, 55, 228, -1,
+11, 219, 288, -1,
+0, 288, 287, -1,
+1, 287, 286, -1,
+2, 286, 285, -1,
+3, 285, 284, -1,
+4, 284, 283, -1,
+5, 283, 282, -1,
+6, 282, 281, -1,
+7, 281, 280, -1,
+8, 280, 279, -1,
+9, 279, 278, -1,
+10, 278, 277, -1,
+12, 277, 213, -1,
+12, 10, 277, -1,
+276, 213, 277, -1,
+276, 214, 213, -1,
+276, 275, 214, -1,
+214, 275, 215, -1,
+215, 275, 274, -1,
+216, 274, 273, -1,
+217, 273, 272, -1,
+129, 272, 125, -1,
+129, 217, 272, -1,
+217, 216, 273, -1,
+216, 215, 274, -1,
+10, 9, 278, -1,
+8, 279, 9, -1,
+8, 7, 280, -1,
+7, 6, 281, -1,
+6, 5, 282, -1,
+5, 4, 283, -1,
+4, 3, 284, -1,
+2, 285, 3, -1,
+2, 1, 286, -1,
+1, 0, 287, -1,
+0, 11, 288, -1,
+173, 156, 80, -1,
+80, 156, 81, -1,
+81, 156, 157, -1,
+158, 81, 157, -1,
+158, 159, 81, -1,
+81, 159, 160, -1,
+161, 81, 160, -1,
+161, 44, 81, -1,
+161, 162, 44, -1,
+44, 162, 163, -1,
+164, 44, 163, -1,
+164, 165, 44, -1,
+44, 165, 166, -1,
+167, 44, 166, -1,
+167, 254, 44, -1,
+167, 168, 254, -1,
+254, 168, 4, -1,
+5, 254, 4, -1,
+5, 6, 254, -1,
+254, 6, 7, -1,
+8, 254, 7, -1,
+8, 9, 254, -1,
+254, 9, 10, -1,
+12, 254, 10, -1,
+12, 377, 254, -1,
+12, 213, 377, -1,
+377, 213, 214, -1,
+215, 377, 214, -1,
+215, 216, 377, -1,
+377, 216, 217, -1,
+129, 377, 217, -1,
+129, 82, 377, -1,
+168, 169, 3, -1,
+4, 168, 3, -1,
+170, 2, 169, -1,
+170, 1, 2, -1,
+170, 171, 1, -1,
+1, 171, 0, -1,
+0, 171, 172, -1,
+174, 0, 172, -1,
+174, 11, 0, -1,
+2, 3, 169, -1,
+41, 79, 110, -1,
+110, 79, 226, -1,
+111, 226, 225, -1,
+112, 225, 224, -1,
+113, 224, 223, -1,
+114, 223, 222, -1,
+115, 222, 227, -1,
+115, 114, 222, -1,
+114, 113, 223, -1,
+113, 112, 224, -1,
+112, 111, 225, -1,
+111, 110, 226, -1,
+41, 110, 134, -1,
+42, 134, 132, -1,
+42, 41, 134, -1,
+293, 110, 111, -1,
+115, 111, 112, -1,
+113, 115, 112, -1,
+113, 114, 115, -1,
+115, 295, 293, -1,
+111, 115, 293, -1,
+295, 290, 291, -1,
+292, 295, 291, -1,
+292, 293, 295, -1,
+293, 294, 110, -1,
+110, 294, 134, -1,
+40, 17, 295, -1,
+39, 295, 38, -1,
+39, 40, 295, -1,
+17, 18, 295, -1,
+295, 18, 339, -1,
+339, 18, 19, -1,
+20, 339, 19, -1,
+20, 21, 339, -1,
+339, 21, 22, -1,
+227, 22, 23, -1,
+24, 227, 23, -1,
+24, 25, 227, -1,
+227, 25, 26, -1,
+115, 26, 27, -1,
+28, 115, 27, -1,
+28, 29, 115, -1,
+115, 29, 30, -1,
+31, 115, 30, -1,
+31, 32, 115, -1,
+115, 32, 33, -1,
+34, 115, 33, -1,
+34, 295, 115, -1,
+34, 35, 295, -1,
+295, 35, 36, -1,
+37, 295, 36, -1,
+37, 38, 295, -1,
+115, 227, 26, -1,
+227, 339, 22, -1,
+295, 339, 290, -1,
+290, 339, 338, -1,
+291, 338, 337, -1,
+292, 337, 336, -1,
+293, 336, 335, -1,
+294, 335, 334, -1,
+134, 334, 221, -1,
+134, 294, 334, -1,
+294, 293, 335, -1,
+293, 292, 336, -1,
+292, 291, 337, -1,
+291, 290, 338, -1,
+221, 132, 134, -1,
+221, 253, 132, -1,
+79, 41, 340, -1,
+340, 41, 42, -1,
+218, 81, 44, -1,
+43, 218, 44, -1,
+66, 75, 70, -1,
+71, 66, 70, -1,
+71, 72, 66, -1,
+66, 72, 73, -1,
+74, 66, 73, -1,
+74, 232, 66, -1,
+74, 76, 232, -1,
+66, 67, 75, -1,
+75, 67, 429, -1,
+429, 67, 428, -1,
+428, 67, 427, -1,
+427, 67, 426, -1,
+426, 67, 425, -1,
+425, 67, 424, -1,
+424, 67, 127, -1,
+423, 127, 246, -1,
+422, 246, 247, -1,
+421, 247, 248, -1,
+420, 248, 249, -1,
+419, 249, 250, -1,
+251, 419, 250, -1,
+251, 14, 419, -1,
+127, 126, 239, -1,
+240, 127, 239, -1,
+240, 241, 127, -1,
+127, 241, 242, -1,
+243, 127, 242, -1,
+243, 244, 127, -1,
+127, 244, 245, -1,
+246, 127, 245, -1,
+126, 228, 55, -1,
+234, 126, 55, -1,
+234, 235, 126, -1,
+126, 235, 236, -1,
+237, 126, 236, -1,
+237, 238, 126, -1,
+126, 238, 239, -1,
+420, 249, 419, -1,
+421, 248, 420, -1,
+421, 422, 247, -1,
+422, 423, 246, -1,
+424, 127, 423, -1,
+76, 123, 124, -1,
+232, 76, 124, -1,
+289, 228, 126, -1,
+231, 289, 126, -1,
+174, 154, 219, -1,
+11, 174, 219, -1,
+129, 125, 83, -1,
+82, 129, 83, -1,
+137, 288, 154, -1,
+137, 138, 288, -1,
+288, 138, 287, -1,
+287, 138, 139, -1,
+286, 139, 140, -1,
+285, 140, 121, -1,
+284, 121, 255, -1,
+283, 255, 282, -1,
+283, 284, 255, -1,
+140, 141, 121, -1,
+121, 141, 142, -1,
+143, 121, 142, -1,
+143, 144, 121, -1,
+121, 144, 145, -1,
+146, 121, 145, -1,
+146, 147, 121, -1,
+121, 147, 148, -1,
+53, 148, 149, -1,
+150, 53, 149, -1,
+150, 151, 53, -1,
+53, 151, 152, -1,
+153, 53, 152, -1,
+153, 230, 53, -1,
+153, 155, 230, -1,
+53, 121, 148, -1,
+255, 376, 277, -1,
+278, 255, 277, -1,
+278, 279, 255, -1,
+255, 279, 280, -1,
+281, 255, 280, -1,
+281, 282, 255, -1,
+376, 83, 273, -1,
+274, 376, 273, -1,
+274, 275, 376, -1,
+376, 275, 276, -1,
+277, 376, 276, -1,
+83, 125, 272, -1,
+273, 83, 272, -1,
+284, 285, 121, -1,
+285, 286, 140, -1,
+139, 286, 287, -1,
+288, 219, 154, -1,
+233, 15, 347, -1,
+347, 15, 300, -1,
+348, 300, 299, -1,
+349, 299, 298, -1,
+350, 298, 297, -1,
+351, 297, 296, -1,
+186, 296, 301, -1,
+186, 351, 296, -1,
+351, 350, 297, -1,
+350, 349, 298, -1,
+349, 348, 299, -1,
+348, 347, 300, -1,
+121, 53, 116, -1,
+116, 53, 51, -1,
+117, 51, 50, -1,
+118, 50, 49, -1,
+119, 49, 48, -1,
+120, 48, 47, -1,
+122, 47, 52, -1,
+122, 120, 47, -1,
+120, 119, 48, -1,
+119, 118, 49, -1,
+118, 117, 50, -1,
+117, 116, 51, -1,
+122, 52, 385, -1,
+385, 52, 252, -1,
+15, 233, 16, -1,
+16, 233, 133, -1,
+82, 83, 376, -1,
+377, 82, 376, -1,
+132, 253, 16, -1,
+133, 132, 16, -1,
+133, 42, 132, -1,
+133, 385, 42, -1,
+42, 385, 252, -1,
+340, 42, 252, -1,
+376, 255, 377, -1,
+377, 255, 254, -1,
+375, 352, 117, -1,
+118, 375, 117, -1,
+118, 374, 375, -1,
+118, 119, 374, -1,
+374, 119, 373, -1,
+373, 119, 372, -1,
+372, 119, 120, -1,
+371, 120, 122, -1,
+370, 122, 369, -1,
+370, 371, 122, -1,
+117, 352, 353, -1,
+116, 353, 43, -1,
+121, 43, 254, -1,
+255, 121, 254, -1,
+43, 353, 354, -1,
+355, 43, 354, -1,
+355, 46, 43, -1,
+355, 356, 46, -1,
+46, 356, 357, -1,
+68, 357, 358, -1,
+359, 68, 358, -1,
+359, 77, 68, -1,
+359, 360, 77, -1,
+77, 360, 361, -1,
+351, 361, 350, -1,
+351, 77, 361, -1,
+351, 186, 77, -1,
+77, 186, 127, -1,
+67, 77, 127, -1,
+362, 350, 361, -1,
+362, 363, 350, -1,
+350, 363, 349, -1,
+349, 363, 364, -1,
+348, 364, 365, -1,
+366, 348, 365, -1,
+366, 347, 348, -1,
+366, 367, 347, -1,
+347, 367, 233, -1,
+233, 367, 368, -1,
+369, 233, 368, -1,
+369, 133, 233, -1,
+369, 122, 133, -1,
+133, 122, 385, -1,
+372, 120, 371, -1,
+68, 69, 135, -1,
+46, 68, 135, -1,
+46, 357, 68, -1,
+43, 44, 254, -1,
+121, 116, 43, -1,
+116, 117, 353, -1,
+364, 348, 349, -1,
+186, 187, 127, -1,
+187, 231, 127, -1,
+127, 231, 126, -1,
+]
+
+  } }
+Shape { appearance Appearance {
+   material    Material { diffuseColor 1 1 1 } }
+geometry DEF aPart1_19_CL IndexedLineSet {
+coord USE aPart1_19_C
+ coordIndex [ 0,1,-1 ] } }
+ ] }
+  ] }
+Anchor { url "#aPart1_19"
+ description "Part 'Part1:100c;0;'"
+ parameter [ "target=vrmlinfo" ]
+ children [ DEF aPart1_19_SENS TouchSensor { }
+DEF aPart1_19_TRAN Transform { children [
+   Shape { appearance Appearance { material
+DEF aPart1_19_WMAT Material { emissiveColor 0.8 0.8 0.8 diffuseColor 0.8 0.8 0.8 transparency 1.0} } 
+ geometry USE aPart1_19_W }
+   Shape { appearance Appearance { material
+DEF aPart1_19_CMAT Material { emissiveColor 1.000000 0.660000 1.000000 diffuseColor 0.8 0.8 0.8 transparency 1.0} } 
+ geometry USE aPart1_19_CL }
+   Shape { appearance Appearance { material
+DEF aPart1_19_MAT Material {  diffuseColor 1.000000 0.000000 0.000000 } } geometry USE aPart1_19 } ] } ]
+}
+DEF PANEL_SCRIPT Script { 
+  eventIn SFTime setcolor
+  eventOut SFColor trcolor
+  eventOut SFInt32 whichChoice
+  field    SFFloat transv 1
+  field MFColor swcolor [1 0 0, 0 1 0]
+  field SFInt32 maxval 1
+  field SFInt32 val    0
+  eventIn SFBool settrans
+  eventOut SFFloat transp
+  eventOut SFFloat trNoVal
+  field SFFloat fTran 0
+url "vrmlscript:
+function setcolor() { 
+val++; if(val>maxval){val=0;}
+if(val){trcolor=swcolor[1]; whichChoice=0; trNoVal=0.7;}
+else{trcolor=swcolor[0]; whichChoice=-1;}}
+function settrans(value) { 
+if (value==TRUE) { fTran=fTran+.9;
+if (fTran>1.0)  { fTran=0; } transp=fTran;}}
+" }
+ROUTE PANEL_SENS.touchTime TO PANEL_SCRIPT.setcolor
+ROUTE PANEL_SENT.isActive TO PANEL_SCRIPT.settrans
+ROUTE PANEL_SCRIPT.trcolor TO PANEL_MAT.set_diffuseColor
+ROUTE PANEL_SCRIPT.transp TO PANEL_MAT.set_transparency
+ROUTE PANEL_SCRIPT.transp TO PANEL_TXT.set_transparency
+ROUTE PANEL_SCRIPT.whichChoice TO SW5.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW6.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW7.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW8.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW9.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW10.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW11.whichChoice
+ROUTE PANEL_SCRIPT.whichChoice TO SW12.whichChoice
+ROUTE PANEL_SCRIPT.trNoVal TO DIME_MAT.set_transparency
+ROUTE PANEL_SCRIPT.trNoVal TO DIME_TXT.set_transparency
+ROUTE PANEL_SCRIPT.trNoVal TO NOTES_MAT.set_transparency
+ROUTE PANEL_SCRIPT.trNoVal TO NOTES_TXT.set_transparency
+DEF TRAN_SCRIPT Script { 
+  eventIn SFBool settran
+  eventIn SFBool settxts
+  eventOut SFFloat tranval
+  field SFFloat fTrans 0
+  field MFColor cncolor [1 1 1, 1 1 0]
+  eventOut SFColor ccolor
+  eventOut SFVec3f SC_valx
+  field SFFloat fTxtS 1.0
+  field MFColor bncolor [1 1 1, 1 1 0]
+  eventOut SFColor bcolor
+ eventIn SFBool aPart1_19_get
+ eventOut SFFloat aPart1_19_ret
+ eventIn SFBool aPart1_19_get1
+ eventOut SFVec3f aPart1_19_ret1
+url "vrmlscript:
+function settran(value) { 
+if (value==TRUE) { fTrans=fTrans+.25;
+if (fTrans>1.0)  { fTrans=0; } tranval=fTrans; if (tranval > .95) tranval=.95;}
+if(fTrans>0){ccolor=cncolor[1];}
+else{ccolor=cncolor[0];}}
+function settxts(value) { 
+if (value==TRUE) { fTxtS=fTxtS+.25;
+if (fTxtS>2.0)  { fTxtS=1.0; }}
+SC_valx[0]=fTxtS; SC_valx[1]=1.0; SC_valx[2]=1.0;
+if(fTxtS>1.0){bcolor=bncolor[1];}
+else{bcolor=bncolor[0];}}
+function aPart1_19_get() {
+ aPart1_19_ret = fTrans;
+}
+function aPart1_19_get1() {
+ aPart1_19_ret1[0] = fTxtS;
+ aPart1_19_ret1[1] = fTxtS;
+ aPart1_19_ret1[2] = 1.0;
+}
+" }
+ROUTE TRAN_SENS.isActive TO TRAN_SCRIPT.settran
+ROUTE TRP1_SENS.isActive TO TRAN_SCRIPT.settran
+ROUTE TRAN_SCRIPT.tranval TO TRAN_MAT.set_transparency
+ROUTE TRAN_SCRIPT.ccolor TO TRP1_MAT.set_diffuseColor
+ROUTE TXTS_SENS.isActive TO TRAN_SCRIPT.settxts
+ROUTE TXS1_SENS.isActive TO TRAN_SCRIPT.settxts
+ROUTE TRAN_SCRIPT.SC_valx TO TXS_geoc.set_scale
+ROUTE TRAN_SCRIPT.bcolor TO TXS1_MAT.set_diffuseColor
+ROUTE aPart1_19_SENS.isActive TO TRAN_SCRIPT.aPart1_19_get
+ROUTE TRAN_SCRIPT.aPart1_19_ret TO aPart1_19_MAT.set_transparency
+ROUTE aPart1_19_SENS.isActive TO TRAN_SCRIPT.aPart1_19_get1
+DEF SWITCH_SCRIPT Script { 
+  eventIn SFTime setcolor1
+  eventIn SFTime setcolor2
+  eventIn SFTime setcolor3
+  eventIn SFTime setcolor4
+  eventIn SFTime setcolor7
+  eventIn SFTime toggleUnits
+  eventIn SFTime setdimtyp
+  eventIn SFTime setntstyp
+  eventIn SFTime setloctyp
+  eventOut SFColor trcolor1
+  eventOut SFColor trcolor2
+  eventOut SFColor trcolor3
+  eventOut SFColor trcolor4
+  eventOut SFColor trcolor7
+  eventOut SFFloat nTran1
+  eventOut SFFloat nTran2
+  eventOut SFFloat nTran3
+  eventOut SFFloat nTran4
+  eventOut SFFloat nTrank
+  eventOut SFFloat nTranr
+  eventOut SFFloat nTrand
+  eventOut SFFloat nTranrn
+  eventOut SFFloat nTranun
+  eventOut SFVec3f SC_valk
+  eventOut SFVec3f SC_valr
+  eventOut SFVec3f SC_valn
+  eventOut SFVec3f SC_vntr
+  eventOut SFVec3f SC_vntu
+  eventOut SFInt32 DimTyp_switch
+  eventOut SFInt32 NtsTyp_switch
+  eventOut SFInt32 SC_val
+  eventOut SFInt32 panel_switch
+  eventOut SFInt32 ClnTyp_switch
+  eventOut SFInt32 WfrTyp_switch
+  eventOut SFInt32 TrpTyp_switch
+  eventOut SFInt32 TxsTyp_switch
+  eventOut SFInt32 UnitsTyp_switch
+  eventOut SFInt32 UnitcTyp_switch
+  eventOut SFInt32 LocTyp_switch
+  eventOut SFInt32 NorTyp_switch
+  eventOut SFInt32 HidTyp_switch
+  eventOut SFInt32 Sh1Typ_switch
+  eventOut SFInt32 ShoTyp_switch
+  field    SFFloat transv 1
+  field    SFFloat transu 1
+  field    SFFloat transk 1
+  field    SFFloat transr 1
+  field    SFFloat trannr 1
+  field    SFFloat trannu 1
+  field MFColor swcolor [1 0 0, 0 1 0]
+  field SFInt32 maxval  1
+  field SFInt32 maxval1 2
+  field SFInt32 maxval8 7
+  field SFInt32 val1    0
+  field SFInt32 val2    0
+  field SFInt32 val3    0
+  field SFInt32 val4    0
+  field SFInt32 val5    0
+  field SFInt32 val6    0
+  field SFInt32 val7    1
+  field SFInt32 val8    0
+  field SFInt32 valu    0
+url "vrmlscript:
+function setcolor1() { 
+val1++; if(val1>maxval){val1=0;}
+if(val1){trcolor1=swcolor[1]; transv=0.0;}
+else{trcolor1=swcolor[0]; transv=1.0;} nTran1=transv;}
+function showUnits() { 
+  if (valu) {UnitsTyp_switch = -1; UnitcTyp_switch = val8;} 
+  else{UnitsTyp_switch = val8; UnitcTyp_switch = -1;}} 
+function hideUnits() { 
+  UnitsTyp_switch = -1; 
+  UnitcTyp_switch = -1;} 
+function toggleUnits() { 
+  valu++; if(valu>maxval){valu=0;} 
+  showUnits();} 
+function setcolor2() { 
+val2++; if(val2>maxval){val2=0;} 
+  if(val2) 
+  { 
+    if(val5==1)
+    { 
+      SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001;
+      SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+      transk=1.0; transr=0.0; nTrand=0.5; trcolor2=swcolor[1];
+    } 
+    if(val5==2) 
+    { 
+      SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+      SC_valr[0]=0.000001; 
+      SC_valr[1]=0.000001; SC_valr[2]=0.000001; 
+      transk=0.0; transr=1.0; nTrand=0.5; trcolor2=swcolor[1];
+    } 
+    if(val5==0) 
+    { 
+      SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+      SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+      transk=0.0; transr=0.0; nTrand=0.0; trcolor2=swcolor[1];
+    } 
+    trcolor2=swcolor[1]; 
+    showUnits(); 
+  } 
+  else 
+  { 
+    trcolor2=swcolor[0]; 
+    SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001; 
+     SC_valr[0]=0.000001; SC_valr[1]=0.000001; SC_valr[2]=0.000001; 
+     hideUnits(); 
+     transk=1.0; transr=1.0; 
+  } 
+  nTrank=transk; nTranr=transr; nTrand=0.0; 
+} 
+function setdimtyp() {   val5++; if(val5>maxval1){val5=0;}  if(val5==1)
+  { 
+    SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001;
+    SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+    transk=1.0; transr=0.0; nTrand=0.5; trcolor2=swcolor[1];
+  } 
+  if(val5==2) 
+  { 
+    SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+    SC_valr[0]=0.000001; 
+    SC_valr[1]=0.000001; SC_valr[2]=0.000001; 
+    transk=0.0; transr=1.0; nTrand=0.5; trcolor2=swcolor[1];
+  } 
+  if(val5==0) 
+  { 
+    SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; 
+    SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+    transk=0.0; transr=0.0; nTrand=0.0; trcolor2=swcolor[1];
+  } 
+  showUnits(); 
+  nTrank=transk; nTranr=transr; 
+  DimTyp_switch=val8*(maxval1+1) + val5; 
+} 
+function setcolor4() { 
+val4++; if(val4>maxval){val4=0;} 
+if(val4)
+{   trcolor4=swcolor[1]; 
+   if(val6==1) 
+   { 
+      SC_vntr[0]=0.000001; SC_vntr[1]=0.000001; SC_vntr[2]=0.000001; 
+      SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; 
+      trannr=1.0; trannu=0.0; 
+   } 
+   if(val6==2) 
+   { 
+      SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; 
+      SC_vntu[0]=0.000001; SC_vntu[1]=0.000001; SC_vntu[2]=0.000001; 
+      trannr=0.0; trannu=1.0; 
+   } 
+   if(val6==0) 
+   { 
+      SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; 
+      SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; 
+      trannr=0.0; trannu=0.0; 
+   } 
+ } 
+ else 
+ { 
+    trcolor4=swcolor[0]; 
+    SC_vntu[0]=0.000001; SC_vntu[1]=0.000001; SC_vntu[2]=0.000001; 
+    SC_vntr[0]=0.000001; SC_vntr[1]=0.000001; SC_vntr[2]=0.000001; 
+    trannr=1.0; trannu=1.0; 
+ }  
+ nTranrn=trannr; nTranun=trannu; 
+ } 
+function setcolor7() { 
+  val7++; if(val7>maxval){val7=0;}
+  if (val7) { trcolor7=swcolor[1]; } 
+  else { trcolor7 = swcolor[0]; } } 
+function setcolor3() { 
+val3++; if(val3>maxval){val3=0;}
+if(val3){trcolor3=swcolor[1]; transv=0.0;}
+else{trcolor3=swcolor[0]; transv=1.0;} nTran3=transv;}
+function setdimtyp() { 
+val5++; if(val5>maxval1){val5=0;}
+if(val5==1){ SC_valk[0]=0.000001; SC_valk[1]=0.000001; SC_valk[2]=0.000001; SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; transk=1.0; transr=0.0; nTrand=0.5; trcolor2=swcolor[1];}
+if(val5==2){ SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; SC_valr[0]=0.000001;
+ SC_valr[1]=0.000001; SC_valr[2]=0.000001; transk=0.0; transr=1.0; nTrand=0.5; trcolor2=swcolor[1];}
+if(val5==0) { SC_valk[0]=1.0; SC_valk[1]=1.0; SC_valk[2]=1.0; SC_valr[0]=1.0; SC_valr[1]=1.0; SC_valr[2]=1.0; 
+transk=0.0; transr=0.0; nTrand=0.0; trcolor2=swcolor[1];} 
+showUnits(); 
+nTrank=transk; nTranr=transr; DimTyp_switch=val8*(maxval1+1) + val5;}
+function setntstyp() { 
+val6++; if(val6>maxval1){val6=0;}
+if(val6==1){ SC_vntr[0]=0.000001; SC_vntr[1]=0.000001; SC_vntr[2]=0.000001; SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; trannr=1.0; trannu=0.0; trcolor4=swcolor[1];}
+if(val6==2){ SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; SC_vntu[0]=0.000001;
+ SC_vntu[1]=0.000001; SC_vntu[2]=0.000001; trannr=0.0; trannu=1.0; trcolor4=swcolor[1];}
+if(val6==0) { SC_vntr[0]=1.0; SC_vntr[1]=1.0; SC_vntr[2]=1.0; SC_vntu[0]=1.0; SC_vntu[1]=1.0; SC_vntu[2]=1.0; trannr=0.0; trannu=0.0; trcolor4=swcolor[1];} nTranrn=trannr; nTranun=trannu; NtsTyp_switch=val8*(maxval1+1) + val6;}
+function setloctyp() {
+  val8++; if (val8 >= maxval8) {val8=0;}
+  if (val8 == 5) {val8 = 6;}
+  LocTyp_switch = val8; 
+  NorTyp_switch = val8; 
+  HidTyp_switch = val8; 
+  Sh1Typ_switch = val8; 
+  ShoTyp_switch = val8; 
+  panel_switch = val8; 
+  if(val2) 
+    showUnits(); 
+  ClnTyp_switch = val8; 
+  WfrTyp_switch = val8; 
+  TrpTyp_switch = val8; 
+  TxsTyp_switch = val8; 
+  DimTyp_switch=val8*(maxval1+1) + val5; 
+  NtsTyp_switch=val8*(maxval1+1) + val6; 
+ }" }
+ROUTE CLIN_SENS.touchTime TO SWITCH_SCRIPT.setcolor1
+ROUTE SWITCH_SCRIPT.trcolor1 TO CLIN_MAT.set_diffuseColor
+ROUTE SWITCH_SCRIPT.DimTyp_switch TO DIM_SWITCH.whichChoice
+ROUTE WIRE_SENS.touchTime TO SWITCH_SCRIPT.setcolor3
+ROUTE SWITCH_SCRIPT.trcolor3 TO WIRE_MAT.set_diffuseColor
+ROUTE SWITCH_SCRIPT.NtsTyp_switch TO NTS_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.trcolor7 TO LOC_MAT.set_diffuseColor
+ROUTE LOC_SENT.touchTime TO SWITCH_SCRIPT.setloctyp
+ROUTE SWITCH_SCRIPT.LocTyp_switch TO LOC_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.panel_switch TO PANEL_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.ClnTyp_switch TO CLN_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.WfrTyp_switch TO WFR_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.TrpTyp_switch TO TRP_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.TxsTyp_switch TO TXS_SWITCH.whichChoice
+ROUTE SWITCH_SCRIPT.nTran1 TO aPart1_19_CMAT.set_transparency
+ROUTE SWITCH_SCRIPT.nTran3 TO aPart1_19_WMAT.set_transparency
