@@ -1,0 +1,216 @@
+
+README file for A' discriminator
+--------------------------------
+
+Randy Wilson
+Sandia National Labs
+rhwilso@sandia.gov
+8/19/96
+
+
+	**** Patent Caution ****
+
+A patent is pending for the Pin-in-Maze discriminator design.
+
+
+This directory contains an ACIS model of the A' discriminator.  A
+discriminator is a safety device designed to allow operation of a
+system only when given a particular code (even when exposed to fire,
+electrical shorts, crashes, etc.).
+
+This model of discriminator was designed for Sandia's A-PRIMED (A')
+project by Gil Benavides at Sandia National Laboratories.  It consists
+of two main wheels driven by stepper motors.  One wheel holds a maze,
+and the other a pin.  At each step of the code, the maze moves one
+step forward, and the pin moves either left or right.  If the pin
+makes a wrong step, the entire device locks up, and must be
+disassembled before it will operate again.  The maze wheel has been
+carefully designed to be balanced and of minimal weight, which results
+in a very complex geometric design.
+
+The design was originally modeled in Pro/ENGINEER, and translated to
+ACIS using a proprietary ProE->ACIS translator, keeping ProE's
+capability for "soft-linking" (ie having multiple copies of a single
+part or subassembly represented implicitly in the structure).  Each
+".prt" file has been translated to a ".sat" file (ie ACIS standard
+format), and the ProE ".asm" files have been translated to
+corresponding ".asy" files.  A .asy file consists of a list of entries
+of the form:
+
+	filename id
+	rot00 rot01 rot02
+	rot10 rot11 rot12
+	rot20 rot21 rot22
+	pos-x pos-y pos-z
+
+"filename" specifies either a .sat file or another .asy file (ie a
+subassembly), and "id" is an integer unique within this .asy file.
+The rest of the entities are floating-point numbers that specify a
+standard 4x4 matrix transform placing the part or subassembly with
+respect to the assembly: rot** give the 3x3 rotation matrix (possibly
+with uniform scaling), and pos-* give the translational offset.  At
+the end of this README file is some (incomplete) sample C++ and ACIS
+code to read in this hierarchical structure.
+
+The A' discriminator was used to test the Archimedes assembly planning
+system.  For more information about Archimedes (and some on-line
+movies of the discriminator being assembled) see the URL
+	http://www.sandia.gov/2121/archimedes/archimedes.html
+
+The top-level .asy file is "discriminator.asy", which just re-orients
+a single subassembly.  The most interesting parts are
+"thru-mazewheel.sat" and "sh-r44372-000-u.sat", which are both
+slightly different mazewheels (the former appears in the assembly).
+"discriminator.gif" shows a picture of the full assembly.
+
+-----------------------------------------------------------------------------
+
+Sample C++ and ACIS code follows to re-construct the assembly,
+creating a copy of each part in memory in proper position.  Because
+this code was viciously hacked from the Archimedes system, several
+routines and data structures are missing.  However, I think the
+operation of those pieces is either obvious or unimportant.
+
+-----------
+
+BODY *restore_or_null(const char *filename, logical tell)
+// restore a body from the named file, returning NULL if failure
+{
+  FILE* file = fopen(filename, "r");
+  if (!file) 
+    {
+      if (tell) 
+	gui_progress("Failed to load ACIS body from file ", filename, ":\n",
+		     "    File does not exist");
+      return NULL;
+    }
+  ENTITY_LIST b_list;
+  outcome result = api_restore_entity_list(file, TRUE, b_list);
+  fclose(file);
+  BODY *b = (BODY *) b_list[0];
+  if (!result.ok())
+    {
+      if (tell)
+	gui_progress("Failed to load ACIS body from file ", filename, ":\n",
+		     "    ", find_err_mess(result.error_number()));
+      b = NULL;
+    }
+  return b;
+}
+
+BODY *restore_or_die(const char *filename)
+// restore a body from the named file, or die with error message
+{
+  BODY *b = restore_or_null(filename, TRUE);
+  if (b == NULL) 
+    die("Unable to restore body from file.  Dying.");
+  return b;
+}
+
+
+void parse(const char* filename, Part* part, transf t, int indent)
+//parse the part file named by filename and transform the part by t.
+{
+  BODY *b = restore_or_die(filename);
+  api_apply_transf(b, t);
+  part->set_body(b);
+}
+
+  
+void parse(const char* assembly_file, Assembly* assembly, const transf &t,
+	   int &next_part_num, int indent)
+//Parse an assembly.  
+{
+  ifstream ifile(assembly_file);
+  if (!ifile) 
+    {
+      gui_progress("FAILED TO OPEN ", assembly_file, " -- Exiting.");
+      exit(1);
+    }
+
+  const int filenamesize = 1024;
+  char element_file[filenamesize];
+  while (ifile >> element_file)
+    if (element_file[0] == '#')                // comment lines
+      ifile.ignore(10000, '\n');
+    else 
+      {
+	int id;
+	ifile >> id;
+	vector x_vec, y_vec, z_vec, origin;
+	ifile >> x_vec.x() >> x_vec.y() >> x_vec.z();
+	ifile >> y_vec.x() >> y_vec.y() >> y_vec.z();
+	ifile >> z_vec.x() >> z_vec.y() >> z_vec.z();
+	double scale_factor = x_vec.len();
+	if (neq(scale_factor, 1.0))
+	  {
+	    if (neq(scale_factor, y_vec.len()) ||
+		neq(scale_factor, z_vec.len()))
+	      die("Uneven scaling in assembly parse routine");
+	    x_vec = normalise(x_vec);
+	    y_vec = normalise(y_vec);
+	    z_vec = normalise(z_vec);
+	  }
+	matrix m = matrix(x_vec,y_vec,z_vec);
+	ifile >> origin.x() >> origin.y() >> origin.z();
+	
+	transf trans = restore_transf(m, origin, scale_factor, 
+				      TRUE, FALSE, FALSE);
+	                              // rotate, reflect, and shear
+	trans = trans * t; 
+ 
+	Assembly_Element* decide(const char*, const transf &, int,int &, int);
+	Assembly_Element* el = decide(element_file, trans, id, next_part_num,
+				      indent + 4);           // indent more
+	assembly->add_element(el);
+      }
+  ifile.close();
+}
+
+
+Assembly_Element* decide(const char* filename, const transf &t, 
+			 int id, int &next_part_num,
+			 int indent)
+//Decide what kind of element we have and parse it.  Also transform it.
+// indent is current level of indenting, += 3 for each subassembly
+{
+  int length = strlen(filename);
+  if (length <= 4)
+    die("Bad filename in decide()");
+
+  char name[100];
+  strncpy(name, filename, length-4);
+  name[length-4] = '\0';
+  
+  if (streq(filename + length - 4, ".asy"))
+    {
+      Assembly* assembly = new Assembly(name, id);
+      parse(filename, assembly, t, next_part_num, indent);
+      return assembly;
+    }
+  else
+    {
+      Part* part = new Part(name, id, next_part_num++);
+      parse(filename, part, t, indent);
+      return part;
+    }
+}
+
+
+Assembly* read_assembly(const char* filename)
+//Parse the given assembly .asy file
+// Also ensure that returned assembly has mm as units
+{
+  transf t = scale_transf(1.0); 
+  int partnum = 1;        // first part numbered 1
+  Assembly_Element* element = decide(filename, t, 0, partnum, 0);
+  
+  if (element->type() == PART)
+    die ("Non-assembly file given to parse(assembly)");
+
+  Assembly *assembly = (Assembly*) element;
+  assembly->set_num_parts(partnum-1);
+  return assembly;
+}
+
+

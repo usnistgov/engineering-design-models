@@ -1,0 +1,5688 @@
+!-----------------------------------------------------------------------------
+!    
+!  I-DEAS Parameter File - System Default Settings
+!  Master Series 6
+!
+!  Copyright (c) 1998 - Structural Dynamics Research Corporation
+!
+!
+!  This file contains default settings for I-DEAS parameters and user
+!  preferences. It should be edited only by the I-DEAS Administrator or 
+!  the I-DEAS Team Data Manager administrator in accordance with the 
+!  instructions below.
+!
+!  Users should not copy this file to their home directory. I-DEAS will 
+!  place a subset of this file for each user in the Team.MasterDirectory
+!  that reflects changes users have made to their preferences within I-DEAS.
+!
+!  Two kinds of parameters are found in this file:
+!
+!  1) System-wide parameters -- these should be established in this file
+!     by the I-DEAS Administrator and should not be placed in individual
+!     users' parameter files.  These parameters apply to all I-DEAS
+!     sessions at a given site.
+!
+!  2) Default values for user preferences -- these specify the values for
+!     user preferences if the user does not explicitly set them.
+!
+!  Any of these values that exist in the user's local parameter file will
+!  override the values defined in this system defaults file. The values
+!  defined here can be restored by a user by picking the "Use System 
+!  Preferences" button on the preferences form.
+!
+!
+!  This file contains the following:
+!
+!  * Startup
+!     - Startup.        Start form preferences
+!  * Data Management and Team Data Manager 
+!     - DataMgmt.       Data management preferences
+!     - Team.           Base team data manager site wide parameters
+!     - Notification.   Purchased team data manager site wide parameters
+!     - ModelFile.      New model file preferences
+!  * Smart View Help System
+!     - Help.           Smart View and Quick help preferences
+!  * User Interface 
+!     - Display.        Display preferences
+!     - Form.           Form preferences 
+!     - IconPanel.      Icon Panel preferences
+!     - Prompt.         Prompt region preferences
+!     - List.           List region preferences
+!     - Menu.           Menu preferences
+!     - Selector.       Entity Selector preferences
+!  * Memory Management 
+!     - Memory.         Memory Management preferences
+!  * Master Modeler
+!     - MM.             Master Modeler Info preferences
+!     - Dt.             Geometric Dimensioning and Tolerancing preferences
+!     - Wp.             Workplane preferences 
+!  * Assembly Modeling
+!     - Assembly.       Assembly modeling Info preferences
+!  * Drafting Setup
+!     - dft.            Drafting Setup preferences
+!  * Sheet Metal
+!     - SheetMetal.     Sheet Metal Material Table preferences	
+!  * Rapid Prototyping
+!     - Rapid.          Rapid prototyping preferences
+!  * Geometry Translators
+!     - vda.            VDA Translator preferences
+!     - pcb.            Printed Circuit Board Translator preferences	
+!  * Simulation         
+!     - FEM.            Simulation preferences           
+!  * Test
+!     - Test.           Test application preferences
+!  * Internal Definitions
+!     - Xserver.        X server name site wide parameters
+!  * Local Language
+!     - Lang.           Language Selection preferences
+!     - Lang0.          English fonts
+!     - Lang1.          French fonts
+!     - Lang2.          German fonts
+!     - Lang3.          Italian fonts
+!     - Lang4.          Spanish fonts
+!     - Lang6.          Japanese fonts     (JISX 0208)  (7 bit format)
+!     - Lang7.          Korean             (KSC  5601)  (7 bit format)
+!     - Lang9.          Chinese            (GB2312.1980)(8 bit format)
+!     - Lang10.         Chinese            (Big5)
+!
+!  Note
+!  Team data management and memory management parameters are defined
+!  in more detail in the IDEAS Administrators Guide.
+!
+!  The continuation character for all platforms except Windows NT is \
+!  The continuation character for Windows NT is ^
+!
+!-----------------------------------------------------------------------------
+!
+!  Start Form Preferences
+!
+!  These are the default values on the user's startup form. With the 
+!  exception of local language and device driver, these are all defined
+!  on the startup form. 
+!
+!-----------------------------------------------------------------------------
+!
+!
+!  FIRST APPLICATION
+!      Specifies the application to enter when starting I-DEAS.
+!
+!      Valid settings:
+!         any application mnemonic
+!      default: DE
+!
+Startup.Application:  DE	
+!
+!
+!  FIRST TASK
+!      Specifies the task to enter when starting I-DEAS.
+!
+!      Valid settings:
+!         any valid task mnemonic for the specified application
+!      Default: MM
+!
+Startup.Task:  MM
+!
+!
+!  LOCAL LANGUAGE
+!      ----Modified in Master Series 6----
+!      Specifies the local language to be used when running I-DEAS.
+!
+!      Valid settings:
+!         0 = English
+!         1 = French
+!         2 = German
+!         3 = Italian
+!         4 = Spanish
+!         6 = Japanese Fonts     (JISX 0208)  (7 bot fonts)
+!         7 = Korean             (KSC 5601)   (7 bit fonts)
+!         9 = Chinese            (GB2312.1980)(8 bit format)
+!         10 = Chinese           (Big5)
+!      Default: 0
+!
+Startup.LocalLanguage:  0
+!
+!
+!  DEVICE DRIVER
+!      Specifies the display device driver to use for I-DEAS.
+!
+!      Valid settings:
+!         any device driver mnemonic
+!      Default: X3D
+!
+!Startup.DisplayDevice:  X3D
+!
+!
+!  FIRST PROJECT
+!      Specifies the project to use when starting I-DEAS.
+!
+!      Valid settings:
+!         Any project name
+!      Default: Commented out
+!
+!Startup.Project: 
+!
+!
+!  FIRST MODEL FILE
+!      Specifies the model file to use when starting I-DEAS.
+!
+!      Valid settings:
+!         Any model file name
+!      Default: Commented out
+!
+!Startup.ModelFile: 
+!
+!
+!  DISABLE APPLICATION SWITCH MESSAGE
+!      ----New in Master Series 5----
+!      When defined, the message popup will not display when you 
+!      change from one application to another.
+!
+!      Valid settings:
+!         1 = (or any value) Display application switch message
+!         0 = Do not display application switch message 
+!      Default: 
+!
+Startup.BridgeOff:
+!
+!
+!-----------------------------------------------------------------------------
+!
+!  Data Management Preferences
+!  
+!  These parameters are the default values for parameters that may be set
+!  by users on the data management preferences form. The I-DEAS
+!  Team Data Manager Administrator may provide values for these parameters
+!  to be used as defaults at the site.  User preferences will overrride
+!  these values.
+!
+!  Note: these parameters control base data management capabilities  
+!
+!-----------------------------------------------------------------------------
+!
+!
+!  OPERATING SYSTEM FILE DIRECTORIES
+!      The user file directory preference defines where all user files
+!      (i.e. model files, universal files, picture files, etc.) are created
+!      for a user.  This is overridden if the user specifies a directory.
+!
+!      Valid settings:
+!         Any valid directory location
+!      Default: a user's current working directory
+!      Suggested value: a directory open to other users
+!
+!DataMgmt.UserDirectory:
+!
+!
+!  OPERATING SYSTEM SCRATCH DIRECTORIES
+!      The user can specify the location where all I-DEAS scratch files are 
+!      created while running IDEAS.  IDEAS performs best when scratch files
+!      are created in a directory on the local workstation's disk.
+!
+!      Valid settings:
+!         Any valid directory location
+!      Default: a user's current working directory
+!      Suggested value: a directory on the local workstation disk
+!
+!DataMgmt.ScratchDirectory:  sys$scratch:
+!DataMgmt.ScratchDirectory:  /scratch
+!
+!
+!  TROUBLE SHOOTING
+!      The user can turn on trouble shooting errors while operating IDEAS.  
+!      These errors are sent to the list region while running IDEAS and to 
+!      STDERR/STDOUT while running the administration utility program.
+!
+!      Valid settings: 
+!         ON = Trouble shooting on
+!         OFF = Trouble shooting off
+!      Default: OFF
+!
+DataMgmt.TroubleShoot:  OFF
+!
+!
+!  DATA SIZE DISPLAY
+!      The user can specify whether to show the size of each data item as
+!      it is transferred from the library to the user's local model file.
+!
+!      Valid settings:
+!        ON = Data size display ON (displayed while getting from library)
+!        OFF = Data size display OFF
+!      Default: OFF
+!
+DataMgmt.DisplayDataSize:  OFF
+!
+!
+!  SAVE REMINDER
+!      The user can specify whether a dialog box reminding them to save
+!      their model file appears and how often it should appear.
+!
+!      Valid settings:
+!         0 = Do not display save reminder
+!         5-60 = number of minutes between save reminders
+!      Default: 15
+!
+DataMgmt.SaveReminder:  15
+!
+!
+!  AUTOMATIC SAVE    
+!      ----New in Master Series 2----
+!      When ON, the Model File will automatically be saved 
+!      each time a library or catalog operation occurs.  This 
+!      will keep information in the model file and project 
+!      database synchronized at all times.
+!
+!      When OFF, save reminders will appear after operations
+!      that cause notification.
+!
+!      Valid settings:
+!         ON = Automatically save the model file after  
+!              library or catalog operations.
+!         OFF = Do not save model file after library or 
+!               catalog operations.
+!      Default: ON
+!
+DataMgmt.SaveAfterTransaction:  ON
+!
+!
+!  QUERY WARNING MESSAGE
+!      The user can specify whether a dialog box warns them
+!      that a sizable query is about to begin.  Large queries
+!      can take enough time that the user may wish to be warned
+!      with the option to cancel the operation.
+!
+!      Valid settings:
+!         0 = Do not display warning
+!         1-n = number of items before warning appears
+!      Default: 100
+!
+DataMgmt.QueryWarningItemNumber:  100
+!
+!
+!  PROJECT HIERARCHY DISPLAY - 
+!      ----New in Master Series 4----
+!      Defines the character that is used to trigger hierarchical display
+!      of projects.  If a period character is the separator, the project 
+!      name "motor.case.casting" will appear as a three level hierarchy on 
+!      the startup and library forms as shown here:
+! 
+!                   motor
+!                      case
+!                         casting
+!                            library1
+!
+!      Valid settings:
+!         A single, non-blank, ASCII character.
+!      Default: Commented out
+!
+!DataMgmt.HierarchySeparator:
+!
+!
+!  SCREEN SAVER CONTROL
+!      ----New in Master Series 4----
+!      Windows NT only.
+!      Disable screen save while I-DEAS is running.  This can
+!      be for all executables, or only the archive read and 
+!      write executables.
+!
+!      Valid settings:
+!         0 = Leave screen saver operational
+!         1 = Disable for arcrd.exe/arcwr.exe only
+!         2 = Disable for all executables
+!      Default: 0
+!
+Winnt.ScreenSaver:  0
+!
+!
+!-----------------------------------------------------------------------------
+!
+!  Data Management Site Wide Parameters
+!  
+!  These parameters should be set by the I-DEAS Team Data Manager 
+!  Administrator. They specify the location of various shared files
+!  used by I-DEAS data management and the format used for date and time 
+!  at the site.
+!
+!-----------------------------------------------------------------------------
+!
+!
+!  MASTER IDENTIFIER
+!      This value is used to uniquely identify the master database 
+!      resource to the resource locking server.  This server manages the 
+!      transaction requests on all team engineering databases for all 
+!      users on a network. 
+!      
+!      Valid settings:
+!         0 < n < MAXIMUM 32 BIT INTEGER VALUE
+!         Suggested value: use the default
+!      Default: none
+!
+Team.MasterId:0
+!
+!
+!  SITE NAME DISPLAY
+!      ----New in Master Series 4----
+!      Defines a site name that will be displayed on the startup form
+!      and across the top of the graphics window.
+!      Note: This name is for display only. 
+!      This parameter is read only from the site parameter file.
+!
+!      Valid settings:
+!         1-63 ASCII characters 
+!      Default: Commented out
+!
+!Team.MasterName:
+!
+!
+!  MASTER DATABASE DIRECTORY 
+!      Defines the location of the master database file (z_master.imd) 
+!      used to define the master series environment. This directory also 
+!      contains the user parameter files .uname_param (uname_param.dat) 
+!      files that contain user preferences set on the options and startup 
+!      forms.
+!
+!      Valid settings:
+!         A fully qualified directory location 
+!      Default UNIX: $SDRC_INSTL/team/master
+!      
+!Team.MasterDirectory:
+Team.MasterDirectory:d:\team\master
+!      
+!
+!  PROJECT DATABASE DIRECTORY 
+!      The project database directory preference defines where all
+!      project database files (*.pmd) are created for all users in a 
+!      network configuration. 
+!
+!      Valid settings:
+!         A fully qualified directory location 
+!      Default UNIX: $SDRC_INSTL/team/projects
+!
+!Team.ProjectsDirectory:
+Team.ProjectsDirectory:d:\team\projects
+!
+!
+!  TEAM SCRATCH DIRECTORY
+!      ----New in Master Series 2----
+!      The team scratch directory preference defines where scratch files
+!      assocated with project database files (*.pmd) are created for all
+!      users in a network configuration. 
+!
+!      Valid settings:
+!         A fully qualified directory location 
+!      Default UNIX: $SDRC_INSTL/team/projects
+!
+!Team.ScratchDirectory:
+!Team.ScratchDirectory:
+!
+!
+!  SHARED FILE DIRECTORY 
+!      The shared file directory preference defines where all shared files
+!      (i.e. files in libraries and catalogs) are created for all users' in 
+!      a network configuration.  This is overridden if a directory is 
+!      assigned to the library/catalog by a project manager.
+!
+!      Valid settings:
+!         A fully qualified directory location 
+!      Default UNIX: $SDRC_INSTL/team/shared
+!
+!Team.SharedDirectory:
+Team.SharedDirectory:d:\team\shared
+!
+!  DATE/TIME FORMAT
+!      A user can select the date/time formats he prefers to see displayed
+!      and used for query in the user interface.
+!
+!      Valid settings:
+!         0 = MMM-DD-YYYY   (U.S.)
+!         1 = DD-MMM-YYYY   (Europe)
+!      Default: 0
+!
+Team.DateFormat:  0
+!
+!
+!  FILE COMPRESSION
+!      I-DEAS has the ability to compress a file when a user ceases using
+!      it, if it is one of a selected set of file types, and if the 
+!      parameter Team.Compress is on. When a user begins to access any file
+!      in I-DEAS, it does not matter if file is compressed; I-DEAS will 
+!      handle it either way, decompressing it automatically if necessary.  
+!      The file types that are compressed when the switch is on are the 
+!      following:
+!
+!      - part, assembly, and drafting setup, files in libraries
+!      - part, drafting setup, section, feature, and icon files in catalogs
+!      - all binary drawing and drawing backup files (in libraries or not)
+!      - material database files
+!      - model files
+!
+!      Model files and drawing files are not compressed with each "save" or
+!      "file" command, but only when the user ceases using them (by exiting 
+!      the product or changing their active model file or drawing).
+!
+!      Valid Settings:
+!         ON  - File Compression ON
+!         OFF - File Compression OFF
+!      Default: OFF 
+!
+Team.Compress:  OFF 
+!
+!
+!  Performance Tuning
+!
+!  A user can control the performance of IDEAS regarding team engineering 
+!  with the following preferences:
+!
+!
+!  NUMBER OF PROJECT DATABASES 
+!      Controls the number of project databases, including the master 
+!      database, allowed to be logically open simultaneously.  If the 
+!      number of databases accessed exceeds this number, the least used 
+!      project database will be closed.  Only one master database is open 
+!      during a user's IDEAS session.  If a user accesses data from 
+!      multiple projects, the larger this number the better the system will 
+!      perform.
+!   
+!      Valid Settings:
+!         3 < n < 25
+!         Suggested value: use the default
+!      Default: 10
+!
+Team.NumberProjects:  10
+!
+!
+!  PROJECT CACHE SIZE 
+!      Controls the size of the projects memory cache used while operating 
+!      I-DEAS.  The larger the cache the better the system performance.
+!
+!      Note: The minumum size of the memory cache is directly proportional 
+!      to the number of projects allowed to be open.  The minimum size of 
+!      the memory cache is based on the following formula:
+!
+!                CacheSize = 8192 * (64 + (4 * number of projects))
+!
+!      Valid Settings:
+!         An integer in units of bytes equal or greater the minimum 
+!         size required by the system.
+!      Default: Commented out
+!
+!Team.CacheSizeProjects:  851968 
+!
+!
+!  TRANSACTION RETRIES 
+!      Controls the number of times attempts will be made to access a team 
+!      database to perform a transaction.  The larger the number of retries, 
+!      the user has a statistically higher chance of executing each 
+!      transaction, without a transaction timeout.
+!
+!      Valid Settings:
+!         1 < n < Maximum 32 bit integer value
+!         Suggested value: use the default
+!      Default: 30
+!
+Team.TransactionRetries:  30
+!
+!
+!  REGENERATE OR STORE GEOMETRY
+!      ----New in Master Series 3----
+!      This option controls if application specfic geometry associated
+!      with a part is stored in the library file, or regenerated when
+!      needed in the model file.
+!
+!      When OFF, a DRW file with section views will be smaller and
+!      faster to check in/out of a library, but the first time the
+!      drawing moves from the bin to the workbench, extra time is 
+!      needed to recreate section views. Note that recreation of 
+!      section views is required if the part geometry has changed, 
+!      independent of this option's setting. This option effects ASM
+!      files with assembly features. The assembly feature will be
+!      regenerated the first time they are needed.
+!
+!      When ON, the DRW and ASM file will be larger.
+!
+!      Valid settings:
+!         0 - Regenerate application geometry when needed
+!         1 - Store application geometry in library
+!      Default: 0
+!
+Team.ExpandedFileSw:  0
+!
+!
+!  IMPORT/EXPORT PRIVILEGE
+!      ----New in Master Series 3----
+!      To be set by the I-DEAS Team Data Manager Administrator
+!      for the I-DEAS data installation.
+!
+!      The administrator can control what member classes have the 
+!      ability to import or export I-DEAS data using Data Sharing.  
+!
+!      The third parameter allows users to import data sharing
+!      packages as they were defined, but does not allow packages
+!      to be imported that have been modified by editing the package 
+!      file.
+!
+!      Valid settings:
+!         1 - Only Administrator
+!         2 - Only Administrator and Manager
+!         3 - All users
+!      Defaults: 3, 3, 3
+!
+Team.ExportPrivilege:  3
+Team.ImportPrivilege:  3
+Team.ImportModifiedPrivilege:  3
+!
+!
+!  ADOPT DIRECT PRIVILEGE
+!      ----New in Master Series 6----
+!      To be set by the I-DEAS Team Data Manager Administrator
+!      for the I-DEAS data installation.
+!
+!      The administrator can control what member classes have the
+!      ability to adopt a file into a project without specifying 
+!      a filename to copy it to. This is especially useful for 
+!      I-DEAS binary drawings. 
+!
+!      Valid settings:
+!         0 - no support for ANY user
+!         1 - Only Administrator
+!         2 - Only Administrator and Manager
+!         3 - All users
+!      Defaults: 3
+!
+Team.AdoptDirectPrivilege:  3
+!
+!
+!  USER ATTRIBUTE CREATION PRIVILEGE
+!      ----New in Master Series 6----
+!      To be set by the I-DEAS Team Data Manager Administrator
+!      for the I-DEAS data installation.
+!
+!      The administrator can control what member classes have the
+!      ability to create user attributes in a project.  This applies
+!      to both configured and unconfigured projects. This is 
+!      especially useful for administrators trying to synchronize 
+!      several projects in several I-DEAS sites.
+!
+!      Valid settings:
+!         0 - no support for ANY user
+!         1 - Only Administrator
+!         2 - Only Administrator and Manager
+!         3 - All users
+!      Defaults: 3
+!
+Team.CreateUserAttrPrivilege:  3
+!
+!
+!  LIBRARY ITEM MOVE PRIVILEGE
+!      ----New in Master Series 6----
+!      To be set by the I-DEAS Team Data Manager Administrator
+!      for the I-DEAS data installation.
+!
+!      The administrator can control what member classes have the
+!      ability to move library items in I-DEAS projects.  This 
+!      applies to both configured and unconfigured projects. This is
+!      especially useful for administrators with strict guidelines 
+!      as to where library data is to reside within an I-DEAS site.
+!
+!      Valid settings:
+!         0 - no support for ANY user
+!         1 - Only Administrator
+!         2 - Only Administrator and Manager
+!         3 - All users
+!      Defaults: 3
+!
+Team.LibItemMovePrivilege:  3
+!
+!
+!  IMPORT MODEL FILE PRIVILEGE
+!      ----New in Master Series 6----
+!      To be set by the I-DEAS Team Data Manager Administrator
+!      for the I-DEAS data installation.
+!
+!      The administrator can control what member classes have the
+!      ability to import a model file into a project from the I-DEAS
+!      startup or /File Open dialogs. This is especially useful for
+!      avoiding infecting a TDM site with a model file that contains
+!      library relations that are from another TDM site.
+!
+!      Valid settings:
+!         0 - no support for ANY user
+!         1 - Only Administrator
+!         2 - Only Administrator and Manager
+!         3 - All users
+!      Defaults: 3
+!
+Team.MFImportPrivilege:  3
+!
+!
+!  EXPORT OF ASSOCIATIVE COPY RELATIONSHIPS PRIVILEGE
+!      ----New in Master Series 6----
+!      To be set by the I-DEAS Team Data Manager Administrator
+!      for the I-DEAS data installation.
+!
+!      The administrator can limit the number of context assemblies
+!      that are exported from I-DEAS using Data Sharing.
+!
+!      Valid settings:
+!         TRUE  - Export all related context assemblies
+!         FALSE - Limit export of related context assemblies
+!                 to one per associative copy feature
+!      Default: TRUE
+!
+!Team.TraverseAllCWARelations:  TRUE
+!
+!
+!  MULTI-USER LOCK SERVER
+!      ----New in Master Series 6----
+!      To be set by the I-DEAS Team Data Manager Administrator.
+!      This variable determines which Team Resource Lock (RL) server 
+!      is handling multi-user locks for the data installation, by
+!      specifying a RL configuration file that contains this information.
+!
+!      In a Team environment, all users of a particular data installation
+!      MUST point to the same RL configuration file.  If distinct users 
+!      of the same data installation (as specified by the Team.MasterId) 
+!      reference different lock servers, then data corruption may result.
+!
+!      Valid settings:
+!         path to a file
+!      Defaults: $SDRC_INSTL\rl\team.cfg
+!
+Team.ConfigFile:d:\team\master\Team.cfg
+!
+!
+!  SFAM LEVEL
+!      ----New in Master Series 2----
+!      This parameter is set by the installation program and
+!      records the data security level selected during 
+!      installation.  This information is also stored in the
+!      site database (.imd).
+!
+!      Run dmadmin to change your data security (SFAM) level.
+!
+!      *** DO NOT EDIT THIS VALUE ***
+!
+Team.SecFileAccessLevel:  LEV1
+!
+!
+!  DEFAULT MEMBER CLASS
+!      ----New in Master Series 6----
+!      This parameter is set initially during the migration to Master 
+!      Series 6, with a value from the site (imd) database.  The value 
+!      is stored here rather than in the site database starting with MS6.
+!
+!      Run dmadmin to change the "Default member class".  
+!
+!      *** DO NOT EDIT THIS VALUE ***
+!
+Team.DefaultMemberClass:  Manager 
+!
+!-----------------------------------------------------------------------------
+!
+!  Team Data Manager Site Wide Parameters
+!  
+!  These parameters are defined by the I-DEAS Team Data Manager 
+!  Administrator on a site-wide basis. They control the mail command and
+!  format of notification messages from Team Data Manager.
+!
+!  Note: These preferences will not apply to your site unless you have
+!  Team Data Manager
+!
+!-----------------------------------------------------------------------------
+!
+!
+!  MAIL COMMAND
+!      Team Data Manager uses standard operating system mail commands to 
+!      send notification of change to IDEAS users.  If a company uses a 
+!      different mail system than that provided by the operating system, 
+!      a customized mail command script can be defined and specified with 
+!      the following preferences.
+!
+!      Valid settings:
+!         Mail Command Format (defaults):
+!
+!                   Command   File   Address  
+!                   -------   ----   -------
+!         UNIX -    mail      <%s    %s             
+!
+!         Suggested Value: use defaults
+!      Default: Commented out
+!
+!Notification.MailCommand:  Mail %s %s %s
+!       
+!
+! NOTIFICATION MESSAGE CUSTOMIZATION
+!      Team Data Manager allows the customization of the format of the 
+!      notification message.  The default values are associated with each
+!      parameter.
+!
+!      Note: Text in the notification message may be changed except the 
+!      formatting characters, "%s", "%d", and "%f" must remain for use in 
+!      the message formatting by the notification system.  Text lines 
+!      should be kept to less than 80 characters.
+!
+!Notification.Subject:  Notification of %s ...
+!Notification.Header:  NOTIFICATION OF %s 
+!Notification.FileMessage:  This notification information can be found in:
+!
+!Notification.NewVersion:  NEW VERSION
+!Notification.StateChange:  %s STATE CHANGE
+!Notification.Modification:  MODIFICATION
+!
+!Notification.MemberName:  MEMBER: %s
+!Notification.Date:  DATE: %s
+!
+!Notification.ItemHeader:  %d) 
+!Notification.ItemName:  %s: %s
+!Notification.VersionNumber:  VERSION: %d
+!Notification.AttributeInteger:  %s: %d
+!Notification.AttributeDouble:  %s: %f
+!Notification.AttributeText:  %s: %s
+!
+!Notification.NumberAffected:  THE FOLLOWING %d ITEM(S) ARE AFFECTED:
+!
+!Notification.Border1:  \
+!==============================================================================
+!Notification.Border2:  \
+!==============================================================================
+!
+!
+! NOTIFICATION TRACKING
+!      When notification tracking is turned on, each notification file is 
+!      tracked as an item by I-DEAS and related to the item that caused
+!      the notification to be sent.
+!
+!      Valid settings: 
+!         ON - Tracking is ON
+!         OFF - Tracking is OFF
+!      Default: OFF
+!
+Notification.Tracking:  OFF
+!              
+!
+!-----------------------------------------------------------------------------
+!
+!  New Model File Preferences
+!  
+!  These parameters define default values that will be used when a 
+!  new model file is created. There is no user interface to set these
+!  parameters in Master Series 1.  They should be defined by the I-DEAS
+!  administrator for the installation.
+!
+!-----------------------------------------------------------------------------
+!
+!  UNITS
+!      Defines the units to be used when a new model file is created.
+!
+!      Valid Settings:
+!         1 = Meter (newton)
+!         2 = Foot  (pound f)
+!         3 = Meter (kilogram f)
+!         4 = Foot  (poundal)
+!         5 = mm    (milli newton)
+!         6 = cm    (centi newton)
+!         7 = in    (pound f)
+!         8 = mm    (kilogram)
+!      Default: 5
+!
+ModelFile.Units:  5
+!
+! 
+!-----------------------------------------------------------------------------
+!  
+!  Smart View Help System
+!   
+!-----------------------------------------------------------------------------
+!
+!
+!  ICON QUICK HELP
+!      ----New in Master Series 2----
+!      Controls the display of a single line of help text along
+!      the bottom of the graphics region.
+!
+!      Valid Settings:
+!        0 = Off
+!        1 = On 
+!      Default: 1
+!
+Help.Quick:  1
+!
+!
+!  START HELP SYSTEM
+!      ----New in Master Series 2----
+!      Controls when the Smart View help system starts.
+!      Cannot be changed through the interactive user interface.
+!
+!      Valid settings:
+!        0 = Smart View starts the first time help is required. 
+!        1 = Smart View starts when I-DEAS starts.
+!      Default: 1
+!
+Help.AutoStart:  1
+!
+!
+! FORM QUICK HELP
+!      ----New in Master Series 2.1----
+!      Controls the display of a single line of help text along the
+!      bottom of the graphics region when mouse traverses forms.
+!
+!      Valid settings:
+!        0 = Off
+!        1 = On
+!      default: 1
+!
+Help.FormQuickHelp:   1
+!
+!
+!-----------------------------------------------------------------------------
+!
+!  User Interface Preferences
+!
+!  These parameters are default values for user interface preferences 
+!  defined in the option/preferences forms.
+!
+!-------------------------------------------------------------------------
+!
+!  Display Preferences
+!
+!  Preferences for the Option/Preferences/Display form.
+!
+!-------------------------------------------------------------------------
+!
+!
+!  GRAPHICS UPDATE
+!
+!      Valid settings:
+!         0 = the graphics region is kept up to date automatically.
+!         1 = redisplay is required to update graphics.
+!      Default: 1
+!
+Display.Autodraw:  1
+!
+!
+!  COLOR OR GREY
+!      Controls how the color table is defined.
+!
+!      Valid settings:
+!         1 = Greyscale
+!         2 = Color
+!      Default: 2
+!
+Display.ColorMode:  2
+!
+!
+!  DOUBLE BUFFER
+!      When On, dynamic displays will be double buffered.
+!
+!      Valid settings:
+!         1 = On
+!         0 = Off 
+!      Default: 1
+!
+Display.DoubleBuffer:  1
+!
+!
+!  HEADER
+!      Defines the type of header information displayed.
+!
+!      Valid settings:
+!         1 = No header
+!         2 = Short header
+!         3 = Full header
+!      Default: 1
+!
+Display.HeaderDisplay:  1
+!
+!
+!  ORIGIN DISPLAY
+!      Valid settings:
+!      When On, each viewport will display a view origin. 
+!
+!      Valid settings:
+!         1 = On
+!         0 = Off 
+!      Default: 0
+!
+Display.OriginDisplay:  0
+!
+!
+!  VIEWPORT NUMBER
+!      When On, each viewport will display the viewport number. 
+!
+!      Valid settings:
+!         1 = On
+!         0 = Off 
+!      Default: 0
+!
+Display.ViewportLabel:  0
+!
+!
+!  VIEWPORT BORDER DISPLAY
+!      When ON, each viewport will have a distinct boundary outline.
+!
+!      Valid settings:
+!         1 = On
+!         0 = Off 
+!      Default: 1
+!
+Display.ViewportOutline:  1
+!
+!
+!  VIEWPORT TRIAD DISPLAY
+!      When On, each viewport will have a view triad displayed
+!
+!      Valid settings:
+!         1 = On
+!         0 = Off 
+!      Default: 1
+!
+Display.ViewportTriad:  1
+!
+!
+!  ACTIVE VIEWPORT
+!      Defines how to control updates when using multiple viewports.
+!
+!      Valid settings:
+!         1 = Pick a viewport
+!         2 = Apply to work viewport
+!      Default: 2
+!
+Display.ViewportSelectionMethod:  2
+!
+!
+! SYMBOL SIZE
+!      ----New in Master Series 2----
+!      Defines the relative size of graphical symbols as a fraction
+!      of screen size.
+!
+!      Valid settings:
+!         .01-1
+!      Default: .05
+!
+Display.SymbolSize:  .05
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Dynamic Clipping
+!
+!  Dynamic Clipping form. 7 parameters are repeated for each of 4 
+!  possible viewports.
+!
+!-------------------------------------------------------------------------
+!
+!
+!  CLIPPING INTERFERENCE DISPLAY STYLE
+!      ----New in Master Series 2----
+!      Clipping interference display style for viewport 1.
+!
+!      Valid settings:
+!         1 = All geometry except the clipping planes is displayed
+!             as wireframe.
+!         2 = All geometry except the clipping planes is displayed
+!             as a solid.
+!      Default: 2
+!
+Display.ClipInterferenceStyle1:  2
+!
+!
+!  INTERSECTION TRIAD
+!      ----New in Master Series 2----
+!      When On, a triad shows where the clipping planes intersect
+!      one another in viewport 1.  This helps locate the clipping 
+!      plane's position.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Display.ClipNormal1:  1
+!
+!
+!  APPEARANCE WITHIN VOLUME
+!      ----New in Master Series 2----
+!      Defines the appearance of the volume within the clipping planes,
+!      in viewport 1.
+!
+!      Valid settings:
+!         1 = Transparent
+!         2 = Translucent
+!         3 = Wireframe
+!      Default: 1
+!
+Display.ClipTransparent1:  1
+!
+!
+!  MOVE PLANES
+!      ----New in Master Series 2----
+!      Defines how mouse motion is interpreted, in viewport 1.
+!
+!      Valid settings:
+!         1 = Clipping planes move relative to the screen
+!         2 = Clipping planes move relative to the model space coord. sys.
+!      Default: 1
+!
+Display.ClipMotionSpace1:  1
+!
+!
+!  COLOR FILL
+!      ----New in Master Series 2----
+!      When On, areas cut by clipping will be filled with a color,
+!      in viewport 1.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Display.ClipCaps1:  0
+!
+!
+!  COLOR CAPS
+!      ----New in Master Series 2----
+!      Defines the color of the capping areas, in viewport 1.
+!      See WP.Color for a list of available colors.
+!
+!      Valid settings:          
+!         0-1023
+!      Default: 3
+!
+Display.ClipCapColor1:  3
+!
+!
+!  COLOR INTERFERENCE
+!      ----New in Master Series 2----
+!      Defines the color of the areas where geometry interferes,
+!      in viewport 1. See WP.Color for a list of available colors.
+!
+!      Valid settings:
+!         0-1023
+!      Default: 11
+!
+Display.ClipInterfColor1:  11
+!
+!
+!  CLIPPING, VIEWPORT 2
+!      ----New in Master Series 2----
+!      See descriptions for viewport 1.
+!
+Display.ClipInterferenceStyle2: 2
+Display.ClipNormal2:            1
+Display.ClipTransparent2:       1
+Display.ClipMotionSpace2:       1
+Display.ClipCaps2:              0
+Display.ClipCapColor2:          3
+Display.ClipInterfColor2:       11
+!
+!
+!  CLIPPING, VIEWPORT 3
+!      ----New in Master Series 2----
+!      See descriptions for viewport 1.
+!
+Display.ClipInterferenceStyle3: 2
+Display.ClipNormal3:            1
+Display.ClipTransparent3:       1
+Display.ClipMotionSpace3:       1
+Display.ClipCaps3:              0
+Display.ClipCapColor3:          3
+Display.ClipInterfColor3:       11
+!
+!
+!  CLIPPING, VIEWPORT 4
+!      ----New in Master Series 2----
+!      See descriptions for viewport 1.
+!
+Display.ClipInterferenceStyle4: 2
+Display.ClipNormal4:            1
+Display.ClipTransparent4:       1
+Display.ClipMotionSpace4:       1
+Display.ClipCaps4:              0
+Display.ClipCapColor4:          3
+Display.ClipInterfColor4:       11
+!
+!
+!  DISPLAY PERFORMANCE
+!      Defines the degree of data reduction for each redisplay.
+!      The size of each surface in the current view is considered.
+!      If a surface's minimum non-zero dimension value is less than 
+!      the values shown below, it is categorized (units = pixel).  
+! 
+!      Valid settings:
+!         0-n
+!      Defaults: 3,10,20
+!
+Display.ThrowAway:  3
+Display.NoIsolines:  10
+Display.MinIsolines:  20
+!
+!
+! Obsolete -- Display.Detail:  2
+! Obsolete -- Display.OffScreen:  0
+!
+!
+!   SURFACE DISPLAY DETAIL
+!       Controls the display of the catagorized surfaces.
+! 
+!       Valid settings:
+!          0 = All surfaces are displayed with display attribute values
+!              and display quality as defined on the display option form.
+!          1 = Surfaces smaller than MinIsoline value are displayed with
+!              a small number of isolines.  The shapes are simplified.
+!          2 = In addition, surfaces smaller than the NoIsoline value
+!              are displayed as filled areas with no shape definition.
+!              (Selectable only along boundaries.)
+!          3 = In addition, surfaces smaller than the ThrowAway value
+!              are invisible and selectable only by label.
+!       Default: 3
+!
+Display.SurfaceDetail:  3
+!
+!
+!  OFF SCREEN DISPLAY DETAIL
+!      Entities not within the current view can be further reduced in 
+!      detail.  The effects of each setting are describe below.
+!
+!      Valid settings:
+!         0 = Off screen entities are displayed with the same
+!             detail as on screen.
+!         1 = In addition to on screen reduction, all surfaces are
+!             displayed with a small number of isolines.  The shapes are
+!             simplified.
+!         2 = In addition, all surfaces are displayed as filled areas
+!             with no shape definition, and boundaries are not displayed
+!             as smooth curves.  (Selectable only along boundaries.)
+!         3 = Off screen entities are invisible.
+!      Default: 1
+!
+Display.OffScreenDetail:  1
+!
+!
+!  DISPLAY MAINTENANCE 1
+!      Consider modifying these 2 values to improve dynamic viewing 
+!      on slow graphics devices.  This includes the X3D driver, or 
+!      working in single buffer mode.  
+!
+!      If you see a flickering display of entities that have 
+!      been deleted while doing dynamic viewing, reducing these 
+!      parameters may improve the situation.
+!
+!      ----New in Master Series 2----
+!      Defines a threshold for display size (in complexity units)
+!      above which graphical cleanup is considered.
+!
+!      Valid settings:
+!         0-max display limit 
+!      Default: 5000
+!
+Display.OverdrawCleanup1:  5000
+!
+!
+!  DISPLAY MAINTENANCE 2
+!      ----New in Master Series 2----
+!      Defines a threshold for display size (in complexity units)
+!      above which graphical cleanup is considered for individual 
+!      graphical entities.
+!
+!      Valid settings:       
+!         0-max display limit 
+!      Default: 150
+!
+Display.OverdrawCleanup2:  150
+!
+!
+!  LEVELS OF DETAIL
+!      ----New in Master Series 5----
+!      When on, multiple "levels of detail" of a part's graphics will be
+!      created and saved. These are 3D graphic representations of a specific
+!      scale. Levels of detail improve display speed by eliminating the need 
+!      to bring the part into memory everytime it is displayed. 
+!
+!      Valid settings:
+!         1 = Create graphics for reuse
+!         0 = Off
+!      Default: 1
+!
+Display.UseLod:  1
+!
+!
+!  MAXIMUM LEVELS OF DETAIL
+!      ----New in Master Series 5----
+!      Defines the maximum number of "levels of detail" to keep for each
+!      part.  When the maximum is exceeded, the oldest is replaced.
+! 
+!      Levels of detail are stored in your model file. The more levels you
+!      keep, the more disk space required. 
+!
+!      For best results, keep this number above 2.  The more levels you keep 
+!      the faster displays will tend to be over time.
+! 
+! 
+!      Valid settings:
+!         1-8
+!      Default: 5
+!
+Display.MaxNumberLod:  5
+!
+!
+!  LOCK CURRENT LEVELS OF DETAIL 
+!      ----New in Master Series 5----
+!      When On, new "levels of detail" will not be created/stored if any 
+!      levels already exist. Displays will use the existing level closest 
+!      it's needs without generating new graphics.
+! 
+!      Valid settings:
+!         1 = On
+!         0 = Off
+!      Default: 0
+!
+Display.LockLod:  0
+!
+!
+!  LEVLEL OF DETAIL MESSAGE 
+!      ----New in Master Series 5----
+!      When on, every time a new "level of detail" is created a message
+!      is sent to the list window with the name of part. This can help
+!      determine the correct number of levels to keep from the indication
+!      of how often a new level is required.
+! 
+!      Valid settings:
+!         1 = On
+!         0 = Off
+!       Default:  0
+!
+Display.ReportLodCreate:  0
+!
+!
+!  USE LEVELS OF DETAIL FOR SHADED 
+!      ----New in Master Series 5----
+!      When on, stored "levels of detail" will be used during software
+!      shaded displays. This can greatly increase the speed of these 
+!      displays. Precise silhouettes will NOT be extracted and used. 
+!      Precise silhouettes, however, will improve the quality of the 
+!      resulting image.
+! 
+!      Valid settings:
+!         1 = On
+!         0 = Off
+!      Default: 0
+!
+Display.SoftwareShadeWithLod:  0
+!
+!
+!  SHADED AND LINE
+!      ----New in Master Series 5----
+!      When on, all levels of detail will contain the information needed
+!      to produce a shaded image as well as a the information for a 
+!      wireframe image. This switch will impact the time needed to produce
+!      a new level of detail during line displays. However, the next
+!      time a shaded display is requested, no new level will be required.
+! 
+!      Valid settings:
+!         1 = Save a levels of detail with both line and shaded data
+!         0 = Off
+!      Default: 0
+!
+Display.RenderShadedLod:  0
+!
+!
+! LINE ZOOM SENSITIVITY
+!      ----New in Master Series 5----
+!      Defines the increase in magnification (zoom) allowed before
+!      a new level of detail will be calculated for a part during
+!      a wireframe display.
+! 
+!      Valid settings:
+!         1.5 - 1000.0 
+!      Default: 8.0
+!
+Display.LineZoomSensitivity:  8.0
+!
+!
+!  SHADED ZOOM SENSITIVITY
+!      ----New in Master Series 5----
+!      Defines the increase in magnification (zoom) allowed before
+!      a new level of detail will be calculated for a part during
+!      a shaded display.
+! 
+!      Valid settings:
+!         1.5 - 1000.0 
+!      Default: 4.0
+!
+Display.ShadedZoomSensitivity:  4.0
+!
+!
+!  ANIMATE SIZE LIMIT
+!      ----New in Master Series 5----
+!      Maximum size of the current display list above which no change
+!      animation will be attempted.  This limit effects both 'view' and
+!      'orientation' type animations.
+!
+!      Note: The correct value depends upon the capabilities of your
+!      display hardware (i.e. graphics adaptor).
+!
+!      Valid settings:
+!         > 4096
+!      Default: 1000000
+!
+Display.AnimateSizeLimit:  1000000
+!
+!
+!  AUTOSCALE DURING GET
+!      ----New in Master Series 5----
+!      When ON, if you get a part or assembly from a bin, with
+!      nothing else on the workbench, the program will scale the
+!      view of the entity to fill the screen before displaying it.
+!
+!      If other entities already exist on the workbench, no view
+!      scaling is done.
+!
+!      Valid settings:
+!         0 = Do not autoscale during get operation
+!         1 = Autoscale during get operation
+!      Default: 0
+!
+Display.AutoscaleDuringGet:  0
+!
+!
+!  ANIMATE VIEW CHANGE
+!      ----New in Master Series 5----
+!      When ON, if you change the view (zoom, autoscale, etc.) in a
+!      viewport where dynamic viewing is ON, the change in the view
+!      will be made in small increments over time (about 2 seconds).
+!      This has the effect of 'flying' you to or away from you previous
+!      view to you new view.
+!
+!      Note: This option only works on devices and display modes that
+!            support dynamic viewing. All other devices and display modes
+!            will simply ignore this switch.
+!
+!      Valid settings:
+!         0 = Do not animate view changes
+!         1 = Animate view changes
+!      Default: 1
+!
+Display.AnimateViewChange:  1
+!
+!
+!  ZOOM ALL SELECTED
+!      ----New in Master Series 5----
+!      When ON, the 'Zoom All' view icon will 'Zoom All selected entities'.
+!      If no entities are selected, 'Zoom All' will include all entities.
+!
+!      Note: Some types of annotation (e.g. Dimensions, Notes, etc.) are
+!            ignored by 'Zoom All'. If only these types of entities are
+!            selected, the icon will act as if no entities are selected.
+!
+!            If a single point is selected, only the view target point
+!            (i.e. view rotation center) will be changed.
+!
+!      Valid settings:
+!         0 = Always Zoom All entities
+!         1 = Zoom All selected entities
+!      Default: 1
+!
+Display.ZoomAllSelected:  1
+!
+!
+!  ZOOM ALL DESELECT
+!      ----New in Master Series 5----
+!      When ON, the 'Zoom All' view icon will automatically deselect all
+!      the entities after performing the 'Zoom All'.
+!
+!      Valid settings:
+!         0 = Do not deselect entities after 'Zoom All'
+!         1 = Deselect entities after 'Zoom All'
+!      Default: 0
+!
+Display.ZoomAllDeselect:  0
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Form Preferences -- Option/Preferences/Form form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  FORM DISPLAY
+!      Controls if dialog information will be displayed as forms
+!      or menus.
+!
+!      Valid settings:
+!         1 = On - forms information will appear as a popup dialog.
+!         0 = Off - forms information will appear as menus and prompts.
+!      Default: 1
+!
+Form.Display:  1
+!
+!
+!  FORM FONT SIZE
+!      Defines the size of the font used for the forms popup dialog.
+!
+!      Valid settings:
+!         1 = Small
+!         2 = Medium
+!         3 = Large
+!      Default: 2
+!
+Form.Font:  2
+!
+!
+!  FORM POSITION
+!      Defines where the forms will appear relative to the screen
+!
+!      Valid settings:
+!         1 = Left
+!         2 = Center
+!         3 = Right
+!      Default: 3
+!
+Form.Justify:  3
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Icon Preferences -- Option/Preferences/Icon Panel form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  ICON FONT SIZE 
+!      Defines the size of the font used for icon panel.
+!
+!      Valid settings:
+!         1 = Small
+!         2 = Medium
+!         3 = Large
+!      Default: 2
+!
+IconPanel.Font:  2
+!
+!
+!  ICON IMAGE SIZE
+!      Defines the size in pixels of the icon picture within the
+!      pulldown menu.
+!
+!      Valid settings:
+!         5-100 
+!      Default: 50
+!
+IconPanel.MenuPictureSize:  50
+!
+!
+!  ICON STACK INDICATOR
+!      When On, an arrow indicator will appear in the lower right 
+!      corner of the icons to indicate that other selections exist.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+IconPanel.MenuIndicators:  1
+!
+!
+!  PANEL DISPLAY
+!      When On, the icon panel will be displayed with the session 
+!      is started.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+IconPanel.PanelDisplay:  1
+!
+!
+!  MOUSE SENSITIVITY FOR ICONS
+!      ----New in Master Series 4----
+!      Defines the distance in pixels you need to move the mouse 
+!      to trigger selection of an icon from an icon stack.
+!
+!      Valid settings:
+!         5-max integer pixels 
+!      Default: 5
+!
+IconPanel.PixelMovement:  5
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Prompt Preferences -- Option/Preferences/Prompt/List form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  PROMPT FONT SIZE
+!      Defines the size of the font used for prompt region.
+!
+!      Valid settings:
+!         1 = Small
+!         2 = Medium
+!         3 = Large
+!      Default: 2
+!
+Prompt.Font:  2
+!
+!
+!  PROMPT LIST SIZE
+!      Defines the number of lines of error and prompt text
+!      that resides in the scrolling area of the prompt region.
+!
+!      Valid settings:
+!         10-500  
+!      Default: 500
+!
+Prompt.ScrollLength:  500
+!
+!
+!-------------------------------------------------------------------------
+!
+!  List Preferences -- Option/Preferences/Prompt/List form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  LIST FONT SIZE
+!      Defines the size of the font used for list region.
+!
+!      Valid settings:
+!         1 = Small
+!         2 = Medium
+!         3 = Large
+!      Default: 2
+!
+List.Font:  2
+!
+!
+!  LIST REGION LENGTH
+!      Defines the number of lines of text that resides in 
+!      the scrolling area of the list region.
+!
+!      Valid settings:
+!         10-5000
+!      Default: 5000
+!
+List.ScrollLength:  5000
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Menu Preferences -- Option/Preferences/Menus form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  MENU DISPLAY
+!      When On, menus are displayed to the screen.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Menu.Display:  1
+!
+!
+!  MENU FONT SIZE
+!      Defines the size of the font used for menu region.
+!
+!      Valid settings:
+!         1 = Small
+!         2 = Medium
+!         3 = Large
+!      Default: 2
+!
+Menu.Font:  2
+!
+!
+!  MENU POSITION
+!      Defines where the menus will appear relative to the 
+!      graphics region.
+!
+!      Valid settings:
+!         1 = Left
+!         2 = Right
+!      default: 2
+!
+Menu.Justify:  2
+!
+!
+!  MNEMONIC DISPLAY
+!      When On, the menu mnemonics will be displayed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Menu.Mnemonics:  0
+!
+!
+!  MENU OVERLAP
+!      Defines the percentage of overlap within the cascading menus.
+!
+!      Valid settings:
+!         0-100 
+!      Default: 60
+!
+Menu.Overlap:  60
+!
+!
+! MENU DISPLAY
+!      Controls the complexity of the menu display.
+!
+!      Valid settings:
+!         1 = Short
+!         2 = Long 
+!         3 = All
+!      Default: 1
+!
+Menu.Type:  1
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Selector Preference -- Option/Preferences/Selector form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  PICKABILITY
+!      If off, data in the graphics region cannot be picked. This 
+!      improves display performance with large models where you only 
+!      want to view data, not interact with it.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Selector.Pickability:  1
+!
+!
+!  PICKING RANGE
+!      Defines how close to the cursor items must be to be picked in
+!      percentage of viewport.  
+!
+!      Valid settings:
+!         0.1-25.0  
+!      Default: 2.0
+!
+Selector.PickRadii:  2.0
+!
+!
+!  HIGHLIGHT
+!      When On, entities are highlighted before you select them.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Selector.PreHighlight:  1
+!
+!
+!  NUMBER HIGHLIGHTED
+!      Defines how many selected entities are highlighted.
+!      If this is set too high, interactive performance may degrade.	
+!
+!      Valid settings:
+!         0-100
+!      Default: 20
+!
+Selector.HighLightLimit:  20
+!
+!
+!  LABEL PRE-HIGHLIGHT
+!	 When On, entity labels are highlighted before you select them.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Selector.PreHighLightLbl:  1
+!
+!
+!  MULTIPLE SELECT MODE
+!	 When On, multiple selections can be made without holding the 
+!	 shift key down.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Selector.Autoshift:  0
+!
+!
+!  ENTITY ID
+!	 When On, additional lines of output will be sent to the list region
+!	 identifying the id of selected entities.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Selector.ListLabelSw:  0
+!
+!
+!  FILTER MODE
+!      When On, the pre-command selection filter will be applied to the
+!      command's filter before the user is prompted for the first
+!      command.  During filter application, any entity types that are
+!      nonpickable in the pre-command filter will be made nonpickable in
+!      the command filter.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Selector.ApplyFilterSw:  0
+!
+!
+!-------------------------------------------------------------------------
+!  
+!  Selector Preferences -- Selector Area options form
+!
+!-------------------------------------------------------------------------
+!
+!
+!  AREA SELECT TYPE
+!      Defines the type of area select operation to use.
+!
+!      Valid settings:
+!         1 = Rectangle
+!         2 = Circle
+!         3 = Polygon
+!         4 = Side of Line
+!      Default: 1
+!
+Selector.AreaType:  1
+!
+!
+!  AREA OPTIONS
+!      Defines the entity inclusion scheme used during area selection.
+!
+!      Valid settings:
+!         1 = in
+!         2 = Part In
+!         3 = Out
+!         4 = Part Out
+!      Default: 1
+!
+Selector.AreaOption:  1
+!
+!
+!  MIN CURSOR MOTION
+!      ----New in Master Series 4----
+!      Defines the mimimum distance cursor must move before beginning
+!      rectangle, circle or polygon type area selection (as a fraction
+!      of viewport height or width).
+!
+!      Valid settings:
+!         0.0   -  (not advised)
+!         ...
+!         1.0   -  (not advised)
+!      Default: .08 
+!
+Selector.MinDragArea:  .08
+!
+!
+!  MIN CURSOR MOTION
+!      ----New in Master Series 4----
+!      Defines the mimimum distance cursor must move before beginning
+!      side-of-line type area selection (as a fraction of viewport
+!      height or width)
+!
+!      Valid settings:   
+!         0.0   -  (not advised)
+!         ...
+!         1.0   -  (not advised)  
+!      Default: .08
+!
+Selector.MinDragSideOfLine:  .08
+!
+!  
+!  MIN CURSOR MOTION
+!      ----New in Master Series 4----
+!      Defines the maximum distance cursor is allowed to move when
+!      double clicking (as a fraction of viewport height or width)
+!  
+!      Valid settings:   
+!         0.0   -  (not advised)
+!         ...
+!         1.0   -  (not advised)  
+!      Default: .01
+!
+Selector.MaxDragSamePick:  .01
+!
+!
+!-----------------------------------------------------------------------------
+!  
+!  Memory Management Preferences -  Preferences... Memory Usage
+!
+!  These parameters should be set by the I-DEAS Administrator to adjust
+!  I-DEAS use of virtual memory for a particular site. Users can further
+!  control memory usage by using the Memory Usage Preferences form.
+!
+!  WARNING: Users can set their memory preferences so that I-DEAS does
+!           not run or runs inefficiently. If user memory preferences
+!           are set in such a way that they prevent I-DEAS from running, 
+!           the user should run I-DEAS with the -u flag to use the memory
+!           preferences defined below. This will allow them to get to the
+!           preferences form to correct the problem.	
+!
+!-----------------------------------------------------------------------------
+!
+!
+!  DYNAMIC MEMORY
+!      Defines the percent of total memory allocation assigned to 
+!      define the maximum amount of dynamic memory an application
+!      can attempt to allocate.
+!
+!      Valid settings:
+!         20%-90%
+!      Default: 64.6%
+!
+Memory.DynMemPercent.App:  64.6%
+!
+!
+!  DISPLAY LIST
+!      Defines the percent of total memory allocation assigned to 
+!      define the maximum amount of dynamic memory the display list
+!      can attempt to allocate.
+!
+!      Valid settings:
+!         1%-50%  
+!      Default: 20.0%
+!
+Memory.DisplayListPercent:  20.0%
+!
+!
+!  APPLICATION CASHE
+!      Defines the percent of total memory allocation assigned to 
+!      the application cache at startup.
+!
+!      Valid settings:
+!         5%-20%  
+!      Default: 7.7%
+!
+Memory.CachePercent.App:  7.7%
+!
+!
+!  GRAPHICS CASHE
+!      Defines the percent of total memory allocation assigned to 
+!      the graphics cache at startup.
+!
+!      Valid settings:
+!          2%-20%  
+!      Default: 4.3%
+!
+Memory.CachePercent.Graphics:	 4.3%
+!
+!
+!  FORTRAN SPACE
+!      Defines the percent of total memory allocation assigned to 
+!      the FORTRAN workspace at startup.
+!
+!      Valid settings:
+!         0%-20%  
+!      Default: 3.4%
+!
+Memory.FortranWorkPercent:  3.4%
+!
+!
+!  TOTAL VIRTUAL MEMORY
+!      Defines the total virtual memory allocation in megabytes.  
+!      This integer includes all types of memory listed above.
+!
+!      Valid settings:
+!         55-1024  
+!      Default: 185M
+! 
+Memory.VirtualMemAllocation:  185M
+!
+!
+!  MEMORY FOR PICKING LIST
+!      ----New in Master Series 2----
+!      ----Modified in Master Series 5----
+!      Note: This memory parameter is not controled from the memory form.
+!
+!      Defines the amount of real memory allocated to store data
+!      associated with picking graphical entities, in megabytes.  
+!      Previous defaults were range 1-10, and value 5 megabytes.
+!
+!      Valid settings:
+!         1-30 megabytes
+!      Default: 5
+!
+Memory.PickMemory:  5
+!
+!
+!-----------------------------------------------------------------------------
+! 
+!  Master Modeler Preferences
+!
+!--------------------------------------------------------------------------
+!
+!
+!  EXTRACT WIREFRAME
+!      When On, extract wireframe for root during level 5 or level 6 
+!      universal file read or model file convert.
+!
+!      Valid Settings:
+!         0 = do not extract root wireframe
+!         1 = extract root wireframe
+!      Default: 1
+!
+MM.UnvExtractWireframe:	 1
+!
+!
+!  CONSTRUCT WITH RELATIONS
+!      Value for Construct/Relations_Sw.
+!
+!      Valid Settings:
+!         1 = Construct operations will prompt for relations 
+!         0 = Construct operations will NOT prompt for relations 
+!      Default: 1
+!
+MM.RelationsSwitch:  1
+!
+!
+!  FILLET DISPLAY
+!      ----Modified in Master Series 6----
+!      Controls display of intermediate 3D fillet geometry.
+!      Note that a non-zero value will decrease performance.  
+!
+!      Valid Settings:
+!         0 = No display of intermediate geometry
+!         1 = Display of intermediate geometry 
+!      Default: 0
+!
+MM.FilletWorkDisplay:  0
+!
+!
+!  FORCE REPLAY OPTION
+!      ----New in Master Series 5----
+!      Controls whether a user can change the what happens during
+!      part replay.  When set to 1 or 2, the user cannot modify
+!      this setting while running the product.
+!
+!      Valid settings:
+!         0 - User selection available
+!         1 - Always stop on Errors & Warnings
+!         2 - Always stop only on Errors.
+!      Default: 0
+!
+MM.stopreplayiffailure:  0
+!
+!
+!  STOP DURING REPLAY
+!      ----New in Master Series 5----
+!      Controls whether by default replay processing will stop, 
+!      allowing user intervention when a warning or error occurs
+!      during the replay process.
+!
+!      Valid settings:
+!         0 - Off
+!         1 - Stop on Errors & Warnings
+!         2 - Stop only on Errors.
+!      Default: 1
+!
+MM.stopreplayuserselect:  1
+!
+!
+!  INCLUDE PART ANNOTATION
+!      ----New in Master Series 5----
+!      When ON, the program will scale the view of an assembly to 
+!      include annotation (dimensions, reference planes, etc.) 
+!      when Zoom All is executed. 
+!      When OFF, Zoom All view will only include the part instance's 
+!      surfaces and wireframe.
+!
+!      Note: Determining the extents of the annotation requires
+!      additional processing time. This option allows you to
+!      determine if there is sufficient benefit to warrant the
+!      time required.
+!
+!      Valid settings:
+!         0 = Do not include annotation when calculating autoscale
+!         1 = Include annotation when calculating autoscale extents
+!      Default: 0
+!
+MM.IncludePartAnnoSw:  0
+!
+!
+!  ACCESS TO VARIATIONAL EXTRUDE
+!      ----New in Master Series 5----
+!      When on, the I-DEAS user can use a toggle found in the Master 
+!      Modeler menu, Create, Special Techs to turn on and off the 
+!      ability directly modify extruded shapes.
+!
+!      Valid settings:
+!         0 = Menu toggle is not active.
+!         1 = Menu toggle is active.
+!      Default: 1
+!
+MM.AllowVariationalExtrudeSys:  1
+!
+!
+!  STOP AT INTERSECTION
+!      ----New in Master Series 6----
+!      The parameter records the setting of the "stop at intersection"
+!      toggle on the Section Options form. When On, during section 
+!      creation, the program stops at each wireframe intersection found 
+!      and lets you choose which branch to include in the section.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+MM.section_stop_at_intersection:  1
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Wireframe Options Form -- List/Info_Options.../Wireframe_Options
+!
+!--------------------------------------------------------------------------
+!
+!
+!  LIST SECTION POINTS
+!      When On, section points are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.SectionPoints:  1
+!
+!
+!  LIST BOUNDARY
+!      When On, the section boundary is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.SectionBoundary:  1
+!
+!
+!  LIST PROPERTIES
+!      When On, properties are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+MM.Properties:  0
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Part Options Form -- List/Info_Options.../Part_Options
+!
+!--------------------------------------------------------------------------
+!
+!  LIST FEATURE RELATIONS
+!      When On, feature relations are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.Relations:  1
+!
+!
+!  LIST HISTORY
+!      When On, the part history is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.PartHistory:  1
+!
+!
+!  FULL HISTORY
+!      Defines whether part history listing is brief or full.
+!
+!      Valid settings:
+!         1 = Brief 
+!         2 = Full
+!      Default: 1
+!
+MM.PartHistoryStatus:  1
+!
+!
+!  LIST SUPPRESSED FEATURES
+!      When On, suppressed features are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.SuppressedFeatures:  1
+!
+!
+!  LIST USED FEATURES
+!      When On, used features are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.UsedFeatures:  1
+!
+!
+!  LIST REFERENCED
+!      When On, the reference geometry/cs is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.ReferenceGeometry:  1
+!
+!
+!  LIST TOTALS
+!      When On, the numbers of (totals) are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+MM.NumbersOf:  0
+!
+!
+!  EVALUATE ASSOCIATIVE COPY
+!      ----New in Master Series 6----
+!      Sets the default for how associative copies are updated.
+!      The default is 0, which has the program replay the entire 
+!      part, and then the source surfaces are copied to the target.
+!      The alternative (1) is to replay the part to a specified node
+!      in the history tree, copy the source surfaces to the target,
+!      and then continue to replay the part history to completion.
+!
+!      Valid settings:
+!         0 - Evaluate after the entire part has replayed
+!         1 - Evaluation at the specified history node
+!      Defaults: 0
+!
+MM.cwaIgnoreAdditions:  0
+!
+!
+!  ASSOCIATIVE COPY FEATURE INFO
+!      ----New in Master Series 5----
+!      Choose whether information is listed for parts with
+!      Associative Copy Features.
+!
+!      Valid settings: 
+!         0 - Do not list ACF specific info
+!         1 - List ACF specific info
+!      Default: 1
+!
+MM.AssocCopyRelationsInfo:  1
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Work Plane Options Form -- List/Info_Options.../Work_Plane_Options
+!
+!--------------------------------------------------------------------------
+!
+!
+!  WORKPLANE ID
+!      When On, the work plane id is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.WorkPlnId:  1
+!
+!
+!  WORKPLANE ATTRIBUTES
+!      When On, workplane attributes are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.WorkPlnAttr:  1
+!
+!
+!  VISIBILITY STATUS
+!      When On, the visibility status is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.WorkPlnVisib:  1
+!
+!
+!  LIMITS AND DIVISIONS
+!      When On, limits and divisions are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.WorkPlnLimits:  1
+!
+!
+!  ROTATION
+!      When On, axes rotation angles are listed. 
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.WorkPlnRotAng:  1
+!
+!
+!  PLANE COEFFICIENTS
+!      When On, plane coefficients are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.WorkPlnCoefs:  1
+!
+!
+!  MATRIX TYPE
+!      When On, the transformation matrix type is listed.
+!
+!      Valid settings:
+!         1 = Local
+!         2 = Global
+!      Default: 1
+!
+MM.WpMatrixType:  1
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Coordinsate System Options Form -- 
+!      List/Info_Options/Coordinate_System_Options
+!
+!--------------------------------------------------------------------------
+!
+!
+!  COORDINATE SYSTEM ID
+!      When On, the coordinate system id is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.CoordSysId:  1
+!
+!
+!  COORDINATE SYSTEM ATTRIBUTES
+!      When On, Coordinate system attributes are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.CoordSysAttr:  1
+!
+!
+!  ROTATION ANGLES
+!      When On, axes rotation angles are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.CoordSysRotAng:  1
+!
+!
+!  TRANSFORMATION MATRIX
+!      When On, the transformation matrix is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+MM.CoordSysMatrix:  1
+!
+!
+!  LOCAL OR GLOBAL
+!      Defines whether the local or global transformation matrix type 
+!      is listed.
+!
+!      Valid settings:
+!         1 = Local
+!         2 = Global 
+!      Default: 2
+!
+MM.CsMatrixType:  2
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Orientation Command Defaults -- These defaults can only be controlled 
+!  from this parameter file.
+!
+!--------------------------------------------------------------------------
+!
+!
+!  MOVE METHOD
+!      ----New in Master Series 3----
+!      Sets the default orientation method for MOVE.
+!
+!      Valid settings:
+!         0 - No default (i.e. prompt 0,0,0)
+!         1 - Move to
+!         2 - Move along
+!         3 - Slide on screen
+!      Default: 0
+!
+MM.OrientMethodMove:  0
+!
+!
+!  ROTATE METHOD
+!      ----New in Master Series 3----
+!      Sets the default orientation method for ROTATE.
+!      
+!      Valid settings:
+!         0 - No default (i.e. prompt 0,0,0)
+!         1 - X Axis
+!         2 - Y Axis
+!         3 - Z Axis
+!         4 - About Vector
+!         5 - Align Vector
+!      Default: 0
+!
+MM.OrientMethodRotate:  0
+!
+!
+!  PREVIOUS DEFAULT
+!      ----New in Master Series 3----
+!      Choose whether previously selected geometric locations and vectors 
+!      will be presented as default while looping through one invocation 
+!      of an orient command.
+!
+!      Valid settings:
+!         0 - Do not remember previous orientation geometry.
+!         1 - Remember previous orientation geometry.
+!      Default: 0
+!
+MM.OrientRememberGeomSw:  0
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Free-Form Surfacing Applications -- These parameters define the location of 
+!  the surfacing applications, and control the menu that selects Free-Form 
+!  Surfacing Applications from within I-DEAS. Each invidual entry has three 
+!  fields-Name Tag, Location of the executable and the route to take(OA or OI). 
+!      ----Modified in Master Series 6----
+!
+!--------------------------------------------------------------------------
+!
+!
+!  LOCATION OF THE IMPORT APPLICATIONS
+!
+MM.FreeFormImName3: ICEM
+MM.FreeFormImAppLoc3: $SDRC_INSTL/surf/$SURF_BIN/data_channel6
+MM.FreeFormImType3: OA
+!
+MM.FreeFormImName5: ALIAS
+MM.FreeFormImAppLoc5: $SDRC_INSTL/gif/altoid.exe
+MM.FreeFormImType5: OA
+!
+!
+!  LOCATION OF THE EXPORT APPLICATIONS
+!
+MM.FreeFormExName1: ALIAS
+MM.FreeFormExAppLoc1: $SDRC_INSTL/gif/idtoal.exe 
+MM.FreeFormExType1: OA
+!
+!
+!  LOCATION OF THE SURFACING APPLICATIONS
+!
+MM.FreeFormName1: ICEM_AFFS 
+MM.FreeFormAppLoc1: $SDRC_INSTL/surf/$SURF_BIN/direct_interface6 
+MM.FreeFormType1: OA 
+!
+MM.FreeFormName2: ICEM_FFS 
+MM.FreeFormAppLoc2: $SDRC_INSTL/surf/$SURF_BIN/direct_interface6 
+MM.FreeFormType2: OA 
+!
+!
+!------------------------------------------------------------------------
+!
+!  Geometric Design and Tolerancing Parameter Defaults
+!
+!  GD&T Symbol Options Form 
+!  -- List/Info_Options.../GD&T_Symbols:Info_Options
+!
+!------------------------------------------------------------------------
+!
+!
+!  NAME/LABEL
+!      When On, the name/label is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+DT.InfoOutputLabel:  1
+!
+!
+!  GD&T TEXT
+!      When On, the GD&T text is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+DT.InfoOutputText:  1
+!
+!
+!  CHECK STATUS
+!      When On, the check status is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+DT.InfoOutputCheckStatus:  1
+!
+!
+!  CHECK AGAINST STANDARD
+!      When On, the GD&T statndard checked against is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+DT.InfoOutputCheckStandard:  1
+!
+!
+!  SURFACE ASSOC. STATUS
+!      When On, the surface association status is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+DT.InfoOutputAssocStatus:  1
+!
+!
+!  LIST ASSOC. SURFACE
+!      When On, associated surfaces are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+DT.InfoOutputAssocSurfs:  1
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Workplane Defaults
+!
+!  GRID ATTRIBUTES FORM -- Workplane/Grid...
+!
+!--------------------------------------------------------------------------
+!
+!
+!  GRID
+!      When On, the grid is displayed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+WP.DisplayGrid:  0
+!
+!
+!  SNAP
+!      When On, the cursor will snap to grid.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+WP.GridSnap:  0
+!
+!
+!  GRID PATTERN
+!      Defines whether the grid type is rectangular or circular.
+!
+!      Valid settings:
+!         0 = Rectangular 
+!         1 = Circular
+!      Default: 0
+!
+WP.GridType:  0
+!
+!
+!  X SIZE
+!      Defines the grid size in the X-direction.
+!
+!      Valid settings:
+!         >0-MAXREAL
+!      Default: 0.050000
+!
+WP.DivisionMajX:  0.050000
+!
+!
+!  Y SIZE
+!      Defines the grid size in the Y-direction.
+!
+!      Valid settings:
+!         >0-MAXREAL 
+!      Default: 0.050000
+!
+WP.DivisionMajY:  0.050000
+!
+!
+!  X INCREMENT
+!      Defines the increment in X in which the grid is displayed.
+!
+!      Valid settings:
+!         1-MAXINT 
+!      Default: 10
+!
+WP.DivisionMinX:  10
+!
+!
+!  Y INCREMENT
+!      Defines the increment in Y in which the grid is displayed.
+!
+!      Valid settings:
+!         1-MAXINT 
+!      Default: 10
+!
+WP.DivisionMinY:  10
+!
+!
+!--------------------------------------------------------------------------
+!
+!  Workplane Apperance Form -- Workplane/Appearance...
+!
+!--------------------------------------------------------------------------
+!
+!
+!  BORDER
+!      When On, the border is displayed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+WP.DisplayBorder:  1
+!
+!
+!  ORIGIN
+!      When On, the origin is displayed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+WP.DisplayTriad:  0
+!
+!
+!  AXIS DISPLAY
+!      When On, the axes are displayed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+WP.DisplayAxis:  0
+!
+!
+!  MIN X
+!      Defines the Minumum X Axis.
+!
+!      Valid settings:
+!         Max X - Min X != 0
+!      Default: -0.100000
+!
+WP.LimitsMinX:  -0.100000
+!
+!
+!  MIN Y
+!      Defines the Minumum Y Axis
+!
+!      Valid settings:
+!         Max Y - Min Y != 0 
+!      Default: -0.100000
+!
+WP.LimitsMinY:  -0.100000
+!
+!
+!  MAX X
+!      Defines the Maximum X Axis.
+!
+!      Valid settings:
+!         Max X - Min X != 0
+!      Default: 0.100000
+!
+WP.LimitsMaxX:  0.100000
+!
+!
+!  MAX Y
+!      Defines the Maximum Y Axis.
+!
+!      Valid settings:
+!         Max Y - Min Y != 0
+!      Default: 0.100000
+!
+WP.LimitsMaxY:  0.100000
+!
+!
+!  WORKPLANE COLOR
+!      Defines the color of the workplane.
+!
+!      Valid settings:
+!         0 = Black
+!         1 = Blue
+!         2 = Gray Blue (Default)
+!         3 = Light Blue
+!         4 = Cyan
+!         5 = Dark Olive
+!         6 = Dark Green
+!         7 = Green
+!         8 = Yellow
+!         9 = Golden Orange
+!         10 = Orange
+!         11 = Red
+!         12 = Magenta
+!         13 = Light Magenta
+!         14 = Pink
+!         15 = White
+!         n = User Defined Color
+!      Default: 2
+!
+WP.Color:  2
+!
+!
+!  WORKPLANE LINE STYLE
+!      Defines the line style of the workplane.
+!
+!      Valid settings:
+!         1 = Solid
+!         2 = Dashed
+!         3 = Dotted
+!         4 = Dash Dotted
+!         5 = Center
+!         6 = Phantom
+!      Default: 4
+!
+WP.LineStyle:  4
+!
+!
+!  WORKPLANE CS
+!      Defines the coordinate system the workplane is display in.
+!
+!      Valid settings:
+!         0 = Cartesian
+!         1 = Cylindrical
+!         2 = Spherical
+!      Default: 0
+!
+WP.CoordType:  0
+!
+!
+!---------------------------------------------------------
+!
+!  Assembly Info Preferences -- Options/Preferences/Info Options form
+!
+!  Following paramters control what information is listed 
+!  for an active assembly when user selects Assembly Info 
+!  icon/command and whether the information is written to a 
+!  file or not.
+!
+!  All of these parameters may be set on Assembly Info Options form.
+!
+!---------------------------------------------------------
+!
+!
+!  CONSTRAINTS
+!      When On, information on active assembly constraints 
+!      is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoConstrActive:  0
+!
+!
+!  INSTANCES WITH GROUNDS
+!      When On, instances with "ground" constraints are listed 
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoConstrGround:  1
+!
+!
+!  INSTANCES WITH NON-DIMENSIONAL CONSTRAINTS
+!      When On, instances with non-dimensional constraints and 
+!      corresponding constraint types are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoConstrConstraints:  0
+!
+!
+!  INSTANCES WITH DIMENSIONAL CONSTRAINTS
+!      When On, instances with dimensional constraints and 
+!      corresponding constraint types are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoConstrDimensions:  0
+!
+!
+!  RIGID INSTANCES
+!      When On, Rigidified instances are listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoConstrRigid:  1
+!
+!
+!  OUTPUT NAME
+!      Default output file name for listed data.
+!
+!      Valid settings:
+!         Valid file name
+!      Default: info.dat
+!
+Assembly.InfoFileName:  info.dat
+!
+!
+!  OUTPUT
+!      When On, information listed is also written to an output file.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoFileOutputOption:  0
+!
+!
+!  HIERARCHY
+!      When On, active assembly hierarchy is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoHierActive:  1
+!
+!
+!  HIERARCHY COLOR
+!      When On, color of each hierarchy node is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoHierColor:  0
+!
+!
+!  HIDDEN
+!      When On, the word "Hidden" is displayed in front of each 
+!      hidden node.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoHierHidden:  1
+!
+!
+!  SUPPRESSED
+!      When On, the word "suppressed" is displayed in front of each 
+!      suppressed node.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoHierSuppressed:  1
+!
+!
+!  ASSEMBLY ORIENTATION
+!      When On, information on active assembly's orientation is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoOrientActive:  0
+!
+!
+!  INSTANCE ORIENTATION 3D POINT
+!      When On, instance orientations are listed in "3 Point" format.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoOrientForm3Pt:  0
+!
+!
+!  INSTANCE ORIENTATION MATRIX
+!      When On, instance orientations are listed in "matrix" format.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoOrientFormMatrix:  1
+!
+!
+!  INSTANCE ORIENTATION TRANS. & ROT.
+!      When On, instance orientations are listed in terms of 
+!      translation distances and rotation angles.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoOrientFormTransRot:  1
+!
+!
+!  RELATIVE TO ACTIVE
+!      When On, instance orientation is listed with respect to 
+!      active assembly.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoOrientRelToAssem:  1
+!
+!
+!  RELATIVE TO PARENT
+!      When On, instance orientation is listed with respect to 
+!      instance's immediate parent.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoOrientRelToParent:  0
+!
+!
+!  INTERFERENCE
+!      When On, Interference data is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoInterf:  0
+!
+!
+!  ALL INETERFERENCE
+!      When On, complete interference data is listed for a given 
+!      configuration.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoInterfAllInterf:  1
+!
+!
+!  CONFIGURATION NUMBER
+!      Configuration number for which interference results is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Assembly.InfoInterfConfigNum:  1
+!
+!
+!  ONLY INTERFERENCE
+!      When On, only interference data for overlapped parts is listed.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Assembly.InfoInterfOverlapOnly:  0
+!
+!
+!-----------------------------------------------------------------------
+!
+!  Assembly Update Preferences
+!
+!-----------------------------------------------------------------------
+!
+!
+!  ASSOCIATIVE COPY FEATURE UPDATE
+!      ----New in Master Series 5----
+!      Choose whether target parts that have Associative Copy 
+!      Features updated to reflect changes in their source
+!      parts when the Update command is executed.      
+!
+!      Valid settings:
+!         0 - Do not update ACF leaves
+!         1 - Update ACF leaves
+!      Default: 1
+!
+Assembly.AssocCopyRelUpdate:  1
+!
+!
+!-----------------------------------------------------------------------
+!
+!  Drafting Setup Preferences
+!
+!-----------------------------------------------------------------------
+!
+!
+!  ENGLISH SIZE
+!      Default English drawing size.
+!
+!      Valid settings:
+!         1 = A-H
+!         2 = B
+!         3 = C
+!         4 = D
+!         5 = E
+!         6 = A-V
+!         7 = User-Defined
+!      Default: 1
+!
+dft.engsize:  1
+!
+!
+!  METRIC SIZE
+!      Default Metric drawing size.
+!
+!      Valid settings:
+!         1 = A4-H
+!         2 = A3
+!         3 = A2
+!         4 = A1
+!         5 = A0
+!         6 = A4-V
+!         7 = User-Defined
+!      Default: 1
+!
+dft.metsize:  1
+!
+!
+!  DRAWING TYPE
+!      Predefined drawing type.
+!
+!      Valid settings:
+!         1 = Front
+!         2 = Front/Top
+!         3 = Front/Right
+!         4 = Front/Top/Right
+!         5 = Four views
+!         6 = not valid   
+!         7 = User-Defined
+!      Default: 5
+!
+dft.dwgtyp:  5
+!
+!
+!  PROJECTION TYPE
+!      Drawing Projection Type.
+!
+!      Valid settings:
+!         0 = Third Angle Projection (ANSI standard)
+!         1 = First Angle Projection (ISO standard)
+!      Default: 0
+!
+dft.projtyp:  0
+!
+!
+!  BORDERS
+!      Drawing view borders.
+!
+!      Valid settings:
+!         0 = View borders OFF
+!         1 = View borders ON
+!      Default: 1
+!
+dft.vwbdrs:  1
+!
+!
+!  VIEW NAMES
+!      Drawing view names.
+!
+!      Valid settings:
+!         0 = View names OFF
+!         1 = View names ON
+!      Default: 1
+!
+dft.vwnam:  1
+!
+!
+!  AUTOBORDERS
+!      Drawing view AUTOBORDERS.
+!
+!      Valid settings:
+!         0 = Autoborders OFF
+!         1 = Autoborders ON
+!      Default: 1
+!
+dft.autobdr:  1
+!
+!
+!  BORDER COLOR
+!      Drawing view border color.
+!
+!      Valid settings:
+!         0 = Black
+!         1 = Blue
+!         2 = Gray Blue
+!         3 = Light Blue
+!         4 = Cyan
+!         5 = Dark Olive
+!         6 = Dark Green
+!         7 = Green
+!         8 = Yellow
+!         9 = Golden Orange
+!         10 = Orange
+!         11 = Red
+!         12 = Magenta
+!         13 = Light Magenta
+!         14 = Pink
+!         15 = White
+!      Default: 7
+!
+dft.bdrclr:  7
+!
+!
+!  HIDDEN LINE STYLE
+!      Drawing view hidden line style.
+!
+!      Valid settings:
+!         0 = Dashed
+!         1 = Removed
+!      Default: 0
+!
+dft.hlstyl:  0
+!
+!
+!  PERSPECTIVE FLAG
+!      ----New in Master Series 5----
+!      Perspective projection of the views.
+!
+!      Valid settings:
+!         0 = Perspective Off
+!         1 = Perspective On
+!      Default: 0
+!
+dft.perspective:  0
+!
+!
+!  PERSPECTIVE DISTANCE FACTOR
+!      ----New in Master Series 5----
+!      Factor for locating the center of projection for perspective
+!      projection of parts/assemblies in a view.
+!
+!      Perspective Distance is this factor times the diagonal of the box
+!      bounding the part or assembly in the view.
+!
+!      Valid settings:
+!         1:100
+!      Default: 2.3094
+!
+dft.perspdistfact:  2.3094
+!
+!
+!  GEOMETRY CLEAN
+!      Drawing view coincident geometry clean.
+!
+!      Valid settings:
+!         0 = Dashed
+!         1 = Removed
+!      Default: 1
+!
+dft.coin:  1
+!
+!
+!  CENTERLINE/POINTS
+!      Drawing view centerline/centerpoints.
+!
+!      Valid settings:
+!         0 = Do Not Process centerlines/centerpoints
+!         1 = Process centerlines/centerpoints
+!      Default: 1
+!
+dft.cline:  1
+!
+!
+!  SEAMS
+!      Drawing view seams.
+!
+!      Valid settings:
+!         0 = Do Not Process seams
+!         1 = Process seams
+!      Default: 0
+!
+dft.smooth:  0
+!
+!
+!  REFERENCE GEOMETRY
+!      Drawing view reference geometry.
+!
+!      Valid settings:
+!         0 = Do Not Process reference geometry
+!         1 = Process reference geometry
+!      Default: 1
+!
+dft.refgeo:  1
+!
+!
+!  GEOMETRY PROCESSING WITH RESPECT TO DRAWING BORDER
+!      ----New in Master Series 5----
+!      Location of Part/Assembly Geometry in the views with respect to
+!      the drawing layout border.
+!
+!      When On, the Geometry is processed irrespective of its
+!      location with respect to the drawing border.
+!
+!      When Off, Geometry outside the drawing border is clipped.
+!
+!      Valid settings:
+!         0 = Do not process geometry outside drawing border
+!         1 = Process geometry irrespective of drawing border
+!      Default: 0
+!
+dft.procoutofborder:  0
+!
+!
+!  WIREFRAME GEOMETRY
+!      ----New in Master Series 5----
+!      Drawing view wireframe geometry.
+!
+!      Valid settings:
+!         0 = Do not send wireframe geometry
+!         1 = Send wireframe geometry
+!      Default: 1
+!
+dft.wireframe:  1
+!
+!
+!  PROCESS WIREFRAME GEOMETRY
+!      ----New in Master Series 5----
+!      Hidden Line Process drawing view wireframe geometry.
+!
+!      Valid settings:
+!         0 = Do not do hidden line processing of wireframe geometry
+!         1 = Do hidden line processing of wireframe geometry
+!      Default: 1
+!
+dft.procwireframe:  1
+!
+!
+!  DIMENSION PLACES
+!      Drawing dimension number of decimal places.
+!
+!      Valid settings:
+!         0-5 decimal places
+!      Default: 2
+!
+dft.decplc:  2
+!
+!
+!  ANGLE PLACES
+!      Drawing dimension number of angular decimal places.
+!
+!      Valid settings:
+!         0-5 decimal places
+!      Default: 2
+!
+dft.angdecplc:  2
+!
+!
+!  ARROWS IN/OUT
+!      Drawing dimension arrows in/out setting.
+!
+!      Valid settings:
+!         0 = Arrows Out
+!         1 = Arrows In
+!      Default: 1
+!
+dft.arrowsin:  1
+!
+!
+!  ARROWHEAD STYLE
+!      Drawing dimension arrowhead style.
+!
+!      Valid settings:
+!         0 = None
+!         1 = Standard
+!         2 = Filled
+!         3 = Open
+!         4 = Wedge
+!      Default: 1
+!
+dft.arhdtyp:  1
+!
+!
+!  DIMENSION TOLERANCE
+!      Drawing dimension tolerance style.
+!
+!      Valid settings:
+!         0 = off
+!         1 = incremental
+!         2 = limit
+!         3 = dash
+!      Default: 0
+!
+dft.toltyp:  0
+!
+!
+!  ANGLE UNITS
+!      Drawing dimension angular units.
+!
+!      Valid settings:
+!         0 = Degrees
+!         1 = Minutes
+!         2 = Seconds
+!      Default: 0
+!
+dft.angunits:  0
+!
+!
+!  TEXT BOX
+!      Drawing dimension text box.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.textbox:  0
+!
+!
+!  RADIAL SYMBOL
+!      Drawing dimension radial symbol.
+!
+!      Valid settings:
+!         0 = Off
+!         1 = 'R' radial, 'PHI' diameter
+!         2 = 'SR' radial, 'SPHI' diameter
+!      Default: 0
+!
+dft.radsym:  0
+!
+!
+!  RADIAL SYMBOL PLACEMENT
+!      Drawing dimension radial symbol placement.
+!
+!      Valid settings:
+!         0 = Prefix
+!         1 = Append
+!      Default: 0
+!
+dft.radsymplc:  0
+!
+!
+!  DIAMETRAL SYMBOL
+!      Drawing dimension diametral symbol.
+!
+!      Valid settings:
+!         0 = Off
+!         1 = 'R' radial, 'PHI' diameter
+!         2 = 'SR' radial, 'SPHI' diameter
+!      Default: 0
+!
+dft.diasym:  0
+!
+!
+!  DIAMETRAL SYMBOL PLACEMENT
+!      Drawing dimension diameter symbol placement.
+!
+!      Valid settings:
+!         0 = Prefix
+!         1 = Append
+!      Default: 0
+!
+dft.diasymplc:  0
+!
+!
+!  REFERENCE SYMBOL
+!      Drawing dimension Reference symbol.
+!
+!      Valid settings:
+!         0 = Off
+!         1 = REF
+!         2 = Parenthesis
+!      Default: 0
+!
+dft.refsym:  0
+!
+!
+!  STANDARD
+!      Drawing Dimensioning Standard.
+!
+!      Valid settings:
+!         0 = ANSI
+!         1 = ISO
+!         2 = JIS
+!         3 = DIN
+!         4 = BS
+!      Default: depends on current model units
+!
+!dft.dimstd:  0
+!
+!
+!  MEARSUREMENT UNITS
+!      Drawing dimension measurement units.
+!
+!      Valid settings:
+!         0 = Meters
+!         1 = Centimeters
+!         2 = Millimeters
+!         3 = Inches
+!         4 = Feet
+!      Default: depends on current model units
+!
+!dft.dimunits:  3
+!
+!
+!  LEADER ELBOW
+!      Drawing dimension leader elbow.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.ldrelbow:  0
+!
+!
+!  LEADER ELBOW PLACEMENT
+!      Drawing dimension leader elbow placement.
+!
+!      Valid settings:
+!         0 = Right
+!         1 = Left
+!      Default: 0
+!
+dft.ldrelbowplc:  0
+!
+!
+!  DUAL DIMENSION
+!      Drawing dimension dual dimension setting.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.dualdim:  0
+!
+!
+!  SECONDARY UNITS
+!      Drawing dimension secondary measurement units.
+!
+!      Valid settings:
+!         0 = Meters
+!         1 = Centimeters
+!         2 = Millimeters
+!         3 = Inches
+!         4 = Feet
+!      Default: depends on current model units
+!
+!dft.secunits:  2
+!
+!
+!  SECONDARY PLACES
+!      Drawing dimension secondary number of dec places.
+!
+!      Valid settings:
+!         0-5 decimal places
+!      Default: 2
+!
+dft.secdecplc:  2
+!
+!
+!  DUAL METHOD
+!      Drawing dimension dual dimension method.
+!
+!      Valid settings:
+!         0 = Bracket
+!         1 = Positional
+!      Default: 0
+!
+dft.dualmthd:  0
+!
+!
+!  DUAL PLACEMENT METHOD
+!      Drawing dimension dual dimension placement method.
+!
+!      Valid settings:
+!         0 = Horizontal
+!         1 = Vertical
+!      Default: 0
+!
+dft.dualplacmthd:  0
+!
+!
+!  DUAL HORIZONTAL
+!      Drawing dimension dual dimension horizontal placement.
+!
+!      Valid settings:
+!         0 = Secondary Right
+!         1 = Secondary Left
+!      Default: 0
+!
+dft.dualhplac:  0
+!
+!
+!  DUAL VERTICAL
+!      Drawing dimension dual dimension vertical placement.
+!
+!      Valid settings:
+!         0 = Secondary Below
+!         1 = Secondary Above
+!      Default: 0
+!
+dft.dualvplac:  0
+!
+!
+!  PRIMARY MEASUREMENT TEXT
+!      Drawing dimension primary measurement text.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.primeastxt:  0
+!
+!
+!  SECONDARY MEASUREMENT TEXT
+!      Drawing dimension secondary measurement text.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.secmeastxt:  0
+!
+!
+!  DIMENSION COLOR
+!      Drawing dimension color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.dimcolor:  4
+!
+!
+!  REFERENCE COLOR
+!      Drawing reference dimension color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 8
+!
+dft.refdimcolor:  8
+!
+!
+!  NOTE COLOR
+!      Drawing note color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 8
+!
+dft.notecolor:  8
+!
+!
+!  CROSSHATCH COLOR
+!      Drawing crosshatch color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 7
+!
+dft.xhcolor:  7
+!
+!
+!  ASSOCIATED FCF COLOR
+!      Drawing Associated FCF color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.fcfcolor:  4
+!
+!
+!  UNASSOCIATED FCF COLOR
+!      ----Obsolete in Master Series 6----
+!      Drawing Unassociated FCF color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+!dft.unfcfcolor:  4
+!
+!
+!  ASSOCIATED DFS COLOR
+!      Drawing Associated DFS color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.dfscolor:  4
+!
+!
+!  UNASSOCIATED DFS COLOR
+!      ----Obsolete in Master Series 6----
+!      Drawing Unassociated DFS color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+!dft.undfscolor:  4
+!
+!
+!  INVALID GD&T COLOR
+!      ----Obsolete in Master Series 6----
+!      Drawing Invalid GD&T color.
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+!dft.invgdtcolor:  4
+!
+!
+!      DATUM TARGET COLOR
+!      ----New in Master Series 6----
+!      Drawing Datum Target (DT) Color
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.dtcolor:  4
+!
+!
+!      LOCATOR COLOR COLOR
+!      ----New in Master Series 6----
+!      Drawing  Locator Color (LOC) Color
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.loccolor:  4
+!
+!
+!      LINE WELD COLOR
+!      ----New in Master Series 6----
+!      Drawing Line Weld (LW) Color
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.lwcolor:  4
+!
+!
+!      SURFACE FINISH COLOR
+!      ----New in Master Series 6----
+!      Drawing Surface Finish (SF) Color
+!
+!      Valid settings:
+!         0-15
+!      Default: 4
+!
+dft.sfcolor:  4
+!
+!
+!  DIMENSION LAYER
+!      Drawing dimension layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 200
+!
+dft.dimlayer:  200
+!
+!
+!  REFERENCE LAYER
+!      Drawing reference dimension layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 201
+!
+dft.refdimlayer:  201
+!
+!
+!  NOTE LAYER
+!      Drawing note layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 203
+!
+dft.notelayer:  203
+!
+!
+!  VISIBLE LAYER
+!      Drawing visible geometry layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 204
+!
+dft.visgeolayer:  204
+!
+!
+!  HIDDEN LAYER
+!      Drawing hidden geometry layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 205
+!
+dft.hidgeolayer:  205
+!
+!
+!  CENTERLINE LAYER
+!      Drawing centerline layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 206
+!
+dft.ctrlnlayer:  206
+!
+!
+!  REFERENCE LAYER
+!      Drawing reference geometry layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 207
+!
+dft.refgeolayer:  207
+!
+!
+!  CROSSHATCH LAYER
+!      Drawing crosshatch layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 208
+!
+dft.xhlayer:  208
+!
+!
+!  FCF LAYER
+!      Drawing FCF layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 209
+!
+dft.fcflayer:  209
+!
+!
+!  UNASSOCIATED FCF LAYER
+!      ----Obsolete in Master Series 6----
+!      Drawing Unassociated FCF layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 210
+!
+!dft.unfcflayer:  210
+!
+!
+!  DFS LAYER
+!      Drawing DFS layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 211
+!
+dft.dfslayer:  211
+!
+!
+!  UNASSOCIATED DFS LAYER
+!      ----Obsolete in Master Series 6----
+!      Drawing Unassociated DFS layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 212
+!
+!dft.undfslayer:  212
+!
+!
+!  INVALID GD&T LAYER
+!      ----Obsolete in Master Series 6----
+!      Drawing Invalid GD&T layer.
+!
+!      Valid settings:
+!         1:255 
+!      Default: 213
+!
+!dft.invgdtlayer:  213
+!
+!
+!  VISIBLE WIREFRAME GEOMETRY LAYER
+!      ----New in Master Series 5----
+!      Drawing visible wireframe geometry layer.
+!
+!      Valid settings:
+!         1:255
+!      Default: 204
+!
+dft.viswflayer:  204
+!
+!
+!  HIDDEN WIREFRAME GEOMETRY LAYER
+!      ----New in Master Series 5----
+!      Drawing hidden wireframe geometry layer.
+!
+!      Valid settings:
+!         1:255
+!      Default: 205
+!
+dft.hidwflayer:  205
+!
+!
+!      DATUM TARGET LAYER
+!      ----New in Master Series 6----
+!      Drawing  Datum Target (DT) Layer
+!
+!      Valid settings:
+!         1:255
+!      Default: 210
+!
+dft.dtlayer:  210
+!
+!
+!      LOCATOR LAYER
+!      ----New in Master Series 6----
+!      Drawing Locator (LOC) Layer
+!
+!      Valid settings:
+!         1:255
+!      Default: 212
+!
+dft.loclayer:  212
+!
+!
+!      LINE WELD LAYER
+!      ----New in Master Series 6----
+!      Drawing  Line Weld (LW) Layer
+!
+!      Valid settings:
+!         1:255
+!      Default: 213
+!
+dft.lwlayer:  213
+!
+!
+!      SPOT WELD LAYER
+!      ----New in Master Series 6----
+!      Drawing  Spot Weld (SW) Layer
+!
+!      Valid settings:
+!         1:255
+!      Default: 215
+!
+dft.swlayer:  215
+!
+!
+!      SURFACE FINISH LAYER
+!      ----New in Master Series 6----
+!      Drawing Surface Finish (SF) Layer
+!
+!      Valid settings:
+!         1:255
+!      Default: 216
+!
+dft.sflayer:  216
+!
+!
+!      MEASUREMENT POINT LAYER
+!      ----New in Master Series 6----
+!      Drawing Measurement Point (MP) Layer
+!
+!      Valid settings
+!         1:255
+!      Default: 217
+!
+dft.mplayer:  217
+!
+!
+!  CROSSHATCH PATTERN
+!      Crosshatch pattern.
+!
+!      Valid settings:
+!         0 = Iron
+!         1 = Steel
+!         2 = Brass
+!         3 = Rubber
+!         4 = Glass
+!         5 = Aluminum
+!         6 = Lead
+!         7 = Solid line pattern
+!      Default: 0
+!
+dft.xhpattern:  0
+!
+!
+!  CUTTING PLANE ARROWHEAD STYLE
+!      Drawing dimension Cutting Plane Curve arrowhead style.
+!
+!      Valid settings:
+!         0 = None
+!         1 = Standard
+!         2 = Filled
+!         3 = Open
+!         4 = Wedge
+!      Default: 1
+!
+dft.cpcarhdtyp:  1
+!
+!
+!  TITLE BLOCK
+!      Drawing Sheet Format (Title Block) setting.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+dft.sheetfmt:  1
+!
+!
+!  OUT LENGTH
+!      Drawing Arrows Out Length (in Meters).
+!
+!      Valid settings:
+!         > 0.0
+!      Default: 0.006000
+!    
+dft.arrowoutlen:  0.006000
+!
+!
+!  ARROWHEAD LENGTH
+!      Drawing Arrowhead Length (in Meters).
+!
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.arhdlen:  0.003000
+!
+!
+!  ARROWHEAD RATIO
+!      Drawing Arrowhead Length/Width Ratio.
+!
+!      Valid settings:
+!         > 0.0
+!      Default: 3.000000
+!
+dft.arhdratio:  3.000000
+!
+!
+!  DIMENSION TEXT HEIGHT
+!      Drawing Dimension text height (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.dimtexthgt:  0.003000
+!
+!
+!  DIMENSION TEXT RATIO
+!      Drawing Dimension Text Height/Width Ratio.
+!      Valid settings:
+!         > 0.0
+!      Default: 1.000000
+!
+dft.textwidratio:  1.000000
+!
+!
+!  LEADER LINE GAP
+!      Drawing Dimension Leader line gap (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.002000
+!
+dft.ldrlngap:  0.002000
+!
+!
+!  WITNESS LINE GAP
+!      Drawing Witness line gap (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.witlinegap:  0.003000
+!
+!
+!  WITNESS LINE EXTENSION
+!      Drawing Witness line extension (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.witlinext:  0.003000
+!
+!
+!  LEADER ELBOW LENGTH
+!      Drawing Dimension Leader elbow length (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.012000
+!
+dft.ldrelbowlen:  0.012000
+!
+!
+!  BALLOON RADIUS
+!      Drawing Balloon radius (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.009000
+!
+dft.balloonrad:  0.009000
+!
+!
+!  NOTE TEXT HEIGHT
+!      Drawing Note text height (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.notetexthgt:  0.003000
+!
+!
+!  CPC ARROWHEAD LENGTH
+!      Drawing CPC Arrowhead Length (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.cpcarhdlen:  0.003000
+!
+!
+!  CPC ARROWDEAD RATIO
+!      Drawing CPC Arrowhead Length/Width Ratio (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 3.000000
+!
+dft.cpcarhdrat:  3.000000
+!
+!
+!  CPC TEXT HEIGHT
+!      Drawing CPC Text Height (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.cpctexthgt:  0.003000
+!
+!
+!  CPC TEXT GAP
+!      Drawing CPC Leader line to text gap (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.002000
+!
+dft.cpcldrlngap:  0.002000
+!
+!
+!  CPC ELBOW ARROWHEAD LENGTH
+!      Drawing CPC Elbow to Arrow length (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.009000
+!
+dft.cpcelbowarhdlen:  0.009000
+!
+!
+!  CPC ELBOW LENGTH
+!      Drawing CPC Elbow length (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.003000
+!
+dft.cpcelbowlen:  0.003000
+!
+!
+!  VIEW SCALE
+!      Drawing view scale.
+!      Valid settings:
+!         > 0.0
+!      Default: 1.000000
+!
+dft.scale:  1.000000
+!
+!
+!  CROSSHATCH SPACING
+!      Drawing crosshatch spacing (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 0.004000
+!
+dft.xhspacing:  0.004000
+!
+!
+!  CROSSHATCH ANGLE
+!      Drawing crosshatch angle (in Meters).
+!      Valid settings:
+!         > 0.0
+!      Default: 45.000000
+!
+dft.xhangle:  45.000000
+!
+!
+!  LOWER TOLERANCE
+!      Drawing dimension lower tolerance (in Meters).
+!      Valid settings:
+!         >= 0.0
+!      Default: 0.001000
+!
+dft.dimltol:  0.001000
+!
+!
+!  UPPER TOLERANCE
+!      Drawing dimension upper tolerance (in Meters).
+!      Valid settings:
+!         >= 0.0
+!      Default: 0.001000
+!
+dft.dimutol:  0.001000
+!
+!
+!  HORIZONTAL LENGTH
+!      Metric Drawing horizontal length (in Meters).
+!      Valid settings:
+!         >= 0.0
+!      Default: 0.297000
+!
+dft.metudhlen:  0.297000
+!
+!
+!  VERTICAL LENGTH
+!      English Drawing vertical length (in Meters).
+!      Valid settings:
+!         >= 0.0
+!      Default: 0.210000
+!
+dft.metudvlen:  0.210000
+!
+!
+!  SPACE BETWEEN VIEWS
+!      Metric/English Drawing spacing between views (in Meters).
+!      Valid settings:
+!         >= 0.0
+!      Defaults: based on drawing size
+!
+dft.vwspca4h:  0.020000
+dft.vwspca3:   0.050000
+dft.vwspca2:   0.070000
+dft.vwspca1:   0.090000
+dft.vwspca0:   0.140000
+dft.vwspca4v:  0.020000
+dft.vwspcmud:  0.020000
+dft.vwspcah:   0.038100
+dft.vwspcb:    0.063500
+dft.vwspcc:    0.088900
+dft.vwspcd:    0.114300
+dft.vwspce:    0.177800
+dft.vwspcav:   0.038100
+dft.vwspceud:  0.038100
+!
+!
+!  MEMORY RELEASE
+!      ----New in Master Series 2----
+!      Improves memory usage when processing multiple drawing
+!      views of large assemblies. When on, it forces memory to 
+!      be released for each view.  (Processing time may increase.)
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.LargeAssembly:  0
+!
+!
+!  DIMENSION SOURCE
+!      ----New in Master Series 2----
+!      Dimension value calculation method.  When off (default),
+!      dimension values from the Master Modeler will be displayed.
+!      When on, all dimension values in Drafting Setup will be
+!      recalculated based on the geometry being dimensioned.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+dft.measureddims:  0
+!
+!
+!  SENSITIVITY TO HIDDEN LINE CHANGES
+!      ----New in Master Series 4----
+!      This tolerance sets the sensitivity of the Drafting Detailing
+!      update process to changes caused by improvements in hidden 
+!      line processing implemented in MS4.
+!
+!      The update process compares the new hidden line image with  
+!      the existing detailing image.  Differences greater than this 
+!      tolerance setting will qualify as a change.
+!
+!      A small value will cause more data to be transferred to
+!      Drafting Detailing when you update a drawing.
+!
+!      A larger value will cause less data to be transferred to
+!      Drafting Detailing when you update the drawing.
+!
+!      Valid range:
+!         0.00000001 to 0.001
+!      Default: 0.00001
+!
+dft.pctoler:  0.00001
+!
+!
+!--------------------------------------------------------------------------
+! 
+!  Sheet Metal Preferences
+!
+!  These parameters are default values for the Sheet Metal
+!  Task. 
+!
+!-------------------------------------------------------------------------
+!
+!  MATERIAL TABLE PREFERENCES -- Sheet Metal Material table
+!      Controls the input format of the Sheet Metal Material Table.
+!
+!      Valid settings:
+!         1 = SDRC Sheet Metal Material Table Format.
+!         2 = SDRC Sheet Metal Material Table Format 1. 
+!             (A special format which should generally not 
+!             be specified by the I-DEAS user).
+!      Default: 1
+!
+SheetMetal.MaterialFormat:  1
+!
+!
+!  MATERIAL NAME
+!      Defines how the material name is built. When On, the material
+!      name is built from the Material Class field followed by the 
+!      Material Specification field. If OFF, the material name is built
+!      from the Material Specification field followed by the Material
+!      Class field.
+!  
+!      Valid settings: 
+!        1 = On 
+!        0 = Off
+!      Default: 0
+!
+SheetMetal.MaterialName:  0
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Rapid Prototyping Preferences
+!
+!-------------------------------------------------------------------------
+!
+!
+!  STL FORMAT
+!      ----New in Master Series 2----
+!      STL output file format.
+!
+!      Valid settings:  
+!         ASCII
+!         Binary
+!      Default: ASCII
+!
+Rapid.StlFileFormat:  ASCII
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Geometry Translator preferences
+! 	
+!  VDA INTERFACE PREFERENCES - Defined on VDA read/write forms
+!
+!-------------------------------------------------------------------------
+!
+!
+!  VDA READ FORM
+!      The color of edges. 
+!
+!      Valid settings:
+!         0-15 
+!      Default: 10
+!
+vda.coloredge:  10
+!
+!
+!  FACE COLOR
+!      The color of faces. 
+!
+!      Valid settings:
+!         0-15 
+!      Default: 1
+!
+vda.colorface:  1
+!
+!
+!  CONNECTOR COLOR
+!      The color of wire frame connectors.
+!
+!      Valid settings:
+!         0-15 
+!      Default: 7
+!
+vda.colorwfconnector:  7
+!
+!
+!  CURVE COLOR
+!      The color of wire frame curves.
+!
+!      Valid settings:
+!         0-15 
+!      Default: 8
+!
+vda.colorwfcurve:  8
+!
+!
+!  MAP PSET TO POINTS
+!      Maps the PSET element to the point component.
+!  
+!      Valid settings: 
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+vda.psettopc:  1
+!
+!
+!  MAP PSET TO CURVES
+!      Maps the PSET element to a wire frame curve.
+!  
+!      Valid settings: 
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+vda.psettowc:  1
+!
+!
+!-------------------------------------------------------------------------
+!
+!  VDA write form
+!
+!-------------------------------------------------------------------------
+!
+!  ADDRESS
+!      Address of the sending company/site.
+!
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.address:                 
+!
+!
+!  SECURITY INFO
+!      Project security information specific to your company/site.
+!
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.confidentiality:         
+!
+!
+!  RELEASE DATA
+!      Project management release date information specific to your 
+!      company/site.
+!
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.dateeffective:          
+!
+!
+!  PART NAME/NUMBER
+!      A part name/number.
+!
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.objectcode:             
+!
+!
+!  PROJECT NAME
+!      The name of the project to which the written part belongs.
+!
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.projectname:            
+!
+!
+!   RECEIVING COMPANY
+!      The name of the receiving company.
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.receivingcompany:       
+!
+!
+!  RECEIVING DEPARTMENT
+!      The name of the receiving department.
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.receivingnamedept:     
+!
+!
+!  SENDER
+!      The name of the sender.
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.sendername:             
+!
+!
+!  SENDING COMPANY
+!      The name of the sending company.
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.sendingcompany:    
+!
+!
+!  TELEPHONE NUMBER 
+!      The telephone number of the sending company.
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.telephone:               
+!
+!
+!  VERSION
+!      Internal project manangement version specific to your site.
+!      Valid settings:
+!         any string
+!      Default: none
+!
+vda.variant:                 
+!
+!
+!-------------------------------------------------------------------------
+!
+!  PCB Preferences
+!   
+!  These parameters are for the user interface of the 
+!  PCB Data Translator.
+!
+!-------------------------------------------------------------------------
+!
+!
+!  ELECTRONIC COMPONENT CATALOG PREFERENCES 
+!      -- ALL PCB forms except Write form
+!
+!  PROJECT NAME
+!      This is the Project name of the Electronic Component Catalog (ECC).
+!      It must be created in IDM.
+!
+!      Valid settings:
+!         Named defined by IDM
+!      Default: none
+!
+Pcb.EccProjName: 
+!
+!
+!  ECC CATALOG NAME
+!      This is the Catalog name of the ECC. Any name can be used and
+!      Catalogs can be created in PCB. 
+!
+!      Valid settings:
+!         any string
+!      Default: none
+!
+Pcb.EccCataName:
+!
+!
+!  ECC DATABASE NAME
+!      This is the database name of the ECC. This database is not
+!      part of the user interface and is not known to the user. It 
+!      is a necessary part of the ECC. 
+!      The value is obtained from the form is set to the correct  
+!      format for the operation system.
+!
+!      Valid settings:
+!         full path name and the catalog name with a .pal extension 
+!      Default: none
+!
+Pcb.EccDbFile:
+!
+!
+!  WRITE FILE PREFERENCES -- Write form
+!
+!  OUTPUT UNITS
+!      This is the default output units for the write operation.
+!
+!      Valid settings:
+!         MM/THOU/DSU
+!      Default: THOU
+!
+Pcb.OutputUnits:  THOU
+!
+!
+!  SETUP PREFERENCES FOR READ OPERATION - Setup form
+!      This is the creation option for Electronic Component Parts.
+!
+!      Valid settings:
+!         0/1/2
+!      Default: 0
+!
+Pcb.CompCreateOpt:  0
+!
+!
+!  GRAPHICS OPTION
+!      This is the graphics option for the read operation.
+!
+!      Valid settings:
+!         0/1/2
+!      Default: 0
+!
+Pcb.GraphicsOpt:  0
+!
+!
+!  STOP ON MISSING COMPONENT
+!      This toggle determines if the read operation is aborted
+!      on a missing component in the Catalog.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 0
+!
+Pcb.CompMissingSw:  0
+!
+!
+!  APPEND VERSION
+!      This toggle determines if the version number in the Board 
+!      Interface File will be appended to the board name generate 
+!      the default assembly name.
+!
+!      Valid settings:
+!         1 = On 
+!         0 = Off
+!      Default: 1
+!
+Pcb.AppendVerAssy:  1
+!
+!
+!  BOARD COLOR
+!      Color index for the Board Part.
+!
+!      Valid settings:
+!         0-15
+!      Default: 7
+!
+Pcb.BoardColor:  7
+!
+!
+!  COMPONENT PART COLOR
+!      This is the I-DEAS color index of the color to make the 
+!      Electronic Component Parts.
+!
+!      Valid settings:
+!         0-15
+!      Default: 8
+!
+Pcb.ComponentColor:  8
+!
+!
+!  SETUP AND READ PREFERENCES - Both the Setup and Read forms
+!
+!  ASSEMBLY OVERWRITE
+!      This is a toggle which determines if an existing PCB Assembly 
+!      Model will be overwritten during a Read operation.
+!
+!      Valid settings:
+!         1 = Overwrite existing PCB model
+!         0 = Keep existng PCB model  
+!      Default: 0
+!
+Pcb.AssyOverwriteSw:  0
+!
+!
+!  BOARD OVERWRITE
+!      This toggle determines if an existing Board Part will 
+!      be overwritten during a Read operation.
+!
+!      Valid settings:
+!         1 = Overwrite existing Board Part
+!         0 = Keep existng Board Part  
+!      Default: 0
+!
+Pcb.BoardOverwriteSw:  0
+!
+!
+!  ADD CATALOG PART ENTRIES PREFERENCES - Add Catalog Part Entries form
+!
+!  CATALOG PART ENTRY OVERWRITE
+!      This toggle determines if a Catalog Part Entry will be 
+!      overwritten during the Add Catalog Part Entries operation.
+!
+!      Valid settings:
+!         1 = Overwrite existing Catalog Part
+!         0 = Keep existng Catalog Part  
+!      Default: 0
+!
+Pcb.OverwriteCpeSw:  0
+!
+!
+!  READ ELECTRONIC COMPONENT ENTRIES PREFERENCES 
+!  - Read Electronic Component Entries form
+!
+!  COMPONENT ENTRY OVERWRITE
+!      This toggle determines if an Electronic Component Entry will
+!      be overwritten during the Read Electronic Component Entries 
+!      operation.
+!
+!      Valid settings:
+!         1 = Overwrite existing Component Entry
+!         0 = Keep existng Component Entry  
+!      Default: 0
+!
+Pcb.OverwriteEceSw:  0
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Simulation Preferences
+!
+!-------------------------------------------------------------------------
+!
+!
+!  SELECT PART FOR EXPORT
+!      ----New in Master Series 6----
+!      When on, the part associated with the active FE model is
+!      automatically selected to be written to the simulation
+!      universal file.
+!
+!      Valid settings:
+!         0 = Off            
+!         1 = On
+!      Default: 0
+!
+FEM.part_highlight:  0
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Test Defaults
+!
+!-------------------------------------------------------------------------
+!
+!
+!  TYPE OF ATTRIBUTES
+!      ----New in Master Series 2----
+!      Defaults for the type of data attribute list to be stored in 
+!      the database for function, time history, and shape ADF records.
+!      A partial or full attribute list can be selected. These defaults 
+!      should not be changed once they are set immediately after
+!      installation.
+!
+!      Valid settings:
+!         1 = Partial attribute list stored on database
+!         2 = Full attribute list stored on database
+!      Defaults: 1,1,2
+!
+Test.FunctionAttributes:  1
+Test.TimeHistoryAttributes:  1
+Test.ShapeAttributes:  2
+!
+!
+!  TRACKING ADF RECORDS
+!      ----New in Master Series 2.1----
+!      Switch for tracking ADF records on the database.
+!
+!      Valid settings:
+!         1 = track ADF records on the database
+!         0 = do not track ADF records on database
+!      Default: 0
+!
+Test.ADFRecordTracking:  0
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Internal Definitions
+!
+!  These are I-DEAS User Interface internals definitions. They should
+!  not be modified by users or I-DEAS Administrators. 
+! 
+!-------------------------------------------------------------------------
+!
+!
+!  X server identifier -- used internally by I-DEAS
+!  
+Xserver.DEC:         DECWINDOWS Digital Equipment Corp
+Xserver.HP:          Hewlett-Packard Company
+Xserver.IBM:         International Business Machines
+Xserver.SGI:         Silicon Graphics
+Xserver.Sun:         Sun Microsystems, Inc.
+Xserver.Tek:         Tektronix, Inc.
+Xserver.Apollo:      Apollo Computer Inc.
+Xserver.Hummingbird: Hummingbird Communications Ltd.
+Xserver.Apple:       MacX 1.2: Apple Computer, Inc.
+!
+!
+!-------------------------------------------------------------------------
+!
+!  Site-wide local language defaults and font definitions
+! 
+!  These parameters define the fonts for SDRC local languages. The I-DEAS
+!  local language is defined by startup.LocalLanguage (see above).
+!
+!  Font definitions should not be edited by I-DEAS system administrators. 
+!
+!-------------------------------------------------------------------------
+!
+!
+!  LOCAL PROMPT  
+!      Define the prompt used at startup to query for local language.
+!
+!      Valid Settings:
+!         Any string
+!      Default: Enter Local Language
+!
+Lang.LocalPrompt:  Enter Local Language
+!
+!
+!  LANGUAGE FONT
+!      Font control string - do not edit.
+!
+Lang.DefaultFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+!
+!
+!  KANJI GRAPHS
+!      ----New in Master Series 6----
+!      This parameter enables Kanji to be displayed with XY and XYZ graphs 
+!      in the graphics region. When this parameter is set to 2, I-DEAS 
+!      will read the kanji font from the following file when I-DEAS starts:
+!      $SDRC_INSTL/gdr/kanji/local/drafting.fnt
+!
+!      Valid settings:
+!         0 = Off            
+!         2 = Read file and display Kanji for graphs
+!      Default: 0
+!
+Lang6.VectorFontEncoding:  0
+!
+!
+!  LOCAL NAME
+!      ----New in Master Series 2----
+!      ----Modified in Master Series 6----
+!      Define Language Name and Locale Name for communication
+!      with SmartView and other 3rd party applications.
+!
+Lang0.Language: English
+Lang0.Locale: English
+Lang1.Language: French
+Lang1.Locale: French
+Lang2.Language: German
+Lang2.Locale: German
+Lang3.Language: Italian
+Lang3.Locale: Italian
+Lang4.Language: Spanish
+Lang4.Locale: Spanish
+Lang6.Language: Japanese
+Lang6.Locale: JP
+Lang7.Language: Korean
+Lang7.Locale: Korean
+Lang9.Language: Chinese
+Lang9.Locale: Chinese
+Lang10.Language: Chinese
+Lang10.Locale: Chinese
+!
+!-------------------------------------------------------------------------
+!
+!
+!  Language 0 - English
+!
+Lang0.Name: English
+Lang0.Bytes_Per_Char: 1
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang0.Menu.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang0.Menu.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang0.Menu.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang0.Menu.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Prompt Window
+Lang0.Prompt.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang0.Prompt.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang0.Prompt.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang0.Prompt.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  List Window
+Lang0.List.SmallFont:  -Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang0.List.MediumFont: -Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang0.List.LargeFont:  -Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1   
+Lang0.List.XLargeFont: -Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1   
+!
+!  Forms
+Lang0.Forms.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang0.Forms.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang0.Forms.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang0.Forms.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang0.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang0.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang0.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1       
+Lang0.FixedWidth.XLargeFont: ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1       
+!
+!  Icon Panel (includes popups)
+Lang0.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang0.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang0.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang0.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!
+!  Language 1 - French
+!
+Lang1.Name: French
+Lang1.Bytes_Per_Char: 1
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang1.Menu.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang1.Menu.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang1.Menu.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang1.Menu.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Prompt Window
+Lang1.Prompt.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang1.Prompt.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang1.Prompt.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang1.Prompt.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  List Window
+Lang1.List.SmallFont:  -Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang1.List.MediumFont: -Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang1.List.LargeFont:  -Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1  
+Lang1.List.XLargeFont: -Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1  
+!
+!  Forms
+Lang1.Forms.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang1.Forms.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang1.Forms.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang1.Forms.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang1.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang1.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang1.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1      
+Lang1.FixedWidth.XLargeFont: ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1      
+!
+!  Icon Panel (includes popups)
+Lang1.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang1.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang1.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang1.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!
+!  Language 2 - German
+!
+Lang2.Name: German
+Lang2.Bytes_Per_Char: 1
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang2.Menu.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang2.Menu.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang2.Menu.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang2.Menu.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Prompt Window
+Lang2.Prompt.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang2.Prompt.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang2.Prompt.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang2.Prompt.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  List Window
+Lang2.List.SmallFont:  -Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang2.List.MediumFont: -Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang2.List.LargeFont:  -Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1
+Lang2.List.XLargeFont: -Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1
+!
+!  Forms
+Lang2.Forms.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang2.Forms.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang2.Forms.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang2.Forms.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang2.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang2.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang2.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1
+Lang2.FixedWidth.XLargeFont: ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1
+!
+!  Icon Panel (includes popups)
+Lang2.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang2.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang2.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang2.IconPanel.XLargeFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!
+!  Language 3 - Italian
+!
+Lang3.Name: Italian
+Lang3.Bytes_Per_Char: 1
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang3.Menu.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang3.Menu.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang3.Menu.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang3.Menu.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Prompt Window
+Lang3.Prompt.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang3.Prompt.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang3.Prompt.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang3.Prompt.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  List Window
+Lang3.List.SmallFont:  -Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang3.List.MediumFont: -Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang3.List.LargeFont:  -Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1
+Lang3.List.XLargeFont: -Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1
+!
+!  Forms
+Lang3.Forms.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang3.Forms.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang3.Forms.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang3.Forms.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang3.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang3.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang3.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1
+Lang3.FixedWidth.XLargeFont: ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1
+!
+!  Icon Panel (includes popups)
+Lang3.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang3.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang3.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang3.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!
+!  Language 4 - Spanish
+!
+Lang4.Name: Spanish
+Lang4.Bytes_Per_Char: 1
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang4.Menu.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang4.Menu.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang4.Menu.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang4.Menu.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Prompt Window
+Lang4.Prompt.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang4.Prompt.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang4.Prompt.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang4.Prompt.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  List Window
+Lang4.List.SmallFont:  -Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang4.List.MediumFont: -Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang4.List.LargeFont:  -Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1
+Lang4.List.XLargeFont: -Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1
+!
+!  Forms
+Lang4.Forms.SmallFont:  -Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang4.Forms.MediumFont: -Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang4.Forms.LargeFont:  -Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang4.Forms.XLargeFont: -Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang4.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1
+Lang4.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1
+Lang4.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1
+Lang4.FixedWidth.XLargeFont: ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1
+!
+!  Icon Panel (includes popups)
+Lang4.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1
+Lang4.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1
+Lang4.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1
+Lang4.IconPanel.XLargeFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1
+!
+!
+!      ----Language 5 removed in Master Series 6----
+!
+!
+!  Language 6 - Japanese (JISX0208) (7 bit format)
+!
+Lang6.Name: Japanese (UNIX/NT)
+Lang6.Bytes_Per_Char: 2
+Lang6.Format: JIS
+Lang6.Encoding: 7
+Lang6.Standard: JISX0208
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang6.Menu.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Menu.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Menu.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Menu.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+!
+!  Prompt Window
+Lang6.Prompt.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Prompt.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Prompt.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Prompt.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+!
+!  List Window
+Lang6.List.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.List.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.List.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.List.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+!
+!  Forms
+Lang6.Forms.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Forms.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Forms.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.Forms.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang6.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.FixedWidth.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+!
+!  Icon Panel (includes popups)
+Lang6.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+Lang6.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-Fixed-Medium-R-Normal--14-*-*-*-*-*-JISX0208.1983-0=double_byte
+!
+!  Dynamic Output (force this to small for all)
+Lang6.Dynamic.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang6.Dynamic.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang6.Dynamic.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang6.Dynamic.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Forms Scale
+Lang6.Scale.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang6.Scale.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang6.Scale.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang6.Scale.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Input fonts are ALWAYS single byte characters
+Lang6.Prompt_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang6.Prompt_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang6.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang6.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang6.Forms_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang6.Forms_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang6.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang6.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang6.FixedWidthInput.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte
+Lang6.FixedWidthInput.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte
+Lang6.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte
+Lang6.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte
+!
+!
+!  Language 7 - Korean KSC5601 (7 bit format)
+!
+Lang7.Name: Korean   (UNIX/NT)
+Lang7.Bytes_Per_Char: 2
+Lang7.Format: JIS
+Lang7.Encoding: 7
+Lang7.Standard: KSC5601
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang7.Menu.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Menu.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Menu.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Menu.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+!
+!  Prompt Window
+Lang7.Prompt.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Prompt.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Prompt.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Prompt.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+!
+!  List Window
+Lang7.List.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.List.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.List.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.List.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+!
+!  Forms
+Lang7.Forms.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Forms.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Forms.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.Forms.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang7.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+!
+!  Icon Panel (includes popups)
+Lang7.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+Lang7.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-Daewoo-Gothic-Medium-R-Normal--*-120-*-*-C-*-KSC5601.1987-0=double_byte
+!
+!  Dynamic Output (force this to small for all)
+Lang7.Dynamic.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang7.Dynamic.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang7.Dynamic.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang7.Dynamic.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Forms Scale
+Lang7.Scale.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang7.Scale.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang7.Scale.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang7.Scale.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Input fonts are ALWAYS single byte characters
+Lang7.Prompt_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang7.Prompt_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang7.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang7.Prompt_Input.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang7.Forms_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang7.Forms_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang7.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang7.Forms_Input.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang7.FixedWidthInput.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte
+Lang7.FixedWidthInput.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte
+Lang7.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte
+Lang7.FixedWidthInput.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte
+!
+!
+!      ----Language 8 removed in Master Series 6----
+!
+!
+!  Language 9 - Chinese (GB2312.1980) (8 bit format)
+!
+!      ----New in Master Series 2----
+Lang9.Name: Chinese  (GB2312.1980-1)
+Lang9.Bytes_Per_Char: 2
+Lang9.Format: EUC
+Lang9.Encoding: 8
+Lang9.Standard: GB2312.1980
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang9.Menu.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Menu.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Menu.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Menu.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+!
+!  Prompt Window
+Lang9.Prompt.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Prompt.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Prompt.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Prompt.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+!
+!  List Window
+Lang9.List.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.List.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.List.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.List.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+!
+!  Forms
+Lang9.Forms.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Forms.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Forms.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.Forms.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang9.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.FixedWidth.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+!
+!  Icon Panel (includes popups)
+Lang9.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+Lang9.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-c-*-gb2312.1980-1=double_byte
+!
+!  Dynamic Output (force this to small for all)
+Lang9.Dynamic.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang9.Dynamic.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang9.Dynamic.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang9.Dynamic.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Forms Scale
+Lang9.Scale.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang9.Scale.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang9.Scale.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang9.Scale.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Input fonts are ALWAYS single byte characters
+Lang9.Prompt_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang9.Prompt_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang9.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang9.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang9.Forms_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang9.Forms_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang9.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang9.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang9.FixedWidthInput.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte
+Lang9.FixedWidthInput.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte
+Lang9.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte
+Lang9.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte
+!
+!
+!  Language 10 - Chinese (Big5)
+!
+!      ----New in Master Series 2----
+Lang10.Name: Chinese  (Big5)
+Lang10.Bytes_Per_Char: 2
+Lang10.Format: Big5
+Lang10.Encoding: 8
+Lang10.Standard: Big5
+!
+!  -- Fonts --
+!
+!  SDRC Menus (includes popups)
+Lang10.Menu.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Menu.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Menu.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Menu.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+!
+!  Prompt Window
+Lang10.Prompt.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Prompt.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Prompt.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Prompt.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+!
+!  List Window
+Lang10.List.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.List.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.List.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.List.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+!
+!  Forms
+Lang10.Forms.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Forms.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Forms.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.Forms.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+!
+!  Data Menu, Data Table, Keyin Text Box
+Lang10.FixedWidth.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.FixedWidth.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.FixedWidth.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.FixedWidth.XLargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+!
+!  Icon Panel (includes popups)
+Lang10.IconPanel.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.IconPanel.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.IconPanel.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+Lang10.IconPanel.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte,^
+-*-*-medium-r-normal-*-*-160-*-*-*-*-big5.hku-0=double_byte
+!
+!  Dynamic Output (force this to small for all)
+Lang10.Dynamic.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang10.Dynamic.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang10.Dynamic.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang10.Dynamic.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Forms Scale
+Lang10.Scale.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang10.Scale.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang10.Scale.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang10.Scale.XLargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+!  Input fonts are ALWAYS single byte characters
+Lang10.Prompt_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang10.Prompt_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang10.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang10.Prompt_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang10.Forms_Input.SmallFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-80-*-*-P-*-ISO8859-1=single_byte
+Lang10.Forms_Input.MediumFont: ^
+-Adobe-Helvetica-Bold-R-Normal--*-100-*-*-P-*-ISO8859-1=single_byte
+Lang10.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-120-*-*-P-*-ISO8859-1=single_byte
+Lang10.Forms_Input.LargeFont:  ^
+-Adobe-Helvetica-Bold-R-Normal--*-140-*-*-P-*-ISO8859-1=single_byte
+!
+Lang10.FixedWidthInput.SmallFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-80-*-*-M-*-ISO8859-1=single_byte
+Lang10.FixedWidthInput.MediumFont: ^
+-Adobe-Courier-Bold-R-Normal--*-100-*-*-M-*-ISO8859-1=single_byte
+Lang10.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-120-*-*-M-*-ISO8859-1=single_byte
+Lang10.FixedWidthInput.LargeFont:  ^
+-Adobe-Courier-Bold-R-Normal--*-140-*-*-M-*-ISO8859-1=single_byte

@@ -1,0 +1,109 @@
+<CENTER>
+<H1>Discriminator</H1>
+</CENTER>
+
+<CENTER>
+<IMG SRC="http://www.parts.nist.gov/parts/repository/Sandia/Randy_Wilson/discrim/discriminator.gif">
+</CENTER>
+
+<A HREF="http://www.sandia.gov/2121/archimedes/people/rhwilson.html">
+Randy Wilson</A> <BR>
+Sandia National Labs <BR>
+rhwilso@sandia.gov <BR>
+8/19/96 <BR>
+
+<HR>
+
+The top level assembly is: <A
+HREF="http://www.cme.nist.gov/cgi-bin/pptb/partDisplay.tcl?file=./Sandia/Randy_Wilson/discrim/discriminator">
+discriminator</A>. <BR>
+
+You can pick up all the files through this
+<A HREF="http://www.parts.nist.gov/parts/repository/Sandia/Randy_Wilson/discrim.tar">
+tar file</A>.
+<BR>
+
+<HR>
+
+<CENTER> <H1>	**** Patent Caution **** </H1> </CENTER>
+
+A patent is pending for the Pin-in-Maze discriminator design.
+<P>
+
+<HR>
+
+<CENTER> <H1>Description</H1> </CENTER>
+
+This directory contains an ACIS model of the A' discriminator.  A
+discriminator is a safety device designed to allow operation of a
+system only when given a particular code (even when exposed to fire,
+electrical shorts, crashes, etc.).
+<P>
+
+This model of discriminator was designed for Sandia's A-PRIMED (A')
+project by Gil Benavides at Sandia National Laboratories.  It consists
+of two main wheels driven by stepper motors.  One wheel holds a maze,
+and the other a pin.  At each step of the code, the maze moves one
+step forward, and the pin moves either left or right.  If the pin
+makes a wrong step, the entire device locks up, and must be
+disassembled before it will operate again.  The maze wheel has been
+carefully designed to be balanced and of minimal weight, which results
+in a very complex geometric design.
+<P>
+
+The design was originally modeled in Pro/ENGINEER, and translated to
+ACIS using a proprietary ProE->ACIS translator, keeping ProE's
+capability for "soft-linking" (ie having multiple copies of a single
+part or subassembly represented implicitly in the structure).  Each
+".prt" file has been translated to a ".sat" file (ie ACIS standard
+format), and the ProE ".asm" files have been translated to
+corresponding ".asy" files.  A .asy file consists of a list of entries
+of the form:
+<P>
+
+	filename id <BR>
+	rot00 rot01 rot02 <BR>
+	rot10 rot11 rot12 <BR>
+	rot20 rot21 rot22 <BR>
+	pos-x pos-y pos-z <BR>
+<P>
+
+"filename" specifies either a .sat file or another .asy file (ie a
+subassembly), and "id" is an integer unique within this .asy file.
+The rest of the entities are floating-point numbers that specify a
+standard 4x4 matrix transform placing the part or subassembly with
+respect to the assembly: rot** give the 3x3 rotation matrix (possibly
+with uniform scaling), and pos-* give the translational offset.  At
+the end of this README file is some (incomplete) sample C++ and ACIS
+code to read in this hierarchical structure.
+<P>
+
+The A' discriminator was used to test the Archimedes assembly planning
+system.  For more information about Archimedes (and some on-line
+movies of the discriminator being assembled) see the URL
+<A HREF="http://www.sandia.gov/2121/archimedes/archimedes.html">
+http://www.sandia.gov/2121/archimedes/archimedes.html</A>.
+<P>
+
+The top-level .asy file is "discriminator.asy", which just re-orients
+a single subassembly.  The most interesting parts are
+"thru-mazewheel.sat" and "sh-r44372-000-u.sat", which are both
+slightly different mazewheels (the former appears in the assembly).
+"discriminator.gif" shows a picture of the full assembly.
+<P>
+
+<HR>
+
+Sample C++ and ACIS code follows to re-construct the assembly,
+creating a copy of each part in memory in proper position.  Because
+this code was viciously hacked from the Archimedes system, several
+routines and data structures are missing.  However, I think the
+operation of those pieces is either obvious or unimportant.
+<P>
+
+<A
+HREF="http://www.parts.nist.gov/parts/repository/Sandia/Randy_Wilson/discrim/code.cxx">
+Code</A>
+
+<HR>
+

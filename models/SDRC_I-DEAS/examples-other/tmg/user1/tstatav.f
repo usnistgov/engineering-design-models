@@ -1,0 +1,39 @@
+      SUBROUTINE USER1(GG,T,C,Q,QD,R,TIME,DT,IT,KODE,NOCON,MAXNO,
+     +ICONV,DUM1,DUM2,DTP,TF)
+      DIMENSION GG(1),QD(1),T(1),C(1),Q(1),R(1),ICONV(1)
+      REAL PERIOD,ELAPSED,QAVG(1000)
+      INTEGER HTRBANK(1000)
+      CHARACTER*7 NAME
+      SAVE
+C
+C     Compute the orbital average heat load for elements in group
+C     HTRBANK.
+C
+      IF (KODE.EQ.1.AND.IFLAG.NE.999) THEN
+        CALL NAMAR('HTRBANK',HTRBANK,NHTR)
+        CALL VARVAL('%TMGVAR0',PERIOD)
+        ORBNUM=1
+        IFLAG=999
+      ENDIF
+C
+      IF (KODE.EQ.2) THEN
+        DO 5 I=1,NHTR
+          QAVG(I)=QAVG(I)+Q(HTRBANK(I))*DT
+ 5      CONTINUE
+        ELAPSED=TIME-PERIOD*(ORBNUM-1)
+        IF (ELAPSED.GE.PERIOD) THEN
+          WRITE(18,100) ORBNUM
+ 100      FORMAT(1X,//,'AVERAGE HEATER CONSUMPTION FOR ORBIT NO. ',I3, 
+     +//,'    ELEMENT       HEAT LOAD',/)
+          DO 10 I=1,NHTR
+            QAVG(I)=QAVG(I)/ELAPSED
+            WRITE(18,110) ICONV(HTRBANK(I)),QAVG(I)
+ 110        FORMAT(5X,I5,9X,F8.3) 
+            QAVG(I)=0
+  10      CONTINUE
+          ORBNUM=ORBNUM+1
+        ENDIF
+      ENDIF
+C
+      RETURN
+      END

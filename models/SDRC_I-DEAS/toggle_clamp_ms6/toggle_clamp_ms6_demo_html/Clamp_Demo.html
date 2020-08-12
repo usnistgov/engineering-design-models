@@ -1,0 +1,761 @@
+<html>
+<title>Technical Marketing's Demo</title>
+<head><font size=6><Font color="#000055"><center>Handle Demo</center></font color></font size></head>
+<basefont size=3>
+<body bgcolor="#ffffff">
+<body link="#000033">
+<body vlink="#100044">
+<p>
+<p>
+<a href="Step2.html">Step 2</a>
+</html>
+
+
+(1) Drafting demo
+inc.  reading Autocad drawing
+       Creating Handle drawing
+       Exports 2 views to solids
+
+
+
+(2) Builds solid Handle part.
+Designs grip.
+
+
+(3) Introduce 2d VG Clamp Sketch
+Animate.
+Change the Link length and then 
+back.
+
+
+(4) Get Clamp Assembly and add 
+Handle.
+Constrain Handle to Pivot Pin
+
+
+(5)  Design the concept form of Link 
+and add a stop with respect to the 
+assembly location.
+
+
+(6) Add the Link to the assembly 
+and constrain to Pivot Pins.
+
+
+(7) Use a standard Pivot Pin part and 
+add to the assembly.
+
+
+(8) Check-in the Link.
+
+(9) Check-out the Link.
+Change to Sheet Metal.
+Check-in Link
+
+
+
+(8) Modify Driving Angle to 15 deg.
+Use Nudge to create a Sequence.
+Animate the assembly.
+
+(10) Change to Simulation.
+Adds restraints and loads.
+(12) Create standard 4 view Drafting 
+Setup of the Link.
+
+(11) Solve the model.
+(13) Update the Link to version 2
+Show the animated assembly.
+Show updated Drafting Setup
+
+(14) Show default results.
+(15) Process to Drafting
+
+
+
+
+
+
+
+Stage (2)	Builds solid Handle part.
+Designs grip.
+
+
+
+¥    Begin in the Design Application under the Master Modeler Task.
+
+
+¥	Export the 2 views required as wireframe in the same file.
+
+File  ->  Export  ->  To Solids  ->  "handle_sects"  ->  Wireframe
+
+
+ 
+
+¥	Exit Drafting and Un-iconise the Master Modeler session.
+
+
+Global symbol wrr
+This runs a program file (read_handle_views.prg).  The program file 
+does the following
+Reads the new sections that were exported from Drafting
+Gets them to the workbench.
+Renames them to Handle_View_1 and Handle_View_2
+
+
+
+¥	Extrude Handle_View_1 geometry
+
+ 
+Extrude   Handle_View_1 (simpler shape)  ->  Distance 16 (Can be 
+measured from Handle_View_2 geometry).
+
+ 	 
+
+
+¥	Extrude Handle_View_2 geometry and Intersect with Handle_View_1 
+extrusion.
+
+ 
+Extrude   Handle_View_2  ->  Thicken ->  Intersect
+
+ 
+
+ 
+
+Pick the Handle_View_1 extrusion
+
+
+ 	 
+ 
+¥	Change the part color to Gray 80 80 80
+
+
+Double-Click a part edge  ->  Color  ->  Gray 80 80 80 
+
+
+ 
+¥	Rename the part on the screen to be Handle
+
+
+
+Create the Handle Grip
+
+ 
+¥	Change to the Front View 
+
+ 
+¥	Start line at point 1  ->  focus on center point 2  ->  finish line at point 3
+
+ 
+
+
+ 
+¥	Ground curve end at point 2
+
+ 
+¥	Arc centered on the vertical line  ->  Finished on line.
+
+
+ 
+¥	Trim the vertical line back to meet the arc (not the arc end)
+
+¥	Move the arc dimension to a location outside of the arc
+ 
+
+ 
+¥	Create a spline from the arc end  ->  approx. 4 mid points  ->  to line end
+(Note:-  Spline constraint options are OFF)
+
+ 
+
+
+¥	Change task to Master Surfacing
+
+    ---->    
+¥	Match the curvature to the arc
+Pick arc  ->  pick spline
+ 
+
+ 
+¥	Use Drag to change the arc radius  ->  the spline to suit
+(PLAY WITH IT)
+ 	 
+
+
+ 
+¥	Revolve the section around the vertical line  ->  360 deg  ->  Protrude  -
+>  Pick the Handle part
+
+ 
+
+ 
+Putaway the Handle
+
+¥	Delete the remaing point on the workbench
+
+
+Stage (3)	Introduce 2d VG Clamp Sketch
+Animate.
+Change the Link length and then back.
+
+
+ 
+¥	Get the Clamp Sketch part to the workbench.
+
+ 
+¥	Drag the red angular dimension called Driving_Angle
+(Do Not Change the Value)
+
+ 
+
+
+ 
+¥	Animate the Driving_Angle between 15  ->  85 degrees,  speed approx.  
+20
+
+
+ 
+¥	Modify yellow Link_Length dimension  ->  45
+
+
+ 
+¥	Animate the Driving_Angle between 15  ->  85 degrees,  speed approx. 
+20 as before
+ 
+
+ 
+¥	Modify yellow Link_length back to  ->  40
+
+
+ 
+¥	Put away the Clamp Sketch part
+
+
+
+Stage (4)	Get Clamp Assembly and add Handle.
+Constrain Handle to Pivot Pin
+
+¥	Change the Task to Master Assembly
+
+ 
+¥	Get Handle part and Clamp Assembly to the workbench.
+
+
+ 
+¥	Add the Handle to the assembly.
+	Select the U Bar part  ->  select the Handle part   ->  <done>
+
+
+ 
+¥	Move the Handle instance aside.
+Select the Handle instance  ->  <done>  ->  Slide_on_Screen  ->  
+move to the left side.
+
+
+ 	 
+
+
+
+
+¥	Hide  Pivot Pin 1 ->
+
+ 
+
+
+    ---->    
+¥	Create a Line_to_line constraint between Base Left center line CL2 and 
+Handle front bottom center line ->  take Other End option  ->  3mm 
+offset  ->
+
+ 
+
+Angle between Base Left bottom face and Handle face  ->  85 deg
+
+ 
+
+
+ 
+¥	Select the Attribute icon -> select the Pivot Pin 1 -> click Show -> OK
+
+
+
+
+Stage (5)	Design the concept form of Link
+
+
+
+¥	Change the Task to Master Modeler
+
+
+ 
+¥	Redisplay in Line mode.
+
+
+ 
+¥	Show the Front View and zoom into the Handle and U Bar holes.
+
+
+ 
+Focus on the 2 Link pivot holes to create 2 yellow points on the workplane.
+
+ 
+
+
+ 
+¥	Ground these points.
+
+
+ 
+¥	Sketch 2 circles centered on the ground points with a radius
+     approx. R = 13
+
+
+ 
+¥	Modify the bottom diameter dimension to Match the top diameter.
+Modify the top diameter  ->  14
+
+
+ 
+¥	Create 2 lines tangent to the top circle  ->  onto the bottom circle.
+ 
+
+
+ 
+¥	Add tangency between the lines and the bottom circle.
+
+
+ 
+¥	Create 2 circles centered on the previous circles -> RMB -> Options ->  
+Radius  ->  2.5mm
+
+
+??? Either Hide the Handle OR make Handle translucent. ???
+
+
+ 
+¥	Focus on the top of the U Bar to ensure that Link fits.
+RMB  ->  Focus on a top vertex of the right hand end of the U Bar
+ 
+
+
+ 
+¥	Ground this point.
+
+
+
+
+
+
+ 
+¥	Create lines as per the picture.
+Note:-	line 1 is horizontal
+		line 2 is parallel to       (RMB -> focus -> select link edge)
+ 			the link edge
+		line 3 is parallel to line 1
+ 
+
+
+ 
+¥	Modify both new dimensions to  ->  15 mm
+            
+
+
+ 
+¥	Extrude  ->  Stop at intersections  ->  lines and circles  ->  inner circles  -
+>  Thicken  ->  10 (optionally measure bottom Pivot Pin length)
+
+ 	 
+
+
+ 
+¥	Calculate the parts properties.
+Select the part  ->  Select ? (Material properties)  ->  Select General 
+Isotropic Steel  ->  OK -> Calculate  ->  dismiss form.
+
+
+ 
+¥	Shade the model.
+
+
+
+
+
+Stage (6)	Add the Link to the assembly and constrain to Pivot Pins.
+Modify Driving Angle to 15 deg.
+Use Nudge to create a Sequence.
+Animate the assembly.
+
+
+¥	Switch to Master Assembly
+
+
+ 
+¥	Add new link to the assembly.
+Select the U Bar  ->  Select the link part  ->  <done>
+->  Name the part Link
+
+
+ 
+¥	Rotate the Handle out of the way.
+Modify the Driving_Angle  ->  60 deg
+
+
+ 
+¥	Update the Assembly
+
+
+ 
+¥	Hide the U Bar to make it easier to see the Pivot Pin and Link for 
+constraining.
+
+
+
+
+
+
+    ---->    
+¥	Constrain the bottom hole of the Link to Pivot Pin 3
+Line-to-Line  ->  center line Link to center line CL1 on Pivot Pin  ->  
+centered  ->  <done>
+ 
+
+
+    ---->    
+Constrain the top hole of the Link to the Handle
+Line-to-Line  ->  select center line on Link  ->  RMB Two_points pick 
+outer two points on Handle cross holes  ->  centered  ->  <done>
+ 
+
+
+ 
+¥	Select the Attribute icon -> select the U Bar -> click Show -> OK
+
+
+ 
+¥	Modify the Driving_Angle back to  ->  85 deg
+
+
+ 
+¥	Update the Assembly
+
+Stage (7)	Use a standard Pivot Pin part and add to the assembly.
+
+
+¥	Change the task to Master Modeler
+
+
+ 
+¥	Catalog part  ->  Select the ? Primitives icon-> Current project,  
+Standard Parts catalog,  Pivot Pin part
+
+
+ 
+
+
+
+Show Preview
+Pin_diam = 5
+Pin_length = 40  (optional  -> measure from Handle)
+Head_diam = 12
+
+
+
+
+
+¥	Change the task to Master Assembly
+
+
+ 
+¥	Select the U Bar  ->  select the new Pivot Pin  ->  <done>
+
+
+    ---->     
+Constrain Line_to_line the new Pivot Pin to the Link.
+Select Pivot Pin center line CL1  ->  select centerline of the Link  ->  
+centered  ->  <done>
+ 
+
+
+Stage (8)	Check-in the Link.
+
+
+ 
+¥	Check-in the Link to the Library.
+Manage Bins  ->  select the Link  ->  Select Check-in  ->  Select 
+Check-in keep for reference  ->  Library name Clamp Library        
+OK  ->  OK.
+
+
+ 
+
+¥	Dismiss the Manage Bins form to ensure data management is updated
+
+
+While Head1 turns the Link into a Sheet Metal part (Stage 9), Head 2 
+does the following :
+
+ 
+¥	Modify the Driving_Angle to  ->  60 deg
+
+ 
+¥	Update the Assembly
+
+
+ 
+¥	Modify the Driving_Angle to  ->  30 deg
+
+
+ 
+¥	Update the Assembly
+
+
+ 
+¥	Modify the Driving_Angle to  ->  15 deg
+
+
+ 
+¥	Update the Assembly
+
+
+ 
+¥	Set the Nudge Parameters to create the animation sequence.
+RMB  ->  Start Stop Increment  ->  select Driving_Angle 
+dimension  ->  15 - 85 deg  ->  15 deg increments.
+
+
+ 
+¥	Nudge the Driving_Angle.
+Yes to Save the configs  ->  colon (:) to take defaults.
+
+
+ 
+¥	Animate the assembly
+Take default options.
+
+RMB  ->  Fast  ->  End
+(optionally type  f  for fast and  e  for end)
+
+
+ 
+¥	Show the Front View
+
+
+
+
+
+Stage (9)	Check-out the Link.
+Change to Sheet Metal.
+Check-in Link
+
+
+¥	New model file.
+
+
+ 
+¥	Check-out the Link and get to the workbench.
+Manage Bins  ->  select Get from Library  ->  double-click the Clamp 
+Library name  ->  select the Link part  ->  select Check-out button  -
+>  OK  ->  OK  ->  back in Manage Bins form select Link Get  ->  
+Dismiss
+
+
+ 
+¥	Fillet the 2 edges as shown.
+ 	 
+	Radii = R 4.0mm
+
+
+
+¥	Switch to Sheet Metal
+
+
+ 
+¥	Create a Sheet Metal part.
+Select the Link part  ->  select 
+SHEETMETAL_DEFAULT_2MM_K=.25  ->  OK  ->  select the 
+3 surfaces on the Link as shown  ->
+ 
+
+accept the thickening direction  ->  create both Inside Bend Radius
+R = 2.0  ->  colon (:) for defaults.
+ 
+
+
+  --->     --->   
+¥	Click Update twice to a solid and shade.
+
+
+ 
+¥	Double click on a Bend Cenerline -> Accept (MMB) -> Unfold All
+
+
+ 
+¥	Update the unfolded Link
+
+
+ 
+¥	Double click on a Bend Cenerline -> Accept (MMB) -> Fold All
+
+
+
+ 
+¥	Update the folded Link
+
+
+ 
+¥	Check-in the Link to the library.
+Select Link part  ->  take form defaults  ->  OK  ->  <done>
+
+
+
+
+Stage (10)	Change to Simulation.
+Adds restraints and loads.
+
+
+¥	Change the Application from Design  ->  Simulation
+
+
+¥	Global symbol  fes  this runs the program file fe_model_setup.prg.  This 
+creates a FE model, turns off the display of nodes and elements, and 
+leaves the user in Boundary Conditions task.
+
+
+
+ 
+¥	Show the Front View
+
+
+ 
+¥	Create restraints on the pivot holes surfaces.
+Filter  ->  surfaces  ->  pick only  -> window pick the 4 hole surfaces 
+
+
+->  change the bottom 3 restraints from Constant to Free  ->  OK
+     
+ 
+
+
+
+
+
+
+
+
+ 
+¥	Create a pressure load on the bottom working flat faces of the stop.
+Window select the 7 surfaces  ->  Amplitude 10000 -> OK
+ 
+
+ 
+
+
+¥	Global symbol  mes  runs a program file called mesh_setup.prg.  This 
+sets up the mesh defaults, turn quality checks on, creates solution set, and 
+leaves the user in Model Solution task.
+
+
+Stage (11)	Solve the model.
+
+
+ 
+¥	Run the Solve for this model.
+
+
+
+
+
+Stage (12)	Create standard 4 view Drafting Setup of the Link
+
+
+¥	Global symbol  dfs  runs a program file called dftg_setup.prg. This setups 
+the Drafting Setup defaults and leaves the user in Drafting Setup.
+
+
+ 
+¥	Create a standard 4 view layout drawing of the Link (version 1).
+Create drawing  ->  Four Views  ->  Standard sheet format  ->  A3 
+drawing size.
+
+
+ 
+
+Change View  ->  Plane  ->  select front surface of the Link  ->  Yes 
+accept this direction  ->  select vertical edge of Link, ensure yellow 
+arrow is UP  ->  <done> to accept this view  ->  Yes to place the other 
+views.
+
+ 
+
+
+ 
+¥	Move the view to fit the drawing better.
+Move  ->  RMB  ->  ALL  ->  slide the views over to the left and own 
+to fit the isometric view in.
+
+ 	 
+
+
+ 
+¥	Create vertical sectional view.
+	Pick the Right view  ->  OK  to close form  ->  Section curve down 
+center of part  ->  Accept view direction  ->   Place view to the right 
+of the drawing.
+
+
+
+Stage (13)	Update the Link to version 2
+Show the animated assembly.
+Show updated Drafting Setup.
+
+
+¥	Change the Task to Master Assembly
+
+
+ 
+¥	Update the Link to version 2 (concept to sheet metal)
+Update from Library  ->  select Link  ->  OK  ->  OK
+
+
+ 
+¥	Shade the assembly.
+
+
+ 
+¥	Animate the assembly with the new sheet metal Link.
+Animate  ->  take defaults  ->  RMB fast or end (optionally type f or 
+e)
+
+
+
+
+
+Stage (14)	Show default results
+
+¥	Change Tasks from Model Solution  ->  Post Processing
+
+
+ 
+¥	Show the default results
+
+
+ 
+¥	Click the Animate icon -> <done>
+
+
+
+
+
+Stage (15)	Process to Drafting
+
+
+¥	Switch to Drafting Setup.
+
+
+ 
+¥	Process the drawing to Drafting-Detailing
+Form Options  ->  Removed  ->  centerlines off  ->  OK  ->  OK
+
+
+ 
