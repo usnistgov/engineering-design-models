@@ -1,14 +1,13 @@
 # NIST Engineering Design Model Repository
 ---
-## The Goal of this project is
+## Objective
 There is a need by various groups to have access to public-domain, relevant-to-industry CAD models for widely-varying research & development efforts.  In the mid 1990s a [NIST-led project](https://www.nist.gov/publications/repository-design-process-planning-and-assembly) resulted in the creation of a repository that provided a large variety of parts, in native and neutral formats, from industrial participants. The original repository eventually became un-hosted by NIST.  Due to recently renewed interest in the dataset, particularly by parties interested in Model-Based Enterprise (MBE) and Long-Term Archival (LOTAR), the original repository has been uploaded as a GitHub repository.  Thus the goal of this project is to make the CAD models available again to the general public for whatever purposes they may have. 
 
 ## Code status, pre-release, production.
 The data is provided as-is. Some files from the original repository may not be included - they may be lost to the ages. While many of the files may not open in modern CAD applications, it is not the intent for this repository to resolve these issues.
 
-## Installation Process
-
 ## Contact Information
+William Bernstein | william.bernstein@nist.gov | [NIST Page](https://www.nist.gov/people/william-z-bernstein) <br /> 
 
 ## Original Project Information
 ### Publication:
