@@ -22,7 +22,7 @@ https://www.nist.gov/publications/repository-design-process-planning-and-assembl
 ### Deprecated Repository Link:
 (where the repository data used to be located)
 
-http://www.parts.nist.gov/parts
+[Snapshot of the original http://www.parts.nist.gov](https://web.archive.org/web/19971010231727/http://www.parts.nist.gov/)
 
 ## Acknowledgements
 Special thanks to Bill Regli for his foresight to create a hard-copy backup of the repository and then for his determined efforts to find these backups many years later.
