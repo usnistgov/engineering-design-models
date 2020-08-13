@@ -26,3 +26,6 @@ http://www.parts.nist.gov/parts
 
 ## Acknowledgements
 Special thanks to Bill Regli for his foresight to create a hard-copy backup of the repository and then for his determined efforts to find these backups many years later.
+
+## Disclaimer 
+[NIST Disclaimer](https://www.nist.gov/disclaimer)
