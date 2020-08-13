@@ -1,7 +1,7 @@
 # NIST Engineering Design Model Repository
 ---
 ## Objective
-The NIST Engineering Design Model Repository provides a public-domain collection of industry-relevant CAD models.  This collection can be leveraged for various computer-supported research activities, including but not limited to validating Artificial Intelligence (AI-)based shape search methods, testing automated meshing techniques, testing compatbility of modern Computer-Aided Design (CAD) platforms with legacy file formats, and validating file format tranlsation procedures.
+The NIST Engineering Design Model Repository provides a public-domain collection of industry-relevant CAD models.  This collection can be leveraged for various computer-supported research activities, including but not limited to validating Artificial Intelligence (AI-)based shape search methods, testing automated meshing techniques, testing compatability of modern Computer-Aided Design (CAD) platforms with legacy file formats, and validating file format tranlsation procedures.
 
 ## Background
 In the mid-1990s, a [NIST-led project](https://www.nist.gov/publications/repository-design-process-planning-and-assembly) produced a repository that provided a large variety of parts, in native and neutral formats, from industrial collaborators. The original repository eventually became un-hosted by NIST.  Due to recently renewed interest in the dataset, particularly by parties interested in Model-Based Enterprise (MBE) and Long-Term Archival (LOTAR), the original repository has been uploaded here as a GitHub repository.  
